@@ -1,0 +1,323 @@
+# EM Decision Tree PWA — Progress Log
+
+## Session 1 — 2026-02-19
+### Task 0: Foundation Documents
+
+**Completed:**
+- Created PRD.md — full clinical spec for neurosyphilis decision tree
+  - 6 modules: Serology Interpreter → Stage Classification → Symptom Screen → LP Decision → CSF Interpreter → Treatment
+  - Complete decision tree logic with all branch points and clinical criteria
+  - Diagnostic test performance table (CSF-VDRL, FTA-ABS, TPPA, PCR)
+  - Full treatment protocols (first-line, alternatives, PCN allergy)
+  - TypeScript data model interfaces
+  - UI/UX requirements (wizard + flowchart, mobile-first)
+  - PWA technical requirements
+  - 23 EM categories + Add
+  - 17 evidence citations (CDC 2021, JAMA 2025, Lancet 2023, NEJM, IDSA 2025, etc.)
+
+- Created TECH_STACK.md — PWA architecture
+  - Pivoted from Electrobun desktop to PWA for mobile bedside use
+  - Vanilla TypeScript, no frameworks, no dependencies
+  - Service worker offline, GitHub Pages deployment
+  - Complete file structure planned
+
+- Created FRONTEND_GUIDELINES.md — design system
+  - Full color palette with CSS custom properties (dark-first theme)
+  - Typography, spacing, component patterns
+  - ASCII wireframes for wizard and result cards
+  - Mobile-first patterns (touch targets, safe areas)
+  - Security rules (CSP, no innerHTML, no eval)
+  - Accessibility checklist
+
+- Created IMPLEMENTATION_PLAN.md — 12 numbered tasks with dependencies
+- Created CLAUDE.md — project instructions for future sessions
+- Created progress.txt — this file
+
+**Decisions made:**
+- PWA over Electrobun (Andy uses phone at work, Electrobun is desktop-only)
+- Full workup scope (serology interpretation → treatment, not just LP decision)
+- Dual-mode UX (step-by-step wizard + visual flowchart)
+- HIV advanced toggle (simple default path + optional CD4/RPR detail)
+- CSF PCR included as advanced decision node
+- Drug + dose + duration + PCN allergy alternatives for treatment
+- Mobile-first, iPhone primary target
+
+**Next task:** Task 1 — PWA Shell & Project Scaffolding
+
+---
+
+## Session 2 — 2026-02-19
+### Task 1: PWA Shell & Project Scaffolding
+
+**Completed:**
+- Created `docs/index.html` — HTML shell with CSP meta tag, PWA manifest link, viewport with safe areas, apple-mobile-web-app meta tags, semantic structure
+- Created `docs/style.css` (14.6KB) — Full design system ported from Electrobun prototype
+  - All CSS custom properties (colors, fonts, radii, shadows, safe areas)
+  - Mobile-first base styles with 44px minimum touch targets
+  - Category grid, decision tree nodes, wizard option buttons, dose highlights
+  - Algorithm step cards, filter chips, search box, modals, empty states
+  - Responsive breakpoints: 0-428px (iPhone), 429-768px (tablet), 769px+ (desktop)
+  - Accessibility: focus-visible outlines, reduced motion support
+  - Scrollbar styling (desktop only via pointer:fine media query)
+- Created `docs/manifest.json` — PWA manifest (standalone, portrait, theme color #0f0f1a)
+- Created `docs/sw.js` — Service worker with cache-first offline strategy, auto-cleanup of old caches
+- Created `docs/app.js` — Placeholder entry point with service worker registration
+- Created `docs/icons/icon.svg` — Teal lightning bolt on dark background
+- Created `docs/icons/icon-192.png` and `icon-512.png` — Generated from SVG via Pillow
+
+**Files created:** 7
+**Total docs/ size:** ~23KB
+
+**Verified:**
+- All files in place (index.html, style.css, app.js, manifest.json, sw.js, icons/)
+- Opens in browser with correct dark theme and layout
+- Service worker registration code present (requires HTTP server for full activation)
+
+**Next task:** Task 2 — TypeScript Setup & Data Model
+
+---
+
+## Session 2 (continued) — 2026-02-19
+### Task 2: TypeScript Setup & Data Model
+
+**Completed:**
+- Created `tsconfig.json` — ES2020 target, strict mode, bundler module resolution
+  - Excludes legacy Electrobun files (`src/main.ts`, `src/views/`) to prevent compilation conflicts
+  - Compiles `src/` → `docs/`, DOM + DOM.Iterable libs included
+- Created `src/models/types.ts` — all 9 interfaces from PRD Section 4:
+  - `DecisionNode` — core node with type, module, body, options, inputs, next
+  - `NodeOption` — choice within a question node (label, next, urgency)
+  - `NodeInput` — form field for input nodes (CSF values, selects, checkboxes)
+  - `InputOption` — label/value pair for select/checkbox inputs
+  - `TreatmentRegimen` — firstLine, alternative, pcnAllergy, monitoring
+  - `DrugRegimen` — drug, dose, route, frequency, duration, notes
+  - `Category` — id, name, icon, decisionTrees[], isCustom
+  - `DecisionTreeMeta` — tree metadata (title, subtitle, nodeCount, entryNodeId)
+  - `TreeSession` — user session state (currentNodeId, history stack, answers map)
+- Added type aliases: `ModuleNumber`, `NodeType`, `Urgency`, `Confidence`
+- `answers` field typed as `Record<string, string | number | boolean | string[]>` to support multi-select checkbox nodes
+
+**Verified:**
+- `bun x tsc --noEmit` passes with zero errors
+
+**Next task:** Task 3 — Hash Router & App Entry Point
+
+---
+
+### Task 3: Hash Router & App Entry Point
+
+**Completed:**
+- Created `src/services/router.ts` — lightweight hash-based SPA router
+  - Pattern matching with dynamic params (`:id`, `:nodeId`)
+  - `hashchange` listener for browser back/forward support
+  - Singleton `router` export with `on()`, `navigate()`, `start()`, `onNotFound()` API
+  - Matches 4 route patterns: `/`, `/category/:id`, `/tree/:id`, `/tree/:id/node/:nodeId`
+- Created `src/app.ts` — app entry point replacing placeholder `app.js`
+  - Service worker registration
+  - Route → handler mapping with placeholder renderers for each route
+  - 404 handler with "Go Home" button
+  - DOM-ready boot (`DOMContentLoaded` or immediate if already loaded)
+- Updated `docs/index.html` — changed `<script>` from `defer` to `type="module"` (required for ES module imports)
+- Updated `docs/sw.js` — added `services/router.js` to cache list
+- Compiled: `bun x tsc` → `docs/app.js` + `docs/services/router.js`
+
+**Verified:**
+- `bun x tsc --noEmit` passes with zero errors
+- Tested via local HTTP server (python3 -m http.server)
+- All 4 routes render correct placeholder views
+- Browser back/forward navigation works
+- 404 page renders with working "Go Home" button
+
+**Next task:** Task 4 — Category Grid (Home Screen)
+
+---
+
+### Task 4: Category Grid (Home Screen)
+
+**Completed:**
+- Created `src/data/categories.ts` — all 23 EM categories as typed data
+  - Only Infectious Disease has content (neurosyphilis tree metadata)
+  - LocalStorage persistence for custom categories (`em-custom-categories` key)
+  - `getAllCategories()`, `addCustomCategory()`, `loadCustomCategories()`, `saveCustomCategories()` API
+- Created `src/components/category-grid.ts` — renders responsive category grid
+  - 3-column grid on phone, 4 on tablet+ (CSS handles via `.category-grid`)
+  - Each card: emoji icon, category name, tree count (if > 0)
+  - `.has-content` class highlights categories with available trees
+  - Tapping card navigates to `#/category/:id` via router
+  - "Add" card: dashed border, prompts for name, saves to LocalStorage, re-renders
+  - Accessible: `aria-label` on each card, `role="link"`, `aria-hidden` on decorative emoji
+- Updated `src/app.ts` — home route now renders real category grid instead of placeholder
+- Updated `docs/sw.js` — added `category-grid.js` and `categories.js` to cache list
+
+**Verified:**
+- `bun x tsc --noEmit` passes with zero errors
+- Compiled to `docs/` — `components/category-grid.js`, `data/categories.js`
+- Grid renders in browser with all 23 categories + Add card
+- Infectious Disease shows "1 tree" badge
+- Tapping cards navigates to category view route
+
+**Next task:** Task 5 — Category View & Tree List
+
+---
+
+### Task 5: Category View & Tree List
+
+**Completed:**
+- Created `src/components/category-view.ts` — category detail screen with tree list
+  - Category header: large emoji icon + category name
+  - "← Categories" back button (navigates to home)
+  - Tree list: each tree card shows title, subtitle, node count badge
+  - Tapping tree card navigates to `#/tree/:id`
+  - Empty state: "Coming Soon" with construction emoji for categories with no trees
+  - Not-found state: when category ID doesn't exist, shows error + "Go Home" button
+- Added CSS to `docs/style.css` — category view header, tree list, tree card styles
+  - `.category-view-header`, `.category-view-icon`, `.category-view-name`
+  - `.tree-list`, `.tree-card`, `.tree-card-title`, `.tree-card-subtitle`, `.tree-card-count`
+- Updated `src/app.ts` — category route now renders real category view
+- Updated `docs/sw.js` — added `category-view.js` to cache list
+
+**Verified:**
+- `bun x tsc` compiles with zero errors
+- Infectious Disease shows neurosyphilis tree card with subtitle
+- Empty categories show "Coming Soon" state
+- Back navigation works
+- Tree card tap navigates to tree route
+
+**Next task:** Task 6 — Neurosyphilis Decision Tree Data
+
+---
+
+### Task 6: Neurosyphilis Decision Tree Data
+
+**Completed:**
+- Created `src/data/trees/neurosyphilis.ts` — full 6-module decision tree as DecisionNode objects
+  - **41 total nodes** (21 question, 10 info, 10 result)
+  - Module 1 — Serology Interpreter: 10 nodes (traditional + reverse-sequence algorithms)
+  - Module 2 — Stage Classification: 1 node (6 stage options)
+  - Module 3 — Symptom Screen: 4 nodes (neurologic, ocular, otic + CN check)
+  - Module 4 — LP Decision Engine: 12 nodes (neuro/ocular/tertiary/HIV paths, treatment failure, titer assessment)
+  - Module 5 — CSF Interpreter: 8 nodes (CSF-VDRL, parameters, additional testing, clinical decision)
+  - Module 6 — Treatment: 6 nodes (neurosyphilis IV PCN, primary/secondary, early latent, late latent, tertiary, stage selector)
+  - All 5 treatment result nodes include full TreatmentRegimen objects (firstLine, alternative/pcnAllergy, monitoring)
+  - 13 of 17 evidence citations referenced in node metadata
+- Updated `src/data/categories.ts` — nodeCount set to 41 for neurosyphilis tree
+
+**Validated:**
+- `bun x tsc --noEmit` passes with zero errors
+- All 41 node IDs are unique
+- All `next` and `option.next` references point to valid node IDs — zero broken links
+- Node flow covers every branch point from PRD.md Section 2
+
+**Next task:** Task 7 — Tree Engine (Navigation & State)
+
+---
+
+### Task 7: Tree Engine (Navigation & State)
+
+**Completed:**
+- Created `src/services/storage.ts` — safe LocalStorage wrapper
+  - `storageGet<T>(key, fallback)`, `storageSet<T>(key, value)`, `storageRemove(key)`
+  - JSON parse/stringify with error handling (storage full, unavailable)
+- Created `src/services/tree-engine.ts` — TreeEngine class for tree traversal
+  - `startTree(treeId, entryNodeId)` — create new session from entry node
+  - `selectOption(index)` — navigate forward via option selection, records answer
+  - `continueToNext()` — navigate forward via default `next` pointer (info nodes)
+  - `goBack()` — pop history stack, remove last answer, return to previous node
+  - `canGoBack()` — check if history stack has entries
+  - `getCurrentNode()`, `getSession()`, `getNode(id)` — accessor methods
+  - `getCurrentModule()`, `getTotalModules()` — progress tracking
+  - `reset()` — clear session from memory and storage
+  - `restoreSession(treeId)` — reload in-progress session from LocalStorage
+  - `getAnswerHistory()` — array of {nodeId, nodeTitle, answer} for display
+  - Session auto-saves to LocalStorage on every navigation action
+
+**Validated:**
+- `bun x tsc --noEmit` passes with zero errors
+- DFS traversal: all 2,632 possible paths explored
+- All 41 nodes reachable from entry point
+- 10 terminal nodes correctly map to treatment/result endpoints
+- Back navigation correctly traverses history stack in reverse
+- Answer recording and cleanup on back-navigation works
+
+**Next task:** Task 8 — Wizard UI Component
+
+---
+
+### Task 8: Wizard UI Component
+
+**Completed:**
+- Created `src/components/tree-wizard.ts` — full wizard UI renderer (452 lines)
+  - `renderTreeWizard(container, treeId)` — initializes TreeEngine, restores or starts session
+  - `renderCurrentNode(container)` — dispatches to type-specific renderers based on node.type
+  - `renderHeader(node)` — back button (← Back / ← Exit) + "Module X of 6" progress indicator
+  - `renderQuestionNode()` — title, body text, evidence citations, option buttons with urgency coloring
+  - `renderInfoNode()` — title, body, "Continue →" button for linear progression
+  - `renderResultNode()` — urgency badge (definitive/recommended/consider), recommendation text, treatment display, collapsible decision path history, Start Over + All Categories buttons
+  - `renderInputNode()` — delegates to question renderer (full input UI deferred to Task refinements)
+  - `renderTreatment()` — first-line drug card + expandable alternative/PCN allergy/monitoring sections
+  - `renderDrugCard()` — drug name, dose-highlight span, frequency, duration, notes
+  - `renderBodyText()` — preserves newlines in clinical text (splits on \n, renders as <p> elements)
+  - `renderUnavailable()` — "Coming Soon" state for trees not yet implemented
+- Added wizard CSS to `docs/style.css` (~200 lines):
+  - `.wizard-header`, `.wizard-back`, `.wizard-progress` — header bar layout
+  - `.wizard-content`, `.wizard-title`, `.wizard-body`, `.wizard-citation` — content area
+  - `.wizard-options`, `.option-btn`, `.option-label`, `.option-description` — option buttons
+  - `.option-critical` (red border), `.option-urgent` (orange border) — urgency styling
+  - `.wizard-continue` — continue button for info nodes
+  - `.result-badge`, `.badge-definitive`, `.badge-recommended`, `.badge-consider` — result urgency badges
+  - `.result-recommendation`, `.result-actions` — result card elements
+  - `.result-summary`, `.result-summary-list`, `.result-summary-item` — decision path history
+  - `.treatment-section`, `.treatment-heading`, `.treatment-expandable` — treatment layout
+  - `.drug-regimen-card`, `.drug-regimen-name`, `.drug-regimen-dose`, `.dose-highlight` — drug cards
+- Updated `src/app.ts` — tree route handler uses real `renderTreeWizard` instead of placeholder
+- Updated `docs/sw.js` — added `tree-wizard.js` to cache list
+
+**Verified:**
+- `bun x tsc --noEmit` passes with zero errors
+- Full browser test via Playwright:
+  - Module 1 (Serology): Both option buttons render, Traditional path works
+  - Module 2 (Stage): All 6 stage options render with descriptions
+  - Module 3 (Symptoms): Neurologic symptom list renders with bullet points and clinical note
+  - Module 4 (LP Decision): Info node with Continue button works
+  - Module 5 (CSF Interpreter): Question + info nodes render correctly
+  - Module 6 (Treatment): Full treatment card with drug name, dose, route, frequency, duration
+  - Expandable sections: Alternative regimen expands to show Procaine PCN G + probenecid
+  - Back navigation: ← Back traverses history, ← Exit shows at entry node
+  - Session persistence: LocalStorage save/restore working
+  - Decision path summary: Collapsible "Decision path (5 steps)" renders at result
+
+**Next task:** Task 9 — Result Card & Treatment Display
+
+---
+
+### Task 8.5: Serology Test Reference (user request)
+
+**Completed:**
+- Added new info node `serology-start` — educational reference page explaining all syphilis test types
+  - Nontreponemal Tests (NTT): RPR and VDRL with descriptions, what they detect, titer interpretation
+  - Treponemal Tests: FTA-ABS, TP-PA, EIA/CIA with descriptions and clinical roles
+  - Key principles: seroconversion timing, lifelong treponemal positivity, serial monitoring rules, prozone phenomenon
+- Added new question node `serology-algorithm` — algorithm selection with descriptions of Traditional vs Reverse-Sequence approaches
+- Node count updated 41 → 42
+- SW cache bumped v1 → v2
+
+**Verified:** New info node renders correctly, Continue → flows to algorithm selection, all existing paths unaffected
+
+---
+
+### Task 9: Result Card & Treatment Display
+
+**Completed:** All Task 9 requirements were already implemented as part of Task 8 (Wizard UI Component). Verified with comprehensive browser testing.
+
+**Verified (all 10 result nodes):**
+- Color-coded urgency badges: `.badge-definitive` (teal), `.badge-recommended` (orange), `.badge-consider` (blue)
+- Treatment regimen display: drug card with `.dose-highlight` styling (monospace teal pill)
+- Expandable sections: PCN allergy alternatives (Doxycycline, Ceftriaxone), follow-up monitoring schedules
+- "Start Over" button resets tree, "← All Categories" returns to home
+- Decision path summary: collapsible audit trail showing every question/answer pair
+- Tested paths:
+  - Traditional → RPR/VDRL reactive + treponemal nonreactive → "Likely False Positive" (no treatment, definitive badge)
+  - Traditional → both reactive → Primary → all symptoms negative → HIV neg → new diagnosis → LP not indicated → Primary/Secondary treatment (Benzathine PCN G 2.4M IM x1, PCN allergy: Doxycycline 100mg BID x14d, monitoring: NTT titers at 3/6/9/12/24 months)
+  - Neurosyphilis treatment path (tested in Task 8): IV PCN G 18-24M units/day, alternative Procaine PCN + probenecid
+
+**Next task:** Task 10 — Visual Flowchart Mini-Map

@@ -1,0 +1,451 @@
+// EM Decision Trees — Wizard UI Component
+// Renders one decision node at a time with progress, back nav, and option buttons.
+
+import { TreeEngine } from '../services/tree-engine.js';
+import { NEUROSYPHILIS_NODES } from '../data/trees/neurosyphilis.js';
+import { router } from '../services/router.js';
+import type { DecisionNode, TreatmentRegimen } from '../models/types.js';
+
+let engine: TreeEngine | null = null;
+
+/** Initialize and render the wizard for a given tree */
+export function renderTreeWizard(container: HTMLElement, treeId: string): void {
+  // Currently only neurosyphilis is supported
+  if (treeId !== 'neurosyphilis') {
+    renderUnavailable(container, treeId);
+    return;
+  }
+
+  engine = new TreeEngine(NEUROSYPHILIS_NODES);
+
+  // Try to restore a saved session
+  const restored = engine.restoreSession(treeId);
+  if (!restored) {
+    engine.startTree(treeId, 'serology-start');
+  }
+
+  renderCurrentNode(container);
+}
+
+/** Render the current node into the container */
+function renderCurrentNode(container: HTMLElement): void {
+  if (!engine) return;
+
+  const node = engine.getCurrentNode();
+  if (!node) return;
+
+  container.innerHTML = '';
+
+  // Header bar: back button + progress
+  const header = renderHeader(node);
+  container.appendChild(header);
+
+  // Node content
+  const content = document.createElement('div');
+  content.className = 'wizard-content';
+
+  switch (node.type) {
+    case 'question':
+      renderQuestionNode(content, node, container);
+      break;
+    case 'info':
+      renderInfoNode(content, node, container);
+      break;
+    case 'result':
+      renderResultNode(content, node, container);
+      break;
+    case 'input':
+      renderInputNode(content, node, container);
+      break;
+  }
+
+  container.appendChild(content);
+}
+
+// -------------------------------------------------------------------
+// Header (back button + progress)
+// -------------------------------------------------------------------
+
+function renderHeader(node: DecisionNode): HTMLElement {
+  const header = document.createElement('div');
+  header.className = 'wizard-header';
+
+  // Back button
+  const backBtn = document.createElement('button');
+  backBtn.className = 'btn-text wizard-back';
+
+  if (engine?.canGoBack()) {
+    backBtn.textContent = '\u2190 Back';
+    backBtn.addEventListener('click', () => {
+      if (!engine) return;
+      engine.goBack();
+      const container = document.querySelector('.main-content') as HTMLElement;
+      if (container) renderCurrentNode(container);
+    });
+  } else {
+    backBtn.textContent = '\u2190 Exit';
+    backBtn.addEventListener('click', () => {
+      if (engine) engine.reset();
+      router.navigate('/category/infectious-disease');
+    });
+  }
+
+  // Progress indicator
+  const progress = document.createElement('span');
+  progress.className = 'wizard-progress';
+  const totalModules = engine?.getTotalModules() ?? 6;
+  progress.textContent = `Module ${node.module} of ${totalModules}`;
+
+  header.appendChild(backBtn);
+  header.appendChild(progress);
+
+  return header;
+}
+
+// -------------------------------------------------------------------
+// Question Node
+// -------------------------------------------------------------------
+
+function renderQuestionNode(content: HTMLElement, node: DecisionNode, container: HTMLElement): void {
+  const title = document.createElement('h2');
+  title.className = 'wizard-title';
+  title.textContent = node.title;
+  content.appendChild(title);
+
+  const body = document.createElement('div');
+  body.className = 'wizard-body';
+  renderBodyText(body, node.body);
+  content.appendChild(body);
+
+  if (node.citation?.length) {
+    const cite = document.createElement('div');
+    cite.className = 'wizard-citation';
+    cite.textContent = `Evidence: ${node.citation.map(n => `[${n}]`).join(' ')}`;
+    content.appendChild(cite);
+  }
+
+  // Option buttons
+  if (node.options) {
+    const optionsContainer = document.createElement('div');
+    optionsContainer.className = 'wizard-options';
+
+    for (let i = 0; i < node.options.length; i++) {
+      const opt = node.options[i];
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+
+      if (opt.urgency === 'critical') {
+        btn.classList.add('option-critical');
+      } else if (opt.urgency === 'urgent') {
+        btn.classList.add('option-urgent');
+      }
+
+      const label = document.createElement('span');
+      label.className = 'option-label';
+      label.textContent = opt.label;
+      btn.appendChild(label);
+
+      if (opt.description) {
+        const desc = document.createElement('span');
+        desc.className = 'option-description';
+        desc.textContent = opt.description;
+        btn.appendChild(desc);
+      }
+
+      btn.addEventListener('click', () => {
+        if (!engine) return;
+        engine.selectOption(i);
+        renderCurrentNode(container);
+      });
+
+      optionsContainer.appendChild(btn);
+    }
+
+    content.appendChild(optionsContainer);
+  }
+}
+
+// -------------------------------------------------------------------
+// Info Node
+// -------------------------------------------------------------------
+
+function renderInfoNode(content: HTMLElement, node: DecisionNode, container: HTMLElement): void {
+  const title = document.createElement('h2');
+  title.className = 'wizard-title';
+  title.textContent = node.title;
+  content.appendChild(title);
+
+  const body = document.createElement('div');
+  body.className = 'wizard-body';
+  renderBodyText(body, node.body);
+  content.appendChild(body);
+
+  if (node.citation?.length) {
+    const cite = document.createElement('div');
+    cite.className = 'wizard-citation';
+    cite.textContent = `Evidence: ${node.citation.map(n => `[${n}]`).join(' ')}`;
+    content.appendChild(cite);
+  }
+
+  if (node.next) {
+    const continueBtn = document.createElement('button');
+    continueBtn.className = 'btn-primary wizard-continue';
+    continueBtn.textContent = 'Continue \u2192';
+    continueBtn.addEventListener('click', () => {
+      if (!engine) return;
+      engine.continueToNext();
+      renderCurrentNode(container);
+    });
+    content.appendChild(continueBtn);
+  }
+}
+
+// -------------------------------------------------------------------
+// Result Node
+// -------------------------------------------------------------------
+
+function renderResultNode(content: HTMLElement, node: DecisionNode, _container: HTMLElement): void {
+  // Urgency badge
+  const badge = document.createElement('div');
+  badge.className = 'result-badge';
+  if (node.confidence === 'definitive') {
+    badge.classList.add('badge-definitive');
+  } else if (node.confidence === 'recommended') {
+    badge.classList.add('badge-recommended');
+  } else if (node.confidence === 'consider') {
+    badge.classList.add('badge-consider');
+  }
+  badge.textContent = node.title;
+  content.appendChild(badge);
+
+  const body = document.createElement('div');
+  body.className = 'wizard-body';
+  renderBodyText(body, node.body);
+  content.appendChild(body);
+
+  // Recommendation
+  if (node.recommendation) {
+    const rec = document.createElement('div');
+    rec.className = 'result-recommendation';
+    rec.textContent = node.recommendation;
+    content.appendChild(rec);
+  }
+
+  // Treatment regimen
+  if (node.treatment) {
+    renderTreatment(content, node.treatment);
+  }
+
+  if (node.citation?.length) {
+    const cite = document.createElement('div');
+    cite.className = 'wizard-citation';
+    cite.textContent = `Evidence: ${node.citation.map(n => `[${n}]`).join(' ')}`;
+    content.appendChild(cite);
+  }
+
+  // Answer summary
+  const history = engine?.getAnswerHistory();
+  if (history && history.length > 0) {
+    const summarySection = document.createElement('details');
+    summarySection.className = 'result-summary';
+
+    const summaryTitle = document.createElement('summary');
+    summaryTitle.textContent = `Decision path (${history.length} steps)`;
+    summarySection.appendChild(summaryTitle);
+
+    const summaryList = document.createElement('div');
+    summaryList.className = 'result-summary-list';
+    for (const entry of history) {
+      const item = document.createElement('div');
+      item.className = 'result-summary-item';
+
+      const q = document.createElement('span');
+      q.className = 'summary-question';
+      q.textContent = entry.nodeTitle;
+
+      const a = document.createElement('span');
+      a.className = 'summary-answer';
+      a.textContent = entry.answer;
+
+      item.appendChild(q);
+      item.appendChild(a);
+      summaryList.appendChild(item);
+    }
+    summarySection.appendChild(summaryList);
+    content.appendChild(summarySection);
+  }
+
+  // Start Over button
+  const actions = document.createElement('div');
+  actions.className = 'result-actions';
+
+  const restartBtn = document.createElement('button');
+  restartBtn.className = 'btn-secondary';
+  restartBtn.textContent = 'Start Over';
+  restartBtn.addEventListener('click', () => {
+    if (engine) engine.reset();
+    router.navigate('/tree/neurosyphilis');
+  });
+
+  const homeBtn = document.createElement('button');
+  homeBtn.className = 'btn-text';
+  homeBtn.textContent = '\u2190 All Categories';
+  homeBtn.addEventListener('click', () => {
+    if (engine) engine.reset();
+    router.navigate('/');
+  });
+
+  actions.appendChild(restartBtn);
+  actions.appendChild(homeBtn);
+  content.appendChild(actions);
+}
+
+// -------------------------------------------------------------------
+// Input Node (placeholder — CSF values etc.)
+// -------------------------------------------------------------------
+
+function renderInputNode(content: HTMLElement, node: DecisionNode, container: HTMLElement): void {
+  // Render same as question for now — input fields come with Task 8 refinements
+  renderQuestionNode(content, node, container);
+}
+
+// -------------------------------------------------------------------
+// Treatment Display
+// -------------------------------------------------------------------
+
+function renderTreatment(container: HTMLElement, treatment: TreatmentRegimen): void {
+  const section = document.createElement('div');
+  section.className = 'treatment-section';
+
+  const heading = document.createElement('h3');
+  heading.className = 'treatment-heading';
+  heading.textContent = 'Treatment';
+  section.appendChild(heading);
+
+  // First-line
+  section.appendChild(renderDrugCard('First-Line', treatment.firstLine));
+
+  // Alternative (expandable)
+  if (treatment.alternative) {
+    const altDetails = document.createElement('details');
+    altDetails.className = 'treatment-expandable';
+    const altSummary = document.createElement('summary');
+    altSummary.textContent = '\u25B8 Alternative regimen';
+    altDetails.appendChild(altSummary);
+    altDetails.appendChild(renderDrugCard('Alternative', treatment.alternative));
+    section.appendChild(altDetails);
+  }
+
+  // PCN allergy (expandable)
+  if (treatment.pcnAllergy) {
+    const pcnDetails = document.createElement('details');
+    pcnDetails.className = 'treatment-expandable';
+    const pcnSummary = document.createElement('summary');
+    pcnSummary.textContent = '\u25B8 PCN allergy alternatives';
+    pcnDetails.appendChild(pcnSummary);
+    pcnDetails.appendChild(renderDrugCard('PCN Allergy', treatment.pcnAllergy));
+    section.appendChild(pcnDetails);
+  }
+
+  // Monitoring (expandable)
+  if (treatment.monitoring) {
+    const monDetails = document.createElement('details');
+    monDetails.className = 'treatment-expandable';
+    const monSummary = document.createElement('summary');
+    monSummary.textContent = '\u25B8 Follow-up monitoring';
+    monDetails.appendChild(monSummary);
+    const monBody = document.createElement('div');
+    monBody.className = 'treatment-monitoring';
+    renderBodyText(monBody, treatment.monitoring);
+    monDetails.appendChild(monBody);
+    section.appendChild(monDetails);
+  }
+
+  container.appendChild(section);
+}
+
+function renderDrugCard(_label: string, drug: { drug: string; dose: string; route: string; frequency: string; duration: string; notes?: string }): HTMLElement {
+  const card = document.createElement('div');
+  card.className = 'drug-regimen-card';
+
+  const drugName = document.createElement('div');
+  drugName.className = 'drug-regimen-name';
+  drugName.textContent = drug.drug;
+  card.appendChild(drugName);
+
+  const doseRow = document.createElement('div');
+  doseRow.className = 'drug-regimen-dose';
+
+  const doseSpan = document.createElement('span');
+  doseSpan.className = 'dose-highlight';
+  doseSpan.textContent = `${drug.dose} ${drug.route}`;
+  doseRow.appendChild(doseSpan);
+  card.appendChild(doseRow);
+
+  const freqRow = document.createElement('div');
+  freqRow.className = 'drug-regimen-detail';
+  freqRow.textContent = `Frequency: ${drug.frequency}`;
+  card.appendChild(freqRow);
+
+  const durRow = document.createElement('div');
+  durRow.className = 'drug-regimen-detail';
+  durRow.textContent = `Duration: ${drug.duration}`;
+  card.appendChild(durRow);
+
+  if (drug.notes) {
+    const notes = document.createElement('div');
+    notes.className = 'drug-regimen-notes';
+    renderBodyText(notes, drug.notes);
+    card.appendChild(notes);
+  }
+
+  return card;
+}
+
+// -------------------------------------------------------------------
+// Helpers
+// -------------------------------------------------------------------
+
+/** Render body text with line breaks preserved */
+function renderBodyText(container: HTMLElement, text: string): void {
+  const lines = text.split('\n');
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.trim() === '') {
+      container.appendChild(document.createElement('br'));
+    } else {
+      const p = document.createElement('p');
+      p.textContent = line;
+      container.appendChild(p);
+    }
+  }
+}
+
+/** Render "tree not available" state */
+function renderUnavailable(container: HTMLElement, treeId: string): void {
+  container.innerHTML = '';
+
+  const backBtn = document.createElement('button');
+  backBtn.className = 'btn-text';
+  backBtn.textContent = '\u2190 Categories';
+  backBtn.addEventListener('click', () => router.navigate('/'));
+  container.appendChild(backBtn);
+
+  const empty = document.createElement('div');
+  empty.className = 'empty-state';
+
+  const icon = document.createElement('div');
+  icon.className = 'empty-state-icon';
+  icon.textContent = '\uD83D\uDEA7';
+
+  const title = document.createElement('h3');
+  title.textContent = 'Coming Soon';
+
+  const body = document.createElement('p');
+  body.textContent = `Decision tree "${treeId}" is not yet available.`;
+
+  empty.appendChild(icon);
+  empty.appendChild(title);
+  empty.appendChild(body);
+  container.appendChild(empty);
+}

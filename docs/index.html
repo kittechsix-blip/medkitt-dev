@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <meta name="theme-color" content="#0f0f1a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="EM Trees">
+  <meta name="description" content="Evidence-based clinical decision trees for emergency medicine">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>EM Decision Trees</title>
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="logo">
+        <span class="logo-icon" aria-hidden="true">⚡</span>
+        <h1 class="logo-text">EM Decision Trees</h1>
+      </div>
+    </header>
+    <main id="main-content" class="main-content" role="main">
+      <div class="loading-state">
+        <p>Loading...</p>
+      </div>
+    </main>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
