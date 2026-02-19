@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EM Medkitt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo">
+        <span class="icon">⚡</span>
+        <h1>EM Medkitt</h1>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon" id="btn-settings" title="Settings">⚙️</button>
+        <button class="btn-icon" id="btn-help" title="Help">❓</button>
+      </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <button class="nav-btn active" data-tab="dosing">
+        <span class="nav-icon">💊</span>
+        <span class="nav-label">Dosing</span>
+      </button>
+      <button class="nav-btn" data-tab="acls">
+        <span class="nav-icon">🫀</span>
+        <span class="nav-label">ACLS</span>
+      </button>
+      <button class="nav-btn" data-tab="notes">
+        <span class="nav-icon">📝</span>
+        <span class="nav-label">Handoff</span>
+      </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Dosing Calculator Tab -->
+      <section id="dosing-tab" class="tab-content active">
+        <div class="section-header">
+          <h2>Medication Dosing</h2>
+          <div class="quick-filters">
+            <button class="filter-chip active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="cardiac">Cardiac</button>
+            <button class="filter-chip" data-filter="pain">Pain</button>
+            <button class="filter-chip" data-filter="sedation">Sedation</button>
+            <button class="filter-chip" data-filter="paralytic">Paralytics</button>
+          </div>
+        </div>
+        
+        <div class="search-box">
+          <input type="text" id="drug-search" placeholder="Search medications..." autocomplete="off">
+          <span class="search-icon">🔍</span>
+        </div>
+
+        <div id="drug-list" class="drug-list">
+          <!-- Drug cards will be populated here -->
+        </div>
+      </section>
+
+      <!-- ACLS Tab -->
+      <section id="acls-tab" class="tab-content">
+        <div class="section-header">
+          <h2>ACLS Quick Reference</h2>
+          <div class="acls-nav">
+            <button class="acls-btn active" data-acls="cardiac-arrest">Cardiac Arrest</button>
+            <button class="acls-btn" data-acls="tachycardia">Tachycardia</button>
+            <button class="acls-btn" data-acls="bradycardia">Bradycardia</button>
+            <button class="acls-btn" data-acls="stroke">Stroke</button>
+            <button class="acls-btn" data-acls="post-resus">Post-Resus</button>
+          </div>
+        </div>
+        
+        <div id="acls-content" class="acls-content">
+          <!-- ACLS algorithms will be populated here -->
+        </div>
+      </section>
+
+      <!-- Handoff Notes Tab -->
+      <section id="notes-tab" class="tab-content">
+        <div class="section-header">
+          <h2>Shift Handoff</h2>
+          <div class="notes-actions">
+            <button class="btn-secondary" id="btn-new-note">New Note</button>
+            <button class="btn-secondary" id="btn-export">Export</button>
+          </div>
+        </div>
+        
+        <div class="notes-container">
+          <div class="note-editor">
+            <div class="note-header">
+              <input type="text" id="note-title" placeholder="Patient initials / Room / Case...">
+              <span class="note-timestamp" id="note-timestamp"></span>
+            </div>
+            <textarea id="note-content" placeholder="Enter handoff notes...
+
+SAMPLE TEMPLATE:
+🧓 Age/Sex: 
+🩺 Chief Complaint: 
+📋 HPI: 
+🔬 Key Labs: 
+💊 Meds Given: 
+📊 Vitals Trend: 
+⚠️ Concerns: 
+✅ To Do: 
+"></textarea>
+            <div class="note-footer">
+              <button class="btn-primary" id="btn-save-note">Save Note</button>
+              <button class="btn-text" id="btn-clear">Clear</button>
+            </div>
+          </div>
+          
+          <div class="notes-sidebar">
+            <h3>Saved Notes</h3>
+            <div id="saved-notes-list" class="saved-notes-list">
+              <!-- Saved notes will be populated here -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Drug Detail Modal -->
+    <div id="drug-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modal-drug-name"></h3>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div id="modal-drug-details" class="modal-body">
+          <!-- Drug details populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.ts" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "em-medkitt",
+  "version": "1.0.0",
+  "description": "Emergency Medicine Medkitt - Fast, offline-first EM workflow tool",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "electrobun run",
+    "build": "electrobun build",
+    "dev": "electrobun dev"
+  },
+  "dependencies": {
+    "electrobun": "latest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
