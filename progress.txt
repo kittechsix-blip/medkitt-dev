@@ -321,3 +321,43 @@
   - Neurosyphilis treatment path (tested in Task 8): IV PCN G 18-24M units/day, alternative Procaine PCN + probenecid
 
 **Next task:** Task 10 — Visual Flowchart Mini-Map
+
+---
+
+### Task 10: Visual Flowchart Mini-Map
+
+**Completed:**
+- Created `src/components/tree-flowchart.ts` — Decision Map overlay component
+  - `updateFlowchart(engine, onJump)` — syncs flowchart state on every node change
+  - `showFlowchart()` / `hideFlowchart()` — toggle overlay visibility
+  - `destroyFlowchart()` — cleanup on exit/reset
+  - Module progress bar: 6 dots (Serology → Stage → Symptoms → LP → CSF → Treatment) with connector lines, color-coded by status (completed=teal, current=teal+glow, upcoming=dim)
+  - Path trace: vertical timeline of visited nodes with type indicators (● question, ○ info, ■ result, ◆ input), answers in teal, current node with NOW badge
+  - Upcoming branches: dimmed dashed labels showing available options from current node
+  - Tappable visited nodes: click to jump back (uses `jumpToHistory()`)
+  - Close via ✕ button or backdrop tap
+- Added `jumpToHistory(index)` to `TreeEngine` — truncates history, cleans answers, saves session
+- Added ~150 lines of CSS to `docs/style.css`:
+  - `.flowchart-overlay` — bottom-aligned modal
+  - `.flowchart-modules`, `.flowchart-module-dot`, `.flowchart-module-connector` — progress bar
+  - `.flowchart-path`, `.flowchart-path-node`, `.flowchart-current-badge` — path trace
+  - `.flowchart-branches`, `.flowchart-branch` — upcoming options
+  - `.wizard-flowchart-toggle` — dashed-border toggle button
+- Updated `src/components/tree-wizard.ts`:
+  - Added flowchart toggle button at bottom of wizard (not on result nodes)
+  - Calls `updateFlowchart()` on every render, `destroyFlowchart()` on exit/reset
+- Updated `docs/sw.js` — added `tree-flowchart.js` to cache (v3)
+
+**Verified:**
+- `bun x tsc --noEmit` passes with zero errors
+- Browser test via Playwright:
+  - Toggle button "🗺️ View decision map" appears on all non-result nodes
+  - Module progress bar renders with correct dot states
+  - Path trace shows visited nodes with answers in teal
+  - Current node shows NOW badge with highlighted background
+  - Upcoming branches show as dimmed labels with dashed borders
+  - Tapping visited node jumps back correctly (history truncated)
+  - Close button and backdrop click dismiss overlay
+  - Screenshot confirms dark UI, teal accents, clean layout
+
+**Next task:** Task 11 — Reference Tables & Info Panels

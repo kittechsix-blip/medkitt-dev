@@ -111,7 +111,7 @@
 - Verify: all terminal nodes display correct treatment with proper formatting
 
 ## Task 10: Visual Flowchart Mini-Map
-**Status:** Not Started
+**Status:** Complete
 **Files:** `src/components/tree-flowchart.ts`
 **Description:**
 - Render decision tree as visual flowchart (simplified node graph)

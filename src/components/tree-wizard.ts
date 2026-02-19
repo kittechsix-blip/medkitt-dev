@@ -4,6 +4,7 @@
 import { TreeEngine } from '../services/tree-engine.js';
 import { NEUROSYPHILIS_NODES } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
+import { updateFlowchart, showFlowchart, destroyFlowchart } from './tree-flowchart.js';
 import type { DecisionNode, TreatmentRegimen } from '../models/types.js';
 
 let engine: TreeEngine | null = null;
@@ -59,7 +60,21 @@ function renderCurrentNode(container: HTMLElement): void {
       break;
   }
 
+  // Flowchart toggle (not on result nodes — they have their own summary)
+  if (node.type !== 'result') {
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'wizard-flowchart-toggle';
+    toggleBtn.textContent = '\uD83D\uDDFA\uFE0F View decision map';
+    toggleBtn.addEventListener('click', () => showFlowchart());
+    content.appendChild(toggleBtn);
+  }
+
   container.appendChild(content);
+
+  // Update flowchart state
+  if (engine) {
+    updateFlowchart(engine, () => renderCurrentNode(container));
+  }
 }
 
 // -------------------------------------------------------------------
@@ -86,6 +101,7 @@ function renderHeader(node: DecisionNode): HTMLElement {
     backBtn.textContent = '\u2190 Exit';
     backBtn.addEventListener('click', () => {
       if (engine) engine.reset();
+      destroyFlowchart();
       router.navigate('/category/infectious-disease');
     });
   }
@@ -284,6 +300,7 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   restartBtn.textContent = 'Start Over';
   restartBtn.addEventListener('click', () => {
     if (engine) engine.reset();
+    destroyFlowchart();
     router.navigate('/tree/neurosyphilis');
   });
 
@@ -292,6 +309,7 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   homeBtn.textContent = '\u2190 All Categories';
   homeBtn.addEventListener('click', () => {
     if (engine) engine.reset();
+    destroyFlowchart();
     router.navigate('/');
   });
 

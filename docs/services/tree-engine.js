@@ -102,6 +102,26 @@ export class TreeEngine {
         }
         return max;
     }
+    /** Jump back to a specific point in the history.
+     *  Truncates history to the given index and removes answers after that point. */
+    jumpToHistory(index) {
+        if (!this.session || index < 0 || index >= this.session.history.length)
+            return null;
+        const targetId = this.session.history[index];
+        // Remove answers for nodes after the target
+        const removedIds = this.session.history.slice(index);
+        for (const id of removedIds) {
+            delete this.session.answers[id];
+        }
+        // Also remove answer for current node (we're leaving it)
+        delete this.session.answers[this.session.currentNodeId];
+        // Truncate history to just before the target
+        this.session.history = this.session.history.slice(0, index);
+        // Set current node to the target
+        this.session.currentNodeId = targetId;
+        this.saveSession();
+        return this.nodes.get(targetId) ?? null;
+    }
     /** Reset the session — start over */
     reset() {
         this.session = null;

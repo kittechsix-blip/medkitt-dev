@@ -80,6 +80,6 @@ Each session:
 - [x] Task 7: Tree Engine (Navigation & State)
 - [x] Task 8: Wizard UI Component
 - [x] Task 9: Result Card & Treatment Display
-- [ ] Task 10: Visual Flowchart Mini-Map
+- [x] Task 10: Visual Flowchart Mini-Map
 - [ ] Task 11: Reference Tables & Info Panels
 - [ ] Task 12: Build, Test & Deploy

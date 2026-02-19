@@ -750,6 +750,218 @@ body {
 }
 
 /* ========================================
+   Flowchart Mini-Map
+   ======================================== */
+
+.flowchart-overlay {
+  align-items: flex-end;
+}
+
+.flowchart-panel {
+  max-height: 80vh;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.flowchart-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Module Progress Bar */
+.flowchart-modules {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 8px 0;
+}
+
+.flowchart-module-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 44px;
+}
+
+.flowchart-module-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.flowchart-module-dot.completed {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.flowchart-module-dot.current {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.3);
+}
+
+.flowchart-module-dot.upcoming {
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+.flowchart-module-label {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.flowchart-module-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--color-border);
+  min-width: 8px;
+  margin: 0 2px;
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.flowchart-module-connector.completed {
+  background: var(--color-primary);
+}
+
+/* Path Trace */
+.flowchart-path {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flowchart-path-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.flowchart-path-node {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-border);
+  min-height: 44px;
+}
+
+.flowchart-path-node.visited {
+  border-left-color: var(--color-primary);
+  opacity: 0.8;
+}
+
+.flowchart-path-node.visited.tappable {
+  cursor: pointer;
+}
+
+.flowchart-path-node.visited.tappable:active {
+  background: rgba(0, 212, 170, 0.1);
+}
+
+.flowchart-path-node.current {
+  border-left-color: var(--color-primary);
+  background: rgba(0, 212, 170, 0.08);
+}
+
+.flowchart-node-type {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.flowchart-path-node.current .flowchart-node-type {
+  color: var(--color-primary);
+}
+
+.flowchart-node-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.flowchart-node-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.flowchart-node-answer {
+  font-size: 12px;
+  color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flowchart-current-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  background: rgba(0, 212, 170, 0.15);
+  padding: 2px 6px;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+/* Upcoming Branches */
+.flowchart-branches {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 24px;
+  margin-top: 2px;
+}
+
+.flowchart-branch {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  padding: 4px 0;
+  border-left: 2px dashed var(--color-border);
+  padding-left: 10px;
+}
+
+/* Flowchart Toggle Button */
+.wizard-flowchart-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.wizard-flowchart-toggle:active {
+  background: rgba(0, 212, 170, 0.08);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ========================================
    Filter Chips
    ======================================== */
 

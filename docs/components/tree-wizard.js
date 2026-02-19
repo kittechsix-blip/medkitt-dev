@@ -3,6 +3,7 @@
 import { TreeEngine } from '../services/tree-engine.js';
 import { NEUROSYPHILIS_NODES } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
+import { updateFlowchart, showFlowchart, destroyFlowchart } from './tree-flowchart.js';
 let engine = null;
 /** Initialize and render the wizard for a given tree */
 export function renderTreeWizard(container, treeId) {
@@ -47,7 +48,19 @@ function renderCurrentNode(container) {
             renderInputNode(content, node, container);
             break;
     }
+    // Flowchart toggle (not on result nodes — they have their own summary)
+    if (node.type !== 'result') {
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'wizard-flowchart-toggle';
+        toggleBtn.textContent = '\uD83D\uDDFA\uFE0F View decision map';
+        toggleBtn.addEventListener('click', () => showFlowchart());
+        content.appendChild(toggleBtn);
+    }
     container.appendChild(content);
+    // Update flowchart state
+    if (engine) {
+        updateFlowchart(engine, () => renderCurrentNode(container));
+    }
 }
 // -------------------------------------------------------------------
 // Header (back button + progress)
@@ -74,6 +87,7 @@ function renderHeader(node) {
         backBtn.addEventListener('click', () => {
             if (engine)
                 engine.reset();
+            destroyFlowchart();
             router.navigate('/category/infectious-disease');
         });
     }
@@ -244,6 +258,7 @@ function renderResultNode(content, node, _container) {
     restartBtn.addEventListener('click', () => {
         if (engine)
             engine.reset();
+        destroyFlowchart();
         router.navigate('/tree/neurosyphilis');
     });
     const homeBtn = document.createElement('button');
@@ -252,6 +267,7 @@ function renderResultNode(content, node, _container) {
     homeBtn.addEventListener('click', () => {
         if (engine)
             engine.reset();
+        destroyFlowchart();
         router.navigate('/');
     });
     actions.appendChild(restartBtn);
