@@ -39,7 +39,23 @@ export const DEFAULT_CATEGORIES = [
     { id: 'rheumatology', name: 'Rheumatology', icon: '\uD83E\uDD32', decisionTrees: [], isCustom: false },
     { id: 'toxicology', name: 'Toxicology', icon: '\u2620\uFE0F', decisionTrees: [], isCustom: false },
     { id: 'trauma', name: 'Trauma', icon: '\uD83E\uDE79', decisionTrees: [], isCustom: false },
-    { id: 'ultrasound', name: 'Ultrasound', icon: '\uD83D\uDCE1', decisionTrees: [], isCustom: false },
+    {
+        id: 'ultrasound',
+        name: 'Ultrasound',
+        icon: '\uD83D\uDCE1',
+        decisionTrees: [
+            {
+                id: 'pneumothorax',
+                title: 'Pneumothorax POCUS',
+                subtitle: 'Technique \u2192 Lung Sliding \u2192 A\u2019 Profile \u2192 Lung Point',
+                categoryId: 'ultrasound',
+                version: '1.0',
+                nodeCount: 13,
+                entryNodeId: 'pneumothorax-start',
+            }
+        ],
+        isCustom: false,
+    },
 ];
 const STORAGE_KEY = 'em-custom-categories';
 /** Load custom categories from LocalStorage */

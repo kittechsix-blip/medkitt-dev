@@ -1,9 +1,8 @@
 // EM Decision Trees — Data Model
 // All interfaces from PRD.md Section 4
 
-/** Module numbers correspond to neurosyphilis tree stages:
- *  1=Serology, 2=Stage, 3=Symptoms, 4=LP Decision, 5=CSF Interpreter, 6=Treatment */
-export type ModuleNumber = 1 | 2 | 3 | 4 | 5 | 6;
+/** Module number identifying the phase of the tree (1-based). */
+export type ModuleNumber = number;
 
 /** Node types determine rendering: question=choices, info=read-only, input=form fields, result=recommendation */
 export type NodeType = 'question' | 'info' | 'result' | 'input';
@@ -13,6 +12,19 @@ export type Urgency = 'routine' | 'urgent' | 'critical';
 
 /** Confidence in the recommendation */
 export type Confidence = 'definitive' | 'recommended' | 'consider';
+
+// -------------------------------------------------------------------
+// Node Images (ultrasound, clinical photos)
+// -------------------------------------------------------------------
+
+export interface NodeImage {
+  /** Relative path from docs/, e.g. 'images/pneumothorax/us-anatomy.png' */
+  src: string;
+  /** Accessibility alt text (required) */
+  alt: string;
+  /** Optional figure caption displayed below image */
+  caption?: string;
+}
 
 // -------------------------------------------------------------------
 // Decision Tree Nodes
@@ -39,6 +51,8 @@ export interface DecisionNode {
   treatment?: TreatmentRegimen;
   /** For result nodes — confidence level */
   confidence?: Confidence;
+  /** Optional images to display (e.g., ultrasound reference images) */
+  images?: NodeImage[];
 }
 
 export interface NodeOption {

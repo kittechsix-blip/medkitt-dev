@@ -1,23 +1,44 @@
 // EM Decision Trees — Wizard UI Component
 // Renders one decision node at a time with progress, back nav, and option buttons.
 import { TreeEngine } from '../services/tree-engine.js';
-import { NEUROSYPHILIS_NODES } from '../data/trees/neurosyphilis.js';
+import { NEUROSYPHILIS_NODES, NEUROSYPHILIS_CITATIONS, NEUROSYPHILIS_MODULE_LABELS } from '../data/trees/neurosyphilis.js';
+import { PNEUMOTHORAX_NODES, PNEUMOTHORAX_CITATIONS, PNEUMOTHORAX_MODULE_LABELS } from '../data/trees/pneumothorax.js';
 import { router } from '../services/router.js';
 import { updateFlowchart, showFlowchart, destroyFlowchart } from './tree-flowchart.js';
 import { renderInlineCitations } from './reference-table.js';
+const TREE_CONFIGS = {
+    'neurosyphilis': {
+        nodes: NEUROSYPHILIS_NODES,
+        entryNodeId: 'serology-start',
+        categoryId: 'infectious-disease',
+        moduleLabels: NEUROSYPHILIS_MODULE_LABELS,
+        citations: NEUROSYPHILIS_CITATIONS,
+    },
+    'pneumothorax': {
+        nodes: PNEUMOTHORAX_NODES,
+        entryNodeId: 'pneumothorax-start',
+        categoryId: 'ultrasound',
+        moduleLabels: PNEUMOTHORAX_MODULE_LABELS,
+        citations: PNEUMOTHORAX_CITATIONS,
+    },
+};
 let engine = null;
+let currentTreeId = null;
+let currentConfig = null;
 /** Initialize and render the wizard for a given tree */
 export function renderTreeWizard(container, treeId) {
-    // Currently only neurosyphilis is supported
-    if (treeId !== 'neurosyphilis') {
+    const config = TREE_CONFIGS[treeId];
+    if (!config) {
         renderUnavailable(container, treeId);
         return;
     }
-    engine = new TreeEngine(NEUROSYPHILIS_NODES);
+    currentTreeId = treeId;
+    currentConfig = config;
+    engine = new TreeEngine(config.nodes);
     // Try to restore a saved session
     const restored = engine.restoreSession(treeId);
     if (!restored) {
-        engine.startTree(treeId, 'serology-start');
+        engine.startTree(treeId, config.entryNodeId);
     }
     renderCurrentNode(container);
 }
@@ -59,8 +80,8 @@ function renderCurrentNode(container) {
     }
     container.appendChild(content);
     // Update flowchart state
-    if (engine) {
-        updateFlowchart(engine, () => renderCurrentNode(container));
+    if (engine && currentConfig) {
+        updateFlowchart(engine, () => renderCurrentNode(container), currentConfig.moduleLabels);
     }
 }
 // -------------------------------------------------------------------
@@ -89,13 +110,13 @@ function renderHeader(node) {
             if (engine)
                 engine.reset();
             destroyFlowchart();
-            router.navigate('/category/infectious-disease');
+            router.navigate(`/category/${currentConfig?.categoryId ?? ''}`);
         });
     }
     // Progress indicator
     const progress = document.createElement('span');
     progress.className = 'wizard-progress';
-    const totalModules = engine?.getTotalModules() ?? 6;
+    const totalModules = engine?.getTotalModules() ?? currentConfig?.moduleLabels.length ?? 1;
     progress.textContent = `Module ${node.module} of ${totalModules}`;
     header.appendChild(backBtn);
     header.appendChild(progress);
@@ -113,6 +134,8 @@ function renderQuestionNode(content, node, container) {
     body.className = 'wizard-body';
     renderBodyText(body, node.body);
     content.appendChild(body);
+    // Images (e.g., ultrasound reference images)
+    renderNodeImages(content, node);
     if (node.citation?.length) {
         const cite = document.createElement('div');
         cite.className = 'wizard-citation';
@@ -166,6 +189,8 @@ function renderInfoNode(content, node, container) {
     body.className = 'wizard-body';
     renderBodyText(body, node.body);
     content.appendChild(body);
+    // Images (e.g., ultrasound reference images)
+    renderNodeImages(content, node);
     if (node.citation?.length) {
         const cite = document.createElement('div');
         cite.className = 'wizard-citation';
@@ -207,6 +232,8 @@ function renderResultNode(content, node, _container) {
     body.className = 'wizard-body';
     renderBodyText(body, node.body);
     content.appendChild(body);
+    // Images (e.g., ultrasound reference images on result cards)
+    renderNodeImages(content, node);
     // Recommendation
     if (node.recommendation) {
         const rec = document.createElement('div');
@@ -219,8 +246,8 @@ function renderResultNode(content, node, _container) {
         renderTreatment(content, node.treatment);
     }
     // Expandable citations on result cards
-    if (node.citation?.length) {
-        renderInlineCitations(content, node.citation);
+    if (node.citation?.length && currentConfig) {
+        renderInlineCitations(content, node.citation, currentConfig.citations);
     }
     // Full reference link
     const refLink = document.createElement('button');
@@ -228,7 +255,7 @@ function renderResultNode(content, node, _container) {
     refLink.textContent = '\uD83D\uDCCB Full Reference Tables';
     refLink.addEventListener('click', () => {
         destroyFlowchart();
-        router.navigate('/reference');
+        router.navigate(`/reference/${currentTreeId}`);
     });
     content.appendChild(refLink);
     // Answer summary
@@ -267,7 +294,7 @@ function renderResultNode(content, node, _container) {
         if (engine)
             engine.reset();
         destroyFlowchart();
-        router.navigate('/tree/neurosyphilis');
+        router.navigate(`/tree/${currentTreeId}`);
     });
     const homeBtn = document.createElement('button');
     homeBtn.className = 'btn-text';
@@ -365,6 +392,34 @@ function renderDrugCard(_label, drug) {
         card.appendChild(notes);
     }
     return card;
+}
+// -------------------------------------------------------------------
+// Image Rendering
+// -------------------------------------------------------------------
+/** Render node images as responsive figures with optional captions */
+function renderNodeImages(container, node) {
+    if (!node.images || node.images.length === 0)
+        return;
+    const gallery = document.createElement('div');
+    gallery.className = 'wizard-images';
+    for (const img of node.images) {
+        const figure = document.createElement('figure');
+        figure.className = 'wizard-image-figure';
+        const imgEl = document.createElement('img');
+        imgEl.src = img.src;
+        imgEl.alt = img.alt;
+        imgEl.className = 'wizard-image';
+        imgEl.loading = 'lazy';
+        figure.appendChild(imgEl);
+        if (img.caption) {
+            const caption = document.createElement('figcaption');
+            caption.className = 'wizard-image-caption';
+            caption.textContent = img.caption;
+            figure.appendChild(caption);
+        }
+        gallery.appendChild(figure);
+    }
+    container.appendChild(gallery);
 }
 // -------------------------------------------------------------------
 // Helpers

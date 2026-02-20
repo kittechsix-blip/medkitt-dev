@@ -72,9 +72,10 @@ function handleTreeNode(params) {
     const nodeId = params['nodeId'] ?? 'unknown';
     renderPlaceholder(`Node: ${nodeId}`, `In tree: ${treeId}. Node rendering coming in Task 8.`, '\uD83D\uDD35');
 }
-function handleReference(_params) {
+function handleReference(params) {
     const main = clearMain();
-    renderReferencePanel(main);
+    const treeId = params['treeId'];
+    renderReferencePanel(main, treeId);
 }
 function handleNotFound() {
     renderPlaceholder('Page Not Found', 'This route doesn\u2019t exist. Tap back or go home.', '\u2753');
@@ -96,6 +97,7 @@ function init() {
     router.on('/category/:id', handleCategory);
     router.on('/tree/:id', handleTree);
     router.on('/tree/:id/node/:nodeId', handleTreeNode);
+    router.on('/reference/:treeId', handleReference);
     router.on('/reference', handleReference);
     router.onNotFound(handleNotFound);
     // Start routing

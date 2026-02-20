@@ -94,9 +94,10 @@ function handleTreeNode(params: RouteParams): void {
   );
 }
 
-function handleReference(_params: RouteParams): void {
+function handleReference(params: RouteParams): void {
   const main = clearMain();
-  renderReferencePanel(main);
+  const treeId = params['treeId'];
+  renderReferencePanel(main, treeId);
 }
 
 function handleNotFound(): void {
@@ -127,6 +128,7 @@ function init(): void {
   router.on('/category/:id', handleCategory);
   router.on('/tree/:id', handleTree);
   router.on('/tree/:id/node/:nodeId', handleTreeNode);
+  router.on('/reference/:treeId', handleReference);
   router.on('/reference', handleReference);
   router.onNotFound(handleNotFound);
 

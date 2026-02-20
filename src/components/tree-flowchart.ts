@@ -4,16 +4,16 @@
 import { TreeEngine } from '../services/tree-engine.js';
 import type { DecisionNode } from '../models/types.js';
 
-const MODULE_LABELS = ['Serology', 'Stage', 'Symptoms', 'LP', 'CSF', 'Treatment'];
-
 let overlayEl: HTMLElement | null = null;
 let currentEngine: TreeEngine | null = null;
 let onJumpCallback: (() => void) | null = null;
+let currentModuleLabels: string[] = [];
 
 /** Create or update the flowchart overlay. Call on every node change. */
-export function updateFlowchart(engine: TreeEngine, onJump: () => void): void {
+export function updateFlowchart(engine: TreeEngine, onJump: () => void, moduleLabels?: string[]): void {
   currentEngine = engine;
   onJumpCallback = onJump;
+  if (moduleLabels) currentModuleLabels = moduleLabels;
 
   if (overlayEl && overlayEl.classList.contains('active')) {
     renderFlowchartContent();
@@ -114,7 +114,9 @@ function renderModuleProgress(container: HTMLElement): void {
   const modulesBar = document.createElement('div');
   modulesBar.className = 'flowchart-modules';
 
-  for (let i = 1; i <= 6; i++) {
+  const totalModules = currentEngine?.getTotalModules() ?? currentModuleLabels.length;
+
+  for (let i = 1; i <= totalModules; i++) {
     const moduleItem = document.createElement('div');
     moduleItem.className = 'flowchart-module-item';
 
@@ -131,14 +133,14 @@ function renderModuleProgress(container: HTMLElement): void {
 
     const label = document.createElement('span');
     label.className = 'flowchart-module-label';
-    label.textContent = MODULE_LABELS[i - 1];
+    label.textContent = currentModuleLabels[i - 1] ?? `Module ${i}`;
 
     moduleItem.appendChild(dot);
     moduleItem.appendChild(label);
     modulesBar.appendChild(moduleItem);
 
     // Connector line between dots
-    if (i < 6) {
+    if (i < totalModules) {
       const connector = document.createElement('div');
       connector.className = 'flowchart-module-connector';
       if (i < currentModule) {
