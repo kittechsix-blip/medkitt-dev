@@ -108,7 +108,7 @@ export const PNEUMOTHORAX_NODES = [
         type: 'question',
         module: 3,
         title: 'Step 2: Evaluate for Pneumothorax',
-        body: 'Lung sliding is absent. Next, check for B-lines (comet-tail artifacts extending vertically from the pleural line).\n\nFalse Positive Causes for absence of lung sliding: Lung contusion, Effusions, Adhesions, Consolidations, Previous surgery.\n\nAbsent lung sliding alone has 100% sensitivity but only 78% specificity for pneumothorax \u2014 it can also occur with atelectasis, consolidation, lung contusion, prior pleurodesis, or mainstem intubation.\n\nAre B-lines present?',
+        body: 'Lung sliding is absent. Next, check for B-lines (comet-tail artifacts extending vertically from the pleural line).\n\nAbsent lung sliding alone has 100% sensitivity but only 78% specificity for pneumothorax \u2014 it can also occur with atelectasis, consolidation, lung contusion, prior pleurodesis, or mainstem intubation.\n\nAre B-lines present?',
         citation: [1, 2, 3],
         images: [
             {
