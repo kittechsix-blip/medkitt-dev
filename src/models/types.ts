@@ -53,6 +53,8 @@ export interface DecisionNode {
   confidence?: Confidence;
   /** Optional images to display (e.g., ultrasound reference images) */
   images?: NodeImage[];
+  /** Optional calculator links to show as buttons (e.g., PESI, sPESI) */
+  calculatorLinks?: { id: string; label: string }[];
 }
 
 export interface NodeOption {

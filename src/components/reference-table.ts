@@ -13,6 +13,11 @@ import {
   PNEUMOTHORAX_DIAGNOSTIC_TESTS,
   PNEUMOTHORAX_CLINICAL_NOTES,
 } from '../data/trees/pneumothorax.js';
+import {
+  PE_TREATMENT_CITATIONS,
+  PE_TREATMENT_DIAGNOSTIC_TESTS,
+  PE_TREATMENT_CLINICAL_NOTES,
+} from '../data/trees/pe-treatment.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -40,6 +45,13 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
     diagnosticTests: PNEUMOTHORAX_DIAGNOSTIC_TESTS,
     clinicalNotes: PNEUMOTHORAX_CLINICAL_NOTES,
     testTableTitle: 'Ultrasound vs CXR for Pneumothorax',
+  },
+  'pe-treatment': {
+    title: 'PE Treatment Reference',
+    citations: PE_TREATMENT_CITATIONS,
+    diagnosticTests: PE_TREATMENT_DIAGNOSTIC_TESTS,
+    clinicalNotes: PE_TREATMENT_CLINICAL_NOTES,
+    testTableTitle: 'PE Risk Stratification Markers',
   },
 };
 

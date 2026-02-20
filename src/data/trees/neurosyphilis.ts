@@ -326,7 +326,7 @@ export const NEUROSYPHILIS_NODES: DecisionNode[] = [
     title: 'Assess for Reinfection',
     body: 'Treatment failure with NTT <1:32. Assess for possible reinfection (new exposure, new lesion). Consider retreatment with stage-appropriate regimen.',
     citation: [1],
-    recommendation: 'Evaluate for reinfection. If reinfection unlikely, consider retreatment: Benzathine penicillin G 2.4 million units IM weekly \u00d7 3 doses.',
+    recommendation: 'Evaluate for reinfection. If reinfection unlikely, consider retreatment: [Benzathine penicillin G](#/drug/benzathine-penicillin) 2.4 million units IM weekly \u00d7 3 doses.',
     confidence: 'recommended',
   },
 
@@ -490,9 +490,9 @@ export const NEUROSYPHILIS_NODES: DecisionNode[] = [
     type: 'result',
     module: 6,
     title: 'Neurosyphilis Treatment',
-    body: 'Treat as neurosyphilis, ocular syphilis, or otosyphilis. Penicillin is the ONLY proven effective therapy for neurosyphilis.',
+    body: 'Treat as neurosyphilis, ocular syphilis, or otosyphilis. [Penicillin G](#/drug/penicillin-g-iv) is the ONLY proven effective therapy for neurosyphilis.',
     citation: [1, 10, 11],
-    recommendation: 'Aqueous crystalline penicillin G — see dosing below.',
+    recommendation: '[Aqueous crystalline penicillin G](#/drug/penicillin-g-iv) — see dosing below.',
     confidence: 'definitive',
     treatment: {
       firstLine: {
@@ -531,7 +531,7 @@ export const NEUROSYPHILIS_NODES: DecisionNode[] = [
     title: 'Primary & Secondary Syphilis Treatment',
     body: 'Standard treatment for primary or secondary syphilis without evidence of neurosyphilis.',
     citation: [1, 6],
-    recommendation: 'Benzathine penicillin G 2.4 million units IM \u00d7 1 dose.',
+    recommendation: '[Benzathine penicillin G](#/drug/benzathine-penicillin) 2.4 million units IM \u00d7 1 dose.',
     confidence: 'definitive',
     treatment: {
       firstLine: {
@@ -561,7 +561,7 @@ export const NEUROSYPHILIS_NODES: DecisionNode[] = [
     title: 'Early Latent Syphilis Treatment',
     body: 'Standard treatment for early latent syphilis (acquired within prior 12 months) without evidence of neurosyphilis.',
     citation: [1],
-    recommendation: 'Benzathine penicillin G 2.4 million units IM \u00d7 1 dose.',
+    recommendation: '[Benzathine penicillin G](#/drug/benzathine-penicillin) 2.4 million units IM \u00d7 1 dose.',
     confidence: 'definitive',
     treatment: {
       firstLine: {
@@ -591,7 +591,7 @@ export const NEUROSYPHILIS_NODES: DecisionNode[] = [
     title: 'Late Latent / Unknown Duration Treatment',
     body: 'Treatment for late latent syphilis, syphilis of unknown duration, or when no clear timeline exists. Treat as late latent.',
     citation: [1],
-    recommendation: 'Benzathine penicillin G 2.4 million units IM weekly \u00d7 3 doses.',
+    recommendation: '[Benzathine penicillin G](#/drug/benzathine-penicillin) 2.4 million units IM weekly \u00d7 3 doses.',
     confidence: 'definitive',
     treatment: {
       firstLine: {
@@ -621,7 +621,7 @@ export const NEUROSYPHILIS_NODES: DecisionNode[] = [
     title: 'Tertiary Syphilis Treatment',
     body: 'Treatment for tertiary syphilis (gummatous or cardiovascular) after CSF evaluation rules out neurosyphilis.',
     citation: [1],
-    recommendation: 'Benzathine penicillin G 2.4 million units IM weekly \u00d7 3 doses.',
+    recommendation: '[Benzathine penicillin G](#/drug/benzathine-penicillin) 2.4 million units IM weekly \u00d7 3 doses.',
     confidence: 'definitive',
     treatment: {
       firstLine: {

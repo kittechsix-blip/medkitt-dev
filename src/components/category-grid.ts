@@ -2,6 +2,8 @@
 // Renders the 23 EM categories + Add button as a tappable grid.
 
 import { getAllCategories, addCustomCategory } from '../data/categories.js';
+import { getAllCalculators } from './calculator.js';
+import { getAllDrugs } from '../data/drug-store.js';
 import { router } from '../services/router.js';
 
 /** Render the category grid into the given container */
@@ -24,6 +26,16 @@ export function renderCategoryGrid(container: HTMLElement): void {
     const card = createCategoryCard(cat.icon, cat.name, cat.id, cat.decisionTrees.length);
     grid.appendChild(card);
   }
+
+  // Drug Reference card
+  const drugCount = getAllDrugs().length;
+  const drugCard = createToolCard('\uD83D\uDC8A', 'Drug Reference', '/drugs', drugCount, 'drug');
+  grid.appendChild(drugCard);
+
+  // Medical Calculators card
+  const calcCount = getAllCalculators().length;
+  const calcCard = createToolCard('\uD83E\uDDEE', 'Medical Calculators', '/calculators', calcCount, 'tool');
+  grid.appendChild(calcCard);
 
   // Add button
   const addCard = createAddCard();
@@ -66,6 +78,42 @@ function createCategoryCard(icon: string, name: string, id: string, treeCount: n
     const countEl = document.createElement('span');
     countEl.className = 'category-count';
     countEl.textContent = `${treeCount} consult${treeCount !== 1 ? 's' : ''}`;
+    card.appendChild(countEl);
+  }
+
+  return card;
+}
+
+/** Create a tool category card (Drug Reference, Medical Calculators, etc.) */
+function createToolCard(icon: string, label: string, route: string, count: number, unit: string): HTMLElement {
+  const card = document.createElement('a');
+  card.className = 'category-card';
+  if (count > 0) card.classList.add('has-content');
+  card.href = '#' + route;
+  card.setAttribute('role', 'link');
+  card.setAttribute('aria-label', `${label} \u2014 ${count} ${unit}${count !== 1 ? 's' : ''}`);
+
+  card.addEventListener('click', (e) => {
+    e.preventDefault();
+    router.navigate(route);
+  });
+
+  const iconEl = document.createElement('span');
+  iconEl.className = 'category-icon';
+  iconEl.setAttribute('aria-hidden', 'true');
+  iconEl.textContent = icon;
+
+  const nameEl = document.createElement('span');
+  nameEl.className = 'category-name';
+  nameEl.textContent = label;
+
+  card.appendChild(iconEl);
+  card.appendChild(nameEl);
+
+  if (count > 0) {
+    const countEl = document.createElement('span');
+    countEl.className = 'category-count';
+    countEl.textContent = `${count} ${unit}${count !== 1 ? 's' : ''}`;
     card.appendChild(countEl);
   }
 

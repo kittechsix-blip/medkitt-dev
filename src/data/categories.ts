@@ -37,7 +37,23 @@ export const DEFAULT_CATEGORIES: Category[] = [
   { id: 'orthopedics',         name: 'Orthopedics',         icon: '\uD83E\uDDB4', decisionTrees: [], isCustom: false },
   { id: 'pediatrics',          name: 'Pediatrics',          icon: '\uD83E\uDDD2', decisionTrees: [], isCustom: false },
   { id: 'procedures',          name: 'Procedures',          icon: '\uD83D\uDD27', decisionTrees: [], isCustom: false },
-  { id: 'pulmonology',         name: 'Pulmonology',         icon: '\uD83C\uDF2C\uFE0F', decisionTrees: [], isCustom: false },
+  {
+    id: 'pulmonology',
+    name: 'Pulmonology',
+    icon: '\uD83C\uDF2C\uFE0F',
+    decisionTrees: [
+      {
+        id: 'pe-treatment',
+        title: 'PE Treatment',
+        subtitle: 'Risk Stratification \u2192 Management',
+        categoryId: 'pulmonology',
+        version: '1.0',
+        nodeCount: 29,
+        entryNodeId: 'pe-start',
+      }
+    ],
+    isCustom: false,
+  },
   { id: 'renal',               name: 'Renal',               icon: '\uD83D\uDCA7', decisionTrees: [], isCustom: false },
   { id: 'rheumatology',        name: 'Rheumatology',        icon: '\uD83E\uDD32', decisionTrees: [], isCustom: false },
   { id: 'toxicology',          name: 'Toxicology',          icon: '\u2620\uFE0F',  decisionTrees: [], isCustom: false },

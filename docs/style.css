@@ -751,193 +751,6 @@ body {
   margin-bottom: 4px;
 }
 
-/* ========================================
-   Flowchart Mini-Map
-   ======================================== */
-
-.flowchart-overlay {
-  align-items: flex-end;
-}
-
-.flowchart-panel {
-  max-height: 80vh;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
-.flowchart-body {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Module Progress Bar */
-.flowchart-modules {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  padding: 8px 0;
-}
-
-.flowchart-module-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  min-width: 44px;
-}
-
-.flowchart-module-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  background: transparent;
-  transition: all 0.2s ease;
-}
-
-.flowchart-module-dot.completed {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.flowchart-module-dot.current {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.3);
-}
-
-.flowchart-module-dot.upcoming {
-  background: transparent;
-  border-color: var(--color-border);
-}
-
-.flowchart-module-label {
-  font-size: 10px;
-  color: var(--color-text-muted);
-  text-align: center;
-  white-space: nowrap;
-}
-
-.flowchart-module-connector {
-  flex: 1;
-  height: 2px;
-  background: var(--color-border);
-  min-width: 8px;
-  margin: 0 2px;
-  align-self: flex-start;
-  margin-top: 8px;
-}
-
-.flowchart-module-connector.completed {
-  background: var(--color-primary);
-}
-
-/* Path Trace */
-.flowchart-path {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.flowchart-path-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.flowchart-path-node {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-border);
-  min-height: 44px;
-}
-
-.flowchart-path-node.visited {
-  border-left-color: var(--color-primary);
-  opacity: 0.8;
-}
-
-.flowchart-path-node.visited.tappable {
-  cursor: pointer;
-}
-
-.flowchart-path-node.visited.tappable:active {
-  background: rgba(0, 212, 170, 0.1);
-}
-
-.flowchart-path-node.current {
-  border-left-color: var(--color-primary);
-  background: rgba(0, 212, 170, 0.08);
-}
-
-.flowchart-node-type {
-  font-size: 10px;
-  color: var(--color-text-muted);
-  margin-top: 3px;
-  flex-shrink: 0;
-}
-
-.flowchart-path-node.current .flowchart-node-type {
-  color: var(--color-primary);
-}
-
-.flowchart-node-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.flowchart-node-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--color-text);
-}
-
-.flowchart-node-answer {
-  font-size: 12px;
-  color: var(--color-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.flowchart-current-badge {
-  display: inline-block;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--color-primary);
-  background: rgba(0, 212, 170, 0.15);
-  padding: 2px 6px;
-  border-radius: 3px;
-  width: fit-content;
-}
-
-/* Upcoming Branches */
-.flowchart-branches {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-left: 24px;
-  margin-top: 2px;
-}
-
-.flowchart-branch {
-  font-size: 12px;
-  color: var(--color-text-muted);
-  opacity: 0.5;
-  padding: 4px 0;
-  border-left: 2px dashed var(--color-border);
-  padding-left: 10px;
-}
 
 /* ========================================
    Wizard Images (Ultrasound, Clinical Photos)
@@ -975,29 +788,6 @@ body {
   border-top: 1px solid var(--color-border);
 }
 
-/* Flowchart Toggle Button */
-.wizard-flowchart-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-  min-height: 44px;
-  padding: 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  color: var(--color-text-muted);
-  background: transparent;
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.wizard-flowchart-toggle:active {
-  background: rgba(0, 212, 170, 0.08);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
 
 /* ========================================
    Reference Tables & Citations
@@ -1450,4 +1240,406 @@ body {
   .category-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+/* ========================================
+   Calculator Search & List
+   ======================================== */
+
+.calculator-search-wrap {
+  margin-bottom: 16px;
+}
+
+.calculator-search-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.calculator-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.calculator-search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.15);
+}
+
+/* Inline body text links */
+.body-inline-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.body-inline-link:active {
+  opacity: 0.7;
+}
+
+/* Wizard inline calculator link buttons */
+.wizard-calc-links {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0 4px;
+}
+
+.wizard-calc-link {
+  flex: 1;
+  min-height: 44px;
+  font-size: 14px;
+}
+
+/* ========================================
+   Calculator Component
+   ======================================== */
+
+.calculator-header {
+  margin-bottom: 8px;
+}
+
+.calculator-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 4px 0;
+}
+
+.calculator-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.calculator-description {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+/* Score Display */
+.calculator-score-display {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.calculator-score-number {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.calculator-risk-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 2px solid;
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  margin-bottom: 8px;
+}
+
+.calculator-risk-class {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.calculator-risk-level {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.calculator-mortality {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* Form */
+.calculator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calculator-field {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
+
+.calculator-field-label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  display: block;
+}
+
+.calculator-field-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.calculator-field-points {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Number Input */
+.calculator-number-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.calculator-number-input {
+  width: 80px;
+  padding: 10px 12px;
+  font-size: 1.125rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.calculator-number-input::-webkit-outer-spin-button,
+.calculator-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculator-number-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.calculator-number-unit {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* Toggle Row */
+.calculator-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calculator-toggle-label-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Toggle Switch */
+.calculator-toggle {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.calculator-toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.calculator-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--color-border);
+  border-radius: 15px;
+  transition: background 0.2s;
+}
+
+.calculator-toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--color-text);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.calculator-toggle-input:checked + .calculator-toggle-slider {
+  background: var(--color-primary);
+}
+
+.calculator-toggle-input:checked + .calculator-toggle-slider::before {
+  transform: translateX(22px);
+}
+
+.calculator-toggle-input:focus-visible + .calculator-toggle-slider {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Threshold Note */
+.calculator-threshold {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-warning);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.875rem;
+  color: var(--color-warning);
+  font-weight: 500;
+}
+
+/* Citations */
+.calculator-citations {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.calculator-citations summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.calculator-citation-list {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.calculator-citation-list li {
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+/* ========================================
+   Info Modal (Clinical Detail Overlay)
+   ======================================== */
+
+.info-modal-overlay {
+  align-items: flex-end;
+}
+
+.info-modal-panel {
+  max-height: 85vh;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.info-modal-subtitle {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.info-modal-body {
+  padding: 16px;
+}
+
+.info-page-section {
+  margin-bottom: 20px;
+}
+
+.info-page-section-heading {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 8px;
+}
+
+.info-page-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 8px;
+}
+
+.info-page-drug-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.info-page-drug-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.info-page-drug-regimen {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.info-page-citations {
+  margin-top: 20px;
+  padding: 12px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.info-page-citations summary {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Drug modal specifics */
+.drug-route-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(0, 212, 170, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  margin-bottom: 16px;
+}
+
+.drug-section-danger .info-page-text {
+  color: var(--color-danger);
+}
+
+.drug-section-warning .info-page-text {
+  color: var(--color-warning);
 }

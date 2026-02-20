@@ -441,3 +441,75 @@
   - HTTPS enforced
 
 **All 12 tasks complete. Project v1.0 shipped.**
+
+---
+
+## Session 5 — 2026-02-20
+### PE Treatment Consult + Drug Reference + Medical Calculators
+
+**Completed:**
+
+**PE Treatment Decision Tree (29 nodes, 5 modules):**
+- Created `src/data/trees/pe-treatment.ts` — full PE management consult from Dell Seton hospital protocol + ESC 2019 guidelines
+  - Module 1: Risk Classification (hemodynamic stability → RV dysfunction → troponin → clinical severity)
+  - Module 2: High Risk Management (IV UFH → alteplase 100mg/2hr → response assessment)
+  - Module 3: Intermediate-High Management (CDT vs systemic heparin)
+  - Module 4: Intermediate-Low Management (UFH or LMWH)
+  - Module 5: Low Risk Management (admit vs discharge, DOAC transition)
+- Registered under Pulmonology category in categories.ts
+- Wired into tree-wizard.ts (TREE_CONFIGS) and reference-table.ts
+
+**PESI & sPESI Calculators (new feature type):**
+- Created `src/components/calculator.ts` — standalone calculator component
+  - PESI: 11 variables (age + 10 toggles), 5 risk classes (I-V), real-time scoring
+  - sPESI: 6 binary variables, 2 risk levels (low vs intermediate/high)
+  - Form with number input + toggle switches, colored risk class badges, mortality percentages
+- Created Medical Calculators category on home grid (searchable alphabetical list)
+- Added `/calculators` route in app.ts
+- PE severity node links to both calculators via `calculatorLinks` field on DecisionNode
+
+**Drug Reference (new feature type):**
+- Created `src/data/drug-store.ts` — 12 drug entries with full detail:
+  - Alteplase, Apixaban, Benzathine Penicillin G, Ceftriaxone, Dabigatran, Doxycycline, Edoxaban, Enoxaparin, Penicillin G IV, Procaine Penicillin + Probenecid, Rivaroxaban, UFH
+  - Each: name, genericName, drugClass, route, indications, dosing (indication-specific), contraindications, cautions, monitoring, notes, citations
+- Created `src/components/drug-store.ts` — searchable drug list + detail modal overlay
+- Created Drug Reference category on home grid
+- Added `/drugs` route in app.ts
+
+**Modal Overlay System:**
+- Created `src/components/info-page.ts` — DOAC oral anticoagulation info modal
+  - 4 sections: overview, dosing table (4 DOACs), key considerations, duration
+  - 5 citations (EINSTEIN-PE, AMPLIFY, Hokusai-VTE, RE-COVER, ACCP 2021)
+- Modal overlays slide up from bottom, dismiss via backdrop tap or ✕ button
+- Keeps user in tree context (no page navigation)
+
+**Inline Drug Hyperlinks:**
+- Updated `renderBodyText()` to parse `[text](#/drug/id)` and `[text](#/info/id)` link patterns
+- Created `<span role="button">` elements with click handlers opening drug/info modals
+- Added `findDrugIdByName()` regex lookup for auto-linking drug names in treatment cards
+- Changed recommendation rendering from `textContent` to `renderBodyText()` for link support
+- Hyperlinked ALL drug mentions across PE treatment and neurosyphilis trees
+
+**Flowchart Removal:**
+- Removed flowchart toggle button, all imports, CSS (~180 lines)
+- Deleted `src/components/tree-flowchart.ts` and `docs/components/tree-flowchart.js`
+
+**Clinical Content Refinements:**
+- Added PESI/sPESI thresholds to risk classification bullets (>86/≥1 = high, <86/0 = low)
+- Added UFH dosing: bolus 80 units/kg, infusion 18 units/kg/hr
+- Added "(1–2 hours)" to thrombolytic response evaluation timing
+- Added LMWH route (SC) and full contraindications block (renal, HIT, neuraxial, extreme weight, reversal)
+- Added DOAC reference with 4-drug dosing table accessible via hyperlink
+
+**Files created:** 5 new TS source files, 5 compiled JS files
+**Files deleted:** tree-flowchart.ts + tree-flowchart.js
+**Files modified:** 9 (app.ts, category-grid.ts, reference-table.ts, tree-wizard.ts, categories.ts, neurosyphilis.ts, types.ts, style.css, sw.js)
+**SW cache:** bumped v16 → v20
+
+**Verified:**
+- `bun x tsc` — zero errors
+- All 14 PE result paths tested in browser
+- Both calculators compute scores correctly
+- Drug reference list renders all 12 drugs, modals show full detail
+- Inline drug links work across both trees
+- DOAC info modal renders from PE low-risk node

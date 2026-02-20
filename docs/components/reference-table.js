@@ -3,6 +3,7 @@
 // Multi-tree aware: data is passed in from tree data files.
 import { NEUROSYPHILIS_CITATIONS, NEUROSYPHILIS_DIAGNOSTIC_TESTS, NEUROSYPHILIS_CLINICAL_NOTES, } from '../data/trees/neurosyphilis.js';
 import { PNEUMOTHORAX_CITATIONS, PNEUMOTHORAX_DIAGNOSTIC_TESTS, PNEUMOTHORAX_CLINICAL_NOTES, } from '../data/trees/pneumothorax.js';
+import { PE_TREATMENT_CITATIONS, PE_TREATMENT_DIAGNOSTIC_TESTS, PE_TREATMENT_CLINICAL_NOTES, } from '../data/trees/pe-treatment.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -17,6 +18,13 @@ const TREE_REFERENCE_DATA = {
         diagnosticTests: PNEUMOTHORAX_DIAGNOSTIC_TESTS,
         clinicalNotes: PNEUMOTHORAX_CLINICAL_NOTES,
         testTableTitle: 'Ultrasound vs CXR for Pneumothorax',
+    },
+    'pe-treatment': {
+        title: 'PE Treatment Reference',
+        citations: PE_TREATMENT_CITATIONS,
+        diagnosticTests: PE_TREATMENT_DIAGNOSTIC_TESTS,
+        clinicalNotes: PE_TREATMENT_CLINICAL_NOTES,
+        testTableTitle: 'PE Risk Stratification Markers',
     },
 };
 // -------------------------------------------------------------------

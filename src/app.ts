@@ -7,6 +7,8 @@ import { renderCategoryGrid } from './components/category-grid.js';
 import { renderCategoryView } from './components/category-view.js';
 import { renderTreeWizard } from './components/tree-wizard.js';
 import { renderReferencePanel } from './components/reference-table.js';
+import { renderCalculator, renderCalculatorList } from './components/calculator.js';
+import { renderDrugList } from './components/drug-store.js';
 
 // -------------------------------------------------------------------
 // Service Worker Registration
@@ -100,6 +102,22 @@ function handleReference(params: RouteParams): void {
   renderReferencePanel(main, treeId);
 }
 
+function handleDrugList(_params: RouteParams): void {
+  const main = clearMain();
+  renderDrugList(main);
+}
+
+function handleCalculatorList(_params: RouteParams): void {
+  const main = clearMain();
+  renderCalculatorList(main);
+}
+
+function handleCalculator(params: RouteParams): void {
+  const id = params['id'] ?? 'unknown';
+  const main = clearMain();
+  renderCalculator(main, id);
+}
+
 function handleNotFound(): void {
   renderPlaceholder(
     'Page Not Found',
@@ -130,6 +148,9 @@ function init(): void {
   router.on('/tree/:id/node/:nodeId', handleTreeNode);
   router.on('/reference/:treeId', handleReference);
   router.on('/reference', handleReference);
+  router.on('/drugs', handleDrugList);
+  router.on('/calculators', handleCalculatorList);
+  router.on('/calculator/:id', handleCalculator);
   router.onNotFound(handleNotFound);
 
   // Start routing

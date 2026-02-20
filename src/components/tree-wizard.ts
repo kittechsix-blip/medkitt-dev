@@ -4,10 +4,14 @@
 import { TreeEngine } from '../services/tree-engine.js';
 import { NEUROSYPHILIS_NODES, NEUROSYPHILIS_CITATIONS, NEUROSYPHILIS_MODULE_LABELS } from '../data/trees/neurosyphilis.js';
 import { PNEUMOTHORAX_NODES, PNEUMOTHORAX_CITATIONS, PNEUMOTHORAX_MODULE_LABELS } from '../data/trees/pneumothorax.js';
+import { PE_TREATMENT_NODES, PE_TREATMENT_CITATIONS, PE_TREATMENT_MODULE_LABELS } from '../data/trees/pe-treatment.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
-import { updateFlowchart, showFlowchart, destroyFlowchart } from './tree-flowchart.js';
+
 import { renderInlineCitations } from './reference-table.js';
+import { showInfoModal } from './info-page.js';
+import { showDrugModal } from './drug-store.js';
+import { findDrugIdByName } from '../data/drug-store.js';
 import type { DecisionNode, TreatmentRegimen } from '../models/types.js';
 
 // -------------------------------------------------------------------
@@ -36,6 +40,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'ultrasound',
     moduleLabels: PNEUMOTHORAX_MODULE_LABELS,
     citations: PNEUMOTHORAX_CITATIONS,
+  },
+  'pe-treatment': {
+    nodes: PE_TREATMENT_NODES,
+    entryNodeId: 'pe-start',
+    categoryId: 'pulmonology',
+    moduleLabels: PE_TREATMENT_MODULE_LABELS,
+    citations: PE_TREATMENT_CITATIONS,
   },
 };
 
@@ -96,21 +107,7 @@ function renderCurrentNode(container: HTMLElement): void {
       break;
   }
 
-  // Flowchart toggle (not on result nodes — they have their own summary)
-  if (node.type !== 'result') {
-    const toggleBtn = document.createElement('button');
-    toggleBtn.className = 'wizard-flowchart-toggle';
-    toggleBtn.textContent = '\uD83D\uDDFA\uFE0F View decision map';
-    toggleBtn.addEventListener('click', () => showFlowchart());
-    content.appendChild(toggleBtn);
-  }
-
   container.appendChild(content);
-
-  // Update flowchart state
-  if (engine && currentConfig) {
-    updateFlowchart(engine, () => renderCurrentNode(container), currentConfig.moduleLabels);
-  }
 }
 
 // -------------------------------------------------------------------
@@ -137,7 +134,7 @@ function renderHeader(node: DecisionNode): HTMLElement {
     backBtn.textContent = '\u2190 Exit';
     backBtn.addEventListener('click', () => {
       if (engine) engine.reset();
-      destroyFlowchart();
+      
       router.navigate(`/category/${currentConfig?.categoryId ?? ''}`);
     });
   }
@@ -171,6 +168,20 @@ function renderQuestionNode(content: HTMLElement, node: DecisionNode, container:
 
   // Images (e.g., ultrasound reference images)
   renderNodeImages(content, node);
+
+  // Calculator links (e.g., PESI / sPESI buttons)
+  if (node.calculatorLinks?.length) {
+    const linkRow = document.createElement('div');
+    linkRow.className = 'wizard-calc-links';
+    for (const link of node.calculatorLinks) {
+      const btn = document.createElement('button');
+      btn.className = 'btn-secondary wizard-calc-link';
+      btn.textContent = link.label;
+      btn.addEventListener('click', () => router.navigate(`/calculator/${link.id}`));
+      linkRow.appendChild(btn);
+    }
+    content.appendChild(linkRow);
+  }
 
   if (node.citation?.length) {
     const cite = document.createElement('div');
@@ -288,7 +299,7 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   if (node.recommendation) {
     const rec = document.createElement('div');
     rec.className = 'result-recommendation';
-    rec.textContent = node.recommendation;
+    renderBodyText(rec, node.recommendation);
     content.appendChild(rec);
   }
 
@@ -307,7 +318,7 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   refLink.className = 'btn-text reference-link';
   refLink.textContent = '\uD83D\uDCCB Full Reference Tables';
   refLink.addEventListener('click', () => {
-    destroyFlowchart();
+    
     router.navigate(`/reference/${currentTreeId}`);
   });
   content.appendChild(refLink);
@@ -353,7 +364,7 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   restartBtn.textContent = 'Start Over';
   restartBtn.addEventListener('click', () => {
     if (engine) engine.reset();
-    destroyFlowchart();
+    
     const container = document.getElementById('main-content');
     if (container && currentTreeId) {
       container.innerHTML = '';
@@ -366,7 +377,7 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   homeBtn.textContent = '\u2190 All Categories';
   homeBtn.addEventListener('click', () => {
     if (engine) engine.reset();
-    destroyFlowchart();
+    
     router.navigate('/');
   });
 
@@ -445,7 +456,18 @@ function renderDrugCard(_label: string, drug: { drug: string; dose: string; rout
 
   const drugName = document.createElement('div');
   drugName.className = 'drug-regimen-name';
-  drugName.textContent = drug.drug;
+  const drugStoreId = findDrugIdByName(drug.drug);
+  if (drugStoreId) {
+    const drugLink = document.createElement('span');
+    drugLink.className = 'body-inline-link';
+    drugLink.textContent = drug.drug;
+    drugLink.setAttribute('role', 'button');
+    drugLink.setAttribute('tabindex', '0');
+    drugLink.addEventListener('click', () => showDrugModal(drugStoreId));
+    drugName.appendChild(drugLink);
+  } else {
+    drugName.textContent = drug.drug;
+  }
   card.appendChild(drugName);
 
   const doseRow = document.createElement('div');
@@ -516,13 +538,47 @@ function renderNodeImages(container: HTMLElement, node: DecisionNode): void {
 // Helpers
 // -------------------------------------------------------------------
 
-/** Render body text with line breaks preserved */
+/** Render body text with line breaks preserved. Supports [text](#/info/id) and [text](#/drug/id) inline modal links. */
 function renderBodyText(container: HTMLElement, text: string): void {
+  const linkPattern = /\[([^\]]+)\]\(#\/(info|drug)\/([^)]+)\)/g;
   const lines = text.split('\n');
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (line.trim() === '') {
       container.appendChild(document.createElement('br'));
+    } else if (linkPattern.test(line)) {
+      // Line contains inline link(s) — build DOM manually
+      linkPattern.lastIndex = 0;
+      const p = document.createElement('p');
+      let lastIndex = 0;
+      let match: RegExpExecArray | null;
+      while ((match = linkPattern.exec(line)) !== null) {
+        const linkLabel = match[1];
+        const linkType = match[2]; // 'info' or 'drug'
+        const linkId = match[3];
+        // Text before the link
+        if (match.index > lastIndex) {
+          p.appendChild(document.createTextNode(line.slice(lastIndex, match.index)));
+        }
+        // The link — opens as modal overlay, stays in tree context
+        const link = document.createElement('span');
+        link.className = 'body-inline-link';
+        link.textContent = linkLabel;
+        link.setAttribute('role', 'button');
+        link.setAttribute('tabindex', '0');
+        if (linkType === 'drug') {
+          link.addEventListener('click', () => showDrugModal(linkId));
+        } else {
+          link.addEventListener('click', () => showInfoModal(linkId));
+        }
+        p.appendChild(link);
+        lastIndex = match.index + match[0].length;
+      }
+      // Text after the last link
+      if (lastIndex < line.length) {
+        p.appendChild(document.createTextNode(line.slice(lastIndex)));
+      }
+      container.appendChild(p);
     } else {
       const p = document.createElement('p');
       p.textContent = line;

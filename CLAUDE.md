@@ -66,20 +66,21 @@ Each session:
 
 ## Category System
 
-23 EM categories (alphabetical) + custom "Add" option. Only Infectious Disease has content initially. Categories: Airway, Cardiology, Critical Care, Dermatology, Drugs, Emergency Medicine, Endocrinology, Gastroenterology, Hematology, Infectious Disease, Nerve Blocks, Neurology, OB/GYN, Orthopedics, Pediatrics, Procedures, Pulmonology, Renal, Rheumatology, Toxicology, Trauma, Ultrasound.
+23 EM categories (alphabetical) + custom "Add" option + 2 tool categories (Drug Reference, Medical Calculators). Categories with content: Infectious Disease (Neurosyphilis), Ultrasound (Pneumothorax POCUS), Pulmonology (PE Treatment).
 
 ## Current Status
 
-- [x] Task 0: Foundation documents (PRD, CLAUDE, TECH_STACK, FRONTEND_GUIDELINES, IMPLEMENTATION_PLAN, progress.txt)
-- [x] Task 1: PWA Shell & Project Scaffolding
-- [x] Task 2: TypeScript Setup & Data Model
-- [x] Task 3: Hash Router & App Entry Point
-- [x] Task 4: Category Grid (Home Screen)
-- [x] Task 5: Category View & Tree List
-- [x] Task 6: Neurosyphilis Decision Tree Data
-- [x] Task 7: Tree Engine (Navigation & State)
-- [x] Task 8: Wizard UI Component
-- [x] Task 9: Result Card & Treatment Display
-- [x] Task 10: Visual Flowchart Mini-Map
-- [x] Task 11: Reference Tables & Info Panels
-- [x] Task 12: Build, Test & Deploy
+v1.2 — 3 consults, Drug Reference (12 drugs), Medical Calculators (PESI/sPESI)
+
+Core build tasks (all complete):
+- [x] Tasks 0-12: Foundation → PWA shell → TypeScript → Router → Categories → Wizard → Results → References → Deploy
+
+Post-v1.0 additions:
+- [x] Pneumothorax POCUS consult (Ultrasound) — 12 nodes, 4 modules
+- [x] PE Treatment consult (Pulmonology) — 29 nodes, 5 modules
+- [x] Drug Reference category — 12 drugs, searchable list + detail modals
+- [x] Medical Calculators category — PESI + sPESI with real-time scoring
+- [x] Modal overlay system — drug and info references as slide-up modals
+- [x] Inline drug hyperlinks — auto-linked across all trees
+- [x] DOAC info modal — oral anticoagulation reference with dosing table
+- [x] Flowchart removed — user found it useless on mobile
