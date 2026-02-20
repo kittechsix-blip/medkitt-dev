@@ -29,7 +29,7 @@ function createCategoryCard(icon, name, id, treeCount) {
     card.className = 'category-card';
     card.href = `#/category/${id}`;
     card.setAttribute('role', 'link');
-    card.setAttribute('aria-label', `${name} — ${treeCount} decision tree${treeCount !== 1 ? 's' : ''}`);
+    card.setAttribute('aria-label', `${name} — ${treeCount} consult${treeCount !== 1 ? 's' : ''}`);
     if (treeCount > 0) {
         card.classList.add('has-content');
     }
@@ -50,7 +50,7 @@ function createCategoryCard(icon, name, id, treeCount) {
     if (treeCount > 0) {
         const countEl = document.createElement('span');
         countEl.className = 'category-count';
-        countEl.textContent = `${treeCount} tree${treeCount !== 1 ? 's' : ''}`;
+        countEl.textContent = `${treeCount} consult${treeCount !== 1 ? 's' : ''}`;
         card.appendChild(countEl);
     }
     return card;
