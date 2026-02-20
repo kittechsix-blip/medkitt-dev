@@ -294,8 +294,9 @@ function renderResultNode(content, node, _container) {
         if (engine)
             engine.reset();
         destroyFlowchart();
-        const container = document.getElementById('app');
+        const container = document.getElementById('main-content');
         if (container && currentTreeId) {
+            container.innerHTML = '';
             renderTreeWizard(container, currentTreeId);
         }
     });

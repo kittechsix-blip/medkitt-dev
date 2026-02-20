@@ -354,8 +354,9 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   restartBtn.addEventListener('click', () => {
     if (engine) engine.reset();
     destroyFlowchart();
-    const container = document.getElementById('app');
+    const container = document.getElementById('main-content');
     if (container && currentTreeId) {
+      container.innerHTML = '';
       renderTreeWizard(container, currentTreeId);
     }
   });
