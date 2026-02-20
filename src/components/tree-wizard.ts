@@ -5,6 +5,7 @@ import { TreeEngine } from '../services/tree-engine.js';
 import { NEUROSYPHILIS_NODES, NEUROSYPHILIS_CITATIONS, NEUROSYPHILIS_MODULE_LABELS } from '../data/trees/neurosyphilis.js';
 import { PNEUMOTHORAX_NODES, PNEUMOTHORAX_CITATIONS, PNEUMOTHORAX_MODULE_LABELS } from '../data/trees/pneumothorax.js';
 import { PE_TREATMENT_NODES, PE_TREATMENT_CITATIONS, PE_TREATMENT_MODULE_LABELS } from '../data/trees/pe-treatment.js';
+import { ECHO_VIEWS_NODES, ECHO_VIEWS_CITATIONS, ECHO_VIEWS_MODULE_LABELS } from '../data/trees/echo-views.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -47,6 +48,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'pulmonology',
     moduleLabels: PE_TREATMENT_MODULE_LABELS,
     citations: PE_TREATMENT_CITATIONS,
+  },
+  'echo-views': {
+    nodes: ECHO_VIEWS_NODES,
+    entryNodeId: 'echo-views-start',
+    categoryId: 'ultrasound',
+    moduleLabels: ECHO_VIEWS_MODULE_LABELS,
+    citations: ECHO_VIEWS_CITATIONS,
   },
 };
 

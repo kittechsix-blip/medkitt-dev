@@ -513,3 +513,37 @@
 - Drug reference list renders all 12 drugs, modals show full detail
 - Inline drug links work across both trees
 - DOAC info modal renders from PE low-risk node
+
+---
+
+## Session 6 — 2026-02-20
+### Basic Echo Views Consult (Ultrasound)
+
+**Completed:**
+
+**Basic Echo Views Teaching Reference (8 nodes, 6 modules):**
+- Created `src/data/trees/echo-views.ts` — linear teaching reference for 5 standard TTE views
+  - Module 1: Introduction — probe selection (phased array), cardiac vs standard mode, indicator conventions, troubleshooting tips, protocol order overview
+  - Module 2: PLAX — 4th ICS, hug sternum, "3 L's to success", horizontal septum, anatomy checklist
+  - Module 3: PSAX — 90° clockwise from PLAX, fanning through levels (papillary, fish mouth, Mercedes-Benz)
+  - Module 4: A4C — apex/PMI, indicator to left axilla, all four chambers
+  - Module 5: Subxiphoid — overhand grip, knees bent, liver as acoustic window
+  - Module 6: Subcostal IVC — rotate longitudinal, aim cephalad, identify IVC/hepatic vein/portal vein
+- Content focused purely on probe positioning, view optimization, and anatomy identification — no pathology or measurements
+- Source: Mike Avula / 5MinSono.com (Dr. Jailyn Avila, MD) + PocketICU.com
+- 10 embedded images across nodes (probe, clock diagram, tips, FoCUS overview, PLAX, PSAX, A4C, subxiphoid, IVC)
+
+**App-Wide Improvement:**
+- Made EM-MedKitt header logo clickable — navigates to home screen from any page
+
+**Files created:** 1 TS source file + 1 compiled JS + 10 images in docs/images/echo-views/
+**Files modified:** 4 (categories.ts, tree-wizard.ts, sw.js, index.html)
+**SW cache:** bumped v20 → v22
+
+**Verified:**
+- `bun x tsc` — zero errors
+- Ultrasound category shows 2 consults (Pneumothorax + Basic Echo Views)
+- Full linear path works: start → overview → PLAX → PSAX → A4C → Subcostal → IVC → summary
+- All 10 images load on their respective nodes
+- Back navigation works through all nodes
+- Header logo navigates to home from any page

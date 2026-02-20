@@ -66,11 +66,11 @@ Each session:
 
 ## Category System
 
-23 EM categories (alphabetical) + custom "Add" option + 2 tool categories (Drug Reference, Medical Calculators). Categories with content: Infectious Disease (Neurosyphilis), Ultrasound (Pneumothorax POCUS), Pulmonology (PE Treatment).
+23 EM categories (alphabetical) + custom "Add" option + 2 tool categories (Drug Reference, Medical Calculators). Categories with content: Infectious Disease (Neurosyphilis), Ultrasound (Pneumothorax POCUS, Basic Echo Views), Pulmonology (PE Treatment).
 
 ## Current Status
 
-v1.2 — 3 consults, Drug Reference (12 drugs), Medical Calculators (PESI/sPESI)
+v1.3 — 4 consults, Drug Reference (12 drugs), Medical Calculators (PESI/sPESI)
 
 Core build tasks (all complete):
 - [x] Tasks 0-12: Foundation → PWA shell → TypeScript → Router → Categories → Wizard → Results → References → Deploy
@@ -84,3 +84,5 @@ Post-v1.0 additions:
 - [x] Inline drug hyperlinks — auto-linked across all trees
 - [x] DOAC info modal — oral anticoagulation reference with dosing table
 - [x] Flowchart removed — user found it useless on mobile
+- [x] Basic Echo Views consult (Ultrasound) — 8 nodes, 6 modules, 10 images, teaching reference
+- [x] Clickable header logo — navigates to home from any page

@@ -1,7 +1,7 @@
 // EM Decision Trees — Service Worker
 // Cache-first offline strategy
 
-const CACHE_NAME = 'em-medkitt-v20';
+const CACHE_NAME = 'em-medkitt-v22';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -30,6 +30,16 @@ const ASSETS_TO_CACHE = [
   './images/pneumothorax/b-lines.png',
   './images/pneumothorax/lung-point.png',
   './images/pneumothorax/m-mode-barcode.png',
+  './data/trees/echo-views.js',
+  './images/echo-views/probe.png',
+  './images/echo-views/clock-diagram.png',
+  './images/echo-views/focus-overview.png',
+  './images/echo-views/better-views-tips.png',
+  './images/echo-views/plax-labeled.png',
+  './images/echo-views/psax-anatomy.png',
+  './images/echo-views/a4c-anatomy.png',
+  './images/echo-views/subxiphoid-view.png',
+  './images/echo-views/ivc-labeled.png',
   './icons/icon-192.png',
   './icons/icon-512.png'
 ];

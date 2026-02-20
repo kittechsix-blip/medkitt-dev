@@ -68,6 +68,15 @@ export const DEFAULT_CATEGORIES = [
                 version: '1.0',
                 nodeCount: 13,
                 entryNodeId: 'pneumothorax-start',
+            },
+            {
+                id: 'echo-views',
+                title: 'Basic Echo Views',
+                subtitle: 'PLAX \u2192 PSAX \u2192 A4C \u2192 Subxiphoid \u2192 IVC',
+                categoryId: 'ultrasound',
+                version: '1.0',
+                nodeCount: 8,
+                entryNodeId: 'echo-views-start',
             }
         ],
         isCustom: false,
