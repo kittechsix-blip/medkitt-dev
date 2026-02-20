@@ -1,7 +1,7 @@
 // EM Decision Trees — Service Worker
 // Cache-first offline strategy
 
-const CACHE_NAME = 'em-medkitt-v9';
+const CACHE_NAME = 'em-medkitt-v10';
 
 const ASSETS_TO_CACHE = [
   './',
