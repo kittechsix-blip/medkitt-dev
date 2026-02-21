@@ -1,7 +1,7 @@
 // MedKitt — Service Worker
 // Cache-first offline strategy
 
-const CACHE_NAME = 'medkitt-v24';
+const CACHE_NAME = 'medkitt-v25';
 
 const ASSETS_TO_CACHE = [
   './',
