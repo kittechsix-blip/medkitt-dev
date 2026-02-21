@@ -329,8 +329,8 @@ function initPWA() {
                     deferredPrompt = null;
                 }
             } else {
-                // Show instructions for manual install
-                alert('To install MedKitt:\n\n1. Tap the share button (iOS) or menu (Android)\n2. Select "Add to Home Screen"');
+                // iOS doesn't support beforeinstallprompt — just open the app
+                window.location.href = './app.html';
             }
         });
     }
