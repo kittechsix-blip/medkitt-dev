@@ -110,23 +110,14 @@
   </g>
 
   <!-- ==================== WORDMARK ==================== -->
-  <!-- "Med" -->
-  <text x="140" y="320" font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
-        font-size="80" font-weight="700" fill="url(#medGrad)" letter-spacing="-0.02em">Med</text>
-
-  <!-- "Kitt" -->
-  <text x="310" y="320" font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
-        font-size="80" font-weight="800" fill="url(#kittGrad)" letter-spacing="-0.02em">Kitt</text>
+  <text x="256" y="350" text-anchor="middle"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
+        font-size="100" letter-spacing="-0.02em"><tspan font-weight="700" fill="url(#medGrad)">Med</tspan><tspan font-weight="800" fill="url(#kittGrad)">Kitt</tspan></text>
 
   <!-- ==================== BURNT UMBER ACCENT LINE ==================== -->
-  <g transform="translate(140, 336)">
-    <rect x="0" y="0" width="232" height="6" rx="3" ry="3" fill="url(#umberGrad)"/>
-    <rect x="0" y="0" width="232" height="6" rx="3" ry="3" fill="url(#umberShine)" style="mix-blend-mode: overlay;"/>
-    <rect x="1" y="0.5" width="230" height="2" rx="1" ry="1" fill="#CD853F" fill-opacity="0.5"/>
+  <g transform="translate(111, 366)">
+    <rect x="0" y="0" width="290" height="6" rx="3" ry="3" fill="url(#umberGrad)"/>
+    <rect x="0" y="0" width="290" height="6" rx="3" ry="3" fill="url(#umberShine)" style="mix-blend-mode: overlay;"/>
+    <rect x="1" y="0.5" width="288" height="2" rx="1" ry="1" fill="#CD853F" fill-opacity="0.5"/>
   </g>
-
-  <!-- ==================== TAGLINE ==================== -->
-  <text x="256" y="400" text-anchor="middle"
-        font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"
-        font-size="28" font-weight="500" fill="#8b92b9" letter-spacing="0.15em">CLINICAL CONSULT</text>
 </svg>
