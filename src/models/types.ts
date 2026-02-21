@@ -1,4 +1,4 @@
-// EM Decision Trees — Data Model
+// MedKitt — Data Model
 // All interfaces from PRD.md Section 4
 
 /** Module number identifying the phase of the tree (1-based). */

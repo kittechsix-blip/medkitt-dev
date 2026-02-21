@@ -1,4 +1,4 @@
-// EM Medkitt - Main Application Logic
+// MedKitt - Main Application Logic
 // Offline-first medication dosing calculator & ACLS reference
 
 // ============================================================

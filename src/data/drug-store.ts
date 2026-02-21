@@ -1,4 +1,4 @@
-// EM Decision Trees — Drug Reference Store
+// MedKitt — Drug Reference Store
 // Centralized drug data for all medications used across decision trees.
 // Each entry includes class, indications, dosing, contraindications, and citations.
 

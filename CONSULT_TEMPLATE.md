@@ -1,6 +1,6 @@
-# New Consult Template — EM-MedKitt
+# New Consult Template — MedKitt
 
-> Use this template when building a new clinical consult (decision tree) for EM-MedKitt.
+> Use this template when building a new clinical consult (decision tree) for MedKitt.
 > Each consult follows the same pattern as the neurosyphilis workup.
 
 ---

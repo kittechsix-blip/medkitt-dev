@@ -1,4 +1,4 @@
-// EM Decision Trees — Wizard UI Component
+// MedKitt — Wizard UI Component
 // Renders one decision node at a time with progress, back nav, and option buttons.
 
 import { TreeEngine } from '../services/tree-engine.js';

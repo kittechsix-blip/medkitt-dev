@@ -1,4 +1,4 @@
-// EM Decision Trees — Category Grid (Home Screen)
+// MedKitt — Category Grid (Home Screen)
 // Renders the 23 EM categories + Add button as a tappable grid.
 
 import { getAllCategories, addCustomCategory } from '../data/categories.js';

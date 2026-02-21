@@ -1,4 +1,4 @@
-# Frontend Guidelines: EM Decision Tree PWA
+# Frontend Guidelines: MedKitt PWA
 
 > **Last Updated:** 2026-02-19
 > **Design Philosophy:** Dark-first medical UI optimized for night shifts and bedside use.

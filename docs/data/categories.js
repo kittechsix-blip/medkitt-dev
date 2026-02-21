@@ -1,4 +1,4 @@
-// EM Decision Trees — Category Definitions
+// MedKitt — Category Definitions
 // All 23 EM categories from PRD.md Section 7
 /** Built-in EM categories. Only Infectious Disease has content initially. */
 export const DEFAULT_CATEGORIES = [

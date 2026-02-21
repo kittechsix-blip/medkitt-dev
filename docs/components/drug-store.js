@@ -1,4 +1,4 @@
-// EM Decision Trees — Drug Reference Component
+// MedKitt — Drug Reference Component
 // Searchable alphabetical drug list + detail modal overlay.
 // Drug names in tree body text use [name](#/drug/id) to open the modal.
 import { getAllDrugs, getDrug } from '../data/drug-store.js';

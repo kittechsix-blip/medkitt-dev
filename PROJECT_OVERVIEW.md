@@ -1,4 +1,4 @@
-# EM-MedKitt: Project Overview
+# MedKitt: Project Overview
 
 > A complete breakdown of everything built, how it works, and the decisions behind it.
 > Written for devmorphosis reference.
@@ -7,7 +7,7 @@
 
 ## What Is It
 
-EM-MedKitt is a mobile-first Progressive Web App (PWA) that provides evidence-based clinical decision trees — called **consults** — for emergency medicine physicians. The first consult is a complete **neurosyphilis workup** covering serology interpretation through treatment.
+MedKitt is a mobile-first Progressive Web App (PWA) that provides evidence-based clinical decision trees — called **consults** — for emergency medicine physicians. The first consult is a complete **neurosyphilis workup** covering serology interpretation through treatment.
 
 **Live:** https://kittechsix-blip.github.io/em-medkitt/
 **Repo:** https://github.com/kittechsix-blip/em-medkitt
@@ -292,7 +292,7 @@ To deploy: `git push`. GitHub Pages serves `docs/` automatically.
 - Security review, accessibility audit (fixed heading hierarchy)
 - Full end-to-end browser test
 - Enabled GitHub Pages deployment
-- Renamed app to EM-MedKitt, updated icon
+- Renamed app to MedKitt, updated icon
 - Created consult template for future clinical workups
 - Tested on iPhone, verified PWA install
 

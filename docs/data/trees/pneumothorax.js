@@ -1,4 +1,4 @@
-// EM Decision Trees — Pneumothorax POCUS Consult
+// MedKitt — Pneumothorax POCUS Consult
 // Ultrasound-guided diagnosis of pneumothorax using sequential sonographic signs.
 // 4 modules: Technique/VPPI → Lung Sliding → Pneumothorax Assessment → Lung Point + M-Mode
 // 7 evidence citations.

@@ -1,4 +1,4 @@
-// EM Decision Trees — Hash-Based SPA Router
+// MedKitt — Hash-Based SPA Router
 // Matches URL patterns and calls registered handlers on navigation.
 
 /** Parsed route parameters extracted from the URL pattern */

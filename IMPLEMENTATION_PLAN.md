@@ -1,4 +1,4 @@
-# Implementation Plan: EM Decision Tree PWA
+# Implementation Plan: MedKitt PWA
 
 > **Last Updated:** 2026-02-19
 > **Total Tasks:** 12

@@ -1,4 +1,4 @@
-# EM Medkitt - Electrobun Prototype
+# MedKitt - Electrobun Prototype
 
 A fast, lightweight, offline-first desktop application for Emergency Medicine workflow tools. Built with [Electrobun](https://electrobun.dev/) to demonstrate the viability of ultra-small desktop apps for medical professionals.
 
@@ -45,14 +45,14 @@ bun install
 bunx electrobun build
 
 # The built app will be in:
-# build/dev-macos-arm64/EM Medkitt-dev.app
+# build/dev-macos-arm64/MedKitt-dev.app
 ```
 
 ### Run the App
 
 ```bash
 # After building, run the app directly:
-open "build/dev-macos-arm64/EM Medkitt-dev.app"
+open "build/dev-macos-arm64/MedKitt-dev.app"
 ```
 
 ## 📁 Project Structure
@@ -224,7 +224,7 @@ Potential additions for a production EM app:
 
 ```
 build/dev-macos-arm64/
-└── EM Medkitt-dev.app/          # 60MB total
+└── MedKitt-dev.app/          # 60MB total
     ├── Contents/MacOS/
     │   ├── bun                   # 57MB (Bun runtime)
     │   ├── launcher              # 132KB

@@ -1,4 +1,4 @@
-// EM Decision Trees — Category View & Tree List
+// MedKitt — Category View & Tree List
 // Shows available decision trees within a selected category.
 
 import { getAllCategories } from '../data/categories.js';

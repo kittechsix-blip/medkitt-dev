@@ -3,7 +3,7 @@ import Electrobun from 'electrobun/bun';
 
 // Create main window
 const mainWindow = new BrowserWindow({
-  title: 'EM Medkitt',
+  title: 'MedKitt',
   url: 'views://main/index.html',
   width: 1200,
   height: 800,
@@ -19,4 +19,4 @@ Electrobun.events.on('before-quit', (e) => {
 });
 
 // Log for debugging
-console.log('EM Medkitt started');
+console.log('MedKitt started');

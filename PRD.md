@@ -1,4 +1,4 @@
-# PRD: EM Decision Tree PWA
+# PRD: MedKitt PWA
 
 > **Status:** Planning Complete — Ready to Build
 > **Last Updated:** 2026-02-19

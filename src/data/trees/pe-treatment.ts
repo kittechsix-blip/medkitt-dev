@@ -1,4 +1,4 @@
-// EM Decision Trees — Pulmonary Embolism Treatment Consult
+// MedKitt — Pulmonary Embolism Treatment Consult
 // Risk stratification → management per Dell Seton hospital protocol (ESC 2019 guidelines).
 // 5 modules: Risk Classification → High Risk → Intermediate-High → Intermediate-Low → Low Risk
 // 29 nodes total.

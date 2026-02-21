@@ -1,4 +1,4 @@
-/* EM Decision Trees — Design System */
+/* MedKitt — Design System */
 
 /* ========================================
    Design Tokens (CSS Custom Properties)
@@ -81,6 +81,7 @@
 .accent-line {
   background: linear-gradient(to right, #A0522D, #8B4513);
   height: 3px;
+  width: 100%;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(139, 69, 19, 0.3);
   position: relative;
@@ -711,6 +712,7 @@ body {
 .wizard-continue {
   width: 100%;
   margin-top: 8px;
+  border-bottom: 3px solid #A0522D;
 }
 
 /* Option button variants */

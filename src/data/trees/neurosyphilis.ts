@@ -1,4 +1,4 @@
-// EM Decision Trees — Neurosyphilis Workup Decision Tree
+// MedKitt — Neurosyphilis Workup Decision Tree
 // All clinical content sourced from PRD.md. 17 evidence citations.
 // 6 modules: Serology → Stage → Symptoms → LP Decision → CSF Interpreter → Treatment
 

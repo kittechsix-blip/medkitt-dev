@@ -1,4 +1,4 @@
-# EM Decision Tree PWA — Project Instructions
+# MedKitt — Project Instructions
 
 > Read this file at the start of every session working on this project.
 

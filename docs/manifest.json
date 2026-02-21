@@ -1,12 +1,12 @@
 {
-  "name": "EM-MedKitt",
-  "short_name": "EM-MedKitt",
+  "name": "MedKitt",
+  "short_name": "MedKitt",
   "description": "Evidence-based clinical decision trees for emergency medicine",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#0f0f1a",
   "background_color": "#0f0f1a",
-  "start_url": "./",
+  "start_url": "./app.html",
   "scope": "./",
   "icons": [
     {

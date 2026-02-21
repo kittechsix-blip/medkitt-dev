@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <meta name="theme-color" content="#0f0f1a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MedKitt">
+  <meta name="description" content="Evidence-based clinical decision trees for emergency medicine">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="style.css">
+  <title>MedKitt</title>
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <a href="#/" class="logo" style="text-decoration:none;cursor:pointer">
+        <h1 class="logo-text">
+          <span class="logo-med">Med</span><span class="logo-kitt">Kitt</span>
+        </h1>
+        <div class="accent-line"></div>
+      </a>
+    </header>
+    <main id="main-content" class="main-content" role="main">
+      <div class="loading-state">
+        <p>Loading...</p>
+      </div>
+    </main>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

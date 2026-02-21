@@ -2,7 +2,7 @@ import type { ElectrobunConfig } from 'electrobun/bun';
 
 const config: ElectrobunConfig = {
   app: {
-    name: 'EM Medkitt',
+    name: 'MedKitt',
     identifier: 'com.medkitt.em',
     version: '1.0.0',
     description: 'Emergency Medicine Medkitt - Fast, offline-first EM workflow tool',

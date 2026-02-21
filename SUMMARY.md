@@ -1,4 +1,4 @@
-# Electrobun EM Medkitt - Summary Report
+# Electrobun MedKitt - Summary Report
 
 ## ✅ What Was Accomplished
 

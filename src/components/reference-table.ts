@@ -1,4 +1,4 @@
-// EM Decision Trees — Reference Tables & Info Panels
+// MedKitt — Reference Tables & Info Panels
 // Diagnostic test performance, monitoring schedules, and evidence citations.
 // Multi-tree aware: data is passed in from tree data files.
 

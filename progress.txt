@@ -1,4 +1,4 @@
-# EM Decision Tree PWA — Progress Log
+# MedKitt — Progress Log
 
 ## Session 1 — 2026-02-19
 ### Task 0: Foundation Documents
@@ -534,7 +534,7 @@
 - 10 embedded images across nodes (probe, clock diagram, tips, FoCUS overview, PLAX, PSAX, A4C, subxiphoid, IVC)
 
 **App-Wide Improvement:**
-- Made EM-MedKitt header logo clickable — navigates to home screen from any page
+- Made MedKitt header logo clickable — navigates to home screen from any page
 
 **Files created:** 1 TS source file + 1 compiled JS + 10 images in docs/images/echo-views/
 **Files modified:** 4 (categories.ts, tree-wizard.ts, sw.js, index.html)

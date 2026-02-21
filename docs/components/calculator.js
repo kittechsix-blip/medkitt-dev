@@ -1,4 +1,4 @@
-// EM Decision Trees — Clinical Calculator Component
+// MedKitt — Clinical Calculator Component
 // Standalone calculators for scoring systems (PESI, sPESI, etc.)
 // Renders interactive forms with real-time score computation.
 import { router } from '../services/router.js';

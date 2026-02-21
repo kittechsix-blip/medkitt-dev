@@ -1,4 +1,4 @@
-// EM Decision Trees — Basic Echo Views (Transthoracic Echocardiography)
+// MedKitt — Basic Echo Views (Transthoracic Echocardiography)
 // Linear teaching reference: 5 standard TTE views with probe positioning, anatomy identification, and optimization tips.
 // 6 modules: Intro/Overview → PLAX → PSAX → A4C → Subxiphoid → IVC
 // Source: Mike Avula, 5MinSono.com (Dr. Jailyn Avila, MD) + PocketICU.com

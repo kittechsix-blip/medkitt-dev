@@ -1,4 +1,4 @@
-// EM Decision Trees — App Entry Point
+// MedKitt — App Entry Point
 // Registers service worker, sets up routes, renders views.
 import { router } from './services/router.js';
 import { renderCategoryGrid } from './components/category-grid.js';

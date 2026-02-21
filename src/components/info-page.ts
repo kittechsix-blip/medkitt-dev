@@ -1,4 +1,4 @@
-// EM Decision Trees — Clinical Info Modals
+// MedKitt — Clinical Info Modals
 // Slide-up modal overlays for detailed clinical reference content.
 // Triggered from inline links in decision tree body text.
 // User stays in tree context — close modal to continue.

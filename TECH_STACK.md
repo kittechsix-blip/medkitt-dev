@@ -1,4 +1,4 @@
-# Tech Stack: EM Decision Tree PWA
+# Tech Stack: MedKitt PWA
 
 > **Last Updated:** 2026-02-19
 
@@ -110,8 +110,8 @@ Update: New service worker activates on next visit after deploy
 ### Web App Manifest (`manifest.json`)
 ```json
 {
-  "name": "EM Decision Trees",
-  "short_name": "EM Trees",
+  "name": "MedKitt",
+  "short_name": "MedKitt",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#0f0f1a",

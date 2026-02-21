@@ -1,4 +1,4 @@
-// EM Decision Trees — Tree Engine
+// MedKitt — Tree Engine
 // Manages tree traversal: start, navigate, go back, record answers, save/restore.
 
 import type { DecisionNode, TreeSession } from '../models/types.js';

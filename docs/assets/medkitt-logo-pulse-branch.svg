@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- ==================== 3D ELEVATION & SHADOWS ==================== -->
+    
+    <!-- Soft drop shadow for 3D elevation -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer in="offsetBlur" result="shadowAlpha">
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="shadowAlpha"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Elevated shadow with more depth -->
+    <filter id="elevatedShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer in="offsetBlur" result="shadowAlpha">
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="shadowAlpha"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- ==================== GLASS SHINE EFFECTS ==================== -->
+    
+    <!-- Glass light shine - horizontal sheen -->
+    <linearGradient id="glassShineHorizontal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#FFFFFF;stop-opacity:0.15" />
+      <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:0.35" />
+      <stop offset="70%" style="stop-color:#FFFFFF;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- Glass shine overlay for top highlight -->
+    <linearGradient id="glassHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.5" />
+      <stop offset="40%" style="stop-color:#FFFFFF;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- ==================== TEXT GRADIENTS ==================== -->
+    
+    <!-- "Med" - Pearl white to pure white (right to left) -->
+    <linearGradient id="medGradient" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#F8F8FF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FAFAFA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- "Med" inner depth gradient -->
+    <linearGradient id="medDepth" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8E8E8;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- "Kitt" - Richer teal to forest green (left to right) -->
+    <linearGradient id="kittGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00E5B9;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#00C896;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#2E8B57;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- "Kitt" depth gradient -->
+    <linearGradient id="kittDepth" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#006B4F;stop-opacity:0.25" />
+      <stop offset="100%" style="stop-color:#00E5B9;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- ==================== ACCENT LINE GRADIENTS ==================== -->
+    
+    <!-- Burnt umber gradient - lighter to deeper (left to right) -->
+    <linearGradient id="umberGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A0522D;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Umber shine overlay -->
+    <linearGradient id="umberShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#CD853F;stop-opacity:0.5" />
+      <stop offset="50%" style="stop-color:#A0522D;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:0.4" />
+    </linearGradient>
+    
+    <!-- ==================== ICON GRADIENTS ==================== -->
+    
+    <!-- ECG pulse gradient -->
+    <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#00E5B9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.9" />
+    </linearGradient>
+    
+    <!-- Soft glow for accent elements -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Icon circle glow -->
+    <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- ==================== ICON SECTION ==================== -->
+  <g transform="translate(20, 20)" filter="url(#dropShadow)">
+    <!-- Dark background circle -->
+    <circle cx="40" cy="40" r="38" fill="#0f0f1a"/>
+    
+    <!-- Full teal circle outline -->
+    <circle cx="40" cy="40" r="36" fill="none" stroke="#00d4aa" stroke-width="2.5" filter="url(#iconGlow)"/>
+    
+    <!-- Branching pathway base -->
+    <line x1="8" y1="40" x2="18" y2="40" stroke="#2d2d52" stroke-width="2.5"/>
+    
+    <!-- Pulse/ECG line with extra wave (P-wave + QRS + T-wave pattern) -->
+    <!-- P-wave (small bump before main complex) -->
+    <polyline points="18,40 22,40 24,36 26,40" 
+              fill="none" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- PR segment -->
+    <line x1="26" y1="40" x2="30" y2="40" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- QRS complex (main heartbeat spike) -->
+    <polyline points="30,40 32,40 34,32 38,48 40,40 44,40" 
+              fill="none" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- ST segment -->
+    <line x1="44" y1="40" x2="48" y2="40" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- T-wave (smaller wave after QRS) - ENDS HERE with gap before branches -->
+    <polyline points="48,40 50,36 52,40 54,40" 
+              fill="none" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- GAP: Visual separation between pulse end and branch start -->
+    <!-- ~6px gap from x=54 to x=60 -->
+    
+    <!-- Branches begin after gap -->
+    <!-- Branch 1: Up -->
+    <line x1="60" y1="40" x2="66" y2="28" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Branch 2: Down -->
+    <line x1="60" y1="40" x2="66" y2="52" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Decision nodes -->
+    <circle cx="18" cy="40" r="2.5" fill="#00E5B9"/>
+    <circle cx="54" cy="40" r="2.5" fill="#00E5B9"/>
+    <circle cx="60" cy="40" r="2.5" fill="#00E5B9"/>
+    <circle cx="66" cy="28" r="2.5" fill="#00E5B9"/>
+    <circle cx="66" cy="52" r="2.5" fill="#00E5B9"/>
+  </g>
+  
+  <!-- ==================== WORDMARK SECTION ==================== -->
+  
+  <!-- "Med" - Pearl to Pure White with 3D Elevation -->
+  <g transform="translate(110, 58)" filter="url(#elevatedShadow)">
+    <!-- Base text with gradient -->
+    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" 
+          font-size="48" font-weight="700" fill="url(#medGradient)" letter-spacing="-0.02em">Med</text>
+    
+    <!-- Depth overlay for 3D effect -->
+    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" 
+          font-size="48" font-weight="700" fill="url(#medDepth)" letter-spacing="-0.02em" style="mix-blend-mode: multiply;">Med</text>
+    
+    <!-- Glass shine overlay -->
+    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" 
+          font-size="48" font-weight="700" fill="url(#glassHighlight)" letter-spacing="-0.02em" style="mix-blend-mode: overlay;">Med</text>
+  </g>
+  
+  <!-- "Kitt" - Teal to Forest Green with 3D Elevation -->
+  <g transform="translate(212, 58)" filter="url(#elevatedShadow)">
+    <!-- Base text with gradient -->
+    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" 
+          font-size="48" font-weight="800" fill="url(#kittGradient)" letter-spacing="-0.02em">Kitt</text>
+    
+    <!-- Depth overlay for 3D effect -->
+    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" 
+          font-size="48" font-weight="800" fill="url(#kittDepth)" letter-spacing="-0.02em" style="mix-blend-mode: multiply;">Kitt</text>
+    
+    <!-- Glass shine overlay -->
+    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" 
+          font-size="48" font-weight="800" fill="url(#glassHighlight)" letter-spacing="-0.02em" style="mix-blend-mode: overlay;">Kitt</text>
+  </g>
+  
+  <!-- ==================== ACCENT LINE SECTION ==================== -->
+  <!-- Full width of wordmark: 110 to ~330 = 220px width -->
+  <g transform="translate(110, 70)" filter="url(#dropShadow)">
+    <!-- Base gradient line -->
+    <rect x="0" y="0" width="200" height="4" rx="2" ry="2" fill="url(#umberGradient)"/>
+    
+    <!-- Glass shine overlay -->
+    <rect x="0" y="0" width="200" height="4" rx="2" ry="2" fill="url(#umberShine)" style="mix-blend-mode: overlay;"/>
+    
+    <!-- Top highlight line for 3D effect -->
+    <rect x="1" y="0.5" width="198" height="1" rx="0.5" ry="0.5" fill="#CD853F" fill-opacity="0.6"/>
+  </g>
+  
+  <!-- ==================== TAGLINE ==================== -->
+  <text x="110" y="95" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="12" font-weight="500" fill="#8b92b9" letter-spacing="0.12em">CLINICAL CONSULT</text>
+</svg>

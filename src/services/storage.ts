@@ -1,4 +1,4 @@
-// EM Decision Trees — LocalStorage Wrapper
+// MedKitt — LocalStorage Wrapper
 // Safe JSON-based storage with error handling.
 
 /** Read a value from LocalStorage, parsed from JSON. Returns fallback on error. */
