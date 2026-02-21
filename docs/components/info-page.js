@@ -53,10 +53,40 @@ const DOAC_PE_PAGE = {
     ],
 };
 // -------------------------------------------------------------------
+// Priapism Return Precautions
+// -------------------------------------------------------------------
+const PRIAPISM_RETURN_PRECAUTIONS = {
+    id: 'priapism-return-precautions',
+    title: 'Return Precautions',
+    subtitle: 'Patient Discharge Instructions \u2014 Priapism',
+    sections: [
+        {
+            body: 'You were treated today for priapism (a prolonged erection). Please return to the emergency department immediately if you experience any of the following:',
+        },
+        {
+            heading: 'Return Immediately If:',
+            body: '\u2022 Your erection returns and lasts more than 4 hours\n\u2022 You develop severe pain in your penis\n\u2022 You notice increasing swelling, redness, or warmth of the penis\n\u2022 You develop fever (temperature over 100.4\u00B0F or 38\u00B0C)\n\u2022 You have difficulty urinating or cannot urinate\n\u2022 You notice any discharge from the penis',
+        },
+        {
+            heading: 'Important Information',
+            body: '\u2022 Even after successful treatment, priapism can recur. This is especially true if you have sickle cell disease or take certain medications.\n\u2022 Time is critical \u2014 if an erection lasts more than 4 hours, seek emergency care right away. Delays in treatment can lead to permanent erectile dysfunction.\n\u2022 Continue taking any medications prescribed by your doctor as directed.\n\u2022 Follow up with urology as instructed.',
+        },
+        {
+            heading: 'Questions?',
+            body: 'If you have concerns about your recovery or symptoms that are not emergencies, contact your primary care doctor or the urology clinic during business hours.',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Bivalacqua TJ, Allen BK, Brock G, et al. Acute Ischemic Priapism: An AUA/SMSNA Guideline. J Urol. 2021;206(5):1114-1121.' },
+        { num: 2, text: 'Salonia A, Eardley I, Giuliano F, et al. European Association of Urology Guidelines on Priapism. Eur Urol. 2014;65(2):480-9.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 const INFO_PAGES = {
     'doac-pe': DOAC_PE_PAGE,
+    'priapism-return-precautions': PRIAPISM_RETURN_PRECAUTIONS,
 };
 // -------------------------------------------------------------------
 // Modal Overlay

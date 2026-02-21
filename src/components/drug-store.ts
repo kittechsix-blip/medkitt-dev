@@ -252,6 +252,27 @@ export function showDrugModal(drugId: string): boolean {
     body.appendChild(notesSection);
   }
 
+  // Image
+  if (drug.image) {
+    const figure = document.createElement('figure');
+    figure.style.margin = '1rem 0';
+    const img = document.createElement('img');
+    img.src = drug.image.src;
+    img.alt = drug.image.alt;
+    img.style.width = '100%';
+    img.style.borderRadius = '8px';
+    figure.appendChild(img);
+    if (drug.image.caption) {
+      const cap = document.createElement('figcaption');
+      cap.style.fontSize = '0.75rem';
+      cap.style.opacity = '0.7';
+      cap.style.marginTop = '0.5rem';
+      cap.textContent = drug.image.caption;
+      figure.appendChild(cap);
+    }
+    body.appendChild(figure);
+  }
+
   // Citations
   if (drug.citations.length > 0) {
     const citSection = document.createElement('details');

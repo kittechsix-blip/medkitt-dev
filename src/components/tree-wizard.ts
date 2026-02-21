@@ -605,9 +605,30 @@ function renderBodyText(container: HTMLElement, text: string): void {
       container.appendChild(p);
     } else {
       const p = document.createElement('p');
-      p.textContent = line;
+      appendBoldAware(p, line);
       container.appendChild(p);
     }
+  }
+}
+
+/** Append text to a parent element, converting **bold** markers to <strong> elements. */
+function appendBoldAware(parent: HTMLElement, text: string): void {
+  const boldPattern = /\*\*(.+?)\*\*/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = boldPattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parent.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+    }
+    const strong = document.createElement('strong');
+    strong.textContent = match[1];
+    parent.appendChild(strong);
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) {
+    parent.appendChild(document.createTextNode(text.slice(lastIndex)));
+  } else if (lastIndex === 0) {
+    parent.appendChild(document.createTextNode(text));
   }
 }
 

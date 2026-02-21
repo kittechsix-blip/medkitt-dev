@@ -92,6 +92,40 @@ export const [CONSULT_NAME]_NODES: DecisionNode[] = [
 
 **Confidence on results:** `definitive` = teal badge, `recommended` = orange badge, `consider` = blue badge.
 
+## Step 2b: Add Drugs to the Drug Store
+
+Every drug used in the consult **must** have an entry in `src/data/drug-store.ts`. This enables hyperlinks from decision tree body text (e.g., `[Phenylephrine](#/drug/phenylephrine)`) that open a slide-up modal with full prescribing info.
+
+```typescript
+const DRUG_NAME: DrugEntry = {
+  id: 'drug-id',              // Lowercase, used in hyperlinks
+  name: 'Drug Name (Route)',
+  genericName: 'Drug Name',
+  drugClass: 'Pharmacologic class',
+  route: 'IV / IM / PO / Intracavernosal',
+  indications: ['Indication 1'],
+  dosing: [
+    { indication: 'Primary use', regimen: 'Dose, route, frequency, duration' },
+  ],
+  contraindications: ['...'],
+  cautions: ['...'],
+  monitoring: 'What to monitor and when.',
+  notes: 'Clinical pearls, onset/duration, and MIXING INSTRUCTIONS if applicable.',
+  image: {                     // OPTIONAL — include when a visual aid exists
+    src: 'images/[consult]/[image-name].png',
+    alt: 'Descriptive alt text',
+    caption: 'Source attribution.',
+  },
+  citations: ['...'],
+};
+```
+
+**Key rules:**
+- If the drug requires mixing/dilution, include step-by-step **MIXING INSTRUCTIONS** in the `notes` field
+- If a mixing photo or visual reference exists, add it via the `image` field — it renders below Clinical Notes in the modal
+- In decision tree body text, use `[Drug Name](#/drug/drug-id)` to create tappable hyperlinks instead of duplicating mixing/dosing info inline
+- Add the drug to the `ALL_DRUGS` array at the bottom of `drug-store.ts`
+
 ## Step 3: Create the Reference Table
 
 Add to `src/components/reference-table.ts`:
@@ -168,6 +202,7 @@ Clear phone SW cache (Settings → Safari → Advanced → Website Data → dele
 
 - [ ] Clinical content provided by Andy (decision flow, evidence, treatments)
 - [ ] Data file created: `src/data/trees/[id].ts`
+- [ ] Drug store entries added for all drugs used (with mixing instructions + image if available)
 - [ ] All node IDs unique, all `next` references valid
 - [ ] Entry node is `[id]-start`
 - [ ] Every path reaches a result node

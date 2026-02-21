@@ -210,7 +210,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'result',
     module: 2,
     title: 'SCD Priapism \u2014 Resolved',
-    body: 'Priapism resolved with supportive care.\n\n\u2022 Hematology follow-up for recurrence prevention\n\u2022 Options: hydroxyurea, GnRH agonists, PDE5i prophylaxis\n\u2022 Counsel on return precautions',
+    body: 'Priapism resolved with supportive care.\n\n\u2022 Hematology follow-up for recurrence prevention\n\u2022 Options: hydroxyurea, GnRH agonists, PDE5i prophylaxis\n\n[Return Precautions](#/info/priapism-return-precautions)',
     recommendation: 'Discharge with hematology follow-up. Discuss recurrence prevention. Return immediately for any erection lasting > 4 hours.',
     confidence: 'definitive',
     citation: [1, 6],
@@ -294,7 +294,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'result',
     module: 2,
     title: 'Post-ICI Priapism \u2014 Resolved',
-    body: 'Prolonged erection resolved with conservative measures.\n\n\u2022 Observe 30\u201360 min to confirm sustained resolution\n\u2022 Counsel on return precautions (> 4hr = emergency)\n\u2022 Adjust ICI dose on follow-up with urology',
+    body: 'Prolonged erection resolved with conservative measures.\n\n\u2022 Observe 30\u201360 min to confirm sustained resolution\n\u2022 Adjust ICI dose on follow-up with urology\n\n[Return Precautions](#/info/priapism-return-precautions)',
     recommendation: 'Observe 30\u201360 minutes. Discharge with urology follow-up to adjust ICI dose. Return immediately for any erection > 4 hours.',
     confidence: 'definitive',
     citation: [1, 5],
@@ -338,8 +338,15 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'info',
     module: 3,
     title: 'Dorsal Penile Nerve Block \u2014 Technique',
-    body: 'PROCEDURE\n\n1. Clean the base of the penis with antiseptic\n2. Identify the 10 and 2 o\'clock positions at the penile base\n3. Insert a 25\u201327 gauge needle at the 10 o\'clock position\n4. Advance under Buck\'s fascia (feel a slight pop)\n5. Aspirate to ensure you\'re not in a vessel\n6. Inject 5 mL of 1% lidocaine (no epi)\n7. Repeat at the 2 o\'clock position with 5 mL\n\nTotal: 10 mL of 1% lidocaine without epinephrine\n\n\u26A0\uFE0F Avoid the 12 o\'clock midline (dorsal vein and deep dorsal artery)',
+    body: 'PROCEDURE\n\n1. Clean the base of the penis with antiseptic\n2. Identify the **10 o\'clock** and **2 o\'clock** positions at the penile base\n3. Insert a **27-gauge needle** at the **10 o\'clock** position\n4. Advance under Buck\'s fascia (feel a slight pop)\n5. Aspirate to ensure you\'re not in a vessel\n6. Inject 5 mL of 1% lidocaine (no epi)\n7. Repeat at the **2 o\'clock** position with 5 mL\n\n**You must pop through Buck\'s fascia to anesthetize the nerve.**\n\nTotal: 10 mL of 1% lidocaine without epinephrine\n\n\u26A0\uFE0F Avoid the 12 o\'clock midline (dorsal vein and deep dorsal artery)',
     citation: [1, 9],
+    images: [
+      {
+        src: 'images/priapism/do-not-inject.png',
+        alt: 'Clock-face diagram showing safe injection zones — do not inject near the 6 o\'clock (ventral) or 12 o\'clock (dorsal midline) positions',
+        caption: 'Safe injection zones: avoid 12 o\'clock (dorsal neurovascular bundle) and 6 o\'clock (ventral urethra).',
+      },
+    ],
     next: 'priapism-penile-block-complete',
   },
 
@@ -388,11 +395,6 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     citation: [1, 2, 3, 9],
     images: [
       {
-        src: 'images/priapism/injection-clock.png',
-        alt: 'Clock-face diagram of penile cross-section showing safe injection zones at 2 and 10 o\'clock, with areas to avoid at 12 and 6 o\'clock marked',
-        caption: 'Safe injection zones: 2 and 10 o\'clock. Avoid 12 o\'clock (dorsal NVB) and 6 o\'clock (urethra). (Source: Core EM, Dr. Anad Swaminathan, MD)',
-      },
-      {
         src: 'images/priapism/aspiration-procedure.png',
         alt: 'Corporal aspiration procedure showing needle inserted into corpus cavernosum with three-way stopcock and syringe connected',
         caption: 'Aspiration in progress: Needle in corpus cavernosum, stopcock connected, syringe aspirating blood. (Source: Mieczkowski JM et al., 2021)',
@@ -410,7 +412,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     citation: [1, 3],
     options: [
       {
-        label: 'Yes \u2014 Detumescent',
+        label: 'Yes \u2014 Detumescence',
         description: 'Penis becoming flaccid after aspiration/irrigation',
         next: 'priapism-aspiration-success',
       },
@@ -428,7 +430,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'result',
     module: 4,
     title: 'Aspiration Successful',
-    body: 'Priapism resolved with aspiration and irrigation.\n\n\u2022 Observe 30\u201360 min to confirm sustained resolution\n\u2022 Urology follow-up in 1\u20132 days\n\u2022 Return immediately for any recurrence > 4 hours',
+    body: 'Priapism resolved with aspiration and irrigation.\n\n\u2022 Observe 30\u201360 min to confirm sustained resolution\n\u2022 Urology follow-up in 1\u20132 days\n\n[Return Precautions](#/info/priapism-return-precautions)',
     recommendation: 'Observe 30\u201360 minutes to confirm sustained detumescence. Discharge with urology follow-up in 1\u20132 days. Return immediately for recurrence > 4 hours.',
     confidence: 'definitive',
     citation: [1, 3, 9],
@@ -443,7 +445,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'info',
     module: 5,
     title: 'Intracavernosal Phenylephrine',
-    body: 'Phenylephrine = first-line sympathomimetic (AUA/SMSNA 2022).\n\nWhy phenylephrine?\n\u2022 Pure alpha-1 agonist \u2192 no intrinsic inotropy, no increase in heart rate\n\u2022 Causes smooth muscle contraction \u2192 venous outflow\n\u2022 74% success rate (vs 25% terbutaline)\n\u2022 Combined with aspiration: 70\u2013100% success\n\nMIXING PHENYLEPHRINE (100 mcg/mL)\n1. Take a 3 mL syringe, draw up 1 mL of phenylephrine from the vial\n   (vial contains phenylephrine 10 mg/mL)\n2. Inject this into a 100 mL bag of NS\n3. Now you have 100 mL of phenylephrine 100 mcg/mL\n4. Draw up into a syringe \u2014 each mL = 100 mcg\n\nOnset: 1 minute | Duration: 10\u201320 minutes\n\nMIXING EPINEPHRINE (10 mcg/mL) \u2014 alternative if no phenylephrine\n1. Take a 10 mL syringe with 9 mL of normal saline\n2. Draw up 1 mL of epinephrine from the cardiac amp\n   (cardiac amp contains epinephrine 100 mcg/mL)\n3. Now you have 10 mL of epinephrine 10 mcg/mL\n\n\u26A0\uFE0F Epinephrine has alpha AND beta effects \u2014 higher cardiovascular risk.\nDo NOT give cardiac arrest doses (1 mg) to patients with a pulse.',
+    body: 'Phenylephrine = first-line sympathomimetic (AUA/SMSNA 2022).\n\nWhy phenylephrine?\n\u2022 Pure alpha-1 agonist \u2192 no intrinsic inotropy, no increase in heart rate\n\u2022 Causes smooth muscle contraction \u2192 venous outflow\n\u2022 74% success rate (vs 25% terbutaline)\n\u2022 Combined with aspiration: 70\u2013100% success\n\nOnset: 1 minute | Duration: 10\u201320 minutes\n\nTap for mixing instructions:\n\u2022 [Phenylephrine](#/drug/phenylephrine) \u2014 first-line\n\u2022 [Epinephrine](#/drug/epinephrine) \u2014 alternative if no phenylephrine',
     citation: [1, 3, 4, 5],
     images: [
       {
@@ -484,7 +486,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     citation: [1, 3, 4],
     options: [
       {
-        label: 'Yes \u2014 Detumescent',
+        label: 'Yes \u2014 Detumescence',
         description: 'Resolution after phenylephrine',
         next: 'priapism-phenylephrine-success',
       },
@@ -502,29 +504,10 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'result',
     module: 5,
     title: 'Phenylephrine Successful',
-    body: 'Priapism resolved with aspiration + phenylephrine.\n\n\u2022 Observe 60 min to confirm sustained resolution\n\u2022 Monitor BP/HR during observation\n\u2022 Urology follow-up in 1\u20132 days',
+    body: 'Priapism resolved with aspiration + phenylephrine.\n\n[Return Precautions](#/info/priapism-return-precautions)',
     recommendation: 'Observe 60 minutes. Monitor BP/HR. Discharge with urology follow-up in 1\u20132 days. Return immediately for recurrence > 4 hours.',
     confidence: 'definitive',
     citation: [1, 3, 4, 5],
-    treatment: {
-      firstLine: {
-        drug: 'Phenylephrine',
-        dose: '200 mcg (2 mL)',
-        route: 'Intracavernosal',
-        frequency: 'Every 5 minutes',
-        duration: 'Up to 5 doses total (1 mg max)',
-        notes: 'Mix: 1 mL phenylephrine (10 mg/mL vial) into 100 mL NS = 100 mcg/mL. Inject 2 mL per dose. Corpora communicate freely \u2014 one side only. Monitor BP/HR q5 min.',
-      },
-      alternative: {
-        drug: 'Epinephrine',
-        dose: '20 mcg (2 mL)',
-        route: 'Intracavernosal',
-        frequency: 'Every 5 minutes',
-        duration: 'Up to 5 doses total (100 mcg max)',
-        notes: 'Mix: 1 mL epi (100 mcg/mL cardiac amp) + 9 mL NS = 10 mcg/mL. Inject 2 mL per dose. Has alpha + beta effects \u2014 higher CV risk. Use only if phenylephrine unavailable.',
-      },
-      monitoring: 'Observe 60 min post-detumescence. BP/HR monitoring during and 30 min after last injection. Urology follow-up 1\u20132 days. Return for erection > 4 hours.',
-    },
   },
 
   // =====================================================================
@@ -628,7 +611,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     body: 'Did surgical shunting produce detumescence?',
     options: [
       {
-        label: 'Yes \u2014 Detumescent',
+        label: 'Yes \u2014 Detumescence',
         description: 'Resolution after shunt procedure',
         next: 'priapism-shunt-success',
       },
@@ -646,7 +629,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'result',
     module: 7,
     title: 'Shunt Successful',
-    body: 'Priapism resolved with surgical shunting.\n\n\u2022 Post-op monitoring per urology\n\u2022 ED risk depends on duration of priapism before resolution\n\u2022 Consider PDE5i trial at 4\u20136 weeks for erectile rehabilitation',
+    body: 'Priapism resolved with surgical shunting.\n\n\u2022 Post-op monitoring per urology\n\u2022 ED risk depends on duration of priapism before resolution\n\u2022 Consider PDE5i trial at 4\u20136 weeks for erectile rehabilitation\n\n[Return Precautions](#/info/priapism-return-precautions)',
     recommendation: 'Post-op monitoring per urology. Follow-up within 48 hours. Counsel on erectile dysfunction risk (depends on duration). PDE5i trial at 4\u20136 weeks for rehabilitation.',
     confidence: 'definitive',
     citation: [1, 7],
@@ -708,7 +691,7 @@ export const PRIAPISM_NODES: DecisionNode[] = [
     type: 'result',
     module: 7,
     title: 'Prolonged Priapism \u2014 Resolved',
-    body: 'Detumescence achieved despite prolonged duration.\n\n\u2022 High risk of erectile dysfunction (30\u201370% at > 24hr duration)\n\u2022 Urology follow-up within 48 hours\n\u2022 Early erectile rehabilitation counseling\n\u2022 PDE5i trial at 4\u20136 weeks',
+    body: 'Detumescence achieved despite prolonged duration.\n\n\u2022 High risk of erectile dysfunction (30\u201370% at > 24hr duration)\n\u2022 Urology follow-up within 48 hours\n\u2022 Early erectile rehabilitation counseling\n\u2022 PDE5i trial at 4\u20136 weeks\n\n[Return Precautions](#/info/priapism-return-precautions)',
     recommendation: 'Observe. Urology follow-up within 48 hours. High probability of ED given prolonged duration. Early erectile rehabilitation counseling. PDE5i trial at 4\u20136 weeks.',
     confidence: 'recommended',
     citation: [1, 2, 8],
