@@ -27,10 +27,16 @@
         // Delete all caches
         var names = await caches.keys();
         for (var n of names) { await caches.delete(n); }
-        status.textContent = 'Cache cleared. Redirecting...';
+        status.textContent = 'Cache cleared...';
 
-        // Redirect to app
-        setTimeout(function() { window.location.href = './app.html'; }, 1000);
+        // Clear sessionStorage (stale tree sessions)
+        sessionStorage.clear();
+        status.textContent = 'All cleared. Redirecting...';
+
+        // Redirect with cache-buster to bypass browser HTTP cache
+        setTimeout(function() {
+          window.location.href = './app.html?_=' + Date.now();
+        }, 1000);
       } catch(e) {
         status.textContent = 'Error: ' + e.message + '. Try opening app.html directly.';
       }
