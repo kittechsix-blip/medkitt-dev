@@ -1,10 +1,16 @@
 // MedKitt — Category Grid (Home Screen)
-// Renders the 23 EM categories + Add button as a tappable grid.
+// Renders category cards with 3D PNG icons in alphabetical order.
 
 import { getAllCategories, addCustomCategory } from '../data/categories.js';
 import { getAllCalculators } from './calculator.js';
 import { getAllDrugs } from '../data/drug-store.js';
 import { router } from '../services/router.js';
+
+/** Tool categories route to special pages instead of /category/{id} */
+const TOOL_ROUTES: Record<string, { route: string; getCount: () => number; unit: string }> = {
+  'pharmacy': { route: '/drugs', getCount: () => getAllDrugs().length, unit: 'drug' },
+  'med-calc': { route: '/calculators', getCount: () => getAllCalculators().length, unit: 'tool' },
+};
 
 /** Render the category grid into the given container */
 export function renderCategoryGrid(container: HTMLElement): void {
@@ -23,19 +29,18 @@ export function renderCategoryGrid(container: HTMLElement): void {
   const categories = getAllCategories();
 
   for (const cat of categories) {
-    const card = createCategoryCard(cat.icon, cat.name, cat.id, cat.decisionTrees.length);
-    grid.appendChild(card);
+    const toolInfo = TOOL_ROUTES[cat.id];
+    if (toolInfo) {
+      // Tool category — special route and count
+      const count = toolInfo.getCount();
+      const card = createCategoryCard(cat.icon, cat.name, cat.id, count, toolInfo.route, toolInfo.unit);
+      grid.appendChild(card);
+    } else {
+      // Specialty category — standard /category/{id} route
+      const card = createCategoryCard(cat.icon, cat.name, cat.id, cat.decisionTrees.length);
+      grid.appendChild(card);
+    }
   }
-
-  // Drug Reference card
-  const drugCount = getAllDrugs().length;
-  const drugCard = createToolCard('\uD83D\uDC8A', 'Drug Reference', '/drugs', drugCount, 'drug');
-  grid.appendChild(drugCard);
-
-  // Medical Calculators card
-  const calcCount = getAllCalculators().length;
-  const calcCard = createToolCard('\uD83E\uDDEE', 'Medical Calculators', '/calculators', calcCount, 'tool');
-  grid.appendChild(calcCard);
 
   // Add button
   const addCard = createAddCard();
@@ -51,27 +56,48 @@ export function renderCategoryGrid(container: HTMLElement): void {
 }
 
 /** Create a single category card element */
-function createCategoryCard(icon: string, name: string, id: string, treeCount: number): HTMLElement {
+function createCategoryCard(
+  icon: string,
+  name: string,
+  id: string,
+  count: number,
+  route?: string,
+  unit?: string,
+): HTMLElement {
+  const effectiveRoute = route || `/category/${id}`;
+  const effectiveUnit = unit || 'consult';
+
   const card = document.createElement('a');
   card.className = 'category-card';
-  card.href = `#/category/${id}`;
+  card.href = '#' + effectiveRoute;
   card.setAttribute('role', 'link');
-  card.setAttribute('aria-label', `${name} — ${treeCount} consult${treeCount !== 1 ? 's' : ''}`);
+  card.setAttribute('aria-label', `${name} \u2014 ${count} ${effectiveUnit}${count !== 1 ? 's' : ''}`);
 
-  if (treeCount > 0) {
+  if (count > 0) {
     card.classList.add('has-content');
   }
 
-  // Prevent default and use router for cleaner navigation
   card.addEventListener('click', (e) => {
     e.preventDefault();
-    router.navigate(`/category/${id}`);
+    router.navigate(effectiveRoute);
   });
 
+  // Icon — PNG image or emoji fallback (for custom categories)
   const iconEl = document.createElement('span');
   iconEl.className = 'category-icon';
   iconEl.setAttribute('aria-hidden', 'true');
-  iconEl.textContent = icon;
+
+  if (icon.endsWith('.png')) {
+    const img = document.createElement('img');
+    img.src = `assets/icons/${icon}`;
+    img.alt = '';
+    img.width = 80;
+    img.height = 80;
+    img.loading = 'lazy';
+    iconEl.appendChild(img);
+  } else {
+    iconEl.textContent = icon;
+  }
 
   const nameEl = document.createElement('span');
   nameEl.className = 'category-name';
@@ -80,46 +106,10 @@ function createCategoryCard(icon: string, name: string, id: string, treeCount: n
   card.appendChild(iconEl);
   card.appendChild(nameEl);
 
-  if (treeCount > 0) {
-    const countEl = document.createElement('span');
-    countEl.className = 'category-count';
-    countEl.textContent = `${treeCount} consult${treeCount !== 1 ? 's' : ''}`;
-    card.appendChild(countEl);
-  }
-
-  return card;
-}
-
-/** Create a tool category card (Drug Reference, Medical Calculators, etc.) */
-function createToolCard(icon: string, label: string, route: string, count: number, unit: string): HTMLElement {
-  const card = document.createElement('a');
-  card.className = 'category-card';
-  if (count > 0) card.classList.add('has-content');
-  card.href = '#' + route;
-  card.setAttribute('role', 'link');
-  card.setAttribute('aria-label', `${label} \u2014 ${count} ${unit}${count !== 1 ? 's' : ''}`);
-
-  card.addEventListener('click', (e) => {
-    e.preventDefault();
-    router.navigate(route);
-  });
-
-  const iconEl = document.createElement('span');
-  iconEl.className = 'category-icon';
-  iconEl.setAttribute('aria-hidden', 'true');
-  iconEl.textContent = icon;
-
-  const nameEl = document.createElement('span');
-  nameEl.className = 'category-name';
-  nameEl.textContent = label;
-
-  card.appendChild(iconEl);
-  card.appendChild(nameEl);
-
   if (count > 0) {
     const countEl = document.createElement('span');
     countEl.className = 'category-count';
-    countEl.textContent = `${count} ${unit}${count !== 1 ? 's' : ''}`;
+    countEl.textContent = `${count} ${effectiveUnit}${count !== 1 ? 's' : ''}`;
     card.appendChild(countEl);
   }
 

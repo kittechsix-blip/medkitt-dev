@@ -1,22 +1,52 @@
 // MedKitt — Category Definitions
-// All 23 EM categories from PRD.md Section 7
+// Specialty categories with custom 3D icons + tool categories (Pharmacy, Med-Calc)
 
 import type { Category } from '../models/types.js';
 
-/** Built-in EM categories. Only Infectious Disease has content initially. */
+/** Built-in categories in alphabetical order. Icon field stores PNG filename in assets/icons/. */
 export const DEFAULT_CATEGORIES: Category[] = [
-  { id: 'airway',              name: 'Airway',              icon: '\uD83E\uDEC1', decisionTrees: [], isCustom: false },
-  { id: 'cardiology',          name: 'Cardiology',          icon: '\u2764\uFE0F',  decisionTrees: [], isCustom: false },
-  { id: 'critical-care',       name: 'Critical Care',       icon: '\uD83C\uDFE5', decisionTrees: [], isCustom: false },
-  { id: 'dermatology',         name: 'Dermatology',         icon: '\uD83D\uDD2C', decisionTrees: [], isCustom: false },
-  { id: 'emergency-medicine',  name: 'Emergency Medicine',  icon: '\uD83D\uDE91', decisionTrees: [], isCustom: false },
-  { id: 'endocrinology',       name: 'Endocrinology',       icon: '\u26A1',       decisionTrees: [], isCustom: false },
-  { id: 'gastroenterology',    name: 'Gastroenterology',    icon: '\uD83D\uDD04', decisionTrees: [], isCustom: false },
-  { id: 'hematology',          name: 'Hematology',          icon: '\uD83E\uDE78', decisionTrees: [], isCustom: false },
+  { id: 'anesthesia-airway',    name: 'Anesthesia / Airway',    icon: 'anesthesia-airway.png', decisionTrees: [], isCustom: false },
+  { id: 'cardiology',           name: 'Cardiology',             icon: 'cardiology.png',        decisionTrees: [], isCustom: false },
+  {
+    id: 'critical-care',
+    name: 'Critical Care',
+    icon: 'critical-care.png',
+    decisionTrees: [
+      {
+        id: 'pe-treatment',
+        title: 'PE Treatment',
+        subtitle: 'Risk Stratification \u2192 Management',
+        categoryId: 'critical-care',
+        version: '1.0',
+        nodeCount: 29,
+        entryNodeId: 'pe-start',
+      }
+    ],
+    isCustom: false,
+  },
+  {
+    id: 'emergency-medicine',
+    name: 'EM',
+    icon: 'em.png',
+    decisionTrees: [
+      {
+        id: 'pe-treatment',
+        title: 'PE Treatment',
+        subtitle: 'Risk Stratification \u2192 Management',
+        categoryId: 'emergency-medicine',
+        version: '1.0',
+        nodeCount: 29,
+        entryNodeId: 'pe-start',
+      }
+    ],
+    isCustom: false,
+  },
+  { id: 'gastroenterology',     name: 'GI (Gastroenterology)',  icon: 'gi.png',                decisionTrees: [], isCustom: false },
+  { id: 'heme-onc',             name: 'Heme/Onc',              icon: 'heme-onc.png',          decisionTrees: [], isCustom: false },
   {
     id: 'infectious-disease',
     name: 'Infectious Disease',
-    icon: '\uD83E\uDDA0',
+    icon: 'infectious-disease.png',
     decisionTrees: [
       {
         id: 'neurosyphilis',
@@ -30,15 +60,17 @@ export const DEFAULT_CATEGORIES: Category[] = [
     ],
     isCustom: false,
   },
-  { id: 'nerve-blocks',        name: 'Nerve Blocks',        icon: '\uD83D\uDC89', decisionTrees: [], isCustom: false },
-  { id: 'neurology',           name: 'Neurology',           icon: '\uD83E\uDDE0', decisionTrees: [], isCustom: false },
-  { id: 'ob-gyn',              name: 'OB/GYN',              icon: '\uD83D\uDC76', decisionTrees: [], isCustom: false },
-  { id: 'orthopedics',         name: 'Orthopedics',         icon: '\uD83E\uDDB4', decisionTrees: [], isCustom: false },
-  { id: 'pediatrics',          name: 'Pediatrics',          icon: '\uD83E\uDDD2', decisionTrees: [], isCustom: false },
+  { id: 'med-calc',             name: 'Med-Calc',              icon: 'med-calc.png',          decisionTrees: [], isCustom: false },
+  { id: 'nephro-rheum-endo',    name: 'Nephro/Rheum/Endo',     icon: 'nephro-rheum-endo.png', decisionTrees: [], isCustom: false },
+  { id: 'neurology',            name: 'Neurology',             icon: 'neurology.png',         decisionTrees: [], isCustom: false },
+  { id: 'ob-gyn',               name: 'OB/GYN',                icon: 'ob-gyn.png',            decisionTrees: [], isCustom: false },
+  { id: 'orthopedics',          name: 'Ortho',                 icon: 'ortho.png',             decisionTrees: [], isCustom: false },
+  { id: 'pediatrics',           name: 'Pediatrics',            icon: 'pediatrics.png',        decisionTrees: [], isCustom: false },
+  { id: 'pharmacy',             name: 'Pharmacy',              icon: 'pharmacy.png',          decisionTrees: [], isCustom: false },
   {
     id: 'procedures',
     name: 'Procedures',
-    icon: '\uD83D\uDD27',
+    icon: 'procedures.png',
     decisionTrees: [
       {
         id: 'priapism',
@@ -52,31 +84,38 @@ export const DEFAULT_CATEGORIES: Category[] = [
     ],
     isCustom: false,
   },
+  { id: 'toxicology',           name: 'Toxicology',            icon: 'toxicology.png',        decisionTrees: [], isCustom: false },
+  { id: 'trauma-surg',          name: 'Trauma/Surg',           icon: 'trauma-surg.png',       decisionTrees: [], isCustom: false },
   {
-    id: 'pulmonology',
-    name: 'Pulmonology',
-    icon: '\uD83C\uDF2C\uFE0F',
+    id: 'us-rads',
+    name: 'U/S-Rads',
+    icon: 'us-rads.png',
     decisionTrees: [
       {
-        id: 'pe-treatment',
-        title: 'PE Treatment',
-        subtitle: 'Risk Stratification \u2192 Management',
-        categoryId: 'pulmonology',
+        id: 'pneumothorax',
+        title: 'Pneumothorax POCUS',
+        subtitle: 'Technique \u2192 Lung Sliding \u2192 A\u2019 Profile \u2192 Lung Point',
+        categoryId: 'us-rads',
         version: '1.0',
-        nodeCount: 29,
-        entryNodeId: 'pe-start',
+        nodeCount: 13,
+        entryNodeId: 'pneumothorax-start',
+      },
+      {
+        id: 'echo-views',
+        title: 'Basic Echo Views',
+        subtitle: 'PLAX \u2192 PSAX \u2192 A4C \u2192 Subxiphoid \u2192 IVC',
+        categoryId: 'us-rads',
+        version: '1.0',
+        nodeCount: 8,
+        entryNodeId: 'echo-views-start',
       }
     ],
     isCustom: false,
   },
-  { id: 'renal',               name: 'Renal',               icon: '\uD83D\uDCA7', decisionTrees: [], isCustom: false },
-  { id: 'rheumatology',        name: 'Rheumatology',        icon: '\uD83E\uDD32', decisionTrees: [], isCustom: false },
-  { id: 'toxicology',          name: 'Toxicology',          icon: '\u2620\uFE0F',  decisionTrees: [], isCustom: false },
-  { id: 'trauma',              name: 'Trauma',              icon: '\uD83E\uDE79', decisionTrees: [], isCustom: false },
   {
     id: 'urology',
     name: 'Urology',
-    icon: '\uD83E\uDE7A',
+    icon: 'urology.png',
     decisionTrees: [
       {
         id: 'priapism',
@@ -86,32 +125,6 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 44,
         entryNodeId: 'priapism-start',
-      }
-    ],
-    isCustom: false,
-  },
-  {
-    id: 'ultrasound',
-    name: 'Ultrasound',
-    icon: '\uD83D\uDCE1',
-    decisionTrees: [
-      {
-        id: 'pneumothorax',
-        title: 'Pneumothorax POCUS',
-        subtitle: 'Technique \u2192 Lung Sliding \u2192 A\u2019 Profile \u2192 Lung Point',
-        categoryId: 'ultrasound',
-        version: '1.0',
-        nodeCount: 13,
-        entryNodeId: 'pneumothorax-start',
-      },
-      {
-        id: 'echo-views',
-        title: 'Basic Echo Views',
-        subtitle: 'PLAX \u2192 PSAX \u2192 A4C \u2192 Subxiphoid \u2192 IVC',
-        categoryId: 'ultrasound',
-        version: '1.0',
-        nodeCount: 8,
-        entryNodeId: 'echo-views-start',
       }
     ],
     isCustom: false,

@@ -31,7 +31,16 @@ export function renderCategoryView(container: HTMLElement, categoryId: string): 
   const icon = document.createElement('span');
   icon.className = 'category-view-icon';
   icon.setAttribute('aria-hidden', 'true');
-  icon.textContent = category.icon;
+  if (category.icon.endsWith('.png')) {
+    const img = document.createElement('img');
+    img.src = `assets/icons/${category.icon}`;
+    img.alt = '';
+    img.width = 48;
+    img.height = 48;
+    icon.appendChild(img);
+  } else {
+    icon.textContent = category.icon;
+  }
 
   const name = document.createElement('h2');
   name.className = 'category-view-name';

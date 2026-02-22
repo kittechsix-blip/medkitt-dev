@@ -1,7 +1,7 @@
 // MedKitt — Service Worker
 // Cache-first offline strategy
 
-const CACHE_NAME = 'medkitt-v34';
+const CACHE_NAME = 'medkitt-v35';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -54,7 +54,26 @@ const ASSETS_TO_CACHE = [
   './assets/app-icon-512.png',
   './assets/medkitt-brand-logo.png',
   './assets/badge-48.png',
-  './assets/badge-80.png'
+  './assets/badge-80.png',
+  './assets/icons/anesthesia-airway.png',
+  './assets/icons/cardiology.png',
+  './assets/icons/critical-care.png',
+  './assets/icons/em.png',
+  './assets/icons/gi.png',
+  './assets/icons/heme-onc.png',
+  './assets/icons/infectious-disease.png',
+  './assets/icons/med-calc.png',
+  './assets/icons/nephro-rheum-endo.png',
+  './assets/icons/neurology.png',
+  './assets/icons/ob-gyn.png',
+  './assets/icons/ortho.png',
+  './assets/icons/pediatrics.png',
+  './assets/icons/pharmacy.png',
+  './assets/icons/procedures.png',
+  './assets/icons/toxicology.png',
+  './assets/icons/trauma-surg.png',
+  './assets/icons/us-rads.png',
+  './assets/icons/urology.png'
 ];
 
 // Install: pre-cache all static assets
