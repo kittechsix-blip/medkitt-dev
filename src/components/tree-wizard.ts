@@ -103,10 +103,15 @@ export function renderTreeWizard(container: HTMLElement, treeId: string): void {
   sessionStorage.removeItem('medkitt-tree-entry');
   const entryNodeId = entryOverride || config.entryNodeId;
 
-  // Try to restore a saved session
-  const restored = engine.restoreSession(treeId);
-  if (!restored) {
+  // If entry override differs from default, always start fresh at that entry
+  if (entryOverride && entryOverride !== config.entryNodeId) {
     engine.startTree(treeId, entryNodeId);
+  } else {
+    // Try to restore a saved session
+    const restored = engine.restoreSession(treeId);
+    if (!restored) {
+      engine.startTree(treeId, entryNodeId);
+    }
   }
 
   renderCurrentNode(container);
