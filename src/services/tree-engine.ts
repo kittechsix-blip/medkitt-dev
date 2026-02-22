@@ -154,6 +154,18 @@ export class TreeEngine {
     return this.nodes.get(targetId) ?? null;
   }
 
+  /** Jump back to the entry node, clearing all history and answers but keeping session alive */
+  goToEntry(entryNodeId: string): DecisionNode | null {
+    if (!this.session) return null;
+
+    this.session.history = [];
+    this.session.answers = {};
+    this.session.currentNodeId = entryNodeId;
+
+    this.saveSession();
+    return this.nodes.get(entryNodeId) ?? null;
+  }
+
   /** Reset the session — start over */
   reset(): void {
     this.session = null;

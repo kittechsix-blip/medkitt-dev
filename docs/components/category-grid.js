@@ -8,12 +8,20 @@ const TOOL_ROUTES = {
 };
 export function renderCategoryGrid(container) {
   container.innerHTML = "";
+  const headingRow = document.createElement("div");
+  headingRow.className = "home-heading-row";
   const heading = document.createElement("h2");
   heading.textContent = "Categories";
   heading.style.fontSize = "20px";
   heading.style.fontWeight = "600";
-  heading.style.marginBottom = "16px";
-  container.appendChild(heading);
+  const searchInput = document.createElement("input");
+  searchInput.type = "search";
+  searchInput.className = "home-search-input";
+  searchInput.placeholder = "Search…";
+  searchInput.setAttribute("aria-label", "Search categories, consults, drugs, and calculators");
+  headingRow.appendChild(heading);
+  headingRow.appendChild(searchInput);
+  container.appendChild(headingRow);
   const grid = document.createElement("div");
   grid.className = "category-grid";
   const categories = getAllCategories();
@@ -35,6 +43,25 @@ export function renderCategoryGrid(container) {
   disclaimer.className = "home-disclaimer";
   disclaimer.textContent = "This tool is for educational and clinical decision support purposes only. It does not replace clinical judgment. All treatment decisions should be verified against current guidelines and institutional protocols.";
   container.appendChild(disclaimer);
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim().toLowerCase();
+    if (query.length === 0) {
+      grid.style.display = "";
+      disclaimer.style.display = "";
+      const existingResults = container.querySelector(".search-results");
+      if (existingResults)
+        existingResults.remove();
+      return;
+    }
+    grid.style.display = "none";
+    disclaimer.style.display = "none";
+    const existingResults = container.querySelector(".search-results");
+    if (existingResults)
+      existingResults.remove();
+    const results = buildSearchResults(query);
+    const resultsEl = renderSearchResults(results);
+    container.appendChild(resultsEl);
+  });
 }
 function createCategoryCard(icon, name, id, count, route, unit) {
   const effectiveRoute = route || `/category/${id}`;
@@ -44,13 +71,16 @@ function createCategoryCard(icon, name, id, count, route, unit) {
   card.href = "#" + effectiveRoute;
   card.setAttribute("role", "link");
   card.setAttribute("aria-label", `${name} — ${count} ${effectiveUnit}${count !== 1 ? "s" : ""}`);
-  if (count > 0) {
-    card.classList.add("has-content");
-  }
   card.addEventListener("click", (e) => {
     e.preventDefault();
     router.navigate(effectiveRoute);
   });
+  if (count > 0) {
+    const countEl = document.createElement("span");
+    countEl.className = "category-count";
+    countEl.textContent = `${count} ${effectiveUnit}${count !== 1 ? "s" : ""}`;
+    card.appendChild(countEl);
+  }
   const iconEl = document.createElement("span");
   iconEl.className = "category-icon";
   iconEl.setAttribute("aria-hidden", "true");
@@ -65,17 +95,11 @@ function createCategoryCard(icon, name, id, count, route, unit) {
   } else {
     iconEl.textContent = icon;
   }
+  card.appendChild(iconEl);
   const nameEl = document.createElement("span");
   nameEl.className = "category-name";
   nameEl.textContent = name;
-  card.appendChild(iconEl);
   card.appendChild(nameEl);
-  if (count > 0) {
-    const countEl = document.createElement("span");
-    countEl.className = "category-count";
-    countEl.textContent = `${count} ${effectiveUnit}${count !== 1 ? "s" : ""}`;
-    card.appendChild(countEl);
-  }
   return card;
 }
 function createAddCard() {
@@ -102,4 +126,106 @@ function createAddCard() {
     }
   });
   return card;
+}
+function buildSearchResults(query) {
+  const results = [];
+  const categories = getAllCategories();
+  const seenTreeIds = new Set;
+  for (const cat of categories) {
+    if (cat.name.toLowerCase().includes(query)) {
+      const toolInfo = TOOL_ROUTES[cat.id];
+      const route = toolInfo ? toolInfo.route : `/category/${cat.id}`;
+      results.push({
+        type: "category",
+        label: cat.name,
+        sublabel: `${cat.decisionTrees.length} consult${cat.decisionTrees.length !== 1 ? "s" : ""}`,
+        route
+      });
+    }
+    for (const tree of cat.decisionTrees) {
+      if (seenTreeIds.has(tree.id))
+        continue;
+      if (tree.title.toLowerCase().includes(query) || tree.subtitle.toLowerCase().includes(query)) {
+        seenTreeIds.add(tree.id);
+        results.push({
+          type: "consult",
+          label: tree.title,
+          sublabel: tree.subtitle,
+          route: `/tree/${tree.id}`
+        });
+      }
+    }
+  }
+  for (const drug of getAllDrugs()) {
+    if (drug.name.toLowerCase().includes(query) || drug.genericName.toLowerCase().includes(query) || drug.drugClass.toLowerCase().includes(query)) {
+      results.push({
+        type: "drug",
+        label: drug.name,
+        sublabel: drug.drugClass,
+        route: "/drugs"
+      });
+    }
+  }
+  for (const calc of getAllCalculators()) {
+    if (calc.title.toLowerCase().includes(query) || calc.subtitle.toLowerCase().includes(query)) {
+      results.push({
+        type: "calculator",
+        label: calc.title,
+        sublabel: calc.subtitle,
+        route: `/calculator/${calc.id}`
+      });
+    }
+  }
+  return results;
+}
+const TYPE_LABELS = {
+  category: "Categories",
+  consult: "Consults",
+  drug: "Drugs",
+  calculator: "Calculators"
+};
+function renderSearchResults(results) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "search-results";
+  if (results.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "search-empty";
+    empty.textContent = "No results found.";
+    wrapper.appendChild(empty);
+    return wrapper;
+  }
+  const grouped = {};
+  for (const r of results) {
+    if (!grouped[r.type])
+      grouped[r.type] = [];
+    grouped[r.type].push(r);
+  }
+  for (const type of ["category", "consult", "drug", "calculator"]) {
+    const group = grouped[type];
+    if (!group || group.length === 0)
+      continue;
+    const groupLabel = document.createElement("h3");
+    groupLabel.className = "search-group-label";
+    groupLabel.textContent = TYPE_LABELS[type];
+    wrapper.appendChild(groupLabel);
+    for (const item of group) {
+      const row = document.createElement("a");
+      row.className = "search-result-item";
+      row.href = "#" + item.route;
+      row.addEventListener("click", (e) => {
+        e.preventDefault();
+        router.navigate(item.route);
+      });
+      const label = document.createElement("span");
+      label.className = "search-result-label";
+      label.textContent = item.label;
+      const sublabel = document.createElement("span");
+      sublabel.className = "search-result-sublabel";
+      sublabel.textContent = item.sublabel;
+      row.appendChild(label);
+      row.appendChild(sublabel);
+      wrapper.appendChild(row);
+    }
+  }
+  return wrapper;
 }

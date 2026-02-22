@@ -124,8 +124,25 @@ function renderHeader(node) {
   progress.className = "wizard-progress";
   const totalModules = engine?.getTotalModules() ?? currentConfig?.moduleLabels.length ?? 1;
   progress.textContent = `Module ${node.module} of ${totalModules}`;
+  const isOnEntry = currentConfig && node.id === currentConfig.entryNodeId;
+  const topBtn = document.createElement("button");
+  topBtn.className = "btn-text wizard-top";
+  topBtn.textContent = "↑ Top";
+  topBtn.setAttribute("aria-label", "Go to beginning of consult");
+  if (isOnEntry) {
+    topBtn.style.visibility = "hidden";
+  }
+  topBtn.addEventListener("click", () => {
+    if (!engine || !currentConfig)
+      return;
+    engine.goToEntry(currentConfig.entryNodeId);
+    const cont = document.querySelector(".main-content");
+    if (cont)
+      renderCurrentNode(cont);
+  });
   header.appendChild(backBtn);
   header.appendChild(progress);
+  header.appendChild(topBtn);
   return header;
 }
 function renderQuestionNode(content, node, container) {
