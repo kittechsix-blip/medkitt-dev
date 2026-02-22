@@ -1,6 +1,7 @@
 import { getAllCategories, addCustomCategory } from "../data/categories.js";
 import { getAllCalculators } from "./calculator.js";
 import { getAllDrugs } from "../data/drug-store.js";
+import { showDrugModal } from "./drug-store.js";
 import { router } from "../services/router.js";
 const TOOL_ROUTES = {
   pharmacy: { route: "/drugs", getCount: () => getAllDrugs().length, unit: "drug" },
@@ -162,7 +163,8 @@ function buildSearchResults(query) {
         type: "drug",
         label: drug.name,
         sublabel: drug.drugClass,
-        route: "/drugs"
+        route: "/drugs",
+        drugId: drug.id
       });
     }
   }
@@ -214,7 +216,11 @@ function renderSearchResults(results) {
       row.href = "#" + item.route;
       row.addEventListener("click", (e) => {
         e.preventDefault();
-        router.navigate(item.route);
+        if (item.drugId) {
+          showDrugModal(item.drugId);
+        } else {
+          router.navigate(item.route);
+        }
       });
       const label = document.createElement("span");
       label.className = "search-result-label";
