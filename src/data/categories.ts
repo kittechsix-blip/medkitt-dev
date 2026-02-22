@@ -6,7 +6,23 @@ import type { Category } from '../models/types.js';
 /** Built-in categories in alphabetical order. Icon field stores PNG filename in assets/icons/. */
 export const DEFAULT_CATEGORIES: Category[] = [
   { id: 'anesthesia-airway',    name: 'Anesthesia / Airway',    icon: 'anesthesia-airway.png', decisionTrees: [], isCustom: false },
-  { id: 'cardiology',           name: 'Cardiology',             icon: 'cardiology.png',        decisionTrees: [], isCustom: false },
+  {
+    id: 'cardiology',
+    name: 'Cardiology',
+    icon: 'cardiology.png',
+    decisionTrees: [
+      {
+        id: 'afib-rvr',
+        title: 'A-Fib RVR',
+        subtitle: 'Stability → Rate Control → Refractory → Anticoagulation',
+        categoryId: 'cardiology',
+        version: '1.0',
+        nodeCount: 20,
+        entryNodeId: 'afib-start',
+      }
+    ],
+    isCustom: false,
+  },
   {
     id: 'critical-care',
     name: 'Critical Care',
@@ -72,6 +88,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
     name: 'Procedures',
     icon: 'procedures.png',
     decisionTrees: [
+      {
+        id: 'afib-rvr',
+        title: 'Synchronized Cardioversion',
+        subtitle: 'A-Fib RVR: Stability \u2192 Cardioversion Protocol',
+        categoryId: 'procedures',
+        version: '1.0',
+        nodeCount: 20,
+        entryNodeId: 'afib-start',
+      },
       {
         id: 'priapism',
         title: 'Priapism Treatment',

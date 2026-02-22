@@ -51,6 +51,50 @@ const ALTEPLASE: DrugEntry = {
   ],
 };
 
+const AMIODARONE: DrugEntry = {
+  id: 'amiodarone',
+  name: 'Amiodarone',
+  genericName: 'Amiodarone hydrochloride',
+  drugClass: 'Class III antiarrhythmic (multichannel blocker)',
+  route: 'IV / PO',
+  indications: ['A-Fib / A-Flutter rate control', 'A-Fib / A-Flutter rhythm control (cardioversion)', 'Ventricular tachycardia', 'Cardiac arrest (VF/pulseless VT)'],
+  dosing: [
+    {
+      indication: 'A-Fib rate control',
+      regimen: 'Load: 150 mg IV over 10 min. Infusion: 1 mg/min x 6 hr, then 0.5 mg/min x 18 hr. May re-bolus 150 mg x2-3 PRN (total 150-450 mg boluses). Do not conclude failure without adequate re-bolusing.',
+    },
+    {
+      indication: 'A-Fib rhythm control (cardioversion)',
+      regimen: 'Load: 300 mg (or 5-7 mg/kg) IV over 30-60 min. Then 1 mg/min infusion. Total 24hr IV dose: 1,200-3,000 mg. Convert to PO 400 mg BID after >24hr IV, until 10g cumulative dose reached, then 200 mg daily maintenance.',
+    },
+    {
+      indication: 'Cardiac arrest (VF/pVT)',
+      regimen: '300 mg IV/IO push. May repeat 150 mg x1.',
+    },
+  ],
+  contraindications: [
+    'Cardiogenic shock',
+    'Severe sinus node dysfunction without pacemaker',
+    'Second/third-degree AV block without pacemaker',
+    'Known hypersensitivity to iodine (contains iodine)',
+  ],
+  cautions: [
+    'QT prolongation \u2014 monitor QTc, hold if QTc >500ms',
+    'Hepatotoxicity \u2014 check LFTs at baseline and periodically',
+    'Thyroid dysfunction (both hypo and hyper) \u2014 contains 37% iodine by weight',
+    'Pulmonary toxicity with chronic use \u2014 baseline CXR and PFTs recommended',
+    'Phlebitis with peripheral IV \u2014 use central line when possible for infusions >24hr',
+    'Potentiates warfarin \u2014 reduce warfarin dose by 30-50% when initiating',
+  ],
+  monitoring: 'Continuous telemetry during IV loading. QTc interval. LFTs, TFTs, CXR at baseline. For chronic use: TFTs, LFTs, PFTs, ophthalmologic exam every 6-12 months.',
+  notes: 'Amiodarone is useful for critically ill patients due to relative hemodynamic stability compared to beta-blockers and CCBs. Achieves rate control in ~74% of patients. Chemical cardioversion may occur \u2014 continue infusion until critical illness resolves to prevent AF recurrence. Chronic use causes numerous side effects \u2014 plan transition to safer long-term agent (e.g., beta-blocker) after recovery.',
+  citations: [
+    'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
+    'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
+    'Bosch NA, et al. Atrial Fibrillation in the ICU. Chest. 2018;154(6):1424-1434.',
+  ],
+};
+
 const APIXABAN: DrugEntry = {
   id: 'apixaban',
   name: 'Apixaban',
@@ -156,6 +200,83 @@ const DABIGATRAN: DrugEntry = {
   notes: 'Requires initial parenteral anticoagulation bridge (unlike apixaban/rivaroxaban). Specific reversal agent: idarucizumab (Praxbind).',
   citations: [
     'Kahn SR, de Wit K. Pulmonary Embolism. N Engl J Med. 2022.',
+  ],
+};
+
+const DIGOXIN: DrugEntry = {
+  id: 'digoxin',
+  name: 'Digoxin',
+  genericName: 'Digoxin',
+  drugClass: 'Cardiac glycoside',
+  route: 'IV / PO',
+  indications: ['A-Fib / A-Flutter rate control (adjunctive)', 'Heart failure with reduced EF'],
+  dosing: [
+    {
+      indication: 'A-Fib rate control (acute)',
+      regimen: 'IV loading: 0.25 mg IV every 2 hours, up to 1.5 mg total. Onset: ~3 hours (vs 5 min for diltiazem). Slow onset makes it unsuitable as sole agent for acute rate control.',
+    },
+    {
+      indication: 'A-Fib rate control (maintenance)',
+      regimen: '0.125-0.25 mg PO daily. Adjust for renal function and age.',
+    },
+  ],
+  contraindications: [
+    'Hypertrophic obstructive cardiomyopathy (HOCM)',
+    'WPW syndrome with atrial fibrillation',
+    'Ventricular tachycardia/fibrillation',
+    'Severe hypokalemia (increases toxicity risk)',
+  ],
+  cautions: [
+    'Renal impairment \u2014 reduce dose, monitor levels (CrCl <50: reduce dose 50%)',
+    'Hypokalemia and hypomagnesemia potentiate toxicity',
+    'Post hoc analyses associate digoxin with increased mortality in AF \u2014 use at low doses',
+    'Limited exertional efficacy \u2014 slows primarily resting heart rate',
+    'Narrow therapeutic index \u2014 toxicity at levels >2.0 ng/mL',
+    'Drug interactions: amiodarone increases digoxin levels 70-100%',
+  ],
+  monitoring: 'Serum digoxin level (target 0.5-0.9 ng/mL for AF). Serum potassium, magnesium, creatinine. ECG for toxicity signs (ST scooping, PAT with block, bidirectional VT).',
+  notes: 'Best used as adjunctive therapy when hypotension limits further titration of beta-blockers or CCBs. Particularly useful in patients with concurrent heart failure. Avoid as sole agent for acute rate control due to slow onset. Use at lowest effective dose given mortality concerns.',
+  citations: [
+    'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
+    'Michaud GF, Stevenson WG. Atrial Fibrillation. N Engl J Med. 2021;384(4):353-361.',
+    'Ko D, et al. Atrial Fibrillation: A Review. JAMA. 2025;333(4):329-342.',
+  ],
+};
+
+const DILTIAZEM: DrugEntry = {
+  id: 'diltiazem',
+  name: 'Diltiazem',
+  genericName: 'Diltiazem hydrochloride',
+  drugClass: 'Nondihydropyridine calcium channel blocker',
+  route: 'IV',
+  indications: ['A-Fib / A-Flutter rate control', 'Supraventricular tachycardia'],
+  dosing: [
+    {
+      indication: 'A-Fib rate control (acute)',
+      regimen: 'Initial bolus: 0.25 mg/kg IV over 2 min (typically 20-25 mg). If inadequate response after 15 min, second bolus: 0.35 mg/kg IV over 2 min. Then continuous infusion: 5-15 mg/hr, titrate to heart rate.',
+    },
+  ],
+  contraindications: [
+    'EF \u226440% or moderate-to-severe LV systolic dysfunction (Class 3: Harm)',
+    'Decompensated heart failure',
+    'Severe hypotension (SBP <90)',
+    'Sick sinus syndrome without pacemaker',
+    'Second/third-degree AV block without pacemaker',
+    'WPW with atrial fibrillation',
+    'Concurrent IV beta-blocker use',
+  ],
+  cautions: [
+    'Hypotension \u2014 most common adverse effect, especially with continuous infusion',
+    'Obtain echo or check history for EF if unknown \u2014 CCBs are dangerous in HFrEF',
+    'Accumulation with prolonged infusions \u2014 monitor closely and titrate down when able',
+    'Negative inotropic effects may worsen borderline hemodynamics',
+    'Consider metoprolol over diltiazem in critically ill patients due to lower hypotension risk',
+  ],
+  monitoring: 'Continuous heart rate and blood pressure monitoring during IV infusion. Reassess hemodynamics frequently. Transition to oral rate control agent when stable.',
+  notes: 'Achieves rate control more rapidly than digoxin or amiodarone (90% vs 74%, with faster time to HR <90). First-line for A-Fib rate control when EF >40%. Do NOT combine with IV beta-blockers \u2014 risk of synergistic hypotension and bradycardia.',
+  citations: [
+    'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
+    'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
   ],
 };
 
@@ -281,6 +402,40 @@ const ENOXAPARIN: DrugEntry = {
   ],
 };
 
+const ESMOLOL: DrugEntry = {
+  id: 'esmolol',
+  name: 'Esmolol',
+  genericName: 'Esmolol hydrochloride',
+  drugClass: 'Ultra-short-acting beta-1 selective blocker',
+  route: 'IV',
+  indications: ['A-Fib / A-Flutter rate control', 'Supraventricular tachycardia', 'Perioperative tachycardia/hypertension'],
+  dosing: [
+    {
+      indication: 'A-Fib rate control',
+      regimen: 'Loading dose: 500 mcg/kg IV over 1 minute. Infusion: 50-200 mcg/kg/min, titrate by 50 mcg/kg/min every 4 min. May repeat loading dose with each infusion increase.',
+    },
+  ],
+  contraindications: [
+    'Severe sinus bradycardia',
+    'Heart block greater than first degree without pacemaker',
+    'Cardiogenic shock',
+    'Decompensated heart failure',
+    'WPW with atrial fibrillation',
+  ],
+  cautions: [
+    'Hypotension \u2014 may occur especially at higher infusion rates',
+    'Must be given as continuous infusion \u2014 eliminated within 9 min of stopping',
+    'Use cautiously in patients on calcium channel blockers \u2014 risk of additive bradycardia/hypotension',
+    'Bronchospasm \u2014 theoretical risk, though beta-1 selectivity is lost at high doses',
+  ],
+  monitoring: 'Continuous heart rate and blood pressure monitoring during infusion. Effects resolve within minutes of discontinuation \u2014 ideal for titration.',
+  notes: 'Ultra-short-acting beta-blocker (half-life ~9 min). Particularly useful when rapid titration or reversal is needed \u2014 if hypotension occurs, effects resolve within minutes of stopping infusion. Ideal for patients with uncertain hemodynamics or when testing beta-blocker tolerance before committing to longer-acting agents.',
+  citations: [
+    'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
+    'Prystowsky EN, et al. Treatment of Atrial Fibrillation. JAMA. 2015;314(3):278-88.',
+  ],
+};
+
 const LIDOCAINE: DrugEntry = {
   id: 'lidocaine',
   name: 'Lidocaine 1% (Without Epinephrine)',
@@ -310,6 +465,82 @@ const LIDOCAINE: DrugEntry = {
   ],
 };
 
+const MAGNESIUM_SULFATE: DrugEntry = {
+  id: 'magnesium-sulfate',
+  name: 'Magnesium Sulfate',
+  genericName: 'Magnesium sulfate',
+  drugClass: 'Electrolyte / Antiarrhythmic adjunct',
+  route: 'IV',
+  indications: ['A-Fib / A-Flutter adjunctive rate and rhythm control', 'Torsades de pointes', 'Hypomagnesemia', 'Eclampsia / Pre-eclampsia seizure prophylaxis'],
+  dosing: [
+    {
+      indication: 'A-Fib (adjunctive)',
+      regimen: 'Bolus: 2-4 g IV over 15-30 min. For aggressive repletion: continuous infusion per institutional protocol. Target serum level ~3-4 mg/dL for antiarrhythmic effect. Most administered magnesium is renally excreted \u2014 continuous infusion may be needed to replete intracellular stores.',
+    },
+    {
+      indication: 'Torsades de pointes',
+      regimen: '1-2 g IV over 5-60 min (faster for unstable patients).',
+    },
+  ],
+  contraindications: [
+    'Severe renal failure (GFR <30 mL/min or oliguria) for continuous infusion \u2014 use intermittent boluses instead',
+    'Hypermagnesemia (>4 mg/dL)',
+    'Myasthenia gravis (may worsen weakness)',
+  ],
+  cautions: [
+    'Monitor for hypermagnesemia: loss of deep tendon reflexes (first sign), respiratory depression, cardiac arrest',
+    'Check renal function before continuous infusion',
+    'Calcium gluconate 1g IV is the antidote for magnesium toxicity',
+  ],
+  monitoring: 'Serum magnesium levels every 6-8 hours during infusion. Deep tendon reflexes. Respiratory rate. Renal function.',
+  notes: 'Excellent safety profile \u2014 one meta-analysis detected no reported adverse events. Blocks slow calcium channels in SA and AV nodes. Even when cardioversion does not occur, magnesium reduces heart rate and augments efficacy of other antiarrhythmics and DC cardioversion. In one RCT, continuous magnesium infusion was superior to amiodarone for new-onset AF. The combination of aggressive magnesium loading plus amiodarone achieved 90% cardioversion rate in critically ill patients.',
+  citations: [
+    'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
+    'Moran JL, et al. Parenteral MgSO4 vs Amiodarone for Atrial Tachyarrhythmias. Crit Care Med. 1995;23(11):1816-24.',
+    'Bosch NA, et al. Atrial Fibrillation in the ICU. Chest. 2018;154(6):1424-1434.',
+  ],
+};
+
+const METOPROLOL: DrugEntry = {
+  id: 'metoprolol',
+  name: 'Metoprolol',
+  genericName: 'Metoprolol tartrate (IV) / Metoprolol succinate (PO)',
+  drugClass: 'Beta-1 selective adrenergic blocker',
+  route: 'IV / PO',
+  indications: ['A-Fib / A-Flutter rate control', 'Hypertension', 'Heart failure (compensated, oral succinate)', 'Post-MI'],
+  dosing: [
+    {
+      indication: 'A-Fib rate control (acute)',
+      regimen: 'IV: 2.5-5 mg IV push over 2 min. Repeat every 5 min as needed, up to 15 mg total (3 doses).',
+    },
+    {
+      indication: 'A-Fib rate control (maintenance)',
+      regimen: 'PO tartrate: 25-100 mg BID. PO succinate (Toprol XL): 25-200 mg daily.',
+    },
+  ],
+  contraindications: [
+    'Severe sinus bradycardia (HR <50)',
+    'Heart block greater than first degree without pacemaker',
+    'Cardiogenic shock',
+    'Decompensated heart failure (acute)',
+    'WPW with atrial fibrillation',
+  ],
+  cautions: [
+    'Safe in COPD \u2014 multiple studies demonstrate no adverse respiratory effects',
+    'Use cautiously in decompensated HF but safe in compensated HFrEF',
+    'May mask hypoglycemia symptoms in diabetic patients',
+    'Do NOT combine with IV calcium channel blockers',
+    'Intermittent dosing naturally encourages dose-by-dose reassessment \u2014 advantage over continuous infusions in unstable patients',
+  ],
+  monitoring: 'Heart rate and blood pressure before each IV dose. Hold if SBP <90 or HR <55.',
+  notes: 'First-line for A-Fib rate control (Class 1 recommendation). Preferred in patients with CAD or compensated HFrEF. Many critically ill patients develop AF due to increased sympathetic tone \u2014 beta-blockers address the underlying physiological problem. A retrospective ICU study found lower failure rates with metoprolol vs diltiazem.',
+  citations: [
+    'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
+    'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
+    'Moskowitz A, et al. Management of AF with RVR in the ICU. Shock. 2017;48(4):436-440.',
+  ],
+};
+
 const PENICILLIN_G_IV: DrugEntry = {
   id: 'penicillin-g-iv',
   name: 'Penicillin G (Aqueous Crystalline)',
@@ -334,6 +565,40 @@ const PENICILLIN_G_IV: DrugEntry = {
   citations: [
     'CDC. Sexually Transmitted Infections Treatment Guidelines. 2021.',
     'Ropper AH. Neurosyphilis. N Engl J Med. 2019;381(14):1358-1363.',
+  ],
+};
+
+const PROCAINAMIDE: DrugEntry = {
+  id: 'procainamide',
+  name: 'Procainamide',
+  genericName: 'Procainamide hydrochloride',
+  drugClass: 'Class IA antiarrhythmic (sodium channel blocker)',
+  route: 'IV',
+  indications: ['WPW with atrial fibrillation', 'Wide-complex tachycardia of uncertain origin', 'Atrial fibrillation (pharmacologic cardioversion \u2014 second-tier)'],
+  dosing: [
+    {
+      indication: 'WPW + A-Fib / Wide-complex tachycardia',
+      regimen: 'Loading: 20-50 mg/min IV infusion until arrhythmia suppressed, hypotension occurs, QRS widens >50%, or max dose 17 mg/kg reached. Maintenance: 1-4 mg/min IV infusion.',
+    },
+  ],
+  contraindications: [
+    'QT prolongation (QTc >500 ms)',
+    'Torsades de pointes',
+    'Complete heart block without pacemaker',
+    'Systemic lupus erythematosus (drug may exacerbate)',
+  ],
+  cautions: [
+    'Hypotension with rapid infusion \u2014 administer slowly',
+    'QRS and QT prolongation \u2014 stop if QRS widens >50% from baseline',
+    'Drug-induced lupus with chronic use',
+    'Reduce dose in renal impairment (active metabolite NAPA is renally cleared)',
+    'Monitor QTc continuously during loading',
+  ],
+  monitoring: 'Continuous ECG monitoring during loading. Blood pressure every 5 min. QRS width and QT interval. NAPA levels if chronic use.',
+  notes: 'Key role in WPW + A-Fib where AV nodal blockers (beta-blockers, CCBs, digoxin, IV amiodarone) are contraindicated. Slows conduction through the accessory pathway. Also useful for wide-complex tachycardia of uncertain origin. Second-tier recommendation for pharmacologic cardioversion of AF per 2025 AHA guidelines.',
+  citations: [
+    'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
+    'Panchal AR, et al. 2020 AHA Guidelines: Adult BLS and ALS. Circulation. 2020;142(16_suppl_2):S366-S468.',
   ],
 };
 
@@ -466,26 +731,71 @@ const UFH: DrugEntry = {
   ],
 };
 
+const VERAPAMIL: DrugEntry = {
+  id: 'verapamil',
+  name: 'Verapamil',
+  genericName: 'Verapamil hydrochloride',
+  drugClass: 'Nondihydropyridine calcium channel blocker',
+  route: 'IV',
+  indications: ['A-Fib / A-Flutter rate control', 'Supraventricular tachycardia'],
+  dosing: [
+    {
+      indication: 'A-Fib rate control (acute)',
+      regimen: '2.5-5 mg IV over 2 min. May repeat with 5-10 mg every 15-30 min as needed. Maximum total dose: 20 mg.',
+    },
+  ],
+  contraindications: [
+    'EF \u226440% or moderate-to-severe LV systolic dysfunction',
+    'Decompensated heart failure',
+    'Severe hypotension',
+    'Sick sinus syndrome without pacemaker',
+    'Second/third-degree AV block without pacemaker',
+    'WPW with atrial fibrillation',
+    'Concurrent IV beta-blocker use',
+    'Wide-complex tachycardia of uncertain origin',
+  ],
+  cautions: [
+    'Hypotension \u2014 more common than with diltiazem',
+    'Negative inotropic effects \u2014 may worsen borderline hemodynamics',
+    'Randomized clinical trials examining verapamil for A-Fib are lacking',
+    'Diltiazem is generally preferred among nondihydropyridine CCBs',
+  ],
+  monitoring: 'Continuous heart rate and blood pressure monitoring. Assess hemodynamic response after each dose.',
+  notes: 'Alternative to diltiazem when diltiazem is unavailable. Generally less preferred due to limited RCT evidence and similar contraindication profile. Same EF restriction as diltiazem: CONTRAINDICATED if EF \u226440%.',
+  citations: [
+    'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
+    'Prystowsky EN, et al. Treatment of Atrial Fibrillation. JAMA. 2015;314(3):278-88.',
+  ],
+};
+
 // -------------------------------------------------------------------
 // Drug Registry (Alphabetical by name)
 // -------------------------------------------------------------------
 
 export const ALL_DRUGS: DrugEntry[] = [
   ALTEPLASE,
+  AMIODARONE,
   APIXABAN,
   BENZATHINE_PENICILLIN,
   CEFTRIAXONE,
   DABIGATRAN,
+  DIGOXIN,
+  DILTIAZEM,
   DOXYCYCLINE,
   EDOXABAN,
   ENOXAPARIN,
   EPINEPHRINE,
+  ESMOLOL,
   LIDOCAINE,
+  MAGNESIUM_SULFATE,
+  METOPROLOL,
   PENICILLIN_G_IV,
   PHENYLEPHRINE,
+  PROCAINAMIDE,
   PROCAINE_PENICILLIN,
   RIVAROXABAN,
   UFH,
+  VERAPAMIL,
 ];
 
 const DRUG_MAP: Record<string, DrugEntry> = {};
@@ -506,20 +816,28 @@ export function getAllDrugs(): DrugEntry[] {
 /** Lookup table: maps common drug name fragments to drug store IDs */
 const NAME_TO_ID: [RegExp, string][] = [
   [/alteplase|tPA/i, 'alteplase'],
+  [/amiodarone|cordarone/i, 'amiodarone'],
   [/apixaban/i, 'apixaban'],
   [/benzathine.*penicillin/i, 'benzathine-penicillin'],
   [/ceftriaxone/i, 'ceftriaxone'],
   [/dabigatran/i, 'dabigatran'],
+  [/digoxin|digitalis|lanoxin/i, 'digoxin'],
+  [/diltiazem|cardizem/i, 'diltiazem'],
   [/doxycycline/i, 'doxycycline'],
   [/edoxaban/i, 'edoxaban'],
   [/enoxaparin|LMWH|low.molecular/i, 'enoxaparin'],
   [/epinephrine|adrenaline/i, 'epinephrine'],
+  [/esmolol|brevibloc/i, 'esmolol'],
   [/lidocaine/i, 'lidocaine'],
+  [/magnesium sulfate|mag sulfate|MgSO4/i, 'magnesium-sulfate'],
+  [/metoprolol|lopressor|toprol/i, 'metoprolol'],
   [/aqueous.*penicillin|penicillin G.*IV|crystalline.*penicillin/i, 'penicillin-g-iv'],
   [/phenylephrine/i, 'phenylephrine'],
+  [/procainamide|pronestyl/i, 'procainamide'],
   [/procaine.*penicillin/i, 'procaine-penicillin'],
   [/rivaroxaban/i, 'rivaroxaban'],
   [/unfractionated heparin|^UFH$|heparin sodium/i, 'ufh'],
+  [/verapamil|calan|isoptin/i, 'verapamil'],
 ];
 
 /** Try to find a drug store ID from a drug name string. Returns undefined if no match. */
