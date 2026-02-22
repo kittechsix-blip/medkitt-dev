@@ -2,7 +2,7 @@
 // Network-first for code, cache-first for images
 // Ensures updates load immediately without manual cache clearing
 
-const CACHE_NAME = 'medkitt-v45';
+const CACHE_NAME = 'medkitt-v46';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -135,9 +135,9 @@ self.addEventListener('fetch', function(event) {
   }
 
   // Everything else (JS, HTML, CSS, JSON): network-first
-  // Guarantees fresh code on every visit when online
+  // Bypasses browser HTTP cache to guarantee truly fresh code
   event.respondWith(
-    fetch(event.request).then(function(networkResponse) {
+    fetch(event.request, { cache: 'no-cache' }).then(function(networkResponse) {
       if (networkResponse && networkResponse.status === 200) {
         var responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then(function(cache) {
