@@ -1,0 +1,270 @@
+{
+  "_comment": "MEDKITT LANDING PAGE CONFIG - Edit this file to update your credentials and demo content",
+  "_instructions": "After editing, run: cd ~/Desktop/medkitt && git add docs/config/ && git commit -m 'Update landing page config' && git push",
+  
+  "credentials": {
+    "name": "Dr. Andy Kitlowski",
+    "credentials": ["MD", "FACEP"],
+    "title": "Emergency Medicine Physician",
+    "role": "Co-Founder & Clinical Lead",
+    "bio": "Board-certified emergency physician with expertise in clinical decision support and emergency medicine informatics. Passionate about leveraging AI to improve patient care and reduce cognitive load for clinicians.",
+    "photoUrl": null,
+    "certifications": [
+      {
+        "abbreviation": "ABEM",
+        "name": "American Board of Emergency Medicine",
+        "organization": "American Board of Medical Specialties",
+        "year": 2018
+      },
+      {
+        "abbreviation": "FACEP",
+        "name": "Fellow of American College of Emergency Physicians",
+        "organization": "ACEP",
+        "year": 2020
+      },
+      {
+        "abbreviation": "ACLS",
+        "name": "Advanced Cardiac Life Support",
+        "organization": "AHA"
+      },
+      {
+        "abbreviation": "PALS",
+        "name": "Pediatric Advanced Life Support",
+        "organization": "AHA"
+      }
+    ],
+    "affiliations": [
+      {
+        "name": "Dell Seton Medical Center",
+        "location": "Austin, TX",
+        "type": "Level 1 Trauma Center"
+      },
+      {
+        "name": "UT Austin Dell Medical School",
+        "location": "Austin, TX",
+        "type": "Academic Affiliation"
+      }
+    ]
+  },
+
+  "demoWidget": {
+    "enabled": true,
+    "title": "Try It Now",
+    "subtitle": "Select a clinical scenario and ask questions just like you would in a real consult. No signup required.",
+    "scenarios": [
+      {
+        "id": "neurosyphilis",
+        "title": "Neurosyphilis Workup",
+        "description": "Suspected neurosyphilis in a patient with reactive syphilis serology and neurologic symptoms",
+        "patientInfo": {
+          "age": 42,
+          "sex": "Male",
+          "chiefComplaint": "Headache and vision changes",
+          "vitals": {
+            "bp": "138/84",
+            "hr": 88,
+            "rr": 16,
+            "spo2": 98,
+            "temp": 37.2
+          },
+          "history": ["Reactive RPR 1:128", "Confusion x 1 week", "Bilateral vision changes"]
+        },
+        "openingMessage": "I see a 42yo male with reactive syphilis serology (RPR 1:128), confusion, and bilateral vision changes. The key question: does this patient need a lumbar puncture to evaluate for neurosyphilis?",
+        "sampleQueries": [
+          "Does he need an LP?",
+          "What are the CSF criteria for neurosyphilis?",
+          "What is the treatment?"
+        ],
+        "responses": {
+          "lp|lumbar|puncture|csf": {
+            "content": "**Lumbar Puncture Decision — CDC 2021 Guidelines**\n\nPerform LP if ANY of the following:\n\n1. **Neurologic symptoms** (confusion, vision changes, headache)\n2. **Ocular symptoms** (uveitis, optic neuritis, vision loss)\n3. **Otologic symptoms** (hearing loss, tinnitus, vertigo)\n4. **Treatment failure** (rising titers after appropriate therapy)\n\n**This patient:** Has confusion + vision changes = **LP indicated**\n\n**CSF Studies to Send:**\n• CSF-VDRL (specific, but insensitive)\n• CSF FTA-ABS/TP-PA (highly sensitive)\n• CSF cell count and protein\n• CSF glucose",
+            "sources": ["CDC 2021 STI Treatment Guidelines"]
+          },
+          "treatment|therapy|penicillin": {
+            "content": "**Neurosyphilis Treatment — CDC 2021**\n\n**Aqueous Crystalline Penicillin G**\n• 18-24 million units IV daily\n• Given as 3-4 million units IV q4h OR continuous infusion\n• Duration: **10-14 days**\n\n**Alternative (if penicillin allergy):**\n• Desensitization to penicillin (preferred)\n• OR Ceftriaxone 2g IV daily x 10-14 days (limited data)\n\n**Follow-up:**\n• Recheck CSF at 6 months\n• CSF-VDRL should decrease or be nonreactive",
+            "sources": ["CDC 2021 STI Treatment Guidelines"]
+          },
+          "ocular|eye|vision|uveitis": {
+            "content": "**Ocular Syphilis Considerations**\n\nOcular syphilis is a form of neurosyphilis — **treat as CNS disease**\n\n**Key Points:**\n• Can affect any ocular structure (uveitis, optic neuritis, retinitis)\n• May occur at any stage of infection\n• LP recommended even without other neurologic symptoms\n• Urgent ophthalmology consult\n\n**Treatment:** Same as neurosyphilis (IV penicillin G)",
+            "sources": ["CDC 2021 STI Treatment Guidelines"]
+          },
+          "criteria|diagnosis|positive": {
+            "content": "**Neurosyphilis Diagnostic Criteria**\n\nDefinite neurosyphilis requires:\n\n1. **Reactive CSF-VDRL** (specific, but insensitive ~30-70%)\n   - OR reactive CSF FTA-ABS with elevated CSF WBC/protein\n\n2. **Elevated CSF WBC** (>5 cells/μL)\n\n3. **Elevated CSF protein** (>45 mg/dL)\n\n**Note:** CSF FTA-ABS is highly sensitive (~95%) but less specific — treponemal antibodies may persist after treatment.",
+            "sources": ["CDC 2021 STI Treatment Guidelines"]
+          },
+          "default": {
+            "content": "Based on this case of suspected neurosyphilis with neurologic symptoms, I recommend:\n\n1. **Perform LP** — indicated due to confusion and vision changes\n2. **Send CSF studies:** VDRL, FTA-ABS, cell count, protein, glucose\n3. **Start empiric IV penicillin G** 18-24 million units daily x 10-14 days\n4. **Ophthalmology consult** for vision changes\n5. **HIV testing** — concurrent HIV infection affects management\n\nWould you like details on CSF interpretation or treatment protocols?",
+            "sources": ["CDC 2021 STI Treatment Guidelines"]
+          }
+        }
+      },
+      {
+        "id": "pe-treatment",
+        "title": "PE Risk Stratification",
+        "description": "Hemodynamically stable patient with confirmed pulmonary embolism",
+        "patientInfo": {
+          "age": 67,
+          "sex": "Female",
+          "chiefComplaint": "Dyspnea and chest pain",
+          "vitals": {
+            "bp": "118/76",
+            "hr": 108,
+            "rr": 22,
+            "spo2": 92,
+            "temp": 37.1
+          },
+          "history": ["Recent hip surgery (2 weeks ago)", "CTPA confirmed submassive PE", "No hypotension"]
+        },
+        "openingMessage": "67yo female with submassive PE confirmed on CTPA. Hemodynamically stable currently. Key decision: risk stratification and whether to pursue systemic thrombolysis vs anticoagulation alone.",
+        "sampleQueries": [
+          "Is she high risk?",
+          "Should I give tPA?",
+          "What are the PESI criteria?"
+        ],
+        "responses": {
+          "risk|pesi|spesi|score": {
+            "content": "**Pulmonary Embolism Severity Index (PESI)**\n\n| Factor | Points |\n|--------|--------|\n| Age (years) | +1/year |\n| Male sex | +10 |\n| Cancer | +30 |\n| Heart failure | +20 |\n| Chronic lung disease | +20 |\n| HR >110 | +20 |\n| SBP <100 | +30 |\n| RR >30 | +20 |\n| Temp <36°C | +20 |\n| Altered mental status | +60 |\n| SpO2 <90% | +20 |\n\n**This patient:** Age 67 + HR 108 + SpO2 92% = **≥67 points (Class III-IV)**\n\n**sPESI simplified:** Age>80, cancer, CHF, CLD, HR>110, SBP<100, SpO2<90% = **≥1 point = higher risk**",
+            "sources": ["ESC 2019 Guidelines", "Aujesky et al."]
+          },
+          "tpa|thrombolysis|lysis|systemic": {
+            "content": "**Thrombolysis in Submassive PE — Risk Stratification**\n\n**Absolute indications (massive PE):**\n• Sustained hypotension (SBP <90 or drop ≥40 for >15 min)\n• Cardiogenic shock\n\n**Submassive PE — Consider thrombolysis if:**\n• RV dysfunction on echo/CT + elevated troponin/BDNP\n• Clinical deterioration despite anticoagulation\n• High PESI/sPESI score\n\n**This patient:** Submassive, hemodynamically stable →\n**Start anticoagulation** (heparin infusion or DOAC)\n**Monitor closely** for deterioration\n\n**Dell Seton protocol:** Systemic tPA only if massive PE or clinical decompensation.",
+            "sources": ["ESC 2019 Guidelines", "Dell Seton PE Protocol"]
+          },
+          "anticoagulation|heparin|apixaban|rivaroxaban|doac": {
+            "content": "**PE Anticoagulation Options**\n\n**Parenteral (initial):**\n• Unfractionated heparin — preferred if thrombolysis being considered\n• LMWH (enoxaparin) — if no anticipated procedures\n\n**Oral (maintenance):**\n• Apixaban 10mg BID x 7 days, then 5mg BID\n• Rivaroxaban 15mg BID x 21 days, then 20mg daily\n• DOACs preferred for hemodynamically stable patients\n\n**Duration:**\n• Provoked PE (surgery): 3 months\n• Unprovoked PE: Consider extended therapy\n\n**Contraindications to DOACs:**\n• Active bleeding, severe renal impairment, antiphospholipid syndrome",
+            "sources": ["CHEST 2021", "ESC 2019 Guidelines"]
+          },
+          "rv|right|ventricle|strain|echo": {
+            "content": "**RV Dysfunction in PE**\n\n**Echo findings:**\n• RV dilation (RV/LV ratio >0.9 or >1.0)\n• Septal flattening (D-sign)\n• McConnell's sign (RV free wall akinesis with apical sparing)\n• TR with elevated RVSP\n\n**CT findings:**\n• RV/LV diameter ratio >0.9\n• Septal bowing toward LV\n\n**Significance:** RV dysfunction indicates hemodynamic compromise and is associated with increased mortality. Consider escalation of care.",
+            "sources": ["ESC 2019 Guidelines"]
+          },
+          "default": {
+            "content": "This 67yo with confirmed submassive PE requires:\n\n1. **Immediate anticoagulation** — UFH infusion if considering thrombolysis, otherwise LMWH or DOAC\n2. **Risk stratification** — PESI score, RV assessment\n3. **Admission** — telemetry for monitoring\n4. **Contraindications check** — bleeding risk, recent surgery\n\n**Key decision:** Systemic thrombolysis NOT indicated currently (hemodynamically stable). Reserve for massive PE or clinical deterioration.\n\nWould you like help with anticoagulation dosing or monitoring parameters?",
+            "sources": ["ESC 2019 Guidelines", "Dell Seton PE Protocol"]
+          }
+        }
+      },
+      {
+        "id": "pneumothorax",
+        "title": "Pneumothorax POCUS",
+        "description": "Traumatic pneumothorax evaluation with point-of-care ultrasound",
+        "patientInfo": {
+          "age": 28,
+          "sex": "Male",
+          "chiefComplaint": "Chest pain after MVC",
+          "vitals": {
+            "bp": "132/84",
+            "hr": 96,
+            "rr": 20,
+            "spo2": 97,
+            "temp": 36.8
+          },
+          "history": ["MVC with steering wheel impact", "Right chest wall tenderness", "Decreased breath sounds right"]
+        },
+        "openingMessage": "28yo male s/p MVC with right chest trauma. Decreased breath sounds on the right. Bedside ultrasound shows absent lung sliding and a lung point. This is a traumatic pneumothorax.",
+        "sampleQueries": [
+          "Do I need a chest tube?",
+          "How big is it?",
+          "Can I observe?"
+        ],
+        "responses": {
+          "tube|chest|thoracostomy|drain": {
+            "content": "**Chest Tube Indications — Traumatic Pneumothorax**\n\n**Absolute indications:**\n• Respiratory distress or compromise\n• Hemodynamic instability\n• Tension physiology\n• Progressive enlargement on imaging\n\n**Relative indications (OBS vs TUBE):**\n• Size >2-3 cm at apex\n• Positive pressure ventilation required\n• Need for air transport\n• Patient unreliable for follow-up\n\n**This patient:** Small pneumothorax on POCUS, hemodynamically stable, not on ventilator → **May observe** with serial exams.\n\n**Observation criteria:**\n• Admit 12-24h for monitoring\n• Supplemental O2 (promotes reabsorption)\n• Repeat CXR in 6-12 hours\n• Immediate intervention if deterioration",
+            "sources": ["ATLS 10th Edition", "EAST Guidelines"]
+          },
+          "size|measure|cm|measurement": {
+            "content": "**Pneumothorax Size Estimation**\n\n**POCUS estimation:**\n• Small: <2 cm interpleural distance at apex\n• Large: >2 cm interpleural distance\n\n**Supine CXR (Collins method):**\n• Approximate size = 4.2 + (4.7 × A + B + C)\n  - A = interpleural distance at apex\n  - B = at mid-clavicular line\n  - C = at base\n\n**CT (most accurate):\n• Measures actual volume\n\n**Clinical significance:**\n• <2 cm (approx 15%): Often observe\n• >2 cm or clinical symptoms: Consider drainage",
+            "sources": ["EAST Guidelines"]
+          },
+          "observe|observation|watch|wait": {
+            "content": "**Observation Criteria for Traumatic Pneumothorax**\n\n**Candidates for observation:**\n✓ Small pneumothorax (<2 cm or <15%)\n✓ Hemodynamically stable\n✓ No respiratory distress\n✓ Not requiring positive pressure ventilation\n✓ Reliable patient with close follow-up\n\n**Observation protocol:**\n• Admit for monitoring (12-24 hours)\n• High-flow O2 (promotes nitrogen washout)\n• Serial physical exams\n• Repeat CXR in 6-12 hours\n\n**Stop points for observation:**\n✗ Clinical deterioration\n✗ PTX enlargement on repeat imaging\n✗ Need for positive pressure ventilation\n✗ Development of hemothorax",
+            "sources": ["EAST Guidelines"]
+          },
+          "poCUS|ultrasound|lung|sliding": {
+            "content": "**POCUS for Pneumothorax — Key Findings**\n\n**Normal lung:**\n• Lung sliding (seashore sign on M-mode)\n• Comet tail artifacts (B-lines)\n\n**Pneumothorax:**\n• **Absent lung sliding** — most sensitive\n• **Stratosphere sign** on M-mode (barcode sign)\n• **Lung point** — pathognomonic (100% specific)\n• Absent B-lines\n\n**Extended FAST views:**\n• Anterior 2nd-4th intercostal spaces (most sensitive for anterior PTX)\n• Include lateral chest wall for complete evaluation\n\n**Limitations:**\n• Subcutaneous emphysema obscures view\n• Lateral/small PTX may be missed anteriorly\n• Operator dependent",
+            "sources": ["ATLS 10th Edition", "ACEP POCUS Guidelines"]
+          },
+          "default": {
+            "content": "For this traumatic pneumothorax on POCUS:\n\n1. **Confirm findings** — Absent sliding + lung point = definite PTX\n2. **Assess size** — POCUS limited for size, get CXR/CT if clinical impact uncertain\n3. **Clinical status** — Stable vitals, no distress → observation likely appropriate\n4. **High-flow O2** — Promotes reabsorption\n5. **Monitor** — Serial exams, repeat imaging in 6-12 hours\n\n**Tube thoracostomy** indicated if: respiratory distress, enlargement, need for PPV, or hemothorax.\n\nWant specific guidance on chest tube size or insertion site?",
+            "sources": ["ATLS 10th Edition", "EAST Guidelines"]
+          }
+        }
+      },
+      {
+        "id": "echo-views",
+        "title": "Basic Echo Views",
+        "description": "Point-of-care echocardiography for cardiac assessment",
+        "patientInfo": {
+          "age": 55,
+          "sex": "Male",
+          "chiefComplaint": "Chest pain and hypotension",
+          "vitals": {
+            "bp": "88/56",
+            "hr": 112,
+            "rr": 24,
+            "spo2": 94,
+            "temp": 36.9
+          },
+          "history": ["Acute chest pain", "Hypotension", "JVD present"]
+        },
+        "openingMessage": "55yo male with chest pain and hypotension (88/56). JVD present. You need to perform a bedside echo to assess for pericardial effusion, RV dilation, and global LV function.",
+        "sampleQueries": [
+          "What are the basic views?",
+          "How do I see the effusion?",
+          "What is RV dilation?"
+        ],
+        "responses": {
+          "views|windows|basic|standard": {
+            "content": "**5 Essential POCUS Echo Views**\n\n**1. Parasternal Long Axis (PLAX)**\n• Probe: 3rd-4th LICS, left sternal border\n• Indicator to right shoulder\n• Shows: LV, LA, MV, AV, RVOT, pericardium\n\n**2. Parasternal Short Axis (PSAX)**\n• Rotate 90° from PLAX\n• Multiple levels: MV, papillary muscles, apex\n• Shows: LV function (circular), septal motion\n\n**3. Apical 4-Chamber (A4C)**\n• Probe: cardiac apex (5th ICS, MCL)\n• Indicator to left shoulder\n• Shows: All 4 chambers, AV valves, pericardium\n\n**4. Subcostal 4-Chamber**\n• Probe: subxiphoid, flat orientation\n• Indicator to left\n• Shows: All 4 chambers, IVC, pericardium\n\n**5. IVC View**\n• From subcostal, rotate to long axis of IVC\n• Shows: IVC size and collapsibility",
+            "sources": ["ACEP POCUS Guidelines", "ASE Guidelines"]
+          },
+          "effusion|tamponade|pericardial": {
+            "content": "**Pericardial Effusion on POCUS**\n\n**Appearance:**\n• Anechoic (black) stripe surrounding heart\n• Usually most prominent dependent (posterior/inferior)\n\n**Quantification:**\n• Small: <1 cm\n• Moderate: 1-2 cm\n• Large: >2 cm\n\n**Tamponade findings:**\n• RA collapse (systole) — earliest\n• RV collapse (diastole) — more specific\n• IVC plethora (dilated, <50% collapsible)\n• Swinging heart (large effusions)\n\n**Best views:**\n• Subcostal (most dependent, often largest)\n• PLAX (posterior effusion)\n• A4C (inferior/lateral effusion)",
+            "sources": ["ACEP POCUS Guidelines"]
+          },
+          "rv|right|ventricle|dilation|strain": {
+            "content": "**RV Assessment on POCUS**\n\n**Normal RV:**\n• Smaller than LV (RV:LV ratio <0.6)\n• Crescent-shaped in PSAX\n• Free wall thickness <5mm\n\n**RV Dilation (acute pressure overload):**\n• RV:LV ratio >1.0 (A4C or PSAX)\n• Septal flattening (D-sign in PSAX)\n• McConnell's sign: RV free wall akinesis with apical sparing\n\n**Common causes of acute RV dilation:**\n• Massive/submassive PE (most common in ED)\n• RV infarct (inferior MI with ST elevation)\n\n**Best views:**\n• A4C (RV:LV size comparison)\n• PSAX (septal motion, D-sign)",
+            "sources": ["ACEP POCUS Guidelines", "ESC Echo Guidelines"]
+          },
+          "lv|left|ventricle|function|ef": {
+            "content": "**LV Function Assessment**\n\n**Qualitative (eyeball method):**\n• Hyperdynamic: Endocardial surfaces nearly touch\n• Normal: EF 50-70%, good wall motion\n• Reduced: EF 30-50%, hypokinesis\n• Severely reduced: EF <30%, minimal contraction\n\n**Quantitative estimates:**\n• Fractional shortening: (LVEDD - LVESD)/LVEDD (normal 25-45%)\n• Visual EF estimation (practice required)\n\n**Wall motion abnormalities:**\n• Anterior/septal: LAD territory\n• Inferior: RCA territory\n• Lateral: LCx territory\n\n**Best views:**\n• PLAX (anterior septum, posterior wall)\n• PSAX (all segments at different levels)\n• A4C (lateral wall, apex)",
+            "sources": ["ACEP POCUS Guidelines", "ASE Guidelines"]
+          },
+          "default": {
+            "content": "For this hypotensive patient with chest pain:\n\n1. **Start with subcostal view** — best for pericardial effusion (patient supine, pain allowing)\n2. **Check for effusion/tamponade** — anechoic stripe, RA/RV collapse\n3. **Assess RV size** — PE can cause acute RV dilation\n4. **Evaluate LV function** — is this cardiogenic shock?\n5. **IVC for volume status** — dilated, non-collapsible = high CVP\n\n**Differential based on echo findings:**\n• Effusion with tamponade → Pericardiocentesis\n• RV dilation with septal shift → Massive PE\n• Severe LV dysfunction → Cardiogenic shock\n\nNeed help with a specific view or finding?",
+            "sources": ["ACEP POCUS Guidelines"]
+          }
+        }
+      }
+    ]
+  },
+
+  "trustBadges": [
+    {
+      "icon": "✓",
+      "title": "Clinical Decision Support",
+      "description": "Evidence-based algorithms aligned with current guidelines"
+    },
+    {
+      "icon": "✎",
+      "title": "Peer-Reviewed Content",
+      "description": "All clinical content reviewed by board-certified physicians"
+    },
+    {
+      "icon": "🔒",
+      "title": "HIPAA Compliant",
+      "description": "Enterprise-grade security and privacy protection"
+    },
+    {
+      "icon": "⚕",
+      "title": "Built by Physicians",
+      "description": "Designed by clinicians who understand the workflow"
+    }
+  ],
+
+  "seo": {
+    "title": "MedKitt — Clinical Consults, Solved",
+    "description": "Evidence-based clinical decision support for healthcare professionals. Guided consults built on current evidence, accessible in 60 seconds.",
+    "keywords": "clinical decision support, emergency medicine, medical consults, healthcare AI, physician tools"
+  }
+}

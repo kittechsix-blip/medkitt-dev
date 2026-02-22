@@ -2860,3 +2860,12 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
+/* Response Sources */
+.response-sources {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+}
