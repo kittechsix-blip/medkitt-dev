@@ -5,53 +5,62 @@
       <stop offset="0%" style="stop-color:#16162c;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#0f0f1a;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="pulseGrad180" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#00f5c4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
+    <linearGradient id="ecgGrad180" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#E0E0E0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C0C0C0;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="bronzeRim180" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#B87333;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#8B6914;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
     </linearGradient>
   </defs>
-  
+
   <!-- Background -->
   <rect width="180" height="180" fill="url(#bgGrad180)" rx="45"/>
-  
-  <!-- Decorative corner elements -->
-  <path d="M28 42 L28 28 L42 28" fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-  <path d="M152 42 L152 28 L138 28" fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-  <path d="M28 138 L28 152 L42 152" fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-  <path d="M152 138 L152 152 L138 152" fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-  
-  <!-- Main circular container with FULL teal outline -->
-  <circle cx="90" cy="90" r="56" fill="#0f0f1a"/>
-  <circle cx="90" cy="90" r="52" fill="none" stroke="#00d4aa" stroke-width="4"/>
-  
-  <!-- Pulse/ECG Line with EXTRA WAVE (P-wave + QRS + T-wave) -->
-  <!-- P-wave (small bump) -->
-  <polyline points="34,90 45,90 51,84 57,90" 
-            fill="none" stroke="url(#pulseGrad180)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  
+
+  <!-- Decorative corner elements - bronze -->
+  <path d="M28 42 L28 28 L42 28" fill="none" stroke="#B87333" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M152 42 L152 28 L138 28" fill="none" stroke="#B87333" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M28 138 L28 152 L42 152" fill="none" stroke="#B87333" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M152 138 L152 152 L138 152" fill="none" stroke="#B87333" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Forest green filled circle -->
+  <circle cx="90" cy="90" r="56" fill="#2E5A2E"/>
+
+  <!-- Bronze metallic rim -->
+  <circle cx="90" cy="90" r="52" fill="none" stroke="url(#bronzeRim180)" stroke-width="4"/>
+
+  <!-- Branching pathway base -->
+  <line x1="34" y1="90" x2="45" y2="90" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>
+
+  <!-- P-wave -->
+  <polyline points="45,90 51,90 54,84 57,90"
+            fill="none" stroke="url(#ecgGrad180)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
   <!-- PR segment -->
-  <line x1="57" y1="90" x2="63" y2="90" stroke="url(#pulseGrad180)" stroke-width="4" stroke-linecap="round"/>
-  
-  <!-- QRS complex (main heartbeat spike) -->
-  <polyline points="63,90 69,90 75,66 87,114 93,90 105,90" 
-            fill="none" stroke="url(#pulseGrad180)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  
+  <line x1="57" y1="90" x2="63" y2="90" stroke="url(#ecgGrad180)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- QRS complex -->
+  <polyline points="63,90 69,90 75,66 87,114 93,90 105,90"
+            fill="none" stroke="url(#ecgGrad180)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
   <!-- ST segment -->
-  <line x1="105" y1="90" x2="111" y2="90" stroke="url(#pulseGrad180)" stroke-width="4" stroke-linecap="round"/>
-  
-  <!-- T-wave (smaller wave after QRS) -->
-  <polyline points="111,90 117,78 123,90 129,90" 
-            fill="none" stroke="url(#pulseGrad180)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  
-  <!-- Branching decision lines -->
-  <line x1="129" y1="90" x2="141" y2="72" stroke="#00d4aa" stroke-width="3" stroke-linecap="round"/>
-  <line x1="129" y1="90" x2="141" y2="108" stroke="#00d4aa" stroke-width="3" stroke-linecap="round"/>
-  
-  <!-- Decision node dots -->
-  <circle cx="45" cy="90" r="4" fill="#00d4aa"/>
-  <circle cx="90" cy="90" r="4" fill="#00d4aa"/>
-  <circle cx="129" cy="90" r="4" fill="#00d4aa"/>
-  <circle cx="141" cy="72" r="3" fill="#00d4aa"/>
-  <circle cx="141" cy="108" r="3" fill="#00d4aa"/>
+  <line x1="105" y1="90" x2="111" y2="90" stroke="url(#ecgGrad180)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- T-wave -->
+  <polyline points="111,90 117,78 123,90 129,90"
+            fill="none" stroke="url(#ecgGrad180)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Branches -->
+  <line x1="129" y1="90" x2="141" y2="72" stroke="url(#ecgGrad180)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="129" y1="90" x2="141" y2="108" stroke="url(#ecgGrad180)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Decision nodes - bright green -->
+  <circle cx="45" cy="90" r="4" fill="#4ADE80"/>
+  <circle cx="129" cy="90" r="4" fill="#4ADE80"/>
+  <circle cx="141" cy="72" r="3" fill="#4ADE80"/>
+  <circle cx="141" cy="108" r="3" fill="#4ADE80"/>
 </svg>

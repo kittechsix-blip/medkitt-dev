@@ -22,8 +22,8 @@
 
 | Token | Hex | Role | Used For |
 |-------|-----|------|----------|
-| `--color-primary` | `#00d4aa` | Teal — primary action | Active states, dose highlights, CTAs |
-| `--color-primary-dark` | `#00b894` | Teal dark — hover | Primary button hover |
+| `--color-primary` | `#3CB371` | Forest green — primary action | Active states, dose highlights, CTAs |
+| `--color-primary-dark` | `#2E8B57` | Sea green — hover | Primary button hover |
 | `--color-danger` | `#ff4757` | Red — urgent/critical | LP required, treat now, critical alerts |
 | `--color-warning` | `#ffa502` | Orange — caution | Consider LP, borderline results |
 | `--color-info` | `#3498db` | Blue — informational | Decision branch points, info panels |
@@ -33,7 +33,7 @@
 | Node Type | Background | Border | Text Color |
 |-----------|-----------|--------|------------|
 | Question | `rgba(52, 152, 219, 0.1)` | `--color-info` | `--color-text` |
-| Action/Result (routine) | `rgba(0, 212, 170, 0.1)` | `--color-primary` | `--color-text` |
+| Action/Result (routine) | `rgba(60, 179, 113, 0.1)` | `--color-primary` | `--color-text` |
 | Action/Result (urgent) | `rgba(255, 71, 87, 0.1)` | `--color-danger` | `--color-text` |
 | Action/Result (consider) | `rgba(255, 165, 2, 0.1)` | `--color-warning` | `--color-text` |
 | Info/Reference | `var(--color-surface)` | `--color-border` | `--color-text-muted` |

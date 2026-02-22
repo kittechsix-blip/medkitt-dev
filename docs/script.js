@@ -172,7 +172,7 @@ function handleVote(id, button, countEl) {
         
         // Animate vote count
         countEl.style.transform = 'scale(1.3)';
-        countEl.style.color = '#00d4aa';
+        countEl.style.color = '#3CB371';
         setTimeout(() => {
             countEl.style.transform = 'scale(1)';
             countEl.style.color = '';

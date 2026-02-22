@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-  <!-- Main circular container with FULL teal outline -->
-  <circle cx="8" cy="8" r="7.5" fill="#0f0f1a"/>
-  <circle cx="8" cy="8" r="6.5" fill="none" stroke="#00d4aa" stroke-width="1"/>
-  
-  <!-- Simplified pulse/ECG line with extra wave for tiny size -->
-  <!-- Combined P-QRS-T wave pattern -->
-  <polyline points="2,8 4,8 5,6 6,8 7,5 8,11 9,8 11,8 12,6 13,8 14,8" 
-            fill="none" stroke="#00d4aa" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-  
-  <!-- Tiny decision node dot -->
-  <circle cx="8" cy="8" r="0.8" fill="#00d4aa"/>
+  <!-- Forest green filled circle -->
+  <circle cx="8" cy="8" r="7.5" fill="#2E5A2E"/>
+
+  <!-- Bronze rim -->
+  <circle cx="8" cy="8" r="6.5" fill="none" stroke="#B87333" stroke-width="1"/>
+
+  <!-- Silver/white ECG line -->
+  <polyline points="2,8 4,8 5,6 6,8 7,5 8,11 9,8 11,8 12,6 13,8 14,8"
+            fill="none" stroke="#D0D0D0" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Tiny decision node dot - bright green -->
+  <circle cx="8" cy="8" r="0.8" fill="#4ADE80"/>
 </svg>

@@ -51,10 +51,11 @@ Each session:
 ## Design System
 
 - Dark theme: `--color-bg: #0f0f1a`, `--color-surface: #1a1a2e`
-- Primary action: `--color-primary: #00d4aa` (teal)
+- Primary action: `--color-primary: #3CB371` (forest green)
+- Accent: `--color-umber-light: #B87333` (copper/bronze)
 - Urgency: `--color-danger: #ff4757` (red), `--color-warning: #ffa502` (orange)
 - Decisions: `--color-info: #3498db` (blue)
-- Dosing values: `.dose-highlight` class (monospace teal pill)
+- Dosing values: `.dose-highlight` class (monospace green pill)
 - Full palette in `FRONTEND_GUIDELINES.md`
 
 ## Clinical Content

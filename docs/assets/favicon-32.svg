@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <!-- Main circular container with FULL teal outline -->
-  <circle cx="16" cy="16" r="15" fill="#0f0f1a"/>
-  <circle cx="16" cy="16" r="13" fill="none" stroke="#00d4aa" stroke-width="1.5"/>
-  
-  <!-- Pulse/ECG Line with EXTRA WAVE (simplified for small size) -->
-  <!-- P-wave (small bump) -->
-  <polyline points="4,16 7,16 8,14 9,16" 
-            fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  
+  <defs>
+    <linearGradient id="bronzeRim32" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#B87333;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Forest green filled circle -->
+  <circle cx="16" cy="16" r="15" fill="#2E5A2E"/>
+
+  <!-- Bronze metallic rim -->
+  <circle cx="16" cy="16" r="13" fill="none" stroke="url(#bronzeRim32)" stroke-width="1.5"/>
+
+  <!-- Silver/white ECG line -->
+  <!-- P-wave -->
+  <polyline points="4,16 7,16 8,14 9,16"
+            fill="none" stroke="#D0D0D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
   <!-- PR segment -->
-  <line x1="9" y1="16" x2="11" y2="16" stroke="#00d4aa" stroke-width="1.5" stroke-linecap="round"/>
-  
-  <!-- QRS complex (main heartbeat spike) -->
-  <polyline points="11,16 12,16 13,11 15,21 16,16 18,16" 
-            fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  
+  <line x1="9" y1="16" x2="11" y2="16" stroke="#D0D0D0" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- QRS complex -->
+  <polyline points="11,16 12,16 13,11 15,21 16,16 18,16"
+            fill="none" stroke="#D0D0D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
   <!-- ST segment -->
-  <line x1="18" y1="16" x2="20" y2="16" stroke="#00d4aa" stroke-width="1.5" stroke-linecap="round"/>
-  
-  <!-- T-wave (smaller wave after QRS) -->
-  <polyline points="20,16 21,13 22,16 24,16" 
-            fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  
-  <!-- Branching decision lines -->
-  <line x1="24" y1="16" x2="27" y2="12" stroke="#00d4aa" stroke-width="1" stroke-linecap="round"/>
-  <line x1="24" y1="16" x2="27" y2="20" stroke="#00d4aa" stroke-width="1" stroke-linecap="round"/>
-  
-  <!-- Decision node dots (smaller for favicon) -->
-  <circle cx="7" cy="16" r="1" fill="#00d4aa"/>
-  <circle cx="16" cy="16" r="1" fill="#00d4aa"/>
-  <circle cx="24" cy="16" r="1" fill="#00d4aa"/>
+  <line x1="18" y1="16" x2="20" y2="16" stroke="#D0D0D0" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- T-wave -->
+  <polyline points="20,16 21,13 22,16 24,16"
+            fill="none" stroke="#D0D0D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Branches -->
+  <line x1="24" y1="16" x2="27" y2="12" stroke="#D0D0D0" stroke-width="1" stroke-linecap="round"/>
+  <line x1="24" y1="16" x2="27" y2="20" stroke="#D0D0D0" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Decision nodes - bright green -->
+  <circle cx="7" cy="16" r="1" fill="#4ADE80"/>
+  <circle cx="16" cy="16" r="1" fill="#4ADE80"/>
+  <circle cx="24" cy="16" r="1" fill="#4ADE80"/>
 </svg>

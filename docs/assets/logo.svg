@@ -2,59 +2,61 @@
 <svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:0.8" />
-      <stop offset="50%" style="stop-color:#00d4aa;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.8" />
+      <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#E0E0E0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C0C0C0;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="bronzeRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#B87333;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#8B6914;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
     </linearGradient>
   </defs>
-  
+
   <!-- Icon: Pulse/ECG + Branching Decision -->
   <g transform="translate(20, 20)">
-    <!-- Dark background circle -->
-    <circle cx="40" cy="40" r="38" fill="#0f0f1a"/>
-    
-    <!-- Full teal circle outline -->
-    <circle cx="40" cy="40" r="36" fill="none" stroke="#00d4aa" stroke-width="2.5"/>
-    
+    <!-- Forest green filled circle -->
+    <circle cx="40" cy="40" r="38" fill="#2E5A2E"/>
+
+    <!-- Bronze metallic rim -->
+    <circle cx="40" cy="40" r="36" fill="none" stroke="url(#bronzeRim)" stroke-width="2.5"/>
+
     <!-- Branching pathway base -->
-    <line x1="8" y1="40" x2="18" y2="40" stroke="#2d2d52" stroke-width="2.5"/>
-    
-    <!-- Pulse/ECG line with extra wave (P-wave + QRS + T-wave pattern) -->
-    <!-- P-wave (small bump before main complex) -->
-    <polyline points="18,40 22,40 24,36 26,40" 
-              fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    
+    <line x1="8" y1="40" x2="18" y2="40" stroke="rgba(255,255,255,0.15)" stroke-width="2.5"/>
+
+    <!-- P-wave -->
+    <polyline points="18,40 22,40 24,36 26,40"
+              fill="none" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
     <!-- PR segment -->
-    <line x1="26" y1="40" x2="30" y2="40" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
-    
-    <!-- QRS complex (main heartbeat spike) -->
-    <polyline points="30,40 32,40 34,32 38,48 40,40 44,40" 
-              fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    
+    <line x1="26" y1="40" x2="30" y2="40" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- QRS complex -->
+    <polyline points="30,40 32,40 34,32 38,48 40,40 44,40"
+              fill="none" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
     <!-- ST segment -->
-    <line x1="44" y1="40" x2="48" y2="40" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
-    
-    <!-- T-wave (smaller wave after QRS) -->
-    <polyline points="48,40 50,36 52,40 56,40" 
-              fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    
-    <!-- Branch 2: Down - continuation -->
-    <line x1="56" y1="40" x2="62" y2="28" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="56" y1="40" x2="62" y2="52" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
-    
+    <line x1="44" y1="40" x2="48" y2="40" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- T-wave -->
+    <polyline points="48,40 50,36 52,40 56,40"
+              fill="none" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Branches -->
+    <line x1="56" y1="40" x2="62" y2="28" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="56" y1="40" x2="62" y2="52" stroke="url(#ecgGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
     <!-- Decision nodes -->
-    <circle cx="18" cy="40" r="2.5" fill="#00d4aa"/>
-    <circle cx="56" cy="40" r="2.5" fill="#00d4aa"/>
-    <circle cx="62" cy="28" r="2.5" fill="#00d4aa"/>
-    <circle cx="62" cy="52" r="2.5" fill="#00d4aa"/>
+    <circle cx="18" cy="40" r="2.5" fill="#4ADE80"/>
+    <circle cx="56" cy="40" r="2.5" fill="#4ADE80"/>
+    <circle cx="62" cy="28" r="2.5" fill="#4ADE80"/>
+    <circle cx="62" cy="52" r="2.5" fill="#4ADE80"/>
   </g>
-  
+
   <!-- Wordmark -->
-  <text x="110" y="58" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+  <text x="110" y="58" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"
         font-size="48" font-weight="700" fill="#ffffff" letter-spacing="-0.02em">Med</text>
-  <text x="212" y="58" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="48" font-weight="800" fill="#00d4aa" letter-spacing="-0.02em">Kitt</text>
-  
-  <text x="112" y="82" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="13" font-weight="500" fill="#8b92b9" letter-spacing="0.05em">CLINICAL CONSULT</text>
+  <text x="212" y="58" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="48" font-weight="800" fill="#3CB371" letter-spacing="-0.02em">Kitt</text>
 </svg>

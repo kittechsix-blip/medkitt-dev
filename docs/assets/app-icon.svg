@@ -19,11 +19,19 @@
       </feMerge>
     </filter>
 
-    <!-- ECG pulse gradient -->
+    <!-- ECG pulse gradient - silver/white on green bg -->
     <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:0.9" />
-      <stop offset="50%" style="stop-color:#00E5B9;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.9" />
+      <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#E0E0E0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C0C0C0;stop-opacity:0.9" />
+    </linearGradient>
+
+    <!-- Bronze rim gradient -->
+    <linearGradient id="bronzeRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#B87333;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#8B6914;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
     </linearGradient>
 
     <!-- Icon circle glow -->
@@ -42,26 +50,26 @@
       <stop offset="100%" style="stop-color:#FFFFFF" />
     </linearGradient>
 
-    <!-- "Kitt" gradient -->
+    <!-- "Kitt" gradient - bright green to deep forest -->
     <linearGradient id="kittGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00E5B9" />
-      <stop offset="40%" style="stop-color:#00C896" />
+      <stop offset="0%" style="stop-color:#4ADE80" />
+      <stop offset="40%" style="stop-color:#38A169" />
       <stop offset="70%" style="stop-color:#2E8B57" />
-      <stop offset="100%" style="stop-color:#228B22" />
+      <stop offset="100%" style="stop-color:#1B5E20" />
     </linearGradient>
 
-    <!-- Burnt umber gradient -->
-    <linearGradient id="umberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#A0522D" />
-      <stop offset="50%" style="stop-color:#8B4513" />
-      <stop offset="100%" style="stop-color:#8B4513" />
+    <!-- Bronze/copper accent gradient -->
+    <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B87333" />
+      <stop offset="50%" style="stop-color:#8B6914" />
+      <stop offset="100%" style="stop-color:#8B6914" />
     </linearGradient>
 
-    <!-- Umber shine -->
-    <linearGradient id="umberShine" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#CD853F;stop-opacity:0.5" />
-      <stop offset="50%" style="stop-color:#A0522D;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:0.4" />
+    <!-- Bronze shine -->
+    <linearGradient id="bronzeShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:0.5" />
+      <stop offset="50%" style="stop-color:#B87333;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#8B6914;stop-opacity:0.4" />
     </linearGradient>
   </defs>
 
@@ -70,14 +78,14 @@
 
   <!-- ==================== PULSE CIRCLE ICON ==================== -->
   <g transform="translate(176, 60)" filter="url(#dropShadow)">
-    <!-- Dark background circle -->
-    <circle cx="80" cy="80" r="76" fill="#0f0f1a"/>
+    <!-- Forest green filled circle -->
+    <circle cx="80" cy="80" r="76" fill="#2E5A2E"/>
 
-    <!-- Teal circle outline -->
-    <circle cx="80" cy="80" r="72" fill="none" stroke="#00d4aa" stroke-width="5" filter="url(#iconGlow)"/>
+    <!-- Bronze/copper circle rim -->
+    <circle cx="80" cy="80" r="72" fill="none" stroke="url(#bronzeRim)" stroke-width="5" filter="url(#iconGlow)"/>
 
     <!-- Branching pathway base -->
-    <line x1="16" y1="80" x2="36" y2="80" stroke="#2d2d52" stroke-width="5"/>
+    <line x1="16" y1="80" x2="36" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
 
     <!-- P-wave -->
     <polyline points="36,80 44,80 48,72 52,80"
@@ -101,12 +109,12 @@
     <line x1="120" y1="80" x2="132" y2="56" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round"/>
     <line x1="120" y1="80" x2="132" y2="104" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round"/>
 
-    <!-- Decision nodes -->
-    <circle cx="36" cy="80" r="5" fill="#00E5B9"/>
-    <circle cx="108" cy="80" r="5" fill="#00E5B9"/>
-    <circle cx="120" cy="80" r="5" fill="#00E5B9"/>
-    <circle cx="132" cy="56" r="5" fill="#00E5B9"/>
-    <circle cx="132" cy="104" r="5" fill="#00E5B9"/>
+    <!-- Decision nodes - bright green -->
+    <circle cx="36" cy="80" r="5" fill="#4ADE80"/>
+    <circle cx="108" cy="80" r="5" fill="#4ADE80"/>
+    <circle cx="120" cy="80" r="5" fill="#4ADE80"/>
+    <circle cx="132" cy="56" r="5" fill="#4ADE80"/>
+    <circle cx="132" cy="104" r="5" fill="#4ADE80"/>
   </g>
 
   <!-- ==================== WORDMARK ==================== -->
@@ -114,10 +122,10 @@
         font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
         font-size="100" letter-spacing="-0.02em"><tspan font-weight="700" fill="url(#medGrad)">Med</tspan><tspan font-weight="800" fill="url(#kittGrad)">Kitt</tspan></text>
 
-  <!-- ==================== BURNT UMBER ACCENT LINE ==================== -->
+  <!-- ==================== BRONZE ACCENT LINE ==================== -->
   <g transform="translate(111, 366)">
-    <rect x="0" y="0" width="290" height="6" rx="3" ry="3" fill="url(#umberGrad)"/>
-    <rect x="0" y="0" width="290" height="6" rx="3" ry="3" fill="url(#umberShine)" style="mix-blend-mode: overlay;"/>
-    <rect x="1" y="0.5" width="288" height="2" rx="1" ry="1" fill="#CD853F" fill-opacity="0.5"/>
+    <rect x="0" y="0" width="290" height="6" rx="3" ry="3" fill="url(#bronzeGrad)"/>
+    <rect x="0" y="0" width="290" height="6" rx="3" ry="3" fill="url(#bronzeShine)" style="mix-blend-mode: overlay;"/>
+    <rect x="1" y="0.5" width="288" height="2" rx="1" ry="1" fill="#D4A574" fill-opacity="0.5"/>
   </g>
 </svg>

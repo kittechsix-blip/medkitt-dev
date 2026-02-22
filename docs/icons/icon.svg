@@ -5,10 +5,16 @@
       <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#0f0f1a;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="pulseGrad192" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#00E5B9;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    <linearGradient id="ecgGrad192" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#E0E0E0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C0C0C0;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="bronzeRim192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#B87333;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#8B6914;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
     </linearGradient>
     <filter id="glow192" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -18,28 +24,32 @@
       </feMerge>
     </filter>
   </defs>
-  
+
   <!-- Background -->
   <rect width="192" height="192" fill="url(#bgGrad192)" rx="48"/>
-  
-  <!-- Main circle -->
-  <circle cx="96" cy="96" r="56" fill="#0f0f1a" stroke="#00E5B9" stroke-width="4" filter="url(#glow192)"/>
-  
-  <!-- Pulse line with P-wave, QRS, T-wave -->
-  <polyline points="36,96 48,96 54,90 60,96 66,96 72,96 78,72 90,120 96,96 108,96" 
-            fill="none" stroke="url(#pulseGrad192)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow192)"/>
-  <line x1="108" y1="96" x2="114" y2="96" stroke="url(#pulseGrad192)" stroke-width="4" stroke-linecap="round"/>
-  <polyline points="114,96 120,84 126,96 128,96" 
-            fill="none" stroke="url(#pulseGrad192)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow192)"/>
-  
+
+  <!-- Forest green filled circle -->
+  <circle cx="96" cy="96" r="56" fill="#2E5A2E"/>
+
+  <!-- Bronze metallic rim -->
+  <circle cx="96" cy="96" r="52" fill="none" stroke="url(#bronzeRim192)" stroke-width="4" filter="url(#glow192)"/>
+
+  <!-- Silver/white ECG line -->
+  <line x1="36" y1="96" x2="48" y2="96" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>
+  <polyline points="48,96 54,96 57,90 60,96 66,96 72,96 78,72 90,120 96,96 108,96"
+            fill="none" stroke="url(#ecgGrad192)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow192)"/>
+  <line x1="108" y1="96" x2="114" y2="96" stroke="url(#ecgGrad192)" stroke-width="4" stroke-linecap="round"/>
+  <polyline points="114,96 120,84 126,96 128,96"
+            fill="none" stroke="url(#ecgGrad192)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow192)"/>
+
   <!-- Branches -->
-  <line x1="132" y1="96" x2="144" y2="78" stroke="#00E5B9" stroke-width="3" stroke-linecap="round"/>
-  <line x1="132" y1="96" x2="144" y2="114" stroke="#00E5B9" stroke-width="3" stroke-linecap="round"/>
-  
-  <!-- Nodes -->
-  <circle cx="48" cy="96" r="4" fill="#00E5B9"/>
-  <circle cx="128" cy="96" r="4" fill="#00E5B9"/>
-  <circle cx="132" cy="96" r="4" fill="#00E5B9"/>
-  <circle cx="144" cy="78" r="3" fill="#00E5B9"/>
-  <circle cx="144" cy="114" r="3" fill="#00E5B9"/>
+  <line x1="132" y1="96" x2="144" y2="78" stroke="url(#ecgGrad192)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="132" y1="96" x2="144" y2="114" stroke="url(#ecgGrad192)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Decision nodes - bright green -->
+  <circle cx="48" cy="96" r="4" fill="#4ADE80"/>
+  <circle cx="128" cy="96" r="4" fill="#4ADE80"/>
+  <circle cx="132" cy="96" r="4" fill="#4ADE80"/>
+  <circle cx="144" cy="78" r="3" fill="#4ADE80"/>
+  <circle cx="144" cy="114" r="3" fill="#4ADE80"/>
 </svg>
