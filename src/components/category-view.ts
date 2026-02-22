@@ -59,7 +59,7 @@ export function renderCategoryView(container: HTMLElement, categoryId: string): 
 }
 
 /** Render the list of decision trees */
-function renderTreeList(container: HTMLElement, trees: { id: string; title: string; subtitle: string; nodeCount: number }[]): void {
+function renderTreeList(container: HTMLElement, trees: { id: string; title: string; subtitle: string; nodeCount: number; entryNodeId: string }[]): void {
   const list = document.createElement('div');
   list.className = 'tree-list';
 
@@ -69,6 +69,9 @@ function renderTreeList(container: HTMLElement, trees: { id: string; title: stri
     card.setAttribute('aria-label', `${tree.title} — ${tree.subtitle}`);
 
     card.addEventListener('click', () => {
+      if (tree.entryNodeId) {
+        sessionStorage.setItem('medkitt-tree-entry', tree.entryNodeId);
+      }
       router.navigate(`/tree/${tree.id}`);
     });
 

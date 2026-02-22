@@ -98,10 +98,15 @@ export function renderTreeWizard(container: HTMLElement, treeId: string): void {
   currentConfig = config;
   engine = new TreeEngine(config.nodes);
 
+  // Check for category-specific entry point override
+  const entryOverride = sessionStorage.getItem('medkitt-tree-entry');
+  sessionStorage.removeItem('medkitt-tree-entry');
+  const entryNodeId = entryOverride || config.entryNodeId;
+
   // Try to restore a saved session
   const restored = engine.restoreSession(treeId);
   if (!restored) {
-    engine.startTree(treeId, config.entryNodeId);
+    engine.startTree(treeId, entryNodeId);
   }
 
   renderCurrentNode(container);
