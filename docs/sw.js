@@ -2,7 +2,7 @@
 // Network-first for code, cache-first for images
 // Ensures updates load immediately without manual cache clearing
 
-const CACHE_NAME = 'medkitt-v49';
+const CACHE_NAME = 'medkitt-v50';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -92,18 +92,30 @@ self.addEventListener('install', function(event) {
   self.skipWaiting();
 });
 
-// Activate: clean up old caches
+// Activate: clean up old caches, then force-reload open tabs on upgrade
+// This solves the chicken-and-egg problem: old app.js may not have
+// controllerchange listener, so the SW forces the reload from its side.
 self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
+      var oldCaches = cacheNames.filter(function(name) { return name !== CACHE_NAME; });
+      var isUpgrade = oldCaches.length > 0;
       return Promise.all(
-        cacheNames
-          .filter(function(name) { return name !== CACHE_NAME; })
-          .map(function(name) { return caches.delete(name); })
-      );
+        oldCaches.map(function(name) { return caches.delete(name); })
+      ).then(function() {
+        return self.clients.claim();
+      }).then(function() {
+        // Force-reload all open tabs so they pick up the new code
+        if (isUpgrade) {
+          return self.clients.matchAll({ type: 'window' }).then(function(windowClients) {
+            windowClients.forEach(function(client) {
+              client.navigate(client.url);
+            });
+          });
+        }
+      });
     })
   );
-  self.clients.claim();
 });
 
 // Fetch: network-first for code/data, cache-first for images/assets
