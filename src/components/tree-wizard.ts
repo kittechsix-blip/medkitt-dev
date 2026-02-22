@@ -85,6 +85,7 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
 let engine: TreeEngine | null = null;
 let currentTreeId: string | null = null;
 let currentConfig: TreeConfig | null = null;
+let currentEntryNodeId: string | null = null;
 
 /** Initialize and render the wizard for a given tree */
 export function renderTreeWizard(container: HTMLElement, treeId: string): void {
@@ -102,6 +103,7 @@ export function renderTreeWizard(container: HTMLElement, treeId: string): void {
   const entryOverride = sessionStorage.getItem('medkitt-tree-entry');
   sessionStorage.removeItem('medkitt-tree-entry');
   const entryNodeId = entryOverride || config.entryNodeId;
+  currentEntryNodeId = entryNodeId;
 
   // If entry override differs from default, always start fresh at that entry
   if (entryOverride && entryOverride !== config.entryNodeId) {
@@ -127,7 +129,7 @@ function renderCurrentNode(container: HTMLElement): void {
   container.innerHTML = '';
 
   // Disclaimer banner on the first node of each consult
-  if (currentConfig && node.id === currentConfig.entryNodeId) {
+  if (currentEntryNodeId && node.id === currentEntryNodeId) {
     const banner = document.createElement('div');
     banner.className = 'wizard-disclaimer';
     banner.textContent = 'This tool is for educational and clinical decision support purposes only. It does not replace clinical judgment. All treatment decisions should be verified against current guidelines and institutional protocols.';
@@ -196,7 +198,7 @@ function renderHeader(node: DecisionNode): HTMLElement {
   progress.textContent = `Module ${node.module} of ${totalModules}`;
 
   // "Top" button — right-aligned, hidden on entry node
-  const isOnEntry = currentConfig && node.id === currentConfig.entryNodeId;
+  const isOnEntry = currentEntryNodeId && node.id === currentEntryNodeId;
 
   const topBtn = document.createElement('button');
   topBtn.className = 'btn-text wizard-top';
@@ -208,8 +210,8 @@ function renderHeader(node: DecisionNode): HTMLElement {
   }
 
   topBtn.addEventListener('click', () => {
-    if (!engine || !currentConfig) return;
-    engine.goToEntry(currentConfig.entryNodeId);
+    if (!engine || !currentEntryNodeId) return;
+    engine.goToEntry(currentEntryNodeId);
     const cont = document.querySelector('.main-content') as HTMLElement;
     if (cont) renderCurrentNode(cont);
   });

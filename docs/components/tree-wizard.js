@@ -67,6 +67,7 @@ const TREE_CONFIGS = {
 let engine = null;
 let currentTreeId = null;
 let currentConfig = null;
+let currentEntryNodeId = null;
 /** Initialize and render the wizard for a given tree */
 export function renderTreeWizard(container, treeId) {
     const config = TREE_CONFIGS[treeId];
@@ -81,6 +82,7 @@ export function renderTreeWizard(container, treeId) {
     const entryOverride = sessionStorage.getItem('medkitt-tree-entry');
     sessionStorage.removeItem('medkitt-tree-entry');
     const entryNodeId = entryOverride || config.entryNodeId;
+    currentEntryNodeId = entryNodeId;
     // If entry override differs from default, always start fresh at that entry
     if (entryOverride && entryOverride !== config.entryNodeId) {
         engine.startTree(treeId, entryNodeId);
@@ -103,7 +105,7 @@ function renderCurrentNode(container) {
         return;
     container.innerHTML = '';
     // Disclaimer banner on the first node of each consult
-    if (currentConfig && node.id === currentConfig.entryNodeId) {
+    if (currentEntryNodeId && node.id === currentEntryNodeId) {
         const banner = document.createElement('div');
         banner.className = 'wizard-disclaimer';
         banner.textContent = 'This tool is for educational and clinical decision support purposes only. It does not replace clinical judgment. All treatment decisions should be verified against current guidelines and institutional protocols.';
@@ -165,7 +167,7 @@ function renderHeader(node) {
     const totalModules = engine?.getTotalModules() ?? currentConfig?.moduleLabels.length ?? 1;
     progress.textContent = `Module ${node.module} of ${totalModules}`;
     // "Top" button — right-aligned, hidden on entry node
-    const isOnEntry = currentConfig && node.id === currentConfig.entryNodeId;
+    const isOnEntry = currentEntryNodeId && node.id === currentEntryNodeId;
     const topBtn = document.createElement('button');
     topBtn.className = 'btn-text wizard-top';
     topBtn.textContent = '\u2191 Top';
@@ -174,9 +176,9 @@ function renderHeader(node) {
         topBtn.style.visibility = 'hidden';
     }
     topBtn.addEventListener('click', () => {
-        if (!engine || !currentConfig)
+        if (!engine || !currentEntryNodeId)
             return;
-        engine.goToEntry(currentConfig.entryNodeId);
+        engine.goToEntry(currentEntryNodeId);
         const cont = document.querySelector('.main-content');
         if (cont)
             renderCurrentNode(cont);
