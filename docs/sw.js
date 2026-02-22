@@ -1,7 +1,8 @@
 // MedKitt — Service Worker
-// Cache-first offline strategy
+// Network-first for code, cache-first for images
+// Ensures updates load immediately without manual cache clearing
 
-const CACHE_NAME = 'medkitt-v38';
+const CACHE_NAME = 'medkitt-v39';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -105,26 +106,48 @@ self.addEventListener('activate', function(event) {
   self.clients.claim();
 });
 
-// Fetch: cache-first, network-fallback
+// Fetch: network-first for code/data, cache-first for images/assets
 self.addEventListener('fetch', function(event) {
   // Only handle same-origin GET requests
   if (event.request.method !== 'GET') return;
 
-  event.respondWith(
-    caches.match(event.request).then(function(cachedResponse) {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then(function(networkResponse) {
-        // Cache successful responses for future offline use
-        if (networkResponse && networkResponse.status === 200) {
-          var responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then(function(cache) {
-            cache.put(event.request, responseToCache);
-          });
+  var url = new URL(event.request.url);
+
+  // Images and icon assets: cache-first (large, rarely change)
+  if (url.pathname.match(/\.(png|jpg|jpeg|gif|svg|webp)$/)) {
+    event.respondWith(
+      caches.match(event.request).then(function(cachedResponse) {
+        if (cachedResponse) {
+          return cachedResponse;
         }
-        return networkResponse;
-      });
+        return fetch(event.request).then(function(networkResponse) {
+          if (networkResponse && networkResponse.status === 200) {
+            var responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then(function(cache) {
+              cache.put(event.request, responseToCache);
+            });
+          }
+          return networkResponse;
+        });
+      })
+    );
+    return;
+  }
+
+  // Everything else (JS, HTML, CSS, JSON): network-first
+  // Guarantees fresh code on every visit when online
+  event.respondWith(
+    fetch(event.request).then(function(networkResponse) {
+      if (networkResponse && networkResponse.status === 200) {
+        var responseToCache = networkResponse.clone();
+        caches.open(CACHE_NAME).then(function(cache) {
+          cache.put(event.request, responseToCache);
+        });
+      }
+      return networkResponse;
+    }).catch(function() {
+      // Offline: fall back to cache
+      return caches.match(event.request);
     })
   );
 });
