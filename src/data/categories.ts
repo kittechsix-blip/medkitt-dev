@@ -105,12 +105,37 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 44,
         entryNodeId: 'priapism-start',
-      }
+      },
+      {
+        id: 'chest-tube',
+        title: 'Tube Thoracostomy',
+        subtitle: 'Indications \u2192 Preparation \u2192 Insertion \u2192 Management',
+        categoryId: 'procedures',
+        version: '1.0',
+        nodeCount: 40,
+        entryNodeId: 'ctube-start',
+      },
     ],
     isCustom: false,
   },
   { id: 'toxicology',           name: 'Toxicology',            icon: 'toxicology.png',        decisionTrees: [], isCustom: false },
-  { id: 'trauma-surg',          name: 'Trauma/Surg',           icon: 'trauma-surg.png',       decisionTrees: [], isCustom: false },
+  {
+    id: 'trauma-surg',
+    name: 'Trauma/Surg',
+    icon: 'trauma-surg.png',
+    decisionTrees: [
+      {
+        id: 'chest-tube',
+        title: 'Pneumothorax Management',
+        subtitle: 'Indications \u2192 Preparation \u2192 Insertion \u2192 Management',
+        categoryId: 'trauma-surg',
+        version: '1.0',
+        nodeCount: 40,
+        entryNodeId: 'ctube-start',
+      }
+    ],
+    isCustom: false,
+  },
   {
     id: 'us-rads',
     name: 'U/S-Rads',

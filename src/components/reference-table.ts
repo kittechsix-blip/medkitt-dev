@@ -18,6 +18,10 @@ import {
   PE_TREATMENT_DIAGNOSTIC_TESTS,
   PE_TREATMENT_CLINICAL_NOTES,
 } from '../data/trees/pe-treatment.js';
+import {
+  CHEST_TUBE_CITATIONS,
+  CHEST_TUBE_CLINICAL_NOTES,
+} from '../data/trees/chest-tube.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -52,6 +56,11 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
     diagnosticTests: PE_TREATMENT_DIAGNOSTIC_TESTS,
     clinicalNotes: PE_TREATMENT_CLINICAL_NOTES,
     testTableTitle: 'PE Risk Stratification Markers',
+  },
+  'chest-tube': {
+    title: 'Chest Tube Reference',
+    citations: CHEST_TUBE_CITATIONS,
+    clinicalNotes: CHEST_TUBE_CLINICAL_NOTES,
   },
 };
 

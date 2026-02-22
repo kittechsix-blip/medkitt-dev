@@ -1,7 +1,7 @@
 // MedKitt — Service Worker
 // Cache-first offline strategy
 
-const CACHE_NAME = 'medkitt-v37';
+const CACHE_NAME = 'medkitt-v38';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -44,6 +44,11 @@ const ASSETS_TO_CACHE = [
   './images/echo-views/subxiphoid-view.png',
   './images/echo-views/ivc-labeled.png',
   './data/trees/priapism.js',
+  './data/trees/chest-tube.js',
+  './images/chest-tube/triangle-of-safety.png',
+  './images/chest-tube/needle-over-rib.png',
+  './images/chest-tube/three-bottle-system.png',
+  './images/chest-tube/proper-placement-cxr.png',
   './images/priapism/cross-section.png',
   './images/priapism/penile-block.png',
   './images/priapism/injection-clock.png',

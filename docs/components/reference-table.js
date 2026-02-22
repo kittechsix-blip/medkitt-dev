@@ -4,6 +4,7 @@
 import { NEUROSYPHILIS_CITATIONS, NEUROSYPHILIS_DIAGNOSTIC_TESTS, NEUROSYPHILIS_CLINICAL_NOTES, } from '../data/trees/neurosyphilis.js';
 import { PNEUMOTHORAX_CITATIONS, PNEUMOTHORAX_DIAGNOSTIC_TESTS, PNEUMOTHORAX_CLINICAL_NOTES, } from '../data/trees/pneumothorax.js';
 import { PE_TREATMENT_CITATIONS, PE_TREATMENT_DIAGNOSTIC_TESTS, PE_TREATMENT_CLINICAL_NOTES, } from '../data/trees/pe-treatment.js';
+import { CHEST_TUBE_CITATIONS, CHEST_TUBE_CLINICAL_NOTES, } from '../data/trees/chest-tube.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -25,6 +26,11 @@ const TREE_REFERENCE_DATA = {
         diagnosticTests: PE_TREATMENT_DIAGNOSTIC_TESTS,
         clinicalNotes: PE_TREATMENT_CLINICAL_NOTES,
         testTableTitle: 'PE Risk Stratification Markers',
+    },
+    'chest-tube': {
+        title: 'Chest Tube Reference',
+        citations: CHEST_TUBE_CITATIONS,
+        clinicalNotes: CHEST_TUBE_CLINICAL_NOTES,
     },
 };
 // -------------------------------------------------------------------
