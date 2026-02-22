@@ -1629,12 +1629,20 @@ body {
   box-shadow: 0 0 0 2px rgba(60, 179, 113, 0.15);
 }
 
-/* Inline body text links */
+/* Inline body text links — uses <button> to avoid iOS Safari hash-routing conflicts */
 .body-inline-link {
   color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  display: inline;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(60, 179, 113, 0.2);
 }
 
 .body-inline-link:active {

@@ -450,11 +450,10 @@ function renderDrugCard(_label, drug) {
     drugName.className = 'drug-regimen-name';
     const drugStoreId = findDrugIdByName(drug.drug);
     if (drugStoreId) {
-        const drugLink = document.createElement('a');
+        const drugLink = document.createElement('button');
         drugLink.className = 'body-inline-link';
         drugLink.textContent = drug.drug;
-        drugLink.href = '#';
-        drugLink.addEventListener('click', (e) => { e.preventDefault(); showDrugModal(drugStoreId); });
+        drugLink.addEventListener('click', () => { showDrugModal(drugStoreId); });
         drugName.appendChild(drugLink);
     }
     else {
@@ -539,21 +538,21 @@ function renderBodyText(container, text) {
                     p.appendChild(document.createTextNode(line.slice(lastIndex, match.index)));
                 }
                 // The link — opens as modal overlay, stays in tree context
-                const link = document.createElement('a');
+                // Use <button> instead of <a href="#"> to avoid iOS Safari hash-routing conflicts
+                const link = document.createElement('button');
                 link.className = 'body-inline-link';
                 link.textContent = linkLabel;
-                link.href = '#';
                 if (linkType === 'drug') {
-                    link.addEventListener('click', (e) => { e.preventDefault(); showDrugModal(linkId); });
+                    link.addEventListener('click', () => { showDrugModal(linkId); });
                 }
                 else if (linkType === 'calculator') {
-                    link.addEventListener('click', (e) => { e.preventDefault(); router.navigate(`/calculator/${linkId}`); });
+                    link.addEventListener('click', () => { router.navigate(`/calculator/${linkId}`); });
                 }
                 else if (linkType === 'tree') {
-                    link.addEventListener('click', (e) => { e.preventDefault(); router.navigate('/tree/' + linkId); });
+                    link.addEventListener('click', () => { router.navigate('/tree/' + linkId); });
                 }
                 else {
-                    link.addEventListener('click', (e) => { e.preventDefault(); showInfoModal(linkId); });
+                    link.addEventListener('click', () => { showInfoModal(linkId); });
                 }
                 p.appendChild(link);
                 lastIndex = match.index + match[0].length;
