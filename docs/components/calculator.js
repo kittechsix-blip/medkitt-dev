@@ -24,11 +24,11 @@ const PESI_CALCULATOR = {
         { name: 'spo2', label: 'O\u2082 saturation < 90%', type: 'toggle', points: 20 },
     ],
     results: [
-        { min: -Infinity, max: 66, label: 'Class I', risk: 'Very Low Risk', mortality: '0\u20131.6%', colorVar: '--color-primary' },
-        { min: 66, max: 86, label: 'Class II', risk: 'Low Risk', mortality: '1.7\u20133.5%', colorVar: '--color-primary' },
-        { min: 86, max: 106, label: 'Class III', risk: 'Intermediate Risk', mortality: '3.2\u20137.1%', colorVar: '--color-warning' },
-        { min: 106, max: 126, label: 'Class IV', risk: 'High Risk', mortality: '4.0\u201311.4%', colorVar: '--color-danger' },
-        { min: 126, max: Infinity, label: 'Class V', risk: 'Very High Risk', mortality: '10.0\u201324.5%', colorVar: '--color-danger' },
+        { min: -Infinity, max: 66, label: 'Class I', risk: 'Very Low Risk', mortality: '30-day mortality: 0\u20131.6%', colorVar: '--color-primary' },
+        { min: 66, max: 86, label: 'Class II', risk: 'Low Risk', mortality: '30-day mortality: 1.7\u20133.5%', colorVar: '--color-primary' },
+        { min: 86, max: 106, label: 'Class III', risk: 'Intermediate Risk', mortality: '30-day mortality: 3.2\u20137.1%', colorVar: '--color-warning' },
+        { min: 106, max: 126, label: 'Class IV', risk: 'High Risk', mortality: '30-day mortality: 4.0\u201311.4%', colorVar: '--color-danger' },
+        { min: 126, max: Infinity, label: 'Class V', risk: 'Very High Risk', mortality: '30-day mortality: 10.0\u201324.5%', colorVar: '--color-danger' },
     ],
     thresholdNote: 'Clinical severity threshold: PESI > 86 (Class III+) = High severity',
     citations: [
@@ -53,8 +53,8 @@ const SPESI_CALCULATOR = {
         { name: 'spo2', label: 'O\u2082 saturation < 90%', type: 'toggle', points: 1 },
     ],
     results: [
-        { min: -Infinity, max: 1, label: 'Score 0', risk: 'Low Risk', mortality: '~1.0%', colorVar: '--color-primary' },
-        { min: 1, max: Infinity, label: 'Score \u2265 1', risk: 'Intermediate / High Risk', mortality: '~10.9%', colorVar: '--color-danger' },
+        { min: -Infinity, max: 1, label: 'Score 0', risk: 'Low Risk', mortality: '30-day mortality: ~1.0%', colorVar: '--color-primary' },
+        { min: 1, max: Infinity, label: 'Score \u2265 1', risk: 'Intermediate / High Risk', mortality: '30-day mortality: ~10.9%', colorVar: '--color-danger' },
     ],
     thresholdNote: 'Clinical severity threshold: sPESI \u2265 1 = High severity',
     citations: [
@@ -63,11 +63,48 @@ const SPESI_CALCULATOR = {
     ],
 };
 // -------------------------------------------------------------------
+// CHA₂DS₂-VASc Calculator Definition
+// -------------------------------------------------------------------
+const CHA2DS2VASC_CALCULATOR = {
+    id: 'cha2ds2vasc',
+    title: 'CHA\u2082DS\u2082-VASc Score',
+    subtitle: 'Stroke Risk in Atrial Fibrillation',
+    description: 'The CHA\u2082DS\u2082-VASc score estimates stroke risk in patients with non-valvular atrial fibrillation to guide anticoagulation decisions. Score ranges from 0-9.',
+    fields: [
+        { name: 'chf', label: 'Congestive Heart Failure', type: 'toggle', points: 1, description: 'CHF or LV ejection fraction \u226440%' },
+        { name: 'htn', label: 'Hypertension', type: 'toggle', points: 1, description: 'Resting BP >140/90 or current antihypertensive use' },
+        { name: 'age75', label: 'Age \u2265 75 years', type: 'toggle', points: 2 },
+        { name: 'diabetes', label: 'Diabetes Mellitus', type: 'toggle', points: 1, description: 'Fasting glucose >125 or on hypoglycemic treatment' },
+        { name: 'stroke', label: 'Stroke / TIA / Thromboembolism', type: 'toggle', points: 2, description: 'Prior stroke, TIA, or systemic embolism' },
+        { name: 'vascular', label: 'Vascular Disease', type: 'toggle', points: 1, description: 'Prior MI, peripheral artery disease, or aortic plaque' },
+        { name: 'age65', label: 'Age 65-74 years', type: 'toggle', points: 1 },
+        { name: 'female', label: 'Female Sex', type: 'toggle', points: 1 },
+    ],
+    results: [
+        { min: -Infinity, max: 1, label: 'Score 0', risk: 'Low Risk', mortality: 'Annual stroke risk: 0%', colorVar: '--color-primary' },
+        { min: 1, max: 2, label: 'Score 1', risk: 'Low-Moderate Risk', mortality: 'Annual stroke risk: 1.3%', colorVar: '--color-warning' },
+        { min: 2, max: 3, label: 'Score 2', risk: 'Moderate Risk', mortality: 'Annual stroke risk: 2.2%', colorVar: '--color-warning' },
+        { min: 3, max: 4, label: 'Score 3', risk: 'Moderate-High Risk', mortality: 'Annual stroke risk: 3.2%', colorVar: '--color-danger' },
+        { min: 4, max: 5, label: 'Score 4', risk: 'High Risk', mortality: 'Annual stroke risk: 4.0%', colorVar: '--color-danger' },
+        { min: 5, max: 6, label: 'Score 5', risk: 'High Risk', mortality: 'Annual stroke risk: 6.7%', colorVar: '--color-danger' },
+        { min: 6, max: 7, label: 'Score 6', risk: 'Very High Risk', mortality: 'Annual stroke risk: 9.8%', colorVar: '--color-danger' },
+        { min: 7, max: 8, label: 'Score 7', risk: 'Very High Risk', mortality: 'Annual stroke risk: 9.6%', colorVar: '--color-danger' },
+        { min: 8, max: 9, label: 'Score 8', risk: 'Very High Risk', mortality: 'Annual stroke risk: 6.7%', colorVar: '--color-danger' },
+        { min: 9, max: Infinity, label: 'Score 9', risk: 'Very High Risk', mortality: 'Annual stroke risk: 15.2%', colorVar: '--color-danger' },
+    ],
+    thresholdNote: 'Score \u22652 (men) or \u22653 (women): Anticoagulation recommended. Score 1 (men) or 2 (women): Consider anticoagulation. Score 0 (men) or 1 (women): May omit anticoagulation.',
+    citations: [
+        'Lip GY, et al. Refining Clinical Risk Stratification for Predicting Stroke and Thromboembolism in Atrial Fibrillation Using a Novel Risk Factor-Based Approach: The Euro Heart Survey on Atrial Fibrillation. Chest. 2010;137(2):263-272.',
+        'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for the Diagnosis and Management of Atrial Fibrillation. J Am Coll Cardiol. 2024;83(1):109-279.',
+    ],
+};
+// -------------------------------------------------------------------
 // Calculator Registry
 // -------------------------------------------------------------------
 const CALCULATORS = {
     'pesi': PESI_CALCULATOR,
     'spesi': SPESI_CALCULATOR,
+    'cha2ds2vasc': CHA2DS2VASC_CALCULATOR,
 };
 /** Get all available calculators sorted alphabetically by title */
 export function getAllCalculators() {
@@ -360,7 +397,7 @@ function updateScore(calc, values, display) {
         display.appendChild(badge);
         const mortality = document.createElement('div');
         mortality.className = 'calculator-mortality';
-        mortality.textContent = `30-day mortality: ${result.mortality}`;
+        mortality.textContent = result.mortality;
         display.appendChild(mortality);
     }
 }

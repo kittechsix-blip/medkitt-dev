@@ -1,148 +1,178 @@
-import { storageGet, storageSet, storageRemove } from "./storage.js";
-const SESSION_KEY = "em-tree-session";
-
+// MedKitt — Tree Engine
+// Manages tree traversal: start, navigate, go back, record answers, save/restore.
+import { storageGet, storageSet, storageRemove } from './storage.js';
+const SESSION_KEY = 'em-tree-session';
 export class TreeEngine {
-  nodes;
-  session = null;
-  constructor(nodes) {
-    this.nodes = new Map;
-    for (const node of nodes) {
-      this.nodes.set(node.id, node);
+    constructor(nodes) {
+        this.session = null;
+        this.nodes = new Map();
+        for (const node of nodes) {
+            this.nodes.set(node.id, node);
+        }
     }
-  }
-  startTree(treeId, entryNodeId) {
-    const entryNode = this.nodes.get(entryNodeId);
-    if (!entryNode) {
-      throw new Error(`Entry node not found: ${entryNodeId}`);
+    /** Start a new tree session from the entry node */
+    startTree(treeId, entryNodeId) {
+        const entryNode = this.nodes.get(entryNodeId);
+        if (!entryNode) {
+            throw new Error(`Entry node not found: ${entryNodeId}`);
+        }
+        this.session = {
+            treeId,
+            currentNodeId: entryNodeId,
+            history: [],
+            answers: {},
+            startedAt: Date.now(),
+        };
+        this.saveSession();
+        return entryNode;
     }
-    this.session = {
-      treeId,
-      currentNodeId: entryNodeId,
-      history: [],
-      answers: {},
-      startedAt: Date.now()
-    };
-    this.saveSession();
-    return entryNode;
-  }
-  getCurrentNode() {
-    if (!this.session)
-      return null;
-    return this.nodes.get(this.session.currentNodeId) ?? null;
-  }
-  getSession() {
-    return this.session;
-  }
-  selectOption(optionIndex) {
-    if (!this.session)
-      return null;
-    const currentNode = this.nodes.get(this.session.currentNodeId);
-    if (!currentNode?.options || optionIndex >= currentNode.options.length) {
-      return null;
+    /** Get the current node */
+    getCurrentNode() {
+        if (!this.session)
+            return null;
+        return this.nodes.get(this.session.currentNodeId) ?? null;
     }
-    const option = currentNode.options[optionIndex];
-    this.session.answers[currentNode.id] = option.label;
-    this.session.history.push(this.session.currentNodeId);
-    this.session.currentNodeId = option.next;
-    this.saveSession();
-    return this.nodes.get(option.next) ?? null;
-  }
-  continueToNext() {
-    if (!this.session)
-      return null;
-    const currentNode = this.nodes.get(this.session.currentNodeId);
-    if (!currentNode?.next)
-      return null;
-    this.session.history.push(this.session.currentNodeId);
-    this.session.currentNodeId = currentNode.next;
-    this.saveSession();
-    return this.nodes.get(currentNode.next) ?? null;
-  }
-  goBack() {
-    if (!this.session || this.session.history.length === 0)
-      return null;
-    const previousId = this.session.history.pop();
-    delete this.session.answers[this.session.currentNodeId];
-    this.session.currentNodeId = previousId;
-    this.saveSession();
-    return this.nodes.get(previousId) ?? null;
-  }
-  canGoBack() {
-    return this.session !== null && this.session.history.length > 0;
-  }
-  getNode(id) {
-    return this.nodes.get(id) ?? null;
-  }
-  getCurrentModule() {
-    const node = this.getCurrentNode();
-    return node?.module ?? null;
-  }
-  getTotalModules() {
-    let max = 0;
-    for (const node of this.nodes.values()) {
-      if (node.module > max)
-        max = node.module;
+    /** Get the current session */
+    getSession() {
+        return this.session;
     }
-    return max;
-  }
-  jumpToHistory(index) {
-    if (!this.session || index < 0 || index >= this.session.history.length)
-      return null;
-    const targetId = this.session.history[index];
-    const removedIds = this.session.history.slice(index);
-    for (const id of removedIds) {
-      delete this.session.answers[id];
+    /** Navigate to a node by selecting an option.
+     *  Records the answer and pushes current node to history. */
+    selectOption(optionIndex) {
+        if (!this.session)
+            return null;
+        const currentNode = this.nodes.get(this.session.currentNodeId);
+        if (!currentNode?.options || optionIndex >= currentNode.options.length) {
+            return null;
+        }
+        const option = currentNode.options[optionIndex];
+        // Record the answer (option label keyed by node ID)
+        this.session.answers[currentNode.id] = option.label;
+        // Push current to history for back navigation
+        this.session.history.push(this.session.currentNodeId);
+        // Navigate to next node
+        this.session.currentNodeId = option.next;
+        this.saveSession();
+        return this.nodes.get(option.next) ?? null;
     }
-    delete this.session.answers[this.session.currentNodeId];
-    this.session.history = this.session.history.slice(0, index);
-    this.session.currentNodeId = targetId;
-    this.saveSession();
-    return this.nodes.get(targetId) ?? null;
-  }
-  goToEntry(entryNodeId) {
-    if (!this.session)
-      return null;
-    this.session.history = [];
-    this.session.answers = {};
-    this.session.currentNodeId = entryNodeId;
-    this.saveSession();
-    return this.nodes.get(entryNodeId) ?? null;
-  }
-  reset() {
-    this.session = null;
-    storageRemove(SESSION_KEY);
-  }
-  saveSession() {
-    if (this.session) {
-      storageSet(SESSION_KEY, this.session);
+    /** Navigate forward via the default `next` pointer (for info nodes) */
+    continueToNext() {
+        if (!this.session)
+            return null;
+        const currentNode = this.nodes.get(this.session.currentNodeId);
+        if (!currentNode?.next)
+            return null;
+        // Push current to history
+        this.session.history.push(this.session.currentNodeId);
+        // Navigate
+        this.session.currentNodeId = currentNode.next;
+        this.saveSession();
+        return this.nodes.get(currentNode.next) ?? null;
     }
-  }
-  restoreSession(treeId) {
-    const saved = storageGet(SESSION_KEY, null);
-    if (!saved || saved.treeId !== treeId)
-      return null;
-    if (!this.nodes.has(saved.currentNodeId)) {
-      storageRemove(SESSION_KEY);
-      return null;
+    /** Go back one step in the history */
+    goBack() {
+        if (!this.session || this.session.history.length === 0)
+            return null;
+        const previousId = this.session.history.pop();
+        // Remove the answer for the node we're leaving
+        delete this.session.answers[this.session.currentNodeId];
+        this.session.currentNodeId = previousId;
+        this.saveSession();
+        return this.nodes.get(previousId) ?? null;
     }
-    this.session = saved;
-    return this.nodes.get(saved.currentNodeId) ?? null;
-  }
-  getAnswerHistory() {
-    if (!this.session)
-      return [];
-    const result = [];
-    for (const nodeId of this.session.history) {
-      const answer = this.session.answers[nodeId];
-      const node = this.nodes.get(nodeId);
-      if (answer !== undefined && node) {
-        result.push({
-          nodeId,
-          nodeTitle: node.title,
-          answer: String(answer)
-        });
-      }
+    /** Check if we can go back */
+    canGoBack() {
+        return this.session !== null && this.session.history.length > 0;
     }
-    return result;
-  }
+    /** Get a node by ID (for lookups) */
+    getNode(id) {
+        return this.nodes.get(id) ?? null;
+    }
+    /** Get the module number of the current node */
+    getCurrentModule() {
+        const node = this.getCurrentNode();
+        return node?.module ?? null;
+    }
+    /** Get how many modules the tree has (max module number) */
+    getTotalModules() {
+        let max = 0;
+        for (const node of this.nodes.values()) {
+            if (node.module > max)
+                max = node.module;
+        }
+        return max;
+    }
+    /** Jump back to a specific point in the history.
+     *  Truncates history to the given index and removes answers after that point. */
+    jumpToHistory(index) {
+        if (!this.session || index < 0 || index >= this.session.history.length)
+            return null;
+        const targetId = this.session.history[index];
+        // Remove answers for nodes after the target
+        const removedIds = this.session.history.slice(index);
+        for (const id of removedIds) {
+            delete this.session.answers[id];
+        }
+        // Also remove answer for current node (we're leaving it)
+        delete this.session.answers[this.session.currentNodeId];
+        // Truncate history to just before the target
+        this.session.history = this.session.history.slice(0, index);
+        // Set current node to the target
+        this.session.currentNodeId = targetId;
+        this.saveSession();
+        return this.nodes.get(targetId) ?? null;
+    }
+    /** Jump back to the entry node, clearing all history and answers but keeping session alive */
+    goToEntry(entryNodeId) {
+        if (!this.session)
+            return null;
+        this.session.history = [];
+        this.session.answers = {};
+        this.session.currentNodeId = entryNodeId;
+        this.saveSession();
+        return this.nodes.get(entryNodeId) ?? null;
+    }
+    /** Reset the session — start over */
+    reset() {
+        this.session = null;
+        storageRemove(SESSION_KEY);
+    }
+    /** Save the current session to LocalStorage */
+    saveSession() {
+        if (this.session) {
+            storageSet(SESSION_KEY, this.session);
+        }
+    }
+    /** Restore a saved session from LocalStorage.
+     *  Returns the current node if session exists and is valid, null otherwise. */
+    restoreSession(treeId) {
+        const saved = storageGet(SESSION_KEY, null);
+        if (!saved || saved.treeId !== treeId)
+            return null;
+        // Verify the current node still exists
+        if (!this.nodes.has(saved.currentNodeId)) {
+            storageRemove(SESSION_KEY);
+            return null;
+        }
+        this.session = saved;
+        return this.nodes.get(saved.currentNodeId) ?? null;
+    }
+    /** Get the answer history as an array of {nodeId, answer} for display */
+    getAnswerHistory() {
+        if (!this.session)
+            return [];
+        const result = [];
+        for (const nodeId of this.session.history) {
+            const answer = this.session.answers[nodeId];
+            const node = this.nodes.get(nodeId);
+            if (answer !== undefined && node) {
+                result.push({
+                    nodeId,
+                    nodeTitle: node.title,
+                    answer: String(answer),
+                });
+            }
+        }
+        return result;
+    }
 }
