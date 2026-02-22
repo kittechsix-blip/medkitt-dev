@@ -21,6 +21,12 @@ function registerServiceWorker(): void {
     }).catch((err) => {
       console.error('Service worker registration failed:', err);
     });
+
+    // Auto-reload when a new service worker takes control
+    // This ensures updates are visible immediately without manual cache clearing
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
   }
 }
 
