@@ -12,8 +12,10 @@ import { renderDrugList } from './components/drug-store.js';
 // -------------------------------------------------------------------
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').then((reg) => {
+        navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((reg) => {
             console.log('Service worker registered:', reg.scope);
+            // Force update check on every page load
+            reg.update();
         }).catch((err) => {
             console.error('Service worker registration failed:', err);
         });
