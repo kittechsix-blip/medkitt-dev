@@ -68,6 +68,27 @@ let engine = null;
 let currentTreeId = null;
 let currentConfig = null;
 let currentEntryNodeId = null;
+let delegatedContainer = null;
+/** Handle clicks on inline links via event delegation (most reliable on iOS Safari) */
+function handleInlineLinkClick(e) {
+    const target = e.target.closest('[data-link-type]');
+    if (!target)
+        return;
+    e.preventDefault();
+    e.stopPropagation();
+    const linkType = target.getAttribute('data-link-type');
+    const linkId = target.getAttribute('data-link-id');
+    if (!linkType || !linkId)
+        return;
+    if (linkType === 'drug')
+        showDrugModal(linkId);
+    else if (linkType === 'calculator')
+        router.navigate(`/calculator/${linkId}`);
+    else if (linkType === 'tree')
+        router.navigate('/tree/' + linkId);
+    else
+        showInfoModal(linkId);
+}
 /** Initialize and render the wizard for a given tree */
 export function renderTreeWizard(container, treeId) {
     const config = TREE_CONFIGS[treeId];
@@ -78,6 +99,14 @@ export function renderTreeWizard(container, treeId) {
     currentTreeId = treeId;
     currentConfig = config;
     engine = new TreeEngine(config.nodes);
+    // Set up delegated click handler for inline links (once per container)
+    if (delegatedContainer !== container) {
+        if (delegatedContainer) {
+            delegatedContainer.removeEventListener('click', handleInlineLinkClick);
+        }
+        container.addEventListener('click', handleInlineLinkClick);
+        delegatedContainer = container;
+    }
     // Check for category-specific entry point override
     const entryOverride = sessionStorage.getItem('medkitt-tree-entry');
     sessionStorage.removeItem('medkitt-tree-entry');
@@ -453,7 +482,8 @@ function renderDrugCard(_label, drug) {
         const drugLink = document.createElement('button');
         drugLink.className = 'body-inline-link';
         drugLink.textContent = drug.drug;
-        drugLink.addEventListener('click', () => { showDrugModal(drugStoreId); });
+        drugLink.setAttribute('data-link-type', 'drug');
+        drugLink.setAttribute('data-link-id', drugStoreId);
         drugName.appendChild(drugLink);
     }
     else {
@@ -537,23 +567,12 @@ function renderBodyText(container, text) {
                 if (match.index > lastIndex) {
                     p.appendChild(document.createTextNode(line.slice(lastIndex, match.index)));
                 }
-                // The link — opens as modal overlay, stays in tree context
-                // Use <button> instead of <a href="#"> to avoid iOS Safari hash-routing conflicts
+                // Inline link — uses data attributes + event delegation for iOS Safari reliability
                 const link = document.createElement('button');
                 link.className = 'body-inline-link';
                 link.textContent = linkLabel;
-                if (linkType === 'drug') {
-                    link.addEventListener('click', () => { showDrugModal(linkId); });
-                }
-                else if (linkType === 'calculator') {
-                    link.addEventListener('click', () => { router.navigate(`/calculator/${linkId}`); });
-                }
-                else if (linkType === 'tree') {
-                    link.addEventListener('click', () => { router.navigate('/tree/' + linkId); });
-                }
-                else {
-                    link.addEventListener('click', () => { showInfoModal(linkId); });
-                }
+                link.setAttribute('data-link-type', linkType);
+                link.setAttribute('data-link-id', linkId);
                 p.appendChild(link);
                 lastIndex = match.index + match[0].length;
             }
