@@ -530,12 +530,11 @@ function renderDrugCard(_label: string, drug: { drug: string; dose: string; rout
   drugName.className = 'drug-regimen-name';
   const drugStoreId = findDrugIdByName(drug.drug);
   if (drugStoreId) {
-    const drugLink = document.createElement('span');
+    const drugLink = document.createElement('a');
     drugLink.className = 'body-inline-link';
     drugLink.textContent = drug.drug;
-    drugLink.setAttribute('role', 'button');
-    drugLink.setAttribute('tabindex', '0');
-    drugLink.addEventListener('click', () => showDrugModal(drugStoreId));
+    drugLink.href = '#';
+    drugLink.addEventListener('click', (e) => { e.preventDefault(); showDrugModal(drugStoreId); });
     drugName.appendChild(drugLink);
   } else {
     drugName.textContent = drug.drug;
@@ -633,19 +632,18 @@ function renderBodyText(container: HTMLElement, text: string): void {
           p.appendChild(document.createTextNode(line.slice(lastIndex, match.index)));
         }
         // The link — opens as modal overlay, stays in tree context
-        const link = document.createElement('span');
+        const link = document.createElement('a');
         link.className = 'body-inline-link';
         link.textContent = linkLabel;
-        link.setAttribute('role', 'button');
-        link.setAttribute('tabindex', '0');
+        link.href = '#';
         if (linkType === 'drug') {
-          link.addEventListener('click', () => showDrugModal(linkId));
+          link.addEventListener('click', (e) => { e.preventDefault(); showDrugModal(linkId); });
         } else if (linkType === 'calculator') {
-          link.addEventListener('click', () => router.navigate(`/calculator/${linkId}`));
+          link.addEventListener('click', (e) => { e.preventDefault(); router.navigate(`/calculator/${linkId}`); });
         } else if (linkType === 'tree') {
-          link.addEventListener('click', () => router.navigate('/tree/' + linkId));
+          link.addEventListener('click', (e) => { e.preventDefault(); router.navigate('/tree/' + linkId); });
         } else {
-          link.addEventListener('click', () => showInfoModal(linkId));
+          link.addEventListener('click', (e) => { e.preventDefault(); showInfoModal(linkId); });
         }
         p.appendChild(link);
         lastIndex = match.index + match[0].length;
