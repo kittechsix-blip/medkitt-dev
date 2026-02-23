@@ -341,26 +341,33 @@ const STROKE_IMAGING_PAGE: InfoPage = {
   subtitle: 'When to Use Each Modality',
   sections: [
     {
-      heading: 'Non-Contrast CT (NCCT)',
-      body: '**First-line imaging for all suspected hemorrhagic stroke:**\n\u2022 Rapidly excludes intracranial hemorrhage (\u226495% sensitivity)\n\u2022 Available 24/7 in most EDs\n\u2022 Fast acquisition (\u22641 minute)\n\u2022 Sufficient to initiate IV thrombolysis within 0\u20134.5h window\n\nEarly ischemic signs on NCCT (may be absent in first 6h):\n\u2022 Loss of grey-white differentiation\n\u2022 Sulcal effacement\n\u2022 Insular ribbon sign\n\u2022 Hyperdense vessel sign (MCA dot sign)',
+      body: 'Even when MRI is available, **CT stroke protocol is preferred when speed is critical** \u2014 particularly for suspected large vessel occlusion (LVO) where every minute of delay to endovascular therapy (EVT) worsens outcomes. [1][2]\n\nThe ACR Appropriateness Criteria state that "the rapidity of diagnosis afforded by CTA is a strongly relevant clinical consideration" and that MRI "may delay EVT...which detracts from the usefulness of this study due to the potential harm of delayed treatment." [2]',
     },
     {
-      heading: 'CT Angiography (CTA)',
-      body: '**Obtain with initial NCCT for all stroke patients:**\n\u2022 Identifies large vessel occlusion (LVO) for EVT eligibility\n\u2022 Evaluates carotid and vertebrobasilar stenosis\n\u2022 Should NOT delay thrombolysis \u2014 start tPA/TNK first, then get CTA\n\u2022 Key findings: vessel cutoff sign, thrombus length, collateral grade',
+      heading: 'When to Choose CT Over MRI (Even if MRI is Available)',
+      body: '**Suspected LVO / thrombectomy candidate**\n\u2022 CTA is faster; delays to EVT worsen outcomes [1]\n\n**Severe/disabling deficits within 4.5 hours**\n\u2022 NCCT sufficient to exclude hemorrhage and initiate thrombolysis; DWI not necessary [2]\n\n**Unstable or agitated patient**\n\u2022 CT faster, less motion artifact, no sedation needed [2]\n\n**MRI contraindications** (pacemaker, cochlear implant, metallic foreign body, severe claustrophobia)\n\u2022 CT is safe alternative [1][2]\n\n**Collateral assessment needed**\n\u2022 Multiphase CTA provides collateral status for thrombectomy selection [3]\n\n**Perfusion imaging in extended window (6\u201324h)**\n\u2022 CT perfusion is faster than MRI perfusion in most settings [1][4]',
     },
     {
-      heading: 'CT Perfusion (CTP)',
-      body: '**Required for extended window (4.5\u201324h) EVT evaluation:**\n\u2022 Identifies ischemic core vs salvageable penumbra\n\u2022 DAWN/DEFUSE-3 criteria require CTP or MRI DWI\n\u2022 Automated software (RAPID) provides ischemic core volume, Tmax >6s volume, and mismatch ratio\n\u2022 Favorable: small core (<70 mL), large penumbra (mismatch ratio >1.8)',
+      heading: 'When MRI is Preferred Over CT',
+      body: '**Wake-up stroke / unknown onset**\n\u2022 DWI-FLAIR mismatch determines thrombolysis eligibility [1]\n\n**TIA or minor stroke with resolved symptoms**\n\u2022 DWI detects infarct in ~40% of TIAs (CT only ~4%) [2][3]\n\n**Posterior fossa stroke**\n\u2022 CT limited by bone artifact; MRI superior [4]\n\n**Stroke mimics suspected**\n\u2022 MRI better differentiates ischemia from mimics [4]\n\n**Renal insufficiency or contrast allergy**\n\u2022 Time-of-flight MRA avoids iodinated contrast [1][5]\n\n**Small/lacunar infarcts**\n\u2022 DWI more sensitive for small lesions [4]\n\n**Large infarct assessment for EVT eligibility**\n\u2022 DWI may be needed to determine core volume [1]',
     },
     {
-      heading: 'MRI (DWI/FLAIR)',
-      body: '**Preferred when available for:**\n\u2022 TIA workup (DWI shows acute infarction missed on CT)\n\u2022 Posterior fossa / brainstem stroke (CT has poor sensitivity)\n\u2022 Small lacunar infarcts\n\u2022 Extended window IVT: DWI-FLAIR mismatch (DWI+, FLAIR\u2212) suggests onset <4.5h [3]\n\u2022 Wake-up strokes with unknown time of onset\n\n**Limitations:**\n\u2022 Slower acquisition (20\u201330 min)\n\u2022 Less available at night/weekends\n\u2022 Contraindicated with certain implants\n\u2022 Should NOT delay thrombolysis in the standard window',
+      heading: 'Key Performance Differences',
+      body: '**Hemorrhage detection**\n\u2022 CT: High sensitivity/specificity\n\u2022 MRI: Equivalent with GRE/SWI [1]\n\n**Acute infarct detection (\u22643h)**\n\u2022 CT: 47\u201353% sensitive\n\u2022 MRI (DWI): 88% sensitive [2]\n\n**LVO detection (CTA vs MRA)**\n\u2022 CTA: 92\u2013100% sensitive\n\u2022 MRA: Slightly inferior, especially distally [2][3]\n\n**Acquisition time**\n\u2022 CT (NCCT + CTA + CTP): ~5\u201310 min\n\u2022 MRI: ~20\u201330 min [4]\n\n**Perfusion imaging**\n\u2022 CT: Validated thresholds; faster\n\u2022 MRI: Equivalent accuracy; slower [4][5]',
+    },
+    {
+      heading: 'Bottom Line',
+      body: 'In the hyperacute setting with disabling deficits and suspected LVO, **CT-based protocols (NCCT + CTA \u00B1 CTP) should be the default** due to speed, even when MRI is available. [1][2]\n\nReserve MRI for wake-up strokes, TIA workup, posterior circulation strokes, stroke mimics, or when contrast is contraindicated. [2][6]',
     },
   ],
   citations: [
-    { num: 1, text: 'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.' },
-    { num: 2, text: 'Nogueira RG, et al. Thrombectomy 6 to 24 Hours after Stroke with a Mismatch between Deficit and Infarct (DAWN). N Engl J Med. 2018;378(1):11-21.' },
-    { num: 3, text: 'Thomalla G, et al. MRI-Guided Thrombolysis for Stroke with Unknown Time of Onset (WAKE-UP). N Engl J Med. 2018;379(7):611-622.' },
+    { num: 1, text: 'Powers WJ. Acute Ischemic Stroke. N Engl J Med. 2020;383(3):252-260.' },
+    { num: 2, text: 'Pannell JS, Corey AS, Shih RY, et al. ACR Appropriateness Criteria\u00AE Cerebrovascular Diseases\u2014Stroke and Stroke-Related Conditions. J Am Coll Radiol. 2024;21(6S):S21-S64.' },
+    { num: 3, text: 'Mendelson SJ, Prabhakaran S. Diagnosis and Management of TIA and Acute Ischemic Stroke: A Review. JAMA. 2021;325(11):1088-1098.' },
+    { num: 4, text: 'Patel P, Yavagal D, Khandelwal P. Hyperacute Management of Ischemic Strokes: JACC Focus Seminar. J Am Coll Cardiol. 2020;75(15):1844-1856.' },
+    { num: 5, text: 'Amin HP, Madsen TE, Bravata DM, et al. Diagnosis, Workup, Risk Reduction of TIA in the ED: AHA Scientific Statement. Stroke. 2023;54(3):e109-e121.' },
+    { num: 6, text: 'Zerna C, Thomalla G, Campbell BCV, et al. Current Practice and Future Directions in the Diagnosis and Acute Treatment of Ischaemic Stroke. Lancet. 2018;392(10154):1247-1256.' },
+    { num: 7, text: 'Wintermark M, Sanelli PC, Albers GW, et al. Imaging Recommendations for Acute Stroke and TIA Patients: ASNR/ACR/SNIS Joint Statement. AJNR Am J Neuroradiol. 2013;34(11):E117-27.' },
   ],
 };
 
