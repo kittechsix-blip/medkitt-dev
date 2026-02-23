@@ -2141,6 +2141,29 @@ body {
   line-height: 1;
 }
 
+/* Clickable citation footnotes */
+
+.cite-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cite-link:active {
+  opacity: 0.6;
+}
+
+.cite-highlight {
+  background: rgba(60, 179, 113, 0.15);
+  border-radius: var(--radius-sm);
+  transition: background 0.3s ease;
+}
+
 .info-page-citations {
   margin-top: 20px;
   padding: 12px 0;

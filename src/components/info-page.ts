@@ -452,6 +452,66 @@ const INFO_PAGES: Record<string, InfoPage> = {
 };
 
 // -------------------------------------------------------------------
+// Body Text with Clickable Footnotes
+// -------------------------------------------------------------------
+
+/** Render a line of info page body text, making [N] citation refs clickable. */
+function renderInfoBodyLine(container: HTMLElement, line: string): void {
+  const citePattern = /\[(\d+)\](?:\[(\d+)\])*/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = citePattern.exec(line)) !== null) {
+    // Text before the citation(s)
+    if (match.index > lastIndex) {
+      container.appendChild(document.createTextNode(line.slice(lastIndex, match.index)));
+    }
+
+    // The full match might be [1][2] or [1], [2] — parse all numbers
+    const fullMatch = match[0];
+    const nums = fullMatch.match(/\d+/g) ?? [];
+    for (let i = 0; i < nums.length; i++) {
+      const num = nums[i];
+      const btn = document.createElement('button');
+      btn.className = 'cite-link';
+      btn.textContent = `[${num}]`;
+      btn.addEventListener('click', () => scrollToCitation(num));
+      container.appendChild(btn);
+    }
+
+    lastIndex = match.index + fullMatch.length;
+  }
+
+  // Remaining text after last citation
+  if (lastIndex < line.length) {
+    container.appendChild(document.createTextNode(line.slice(lastIndex)));
+  }
+
+  // If no citations found, just set text
+  if (lastIndex === 0) {
+    container.textContent = line;
+  }
+}
+
+/** Scroll to a citation in the references section, opening it if collapsed. */
+function scrollToCitation(num: string): void {
+  // Open the details element if closed
+  const details = document.querySelector('.info-page-citations') as HTMLDetailsElement | null;
+  if (details && !details.open) {
+    details.open = true;
+  }
+
+  // Scroll to the citation
+  const target = document.getElementById(`info-cite-${num}`);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Brief highlight
+    target.classList.add('cite-highlight');
+    setTimeout(() => target.classList.remove('cite-highlight'), 1500);
+  }
+}
+
+// -------------------------------------------------------------------
 // Pictograph Renderer
 // -------------------------------------------------------------------
 
@@ -655,7 +715,7 @@ export function showInfoModal(pageId: string): boolean {
         } else {
           const p = document.createElement('p');
           p.className = 'info-page-text';
-          p.textContent = line;
+          renderInfoBodyLine(p, line);
           sectionEl.appendChild(p);
         }
       }
@@ -702,6 +762,7 @@ export function showInfoModal(pageId: string): boolean {
   for (const cite of page.citations) {
     const item = document.createElement('div');
     item.className = 'reference-citation-item';
+    item.id = `info-cite-${cite.num}`;
 
     const numEl = document.createElement('span');
     numEl.className = 'reference-citation-num';
