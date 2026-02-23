@@ -23,6 +23,8 @@ interface InfoPage {
   subtitle: string;
   sections: InfoSection[];
   citations: InfoCitation[];
+  /** If true, show a Share button that uses Web Share API to text/email the content */
+  shareable?: boolean;
 }
 
 interface InfoSection {
@@ -215,6 +217,7 @@ const PEP_PATIENT_INFO: InfoPage = {
       body: '\u2022 Take your medication at the same time every day\n\u2022 Complete all 28 days \u2014 do not stop early even if you feel fine\n\u2022 You will need follow-up HIV testing at 4\u20136 weeks and 3 months\n\u2022 Visit your doctor at 2 weeks to check for side effects and blood work\n\u2022 Use condoms and safe practices during and after PEP until your final HIV test is negative\n\u2022 If you have ongoing risk for HIV, ask your doctor about PrEP (pre-exposure prophylaxis) \u2014 a daily medication to prevent HIV before exposure',
     },
   ],
+  shareable: true,
   citations: [
     { num: 1, text: 'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV \u2014 CDC Recommendations, 2025. MMWR. 2025;74(1):1-56.' },
     { num: 2, text: 'Kofman AD, et al. 2025 US PHS Guidelines for Management of Occupational Exposures to HIV. Infect Control Hosp Epidemiol. 2025;46(9):863-873.' },
@@ -242,6 +245,59 @@ let overlayEl: HTMLElement | null = null;
 function destroyOverlay(): void {
   overlayEl?.remove();
   overlayEl = null;
+}
+
+/** Build plain-text version of an info page for sharing via SMS/email */
+function buildShareText(page: InfoPage): string {
+  const lines: string[] = [];
+  lines.push(page.title.toUpperCase());
+  lines.push('');
+  for (const section of page.sections) {
+    if (section.heading) {
+      lines.push(section.heading.toUpperCase());
+    }
+    if (section.body) {
+      // Strip **bold** markers for plain text
+      lines.push(section.body.replace(/\*\*(.+?)\*\*/g, '$1'));
+    }
+    lines.push('');
+  }
+  lines.push('Source: CDC 2025 PEP Guidelines & US PHS 2025 Occupational Exposure Guidelines');
+  return lines.join('\n').trim();
+}
+
+/** Share an info page via Web Share API, with clipboard fallback */
+async function shareInfoPage(page: InfoPage): Promise<void> {
+  const text = buildShareText(page);
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: page.title,
+        text: text,
+      });
+    } catch {
+      // User cancelled share — do nothing
+    }
+  } else {
+    // Fallback: copy to clipboard
+    try {
+      await navigator.clipboard.writeText(text);
+      showCopiedToast();
+    } catch {
+      // Last resort: prompt with text
+      prompt('Copy this text to share:', text);
+    }
+  }
+}
+
+/** Brief toast notification for clipboard copy */
+function showCopiedToast(): void {
+  const toast = document.createElement('div');
+  toast.className = 'share-toast';
+  toast.textContent = 'Copied to clipboard';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2000);
 }
 
 /** Show an info page as a modal overlay. Returns false if pageId not found. */
@@ -366,6 +422,15 @@ export function showInfoModal(pageId: string): boolean {
   }
   citSection.appendChild(citList);
   body.appendChild(citSection);
+
+  // Share button (patient-facing info pages only)
+  if (page.shareable) {
+    const shareBtn = document.createElement('button');
+    shareBtn.className = 'btn-primary info-share-btn';
+    shareBtn.textContent = 'Share with Patient';
+    shareBtn.addEventListener('click', () => shareInfoPage(page));
+    body.appendChild(shareBtn);
+  }
 
   // Disclaimer
   const disclaimer = document.createElement('div');
