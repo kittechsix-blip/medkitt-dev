@@ -11,7 +11,7 @@ export const STROKE_NODES = [
         type: 'info',
         module: 1,
         title: 'Acute Ischemic Stroke Confirmed',
-        body: 'ICH excluded on non-contrast CT. Establish **last known well** time.\n\n**Immediate actions:**\n\u2022 Fingerstick glucose (only pre-tPA lab required)\n\u2022 Obtain NIHSS score\n\u2022 Establish IV access \u00D7 2\n\u2022 Activate stroke team if not already done\n\u2022 Order CTA head/neck with initial NCCT\n\nAll other labs (CBC, BMP, coags, troponin) should be drawn but should NOT delay thrombolysis in patients without known coagulopathy.',
+        body: 'ICH (intracerebral hemorrhage) excluded on non-contrast CT. Establish **last known well** time.\n\n**Immediate actions:**\n\u2022 Fingerstick glucose (only pre-tPA lab required)\n\u2022 Obtain NIHSS (NIH Stroke Scale) score\n\u2022 Establish IV access \u00D7 2\n\u2022 Activate stroke team if not already done\n\u2022 Order CTA (CT angiography) head/neck with initial NCCT\n\nAll other labs (CBC, BMP, coags, troponin) should be drawn but should NOT delay thrombolysis in patients without known coagulopathy.',
         citation: [1, 2],
         calculatorLinks: [{ id: 'nihss', label: 'NIHSS Calculator' }],
         next: 'stroke-deficit',
@@ -47,7 +47,7 @@ export const STROKE_NODES = [
         options: [
             {
                 label: '0\u20134.5 hours',
-                description: 'Standard IVT window',
+                description: 'Standard IVT (intravenous thrombolysis) window',
                 next: 'stroke-ivt-check',
                 urgency: 'critical',
             },
@@ -59,7 +59,7 @@ export const STROKE_NODES = [
             },
             {
                 label: '9\u201324 hours',
-                description: 'EVT window only \u2014 requires LVO + perfusion mismatch',
+                description: 'EVT (endovascular thrombectomy) window only \u2014 requires LVO (large vessel occlusion) + perfusion mismatch',
                 next: 'stroke-evt-window',
             },
             {
@@ -107,7 +107,7 @@ export const STROKE_NODES = [
         type: 'question',
         module: 2,
         title: 'Large Vessel Occlusion?',
-        body: 'Review CTA results. Is a **large vessel occlusion (LVO)** present?\n\nLVO targets for EVT:\n\u2022 Internal carotid artery (ICA)\n\u2022 M1 segment of middle cerebral artery (MCA)\n\u2022 M2 (proximal) MCA \u2014 may be considered\n\u2022 Basilar artery',
+        body: 'Review CTA results. Is a **large vessel occlusion (LVO)** present?\n\nLVO targets for EVT:\n\u2022 ICA (internal carotid artery)\n\u2022 M1 segment of MCA (middle cerebral artery)\n\u2022 M2 (proximal) MCA \u2014 may be considered\n\u2022 Basilar artery',
         citation: [6, 7],
         options: [
             {
@@ -152,7 +152,7 @@ export const STROKE_NODES = [
         type: 'question',
         module: 3,
         title: 'Extended IVT Window (4.5\u20139h)',
-        body: 'Perfusion imaging is required to determine eligibility.\n\nSee [Stroke Imaging Guide](#/info/stroke-imaging) for details on CT perfusion and MRI protocols.\n\n**EXTEND trial criteria:**\n\u2022 DWI-FLAIR mismatch on MRI (DWI+, FLAIR\u2212 suggests <4.5h)\n\u2022 OR CT perfusion showing salvageable tissue\n\u2022 Ischemic core <70 mL\n\u2022 Penumbra/core mismatch ratio >1.2',
+        body: 'Perfusion imaging is required to determine eligibility.\n\nSee [Stroke Imaging Guide](#/info/stroke-imaging) for details on CT perfusion and MRI protocols.\n\n**EXTEND trial criteria:**\n\u2022 DWI-FLAIR (diffusion-weighted imaging / fluid-attenuated inversion recovery) mismatch on MRI (DWI+, FLAIR\u2212 suggests <4.5h)\n\u2022 OR CT perfusion showing salvageable tissue\n\u2022 Ischemic core <70 mL\n\u2022 Penumbra/core mismatch ratio >1.2',
         citation: [5, 8],
         options: [
             {
@@ -242,7 +242,7 @@ export const STROKE_NODES = [
         type: 'result',
         module: 4,
         title: 'Dual Antiplatelet Therapy (DAPT)',
-        body: '**Loading (Day 1):**\n\u2022 [Aspirin](#/drug/aspirin) 325 mg + [Clopidogrel](#/drug/clopidogrel) 300 mg\n\n**Maintenance:**\n\u2022 Aspirin 81 mg + Clopidogrel 75 mg daily \u00D7 21 days\n\u2022 Then single antiplatelet (either agent)\n\n**Alternative (CYP2C19 poor metabolizer):**\n\u2022 [Ticagrelor](#/drug/ticagrelor) 180 mg load + Aspirin 325 mg, then Ticagrelor 90 mg BID + Aspirin 81 mg \u00D7 30 days\n\nPOINT trial: DAPT reduced 90-day stroke from 6.5% to 5.0% (NNT 38). Duration beyond 21 days increases bleeding without additional benefit.\n\nAlso initiate statin (high-intensity) and complete stroke workup (telemetry, echo, vascular imaging).',
+        body: '**Loading (Day 1):**\n\u2022 [Aspirin](#/drug/aspirin) 325 mg + [Clopidogrel](#/drug/clopidogrel) 300 mg\n\n**Maintenance:**\n\u2022 Aspirin 81 mg + Clopidogrel 75 mg daily \u00D7 21 days\n\u2022 Then single antiplatelet (either agent)\n\n**Alternative (CYP2C19 poor metabolizer):**\n\u2022 [Ticagrelor](#/drug/ticagrelor) 180 mg load + Aspirin 325 mg, then Ticagrelor 90 mg BID + Aspirin 81 mg \u00D7 30 days\n\nPOINT trial: DAPT (dual antiplatelet therapy) reduced 90-day stroke from 6.5% to 5.0% (NNT 38). Duration beyond 21 days increases bleeding without additional benefit.\n\nAlso initiate statin (high-intensity) and complete stroke workup (telemetry, echo, vascular imaging).',
         recommendation: 'Start DAPT immediately. Limit duration to 21 days. Add high-intensity statin. Complete stroke etiology workup.',
         confidence: 'definitive',
         citation: [3, 9, 10],
@@ -252,7 +252,7 @@ export const STROKE_NODES = [
         type: 'result',
         module: 4,
         title: 'Single Antiplatelet Therapy',
-        body: '[Aspirin](#/drug/aspirin) 160\u2013325 mg within 24\u201348h of symptom onset, then 81 mg daily.\n\nComplete stroke workup:\n\u2022 Telemetry / cardiac monitoring \u00D7 24h minimum\n\u2022 Echocardiogram (TTE; TEE if suspected PFO or valve pathology)\n\u2022 Lipid panel \u2192 high-intensity statin\n\u2022 HbA1c\n\u2022 Extended cardiac monitoring if etiology unclear (14\u201330 day event recorder)',
+        body: '[Aspirin](#/drug/aspirin) 160\u2013325 mg within 24\u201348h of symptom onset, then 81 mg daily.\n\nComplete stroke workup:\n\u2022 Telemetry / cardiac monitoring \u00D7 24h minimum\n\u2022 Echocardiogram (TTE (transthoracic); TEE (transesophageal) if suspected PFO (patent foramen ovale) or valve pathology)\n\u2022 Lipid panel \u2192 high-intensity statin\n\u2022 HbA1c\n\u2022 Extended cardiac monitoring if etiology unclear (14\u201330 day event recorder)',
         recommendation: 'Start aspirin. Complete stroke etiology workup. Initiate statin therapy.',
         confidence: 'recommended',
         citation: [1, 3],
@@ -308,7 +308,7 @@ export const STROKE_NODES = [
         type: 'result',
         module: 5,
         title: 'Cardioembolic Stroke \u2014 Anticoagulation',
-        body: '**DOAC preferred over warfarin** (unless mechanical valve or moderate-severe mitral stenosis).\n\nRecommended agents:\n\u2022 [Apixaban](#/drug/apixaban) 5 mg BID (preferred for stroke prevention, ARISTOTLE trial)\n\u2022 [Rivaroxaban](#/drug/rivaroxaban) 20 mg daily with food\n\n**Timing of anticoagulation initiation** (based on stroke severity):\n\u2022 TIA: 1\u20133 days\n\u2022 Minor stroke (NIHSS <8): 4\u20137 days\n\u2022 Moderate stroke (NIHSS 8\u201315): 7\u201314 days\n\u2022 Severe stroke (NIHSS >15 or large infarct): \u226514 days\n\n**Do NOT bridge with heparin** \u2014 no benefit over delayed DOAC, increases bleeding.\n\nDiscontinue antiplatelet when DOAC initiated (unless concurrent ACS/stent).',
+        body: '**DOAC (direct oral anticoagulant) preferred over warfarin** (unless mechanical valve or moderate-severe mitral stenosis).\n\nRecommended agents:\n\u2022 [Apixaban](#/drug/apixaban) 5 mg BID (preferred for stroke prevention, ARISTOTLE trial)\n\u2022 [Rivaroxaban](#/drug/rivaroxaban) 20 mg daily with food\n\n**Timing of anticoagulation initiation** (based on stroke severity):\n\u2022 TIA: 1\u20133 days\n\u2022 Minor stroke (NIHSS <8): 4\u20137 days\n\u2022 Moderate stroke (NIHSS 8\u201315): 7\u201314 days\n\u2022 Severe stroke (NIHSS >15 or large infarct): \u226514 days\n\n**Do NOT bridge with heparin** \u2014 no benefit over delayed DOAC, increases bleeding.\n\nDiscontinue antiplatelet when DOAC initiated (unless concurrent ACS/stent).',
         recommendation: 'Start DOAC based on stroke severity timing. Do not bridge with heparin. Ensure rate/rhythm control of AF.',
         confidence: 'definitive',
         citation: [1, 2, 11],
@@ -318,7 +318,7 @@ export const STROKE_NODES = [
         type: 'result',
         module: 5,
         title: 'Large Artery Atherosclerotic Stroke',
-        body: '**Antiplatelet:**\n\u2022 [Aspirin](#/drug/aspirin) 325 mg daily (or DAPT \u00D7 21\u201390 days for intracranial stenosis)\n\n**Statin:**\n\u2022 High-intensity statin (atorvastatin 40\u201380 mg or rosuvastatin 20\u201340 mg)\n\u2022 Target LDL <70 mg/dL\n\n**Carotid stenosis management:**\n\u2022 Symptomatic 70\u201399% stenosis: carotid endarterectomy (CEA) within 2 weeks (Class I)\n\u2022 Symptomatic 50\u201369%: CEA is reasonable (Class IIa)\n\u2022 CEA preferred over carotid artery stenting for most patients\n\n**Intracranial stenosis 70\u201399%:**\n\u2022 DAPT (aspirin + [clopidogrel](#/drug/clopidogrel)) \u00D7 90 days\n\u2022 Then single antiplatelet\n\u2022 Aggressive risk factor management (BP <140/90, LDL <70)',
+        body: '**Antiplatelet:**\n\u2022 [Aspirin](#/drug/aspirin) 325 mg daily (or DAPT \u00D7 21\u201390 days for intracranial stenosis)\n\n**Statin:**\n\u2022 High-intensity statin (atorvastatin 40\u201380 mg or rosuvastatin 20\u201340 mg)\n\u2022 Target LDL <70 mg/dL\n\n**Carotid stenosis management:**\n\u2022 Symptomatic 70\u201399% stenosis: CEA (carotid endarterectomy) within 2 weeks (Class I)\n\u2022 Symptomatic 50\u201369%: CEA is reasonable (Class IIa)\n\u2022 CEA preferred over CAS (carotid artery stenting) for most patients\n\n**Intracranial stenosis 70\u201399%:**\n\u2022 DAPT (aspirin + [clopidogrel](#/drug/clopidogrel)) \u00D7 90 days\n\u2022 Then single antiplatelet\n\u2022 Aggressive risk factor management (BP <140/90, LDL <70)',
         recommendation: 'Aspirin + high-intensity statin. Refer for CEA within 2 weeks if symptomatic carotid stenosis 70\u201399%. DAPT \u00D7 90d for intracranial stenosis.',
         confidence: 'definitive',
         citation: [1, 2],
