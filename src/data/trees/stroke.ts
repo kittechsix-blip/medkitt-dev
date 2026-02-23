@@ -28,8 +28,9 @@ export const STROKE_NODES: DecisionNode[] = [
     type: 'question',
     module: 1,
     title: 'Deficit Severity',
-    body: 'Is a **disabling deficit** present?\n\nDisabling = deficit that would impair activities of daily living (e.g., limb weakness, aphasia, neglect, visual field cut, gait impairment).\n\nNondisabling = isolated minor symptoms (e.g., mild sensory change, mild dysarthria, isolated facial droop without other deficits).',
+    body: 'Is a **disabling deficit** present?\n\nUse the NIHSS calculator below to score the deficit. **NIHSS >5 = disabling.**\n\nDisabling = deficit that would impair activities of daily living (e.g., limb weakness, aphasia, neglect, visual field cut, gait impairment).\n\nNondisabling = isolated minor symptoms (e.g., mild sensory change, mild dysarthria, isolated facial droop without other deficits).',
     citation: [2, 3],
+    calculatorLinks: [{ id: 'nihss', label: 'NIHSS Calculator' }],
     options: [
       {
         label: 'Yes \u2014 Disabling deficit',
