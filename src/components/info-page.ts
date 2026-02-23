@@ -342,7 +342,7 @@ const STROKE_IMAGING_PAGE: InfoPage = {
   sections: [
     {
       heading: 'Non-Contrast CT (NCCT)',
-      body: '**First-line imaging for all suspected stroke:**\n\u2022 Rapidly excludes intracranial hemorrhage (\u226495% sensitivity)\n\u2022 Available 24/7 in most EDs\n\u2022 Fast acquisition (\u22641 minute)\n\u2022 Sufficient to initiate IV thrombolysis within 0\u20134.5h window\n\nEarly ischemic signs on NCCT (may be absent in first 6h):\n\u2022 Loss of grey-white differentiation\n\u2022 Sulcal effacement\n\u2022 Insular ribbon sign\n\u2022 Hyperdense vessel sign (MCA dot sign)',
+      body: '**First-line imaging for all suspected hemorrhagic stroke:**\n\u2022 Rapidly excludes intracranial hemorrhage (\u226495% sensitivity)\n\u2022 Available 24/7 in most EDs\n\u2022 Fast acquisition (\u22641 minute)\n\u2022 Sufficient to initiate IV thrombolysis within 0\u20134.5h window\n\nEarly ischemic signs on NCCT (may be absent in first 6h):\n\u2022 Loss of grey-white differentiation\n\u2022 Sulcal effacement\n\u2022 Insular ribbon sign\n\u2022 Hyperdense vessel sign (MCA dot sign)',
     },
     {
       heading: 'CT Angiography (CTA)',
