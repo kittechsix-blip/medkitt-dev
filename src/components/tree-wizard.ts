@@ -9,6 +9,7 @@ import { ECHO_VIEWS_NODES, ECHO_VIEWS_CITATIONS, ECHO_VIEWS_MODULE_LABELS } from
 import { PRIAPISM_NODES, PRIAPISM_CITATIONS, PRIAPISM_MODULE_LABELS } from '../data/trees/priapism.js';
 import { AFIB_RVR_NODES, AFIB_RVR_CITATIONS, AFIB_RVR_MODULE_LABELS } from '../data/trees/afib-rvr.js';
 import { CHEST_TUBE_NODES, CHEST_TUBE_CITATIONS, CHEST_TUBE_MODULE_LABELS } from '../data/trees/chest-tube.js';
+import { PEP_NODES, PEP_CITATIONS, PEP_MODULE_LABELS } from '../data/trees/pep.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -79,6 +80,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'trauma-surg',
     moduleLabels: CHEST_TUBE_MODULE_LABELS,
     citations: CHEST_TUBE_CITATIONS,
+  },
+  'pep': {
+    nodes: PEP_NODES,
+    entryNodeId: 'pep-start',
+    categoryId: 'infectious-disease',
+    moduleLabels: PEP_MODULE_LABELS,
+    citations: PEP_CITATIONS,
   },
 };
 

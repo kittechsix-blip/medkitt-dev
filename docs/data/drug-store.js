@@ -94,6 +94,36 @@ const APIXABAN = {
         'Renner E, Barnes GD. Antithrombotic Management of VTE: JACC Focus Seminar. J Am Coll Cardiol. 2020.',
     ],
 };
+const BIKTARVY = {
+    id: 'biktarvy',
+    name: 'Biktarvy (BIC/FTC/TAF)',
+    genericName: 'Bictegravir / Emtricitabine / Tenofovir alafenamide',
+    drugClass: 'INSTI + dual NRTI combination (single-tablet regimen)',
+    route: 'PO',
+    indications: ['HIV post-exposure prophylaxis (PEP)', 'HIV treatment (ART)'],
+    dosing: [
+        {
+            indication: 'HIV PEP',
+            regimen: '1 tablet (50/200/25 mg) PO once daily x 28 days. Take with or without food. Start as soon as possible, within 72 hours of exposure.',
+        },
+    ],
+    contraindications: [
+        'Co-administration with dofetilide',
+        'Co-administration with rifampin (reduces bictegravir levels)',
+    ],
+    cautions: [
+        'CrCl <30 mL/min \u2014 not recommended (limited data)',
+        'Lactic acidosis / severe hepatomegaly with steatosis \u2014 rare but serious class effect of NRTIs',
+        'HBV co-infection \u2014 severe hepatitis flare may occur upon discontinuation (contains FTC/TAF, active against HBV)',
+        'Drug interactions \u2014 avoid polyvalent cation-containing antacids within 2 hours',
+    ],
+    monitoring: 'Renal function (BMP) at baseline and 2 weeks. HIV testing at baseline, 4\u20136 weeks, and 3 months.',
+    notes: 'Preferred single-tablet PEP regimen per 2025 CDC guidelines. High barrier to resistance. Well tolerated with low discontinuation rates. TAF has less renal/bone toxicity than TDF.',
+    citations: [
+        'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
+        'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
+    ],
+};
 const BENZATHINE_PENICILLIN = {
     id: 'benzathine-penicillin',
     name: 'Benzathine Penicillin G',
@@ -149,6 +179,36 @@ const CEFTRIAXONE = {
     citations: [
         'CDC. Sexually Transmitted Infections Treatment Guidelines. 2021.',
         'Marra CM, et al. Ceftriaxone for Neurosyphilis. Clin Infect Dis. 2019.',
+    ],
+};
+const DARUNAVIR = {
+    id: 'darunavir',
+    name: 'Darunavir (Prezista)',
+    genericName: 'Darunavir',
+    drugClass: 'Protease inhibitor (PI)',
+    route: 'PO',
+    indications: ['HIV post-exposure prophylaxis (alternative regimen)', 'HIV treatment (ART)'],
+    dosing: [
+        {
+            indication: 'HIV PEP (alternative)',
+            regimen: '800 mg PO once daily + ritonavir 100 mg PO once daily x 28 days. Must be taken with food. Always co-administer with ritonavir (pharmacokinetic booster).',
+        },
+    ],
+    contraindications: [
+        'Co-administration with alfuzosin, ergot derivatives, cisapride, pimozide, oral midazolam/triazolam, St. John\u2019s wort, lovastatin, simvastatin',
+        'Severe hepatic impairment (Child-Pugh C)',
+    ],
+    cautions: [
+        'Sulfonamide allergy \u2014 darunavir contains a sulfonamide moiety; use with caution',
+        'Hepatotoxicity \u2014 monitor LFTs, especially in HBV/HCV co-infection',
+        'Multiple CYP3A4 drug interactions \u2014 review full medication list',
+        'Skin rash \u2014 including rare Stevens-Johnson syndrome',
+    ],
+    monitoring: 'LFTs at baseline and 2 weeks. Renal function. HIV testing at baseline, 4\u20136 weeks, and 3 months.',
+    notes: 'Alternative 3rd agent for PEP when INSTI-based regimen cannot be used. Must be boosted with ritonavir. Higher pill burden and more drug interactions than dolutegravir.',
+    citations: [
+        'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
+        'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
     ],
 };
 const DABIGATRAN = {
@@ -211,6 +271,35 @@ const DIGOXIN = {
         'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
         'Michaud GF, Stevenson WG. Atrial Fibrillation. N Engl J Med. 2021;384(4):353-361.',
         'Ko D, et al. Atrial Fibrillation: A Review. JAMA. 2025;333(4):329-342.',
+    ],
+};
+const DOLUTEGRAVIR = {
+    id: 'dolutegravir',
+    name: 'Dolutegravir (Tivicay)',
+    genericName: 'Dolutegravir',
+    drugClass: 'Integrase strand transfer inhibitor (INSTI)',
+    route: 'PO',
+    indications: ['HIV post-exposure prophylaxis (PEP)', 'HIV treatment (ART)'],
+    dosing: [
+        {
+            indication: 'HIV PEP',
+            regimen: '50 mg PO once daily x 28 days (with TDF/FTC backbone). Take with or without food.',
+        },
+    ],
+    contraindications: [
+        'Co-administration with dofetilide (increased dofetilide levels)',
+    ],
+    cautions: [
+        'Drug interactions \u2014 avoid polyvalent cation-containing antacids/supplements within 2 hours (chelation reduces absorption)',
+        'Metformin \u2014 dolutegravir increases metformin levels; limit metformin to 1000 mg/day',
+        'Insomnia and neuropsychiatric effects \u2014 reported in some patients',
+        'Weight gain \u2014 observed with long-term INSTI use',
+    ],
+    monitoring: 'HIV testing at baseline, 4\u20136 weeks, and 3 months. Renal function if on TDF backbone.',
+    notes: 'Preferred 3rd agent for PEP when used with TDF/FTC backbone. High barrier to resistance. Well tolerated. Safe in pregnancy.',
+    citations: [
+        'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
+        'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
     ],
 };
 const DILTIAZEM = {
@@ -627,6 +716,34 @@ const PHENYLEPHRINE = {
         'Graham BA, et al. Emergency Pharmacotherapy for Priapism. Expert Opin Pharmacother. 2022;23(12):1371-80.',
     ],
 };
+const RITONAVIR = {
+    id: 'ritonavir',
+    name: 'Ritonavir (Norvir)',
+    genericName: 'Ritonavir',
+    drugClass: 'Protease inhibitor (pharmacokinetic booster)',
+    route: 'PO',
+    indications: ['Pharmacokinetic booster for darunavir (PEP alternative)', 'Pharmacokinetic booster for other PIs'],
+    dosing: [
+        {
+            indication: 'PK booster for darunavir (PEP)',
+            regimen: '100 mg PO once daily x 28 days. Always co-administer with darunavir 800 mg. Take with food.',
+        },
+    ],
+    contraindications: [
+        'Co-administration with alfuzosin, amiodarone, flecainide, ergot derivatives, lovastatin, simvastatin, pimozide, sildenafil (for PAH), oral midazolam/triazolam',
+    ],
+    cautions: [
+        'Potent CYP3A4 inhibitor \u2014 extensive drug interactions; review full medication list',
+        'GI side effects (nausea, diarrhea, dysgeusia) \u2014 common at boosting doses',
+        'Hepatotoxicity \u2014 monitor LFTs in hepatic impairment',
+        'Lipid elevations with prolonged use',
+    ],
+    monitoring: 'LFTs at baseline. Review drug interaction list before prescribing.',
+    notes: 'Used at sub-therapeutic dose (100 mg) solely as a pharmacokinetic booster to increase darunavir levels via CYP3A4 inhibition. Not used as a standalone antiretroviral at this dose.',
+    citations: [
+        'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
+    ],
+};
 const RIVAROXABAN = {
     id: 'rivaroxaban',
     name: 'Rivaroxaban',
@@ -650,6 +767,35 @@ const RIVAROXABAN = {
     citations: [
         'Kahn SR, de Wit K. Pulmonary Embolism. N Engl J Med. 2022.',
         'Freund Y, et al. Acute Pulmonary Embolism: A Review. JAMA. 2022.',
+    ],
+};
+const TDF_FTC = {
+    id: 'tdf-ftc',
+    name: 'Tenofovir/Emtricitabine (Truvada)',
+    genericName: 'Tenofovir disoproxil fumarate / Emtricitabine',
+    drugClass: 'Dual NRTI combination (backbone)',
+    route: 'PO',
+    indications: ['HIV post-exposure prophylaxis (PEP backbone)', 'HIV pre-exposure prophylaxis (PrEP)', 'HIV treatment (ART backbone)'],
+    dosing: [
+        {
+            indication: 'HIV PEP (backbone)',
+            regimen: '1 tablet (300/200 mg) PO once daily x 28 days. Combine with dolutegravir 50 mg daily or darunavir/ritonavir. Take with or without food.',
+        },
+    ],
+    contraindications: [
+        'CrCl <60 mL/min for TDF-based formulations (nephrotoxic)',
+    ],
+    cautions: [
+        'Renal toxicity (TDF) \u2014 monitor creatinine at baseline and 2 weeks; avoid if CrCl <60',
+        'Bone mineral density decrease \u2014 TDF associated with bone loss (TAF-based alternatives preferred if risk factors)',
+        'Lactic acidosis / hepatomegaly with steatosis \u2014 rare NRTI class effect',
+        'HBV co-infection \u2014 severe hepatitis flare may occur upon discontinuation (both FTC and TDF active against HBV)',
+    ],
+    monitoring: 'Renal function at baseline and 2 weeks. HIV testing at baseline, 4\u20136 weeks, and 3 months. HBV serology at baseline.',
+    notes: 'Preferred dual-NRTI backbone for PEP when used with a 3rd agent (dolutegravir or darunavir/r). Also used for PrEP. TAF-based alternatives (e.g., Biktarvy, Descovy) have less renal/bone toxicity.',
+    citations: [
+        'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
+        'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
     ],
 };
 const UFH = {
@@ -730,10 +876,13 @@ export const ALL_DRUGS = [
     AMIODARONE,
     APIXABAN,
     BENZATHINE_PENICILLIN,
+    BIKTARVY,
     CEFTRIAXONE,
     DABIGATRAN,
+    DARUNAVIR,
     DIGOXIN,
     DILTIAZEM,
+    DOLUTEGRAVIR,
     DOXYCYCLINE,
     EDOXABAN,
     ENOXAPARIN,
@@ -746,7 +895,9 @@ export const ALL_DRUGS = [
     PHENYLEPHRINE,
     PROCAINAMIDE,
     PROCAINE_PENICILLIN,
+    RITONAVIR,
     RIVAROXABAN,
+    TDF_FTC,
     UFH,
     VERAPAMIL,
 ];
@@ -767,11 +918,14 @@ const NAME_TO_ID = [
     [/alteplase|tPA/i, 'alteplase'],
     [/amiodarone|cordarone/i, 'amiodarone'],
     [/apixaban/i, 'apixaban'],
+    [/biktarvy|BIC\/FTC\/TAF/i, 'biktarvy'],
     [/benzathine.*penicillin/i, 'benzathine-penicillin'],
     [/ceftriaxone/i, 'ceftriaxone'],
     [/dabigatran/i, 'dabigatran'],
+    [/darunavir|prezista/i, 'darunavir'],
     [/digoxin|digitalis|lanoxin/i, 'digoxin'],
     [/diltiazem|cardizem/i, 'diltiazem'],
+    [/dolutegravir|tivicay/i, 'dolutegravir'],
     [/doxycycline/i, 'doxycycline'],
     [/edoxaban/i, 'edoxaban'],
     [/enoxaparin|LMWH|low.molecular/i, 'enoxaparin'],
@@ -784,7 +938,9 @@ const NAME_TO_ID = [
     [/phenylephrine/i, 'phenylephrine'],
     [/procainamide|pronestyl/i, 'procainamide'],
     [/procaine.*penicillin/i, 'procaine-penicillin'],
+    [/ritonavir|norvir/i, 'ritonavir'],
     [/rivaroxaban/i, 'rivaroxaban'],
+    [/tenofovir.*emtricitabine|truvada|TDF\/FTC/i, 'tdf-ftc'],
     [/unfractionated heparin|^UFH$|heparin sodium/i, 'ufh'],
     [/verapamil|calan|isoptin/i, 'verapamil'],
 ];

@@ -186,6 +186,42 @@ const AFIB_DISCHARGE_PAGE: InfoPage = {
 };
 
 // -------------------------------------------------------------------
+// PEP Patient Information Sheet
+// -------------------------------------------------------------------
+
+const PEP_PATIENT_INFO: InfoPage = {
+  id: 'pep-patient-info',
+  title: 'PEP: What You Need to Know',
+  subtitle: 'Patient Information \u2014 Post-Exposure Prophylaxis for HIV',
+  sections: [
+    {
+      heading: 'What Is PEP?',
+      body: 'PEP stands for post-exposure prophylaxis. It is a 28-day course of HIV medications taken after a possible exposure to HIV. PEP can prevent HIV infection if started within 72 hours of exposure. The sooner you start, the better it works.',
+    },
+    {
+      heading: 'How Likely Is HIV Transmission?',
+      body: 'The risk of getting HIV from a single exposure varies by type:\n\n\u2022 Receptive anal intercourse: ~1.4% per exposure (highest sexual risk)\n\u2022 Receptive vaginal intercourse: ~0.08% per exposure\n\u2022 Insertive anal or vaginal intercourse: ~0.04\u20130.11% per exposure\n\u2022 Needlestick injury: ~0.23% per exposure\n\u2022 Mucous membrane splash: ~0.09% per exposure\n\u2022 Sharing injection drug needles: ~0.63% per exposure\n\nRisk is higher if the source person has a high viral load (not on treatment) and lower if the source person is on HIV treatment with an undetectable viral load.',
+    },
+    {
+      heading: 'How Well Does PEP Work?',
+      body: 'PEP is highly effective when taken correctly:\n\n\u2022 Reduces HIV risk by approximately 80% or more\n\u2022 Most effective when started within hours of exposure \u2014 ideally within 2 hours\n\u2022 Must be taken every day for the full 28 days to work\n\u2022 Missing doses or stopping early significantly reduces effectiveness\n\u2022 PEP does not protect against other sexually transmitted infections',
+    },
+    {
+      heading: 'Common Side Effects',
+      body: 'Most people tolerate PEP well. Side effects are usually mild and improve over the first 1\u20132 weeks:\n\n\u2022 Nausea (most common \u2014 take with food to help)\n\u2022 Fatigue or tiredness\n\u2022 Headache\n\u2022 Diarrhea or stomach discomfort\n\u2022 Difficulty sleeping\n\n**When to call your doctor:**\n\u2022 Severe nausea or vomiting that prevents you from taking the medication\n\u2022 Yellowing of skin or eyes\n\u2022 Dark-colored urine\n\u2022 Rash\n\u2022 Any severe or worsening symptoms',
+    },
+    {
+      heading: 'Important Reminders',
+      body: '\u2022 Take your medication at the same time every day\n\u2022 Complete all 28 days \u2014 do not stop early even if you feel fine\n\u2022 You will need follow-up HIV testing at 4\u20136 weeks and 3 months\n\u2022 Visit your doctor at 2 weeks to check for side effects and blood work\n\u2022 Use condoms and safe practices during and after PEP until your final HIV test is negative\n\u2022 If you have ongoing risk for HIV, ask your doctor about PrEP (pre-exposure prophylaxis) \u2014 a daily medication to prevent HIV before exposure',
+    },
+  ],
+  citations: [
+    { num: 1, text: 'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV \u2014 CDC Recommendations, 2025. MMWR. 2025;74(1):1-56.' },
+    { num: 2, text: 'Kofman AD, et al. 2025 US PHS Guidelines for Management of Occupational Exposures to HIV. Infect Control Hosp Epidemiol. 2025;46(9):863-873.' },
+  ],
+};
+
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 
@@ -194,6 +230,7 @@ const INFO_PAGES: Record<string, InfoPage> = {
   'priapism-return-precautions': PRIAPISM_RETURN_PRECAUTIONS,
   'cardioversion-afib': CARDIOVERSION_AFIB_PAGE,
   'afib-discharge': AFIB_DISCHARGE_PAGE,
+  'pep-patient-info': PEP_PATIENT_INFO,
 };
 
 // -------------------------------------------------------------------

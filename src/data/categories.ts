@@ -53,6 +53,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 29,
         entryNodeId: 'pe-start',
+      },
+      {
+        id: 'pep',
+        title: 'Post Exposure Prophylaxis',
+        subtitle: 'Exposure \u2192 HIV Assessment \u2192 Initiation \u2192 Follow-Up',
+        categoryId: 'emergency-medicine',
+        version: '1.0',
+        nodeCount: 15,
+        entryNodeId: 'pep-start',
       }
     ],
     isCustom: false,
@@ -72,6 +81,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 42,
         entryNodeId: 'serology-start',
+      },
+      {
+        id: 'pep',
+        title: 'Post Exposure Prophylaxis',
+        subtitle: 'Exposure \u2192 HIV Assessment \u2192 Initiation \u2192 Follow-Up',
+        categoryId: 'infectious-disease',
+        version: '1.0',
+        nodeCount: 15,
+        entryNodeId: 'pep-start',
       }
     ],
     isCustom: false,
