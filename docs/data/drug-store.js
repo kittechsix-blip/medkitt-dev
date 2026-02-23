@@ -16,6 +16,10 @@ const ALTEPLASE = {
             indication: 'High-risk PE',
             regimen: '100 mg IV over 2 hours: 0.6 mg/kg (max 50 mg) over first 15 min, remainder over next 1 hr 45 min. Stop UFH drip before infusion. Post-infusion: check PTT \u2014 if \u226475 restart UFH without bolus; if >75 repeat PTT q2hr until \u226475.',
         },
+        {
+            indication: 'Acute ischemic stroke (0\u20134.5h)',
+            regimen: '0.9 mg/kg IV (max 90 mg): Give 10% as IV bolus over 1 min, remaining 90% infused over 60 min. BP must be <185/110 before and <180/105 for 24h after. No antithrombotics \u00D7 24h post-infusion.',
+        },
     ],
     contraindications: [
         'Absolute: Haemorrhagic stroke or stroke of unknown origin, Ischaemic stroke within 6 months, CNS neoplasm, Major trauma/surgery/head injury within 3 weeks, Bleeding diathesis, Active bleeding',
@@ -68,6 +72,44 @@ const AMIODARONE = {
         'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
         'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
         'Bosch NA, et al. Atrial Fibrillation in the ICU. Chest. 2018;154(6):1424-1434.',
+    ],
+};
+const ASPIRIN = {
+    id: 'aspirin',
+    name: 'Aspirin',
+    genericName: 'Acetylsalicylic acid',
+    drugClass: 'Antiplatelet (COX inhibitor)',
+    route: 'PO',
+    indications: ['Acute ischemic stroke', 'Acute coronary syndrome', 'Secondary stroke prevention', 'DAPT (dual antiplatelet therapy)'],
+    dosing: [
+        {
+            indication: 'Acute ischemic stroke (no IVT)',
+            regimen: '160\u2013325 mg PO within 24\u201348 hours of symptom onset. If given via NG tube: use non-enteric-coated formulation or crush enteric-coated.',
+        },
+        {
+            indication: 'Post-IVT stroke',
+            regimen: 'Hold aspirin for 24 hours post-thrombolysis. Obtain NCCT at 24h to exclude hemorrhagic transformation before starting. Then 81\u2013325 mg daily.',
+        },
+        {
+            indication: 'DAPT (minor stroke)',
+            regimen: '325 mg loading dose + clopidogrel 300 mg on day 1. Then aspirin 81 mg + clopidogrel 75 mg daily \u00D7 21 days, followed by single antiplatelet.',
+        },
+    ],
+    contraindications: [
+        'Active intracranial hemorrhage',
+        'Known aspirin allergy or NSAID-exacerbated respiratory disease',
+        'Active GI bleeding',
+    ],
+    cautions: [
+        'GI bleeding risk \u2014 consider PPI co-therapy if DAPT',
+        'Platelet dysfunction lasts 7\u201310 days (irreversible COX inhibition)',
+        'Avoid concurrent NSAIDs (competitive COX-1 binding reduces aspirin efficacy)',
+    ],
+    monitoring: 'No routine monitoring required. Monitor for signs of bleeding.',
+    notes: 'Aspirin within 24\u201348h of acute ischemic stroke reduces early recurrent stroke (IST and CAST trials). DAPT with aspirin + clopidogrel for 21 days (POINT trial) reduces stroke recurrence in minor stroke/TIA (NNT 38) with modest bleeding increase.',
+    citations: [
+        'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
+        'Johnston SC, et al. Clopidogrel and Aspirin in Acute Ischemic Stroke and High-Risk TIA (POINT). N Engl J Med. 2018;379(3):215-225.',
     ],
 };
 const APIXABAN = {
@@ -209,6 +251,67 @@ const DARUNAVIR = {
     citations: [
         'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
         'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
+    ],
+};
+const CLEVIDIPINE = {
+    id: 'clevidipine',
+    name: 'Clevidipine (Cleviprex)',
+    genericName: 'Clevidipine butyrate',
+    drugClass: 'Ultra-short-acting dihydropyridine CCB',
+    route: 'IV',
+    indications: ['Acute hypertension in stroke (pre/post thrombolysis)', 'Perioperative hypertension', 'Hypertensive emergency'],
+    dosing: [
+        {
+            indication: 'Acute stroke BP management',
+            regimen: 'Start 1\u20132 mg/hr IV. Double dose every 90 seconds until target BP achieved. Usual maintenance: 4\u20136 mg/hr. Max 21 mg/hr (or 1000 mL per 24h due to lipid load).',
+        },
+    ],
+    contraindications: [
+        'Severe aortic stenosis',
+        'Defective lipid metabolism (e.g., pathologic hyperlipidemia, lipoid nephrosis, acute pancreatitis with hyperlipidemia)',
+        'Allergy to soy or egg products (lipid emulsion vehicle)',
+    ],
+    cautions: [
+        'Lipid emulsion vehicle \u2014 contributes 2 kcal/mL to caloric intake',
+        'No preservative \u2014 must be used within 12 hours of puncture',
+        'Rebound hypertension possible if discontinued abruptly \u2014 transition to oral agent',
+        'Reflex tachycardia may occur',
+    ],
+    monitoring: 'Continuous arterial BP monitoring recommended. Heart rate. Lipid panel if prolonged use >24h.',
+    notes: 'Ultra-short half-life (~1 min) allows precise, rapid BP titration. Achieves target BP faster than nicardipine in clinical trials. Arterial-selective vasodilator \u2014 reduces afterload without venodilation. Does not reduce cerebral blood flow. Consider when nicardipine is unavailable or faster titration is needed.',
+    citations: [
+        'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
+        'Pollack CV, et al. Clevidipine for Acute Hypertension: A Systematic Review and Meta-Analysis. Crit Care Med. 2019.',
+    ],
+};
+const CLOPIDOGREL = {
+    id: 'clopidogrel',
+    name: 'Clopidogrel (Plavix)',
+    genericName: 'Clopidogrel bisulfate',
+    drugClass: 'Antiplatelet (P2Y12 antagonist)',
+    route: 'PO',
+    indications: ['Minor ischemic stroke (DAPT)', 'High-risk TIA', 'Acute coronary syndrome', 'Secondary prevention (stent, PAD)'],
+    dosing: [
+        {
+            indication: 'Minor stroke / high-risk TIA (DAPT)',
+            regimen: '300 mg loading dose on day 1 + aspirin 325 mg. Then 75 mg daily + aspirin 81 mg \u00D7 21 days total DAPT. After 21 days: single antiplatelet (either agent).',
+        },
+    ],
+    contraindications: [
+        'Active pathological bleeding (intracranial hemorrhage, GI bleeding)',
+        'Hypersensitivity to clopidogrel',
+    ],
+    cautions: [
+        'CYP2C19 poor metabolizers \u2014 reduced conversion to active metabolite, diminished antiplatelet effect. Consider ticagrelor if known poor metabolizer.',
+        'Concurrent omeprazole/esomeprazole \u2014 may reduce clopidogrel efficacy (CYP2C19 inhibition). Use pantoprazole if PPI needed.',
+        'Hold 5\u20137 days before elective surgery',
+        'Increased bleeding risk with DAPT \u2014 NNH 122 for moderate-severe hemorrhage (POINT trial)',
+    ],
+    monitoring: 'No routine monitoring. CYP2C19 genotyping if available may guide therapy. Monitor for bleeding.',
+    notes: 'POINT trial: DAPT \u00D7 21 days reduced 90-day stroke from 6.5% to 5.0% (NNT 38) in minor stroke/TIA. CHANCE trial: similar benefit in Chinese population. Duration beyond 21 days increases bleeding without additional benefit.',
+    citations: [
+        'Johnston SC, et al. Clopidogrel and Aspirin in Acute Ischemic Stroke and High-Risk TIA (POINT). N Engl J Med. 2018;379(3):215-225.',
+        'Wang Y, et al. Clopidogrel with Aspirin in Acute Minor Stroke or TIA (CHANCE). N Engl J Med. 2013;369(1):11-19.',
     ],
 };
 const DABIGATRAN = {
@@ -517,6 +620,43 @@ const LIDOCAINE = {
         'Burnett AL, Sharlip ID. Standard Operating Procedures for Priapism. J Sex Med. 2013;10(1):180-94.',
     ],
 };
+const LABETALOL = {
+    id: 'labetalol',
+    name: 'Labetalol',
+    genericName: 'Labetalol hydrochloride',
+    drugClass: 'Combined alpha-1 and beta-adrenergic blocker',
+    route: 'IV',
+    indications: ['Acute stroke BP management (pre/post thrombolysis)', 'Hypertensive emergency', 'Preeclampsia/eclampsia'],
+    dosing: [
+        {
+            indication: 'Pre-thrombolysis BP (target <185/110)',
+            regimen: '10\u201320 mg IV bolus over 1\u20132 min. May repeat once. If BP still >185/110 after 2 doses, consider nicardipine infusion. Do NOT proceed with thrombolysis if BP remains uncontrolled.',
+        },
+        {
+            indication: 'Post-thrombolysis BP (target <180/105 \u00D7 24h)',
+            regimen: '10 mg IV bolus, then 2\u20138 mg/min continuous infusion. Titrate to maintain BP <180/105. Max 300 mg/24h.',
+        },
+    ],
+    contraindications: [
+        'Severe bradycardia (HR <60)',
+        'Heart block greater than first degree without pacemaker',
+        'Cardiogenic shock or decompensated HF',
+        'Severe reactive airway disease / status asthmaticus',
+        'Pheochromocytoma (without prior alpha-blockade)',
+    ],
+    cautions: [
+        'Bronchospasm \u2014 beta-2 blockade at higher doses may precipitate bronchospasm in asthma/COPD',
+        'Bradycardia \u2014 monitor HR; hold if HR <55',
+        'Hepatotoxicity \u2014 rare idiosyncratic reaction; monitor LFTs if prolonged use',
+        'Orthostatic hypotension \u2014 keep patient supine during IV administration',
+    ],
+    monitoring: 'Continuous BP monitoring (arterial line preferred). Heart rate. Neuro checks every 15 min during active titration.',
+    notes: 'First-line IV antihypertensive for acute stroke per AHA/ASA guidelines. Onset: 2\u20135 min IV. Duration: 2\u20134 hours. Alpha:beta blockade ratio is ~1:7 (predominantly beta). Does not increase intracranial pressure. Preferred over nitroprusside (which can raise ICP).',
+    citations: [
+        'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
+        'Whelton PK, et al. 2017 ACC/AHA Guideline for Prevention, Detection, Evaluation, and Management of High Blood Pressure. J Am Coll Cardiol. 2018;71(19):e127-e248.',
+    ],
+};
 const MAGNESIUM_SULFATE = {
     id: 'magnesium-sulfate',
     name: 'Magnesium Sulfate',
@@ -589,6 +729,40 @@ const METOPROLOL = {
         'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
         'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
         'Moskowitz A, et al. Management of AF with RVR in the ICU. Shock. 2017;48(4):436-440.',
+    ],
+};
+const NICARDIPINE = {
+    id: 'nicardipine',
+    name: 'Nicardipine (Cardene)',
+    genericName: 'Nicardipine hydrochloride',
+    drugClass: 'Dihydropyridine calcium channel blocker',
+    route: 'IV',
+    indications: ['Acute stroke BP management (pre/post thrombolysis)', 'Hypertensive emergency', 'Perioperative hypertension'],
+    dosing: [
+        {
+            indication: 'Pre-thrombolysis BP (target <185/110)',
+            regimen: '5 mg/hr IV infusion. Titrate by 2.5 mg/hr every 5\u201315 min. Max 15 mg/hr. Once target achieved, decrease to 3 mg/hr and titrate to maintain.',
+        },
+        {
+            indication: 'Post-thrombolysis BP (target <180/105 \u00D7 24h)',
+            regimen: '5 mg/hr IV infusion, titrate by 2.5 mg/hr every 5\u201315 min to maintain BP <180/105. Max 15 mg/hr.',
+        },
+    ],
+    contraindications: [
+        'Advanced aortic stenosis',
+        'Hypersensitivity to nicardipine or other dihydropyridine CCBs',
+    ],
+    cautions: [
+        'Reflex tachycardia \u2014 may need to combine with beta-blocker',
+        'Peripheral phlebitis \u2014 change IV site every 12h or use central line',
+        'Hepatic impairment \u2014 reduce dose (extensively hepatically metabolized)',
+        'Transition to oral antihypertensive when stable \u2014 onset of oral agent overlaps with nicardipine wean',
+    ],
+    monitoring: 'Continuous arterial BP monitoring recommended. Heart rate. IV site inspection every 4\u20136h (phlebitis risk).',
+    notes: 'Second-line to labetalol for acute stroke BP management. Preferred when beta-blocker contraindicated (asthma, bradycardia, HF). Onset: 5\u201310 min. Does not increase ICP. Arterial-selective vasodilator. More predictable dose-response than labetalol for continuous infusion.',
+    citations: [
+        'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
+        'Liu-Deryke X, et al. Management of Hypertension in Acute Ischemic Stroke. Ann Pharmacother. 2006;40(12):2234-46.',
     ],
 };
 const PENICILLIN_G_IV = {
@@ -798,6 +972,73 @@ const TDF_FTC = {
         'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
     ],
 };
+const TENECTEPLASE = {
+    id: 'tenecteplase',
+    name: 'Tenecteplase (TNKase)',
+    genericName: 'Tenecteplase',
+    drugClass: 'Thrombolytic (tissue plasminogen activator)',
+    route: 'IV',
+    indications: ['Acute ischemic stroke (0\u20134.5h)', 'Acute STEMI'],
+    dosing: [
+        {
+            indication: 'Acute ischemic stroke',
+            regimen: '0.25 mg/kg IV bolus (max 25 mg) given over 5 seconds. Single dose \u2014 no infusion required. BP must be <185/110 before administration and <180/105 for 24h after.',
+        },
+    ],
+    contraindications: [
+        'Active internal bleeding or ICH',
+        'History of hemorrhagic stroke or stroke of unknown origin',
+        'Ischemic stroke within 3 months',
+        'Intracranial neoplasm, AVM, or aneurysm',
+        'Known bleeding diathesis',
+        'Severe uncontrolled hypertension (>185/110 despite treatment)',
+        'See full contraindications list in [Thrombolysis Contraindications](#/info/stroke-contraindications)',
+    ],
+    cautions: [
+        'No antithrombotics \u00D7 24h post-administration',
+        'Repeat NCCT at 24h before starting antiplatelets/anticoagulants',
+        'Angioedema risk \u2014 higher in patients on ACE inhibitors',
+        'Fibrinogen depletion less than alteplase (more fibrin-specific)',
+    ],
+    monitoring: 'Neuro checks every 15 min \u00D7 2h, then every 30 min \u00D7 6h, then hourly \u00D7 16h. BP every 15 min \u00D7 2h, then every 30 min \u00D7 6h. Any neurological decline \u2192 emergent NCCT.',
+    notes: 'Single IV bolus (vs 60-min alteplase infusion) \u2014 significantly simpler administration. AcT trial (2024): tenecteplase 0.25 mg/kg was noninferior to alteplase for functional outcome at 90 days with similar safety profile. Preferred thrombolytic per 2026 AHA/ASA guidelines due to ease of administration and equivalent efficacy.',
+    citations: [
+        'Mendelson SJ, Prabhakaran S. Diagnosis and Management of Transient Ischemic Attack and Acute Ischemic Stroke: A Review. JAMA. 2021;325(11):1088-1098.',
+        'Bhatt DL, et al. Tenecteplase vs Alteplase for Acute Ischemic Stroke (AcT). Lancet. 2024.',
+        'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
+    ],
+};
+const TICAGRELOR = {
+    id: 'ticagrelor',
+    name: 'Ticagrelor (Brilinta)',
+    genericName: 'Ticagrelor',
+    drugClass: 'Antiplatelet (reversible P2Y12 antagonist)',
+    route: 'PO',
+    indications: ['Minor ischemic stroke (alternative DAPT)', 'High-risk TIA', 'Acute coronary syndrome'],
+    dosing: [
+        {
+            indication: 'Minor stroke / high-risk TIA (alternative DAPT)',
+            regimen: '180 mg loading dose on day 1 + aspirin 325 mg. Then 90 mg BID + aspirin 81 mg \u00D7 30 days total. Alternative to aspirin + clopidogrel when CYP2C19 poor metabolizer status is known or suspected.',
+        },
+    ],
+    contraindications: [
+        'Active pathological bleeding',
+        'History of intracranial hemorrhage',
+        'Severe hepatic impairment (Child-Pugh C)',
+    ],
+    cautions: [
+        'Dyspnea \u2014 occurs in ~14% of patients; usually mild, self-limited, not related to bronchospasm',
+        'Bradycardia \u2014 ventricular pauses reported; use cautiously with sick sinus syndrome or AV block',
+        'Do not exceed aspirin 100 mg/day with ticagrelor (higher aspirin doses reduce ticagrelor efficacy)',
+        'Reversible antiplatelet effect \u2014 offset ~5 days (vs 7\u201310 days for clopidogrel)',
+        'CYP3A4 interactions \u2014 avoid strong inhibitors (ketoconazole) and strong inducers (rifampin)',
+    ],
+    monitoring: 'No routine monitoring required. Monitor for bleeding and dyspnea.',
+    notes: 'THALES trial: ticagrelor + aspirin \u00D7 30 days reduced 30-day stroke/death from 6.6% to 5.5% (NNT 91) in mild-to-moderate stroke. Not dependent on CYP2C19 metabolism (advantage over clopidogrel in poor metabolizers). Higher cost and twice-daily dosing compared to clopidogrel.',
+    citations: [
+        'Johnston SC, et al. Ticagrelor and Aspirin or Aspirin Alone in Acute Ischemic Stroke or TIA (THALES). N Engl J Med. 2020;383(3):207-217.',
+    ],
+};
 const UFH = {
     id: 'ufh',
     name: 'Unfractionated Heparin (UFH)',
@@ -875,9 +1116,12 @@ export const ALL_DRUGS = [
     ALTEPLASE,
     AMIODARONE,
     APIXABAN,
+    ASPIRIN,
     BENZATHINE_PENICILLIN,
     BIKTARVY,
     CEFTRIAXONE,
+    CLEVIDIPINE,
+    CLOPIDOGREL,
     DABIGATRAN,
     DARUNAVIR,
     DIGOXIN,
@@ -888,9 +1132,11 @@ export const ALL_DRUGS = [
     ENOXAPARIN,
     EPINEPHRINE,
     ESMOLOL,
+    LABETALOL,
     LIDOCAINE,
     MAGNESIUM_SULFATE,
     METOPROLOL,
+    NICARDIPINE,
     PENICILLIN_G_IV,
     PHENYLEPHRINE,
     PROCAINAMIDE,
@@ -898,6 +1144,8 @@ export const ALL_DRUGS = [
     RITONAVIR,
     RIVAROXABAN,
     TDF_FTC,
+    TENECTEPLASE,
+    TICAGRELOR,
     UFH,
     VERAPAMIL,
 ];
@@ -918,9 +1166,12 @@ const NAME_TO_ID = [
     [/alteplase|tPA/i, 'alteplase'],
     [/amiodarone|cordarone/i, 'amiodarone'],
     [/apixaban/i, 'apixaban'],
+    [/aspirin|ASA|acetylsalicylic/i, 'aspirin'],
     [/biktarvy|BIC\/FTC\/TAF/i, 'biktarvy'],
     [/benzathine.*penicillin/i, 'benzathine-penicillin'],
     [/ceftriaxone/i, 'ceftriaxone'],
+    [/clevidipine|cleviprex/i, 'clevidipine'],
+    [/clopidogrel|plavix/i, 'clopidogrel'],
     [/dabigatran/i, 'dabigatran'],
     [/darunavir|prezista/i, 'darunavir'],
     [/digoxin|digitalis|lanoxin/i, 'digoxin'],
@@ -931,16 +1182,20 @@ const NAME_TO_ID = [
     [/enoxaparin|LMWH|low.molecular/i, 'enoxaparin'],
     [/epinephrine|adrenaline/i, 'epinephrine'],
     [/esmolol|brevibloc/i, 'esmolol'],
+    [/labetalol/i, 'labetalol'],
     [/lidocaine/i, 'lidocaine'],
     [/magnesium sulfate|mag sulfate|MgSO4/i, 'magnesium-sulfate'],
     [/metoprolol|lopressor|toprol/i, 'metoprolol'],
+    [/nicardipine|cardene/i, 'nicardipine'],
     [/aqueous.*penicillin|penicillin G.*IV|crystalline.*penicillin/i, 'penicillin-g-iv'],
     [/phenylephrine/i, 'phenylephrine'],
     [/procainamide|pronestyl/i, 'procainamide'],
     [/procaine.*penicillin/i, 'procaine-penicillin'],
     [/ritonavir|norvir/i, 'ritonavir'],
     [/rivaroxaban/i, 'rivaroxaban'],
+    [/tenecteplase|TNKase/i, 'tenecteplase'],
     [/tenofovir.*emtricitabine|truvada|TDF\/FTC/i, 'tdf-ftc'],
+    [/ticagrelor|brilinta/i, 'ticagrelor'],
     [/unfractionated heparin|^UFH$|heparin sodium/i, 'ufh'],
     [/verapamil|calan|isoptin/i, 'verapamil'],
 ];

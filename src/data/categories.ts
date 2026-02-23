@@ -62,6 +62,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 15,
         entryNodeId: 'pep-start',
+      },
+      {
+        id: 'stroke',
+        title: 'Acute Ischemic Stroke',
+        subtitle: 'NIHSS \u2192 IVT/EVT \u2192 DAPT \u2192 Prevention',
+        categoryId: 'emergency-medicine',
+        version: '1.0',
+        nodeCount: 20,
+        entryNodeId: 'stroke-start',
       }
     ],
     isCustom: false,
@@ -96,7 +105,23 @@ export const DEFAULT_CATEGORIES: Category[] = [
   },
   { id: 'med-calc',             name: 'Med-Calc',              icon: 'med-calc.png',          decisionTrees: [], isCustom: false },
   { id: 'nephro-rheum-endo',    name: 'Nephro/Rheum/Endo',     icon: 'nephro-rheum-endo.png', decisionTrees: [], isCustom: false },
-  { id: 'neurology',            name: 'Neurology',             icon: 'neurology.png',         decisionTrees: [], isCustom: false },
+  {
+    id: 'neurology',
+    name: 'Neurology',
+    icon: 'neurology.png',
+    decisionTrees: [
+      {
+        id: 'stroke',
+        title: 'Acute Ischemic Stroke',
+        subtitle: 'NIHSS \u2192 IVT/EVT \u2192 DAPT \u2192 Prevention',
+        categoryId: 'neurology',
+        version: '1.0',
+        nodeCount: 20,
+        entryNodeId: 'stroke-start',
+      }
+    ],
+    isCustom: false,
+  },
   { id: 'ob-gyn',               name: 'OB/GYN',                icon: 'ob-gyn.png',            decisionTrees: [], isCustom: false },
   { id: 'orthopedics',          name: 'Ortho',                 icon: 'ortho.png',             decisionTrees: [], isCustom: false },
   { id: 'pediatrics',           name: 'Pediatrics',            icon: 'pediatrics.png',        decisionTrees: [], isCustom: false },

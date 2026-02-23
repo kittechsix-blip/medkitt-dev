@@ -22,6 +22,10 @@ import {
   CHEST_TUBE_CITATIONS,
   CHEST_TUBE_CLINICAL_NOTES,
 } from '../data/trees/chest-tube.js';
+import {
+  STROKE_CITATIONS,
+  STROKE_CLINICAL_NOTES,
+} from '../data/trees/stroke.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -61,6 +65,11 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
     title: 'Chest Tube Reference',
     citations: CHEST_TUBE_CITATIONS,
     clinicalNotes: CHEST_TUBE_CLINICAL_NOTES,
+  },
+  'stroke': {
+    title: 'Acute Ischemic Stroke Reference',
+    citations: STROKE_CITATIONS,
+    clinicalNotes: STROKE_CLINICAL_NOTES,
   },
 };
 

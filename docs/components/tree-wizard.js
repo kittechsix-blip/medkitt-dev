@@ -9,6 +9,7 @@ import { PRIAPISM_NODES, PRIAPISM_CITATIONS, PRIAPISM_MODULE_LABELS } from '../d
 import { AFIB_RVR_NODES, AFIB_RVR_CITATIONS, AFIB_RVR_MODULE_LABELS } from '../data/trees/afib-rvr.js';
 import { CHEST_TUBE_NODES, CHEST_TUBE_CITATIONS, CHEST_TUBE_MODULE_LABELS } from '../data/trees/chest-tube.js';
 import { PEP_NODES, PEP_CITATIONS, PEP_MODULE_LABELS } from '../data/trees/pep.js';
+import { STROKE_NODES, STROKE_CITATIONS, STROKE_MODULE_LABELS } from '../data/trees/stroke.js';
 import { router } from '../services/router.js';
 import { renderInlineCitations } from './reference-table.js';
 import { showInfoModal } from './info-page.js';
@@ -70,6 +71,13 @@ const TREE_CONFIGS = {
         categoryId: 'infectious-disease',
         moduleLabels: PEP_MODULE_LABELS,
         citations: PEP_CITATIONS,
+    },
+    'stroke': {
+        nodes: STROKE_NODES,
+        entryNodeId: 'stroke-start',
+        categoryId: 'neurology',
+        moduleLabels: STROKE_MODULE_LABELS,
+        citations: STROKE_CITATIONS,
     },
 };
 let engine = null;

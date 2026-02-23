@@ -99,12 +99,221 @@ const CHA2DS2VASC_CALCULATOR = {
     ],
 };
 // -------------------------------------------------------------------
+// NIHSS Calculator Definition
+// -------------------------------------------------------------------
+const NIHSS_CALCULATOR = {
+    id: 'nihss',
+    title: 'NIHSS',
+    subtitle: 'NIH Stroke Scale',
+    description: 'The NIHSS is a 15-item clinical assessment tool used to quantify stroke severity. Score ranges from 0 (no symptoms) to 42 (maximum deficit). Guides treatment decisions including thrombolysis eligibility and EVT criteria.',
+    fields: [
+        {
+            name: 'loc',
+            label: '1a. Level of Consciousness',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'Alert', points: 0 },
+                { label: 'Not alert, arousable by minor stimulation', points: 1 },
+                { label: 'Not alert, requires repeated stimulation', points: 2 },
+                { label: 'Unresponsive or reflexive responses only', points: 3 },
+            ],
+        },
+        {
+            name: 'loc-questions',
+            label: '1b. LOC Questions',
+            type: 'select',
+            points: 0,
+            description: 'Ask month and age',
+            selectOptions: [
+                { label: 'Both correct', points: 0 },
+                { label: 'One correct', points: 1 },
+                { label: 'Neither correct', points: 2 },
+            ],
+        },
+        {
+            name: 'loc-commands',
+            label: '1c. LOC Commands',
+            type: 'select',
+            points: 0,
+            description: 'Open/close eyes, grip and release',
+            selectOptions: [
+                { label: 'Both correct', points: 0 },
+                { label: 'One correct', points: 1 },
+                { label: 'Neither correct', points: 2 },
+            ],
+        },
+        {
+            name: 'gaze',
+            label: '2. Best Gaze',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'Normal', points: 0 },
+                { label: 'Partial gaze palsy', points: 1 },
+                { label: 'Forced deviation or total gaze paresis', points: 2 },
+            ],
+        },
+        {
+            name: 'visual',
+            label: '3. Visual Fields',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'No visual loss', points: 0 },
+                { label: 'Partial hemianopia', points: 1 },
+                { label: 'Complete hemianopia', points: 2 },
+                { label: 'Bilateral hemianopia (blind)', points: 3 },
+            ],
+        },
+        {
+            name: 'facial',
+            label: '4. Facial Palsy',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'Normal symmetric movements', points: 0 },
+                { label: 'Minor paralysis (flattened nasolabial fold)', points: 1 },
+                { label: 'Partial paralysis (lower face)', points: 2 },
+                { label: 'Complete paralysis (upper and lower face)', points: 3 },
+            ],
+        },
+        {
+            name: 'left-arm',
+            label: '5a. Left Arm Motor',
+            type: 'select',
+            points: 0,
+            description: 'Hold arm at 90\u00B0 (sitting) or 45\u00B0 (supine) for 10 sec',
+            selectOptions: [
+                { label: 'No drift \u2014 holds for full 10 sec', points: 0 },
+                { label: 'Drift \u2014 holds but drifts before 10 sec', points: 1 },
+                { label: 'Some effort against gravity', points: 2 },
+                { label: 'No effort against gravity', points: 3 },
+                { label: 'No movement', points: 4 },
+            ],
+        },
+        {
+            name: 'right-arm',
+            label: '5b. Right Arm Motor',
+            type: 'select',
+            points: 0,
+            description: 'Hold arm at 90\u00B0 (sitting) or 45\u00B0 (supine) for 10 sec',
+            selectOptions: [
+                { label: 'No drift \u2014 holds for full 10 sec', points: 0 },
+                { label: 'Drift \u2014 holds but drifts before 10 sec', points: 1 },
+                { label: 'Some effort against gravity', points: 2 },
+                { label: 'No effort against gravity', points: 3 },
+                { label: 'No movement', points: 4 },
+            ],
+        },
+        {
+            name: 'left-leg',
+            label: '6a. Left Leg Motor',
+            type: 'select',
+            points: 0,
+            description: 'Hold leg at 30\u00B0 (supine) for 5 sec',
+            selectOptions: [
+                { label: 'No drift \u2014 holds for full 5 sec', points: 0 },
+                { label: 'Drift \u2014 holds but drifts before 5 sec', points: 1 },
+                { label: 'Some effort against gravity', points: 2 },
+                { label: 'No effort against gravity', points: 3 },
+                { label: 'No movement', points: 4 },
+            ],
+        },
+        {
+            name: 'right-leg',
+            label: '6b. Right Leg Motor',
+            type: 'select',
+            points: 0,
+            description: 'Hold leg at 30\u00B0 (supine) for 5 sec',
+            selectOptions: [
+                { label: 'No drift \u2014 holds for full 5 sec', points: 0 },
+                { label: 'Drift \u2014 holds but drifts before 5 sec', points: 1 },
+                { label: 'Some effort against gravity', points: 2 },
+                { label: 'No effort against gravity', points: 3 },
+                { label: 'No movement', points: 4 },
+            ],
+        },
+        {
+            name: 'ataxia',
+            label: '7. Limb Ataxia',
+            type: 'select',
+            points: 0,
+            description: 'Finger-nose-finger and heel-shin',
+            selectOptions: [
+                { label: 'Absent', points: 0 },
+                { label: 'Present in one limb', points: 1 },
+                { label: 'Present in two or more limbs', points: 2 },
+            ],
+        },
+        {
+            name: 'sensory',
+            label: '8. Sensory',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'Normal \u2014 no sensory loss', points: 0 },
+                { label: 'Mild-moderate \u2014 less sharp or dull', points: 1 },
+                { label: 'Severe or total \u2014 unaware of touch', points: 2 },
+            ],
+        },
+        {
+            name: 'language',
+            label: '9. Best Language',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'No aphasia \u2014 normal', points: 0 },
+                { label: 'Mild-moderate aphasia', points: 1 },
+                { label: 'Severe aphasia \u2014 fragmentary expression', points: 2 },
+                { label: 'Mute or global aphasia', points: 3 },
+            ],
+        },
+        {
+            name: 'dysarthria',
+            label: '10. Dysarthria',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'Normal', points: 0 },
+                { label: 'Mild-moderate \u2014 slurring but understandable', points: 1 },
+                { label: 'Severe \u2014 unintelligible or mute', points: 2 },
+            ],
+        },
+        {
+            name: 'extinction',
+            label: '11. Extinction/Inattention',
+            type: 'select',
+            points: 0,
+            selectOptions: [
+                { label: 'No abnormality', points: 0 },
+                { label: 'Inattention to one modality (visual, tactile, auditory, spatial)', points: 1 },
+                { label: 'Profound hemi-inattention or extinction to more than one modality', points: 2 },
+            ],
+        },
+    ],
+    results: [
+        { min: -Infinity, max: 1, label: 'Score 0', risk: 'No Stroke Symptoms', mortality: 'No measurable deficit', colorVar: '--color-primary' },
+        { min: 1, max: 5, label: 'Score 1\u20134', risk: 'Minor Stroke', mortality: 'Consider DAPT, MRI preferred', colorVar: '--color-primary' },
+        { min: 5, max: 16, label: 'Score 5\u201315', risk: 'Moderate Stroke', mortality: 'IVT candidate if within window', colorVar: '--color-warning' },
+        { min: 16, max: 21, label: 'Score 16\u201320', risk: 'Moderate-Severe Stroke', mortality: 'IVT + evaluate for EVT', colorVar: '--color-danger' },
+        { min: 21, max: Infinity, label: 'Score 21\u201342', risk: 'Severe Stroke', mortality: 'IVT + EVT if LVO. High mortality risk.', colorVar: '--color-danger' },
+    ],
+    thresholdNote: 'NIHSS \u22656: EVT eligibility threshold (anterior LVO). NIHSS 0\u20135 with disabling deficit: still consider IVT. NIHSS 0\u20135 nondisabling: DAPT pathway.',
+    citations: [
+        'Brott T, et al. Measurements of Acute Cerebral Infarction: A Clinical Examination Scale. Stroke. 1989;20(7):864-870.',
+        'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
+        'Mendelson SJ, Prabhakaran S. Diagnosis and Management of TIA and Acute Ischemic Stroke: A Review. JAMA. 2021;325(11):1088-1098.',
+    ],
+};
+// -------------------------------------------------------------------
 // Calculator Registry
 // -------------------------------------------------------------------
 const CALCULATORS = {
     'pesi': PESI_CALCULATOR,
     'spesi': SPESI_CALCULATOR,
     'cha2ds2vasc': CHA2DS2VASC_CALCULATOR,
+    'nihss': NIHSS_CALCULATOR,
 };
 /** Get all available calculators sorted alphabetically by title */
 export function getAllCalculators() {
@@ -242,6 +451,9 @@ export function renderCalculator(container, calculatorId) {
         if (field.type === 'number') {
             renderNumberField(fieldEl, field, fieldValues, () => updateScore(calc, fieldValues, scoreDisplay));
         }
+        else if (field.type === 'select') {
+            renderSelectField(fieldEl, field, fieldValues, () => updateScore(calc, fieldValues, scoreDisplay));
+        }
         else {
             renderToggleField(fieldEl, field, fieldValues, () => updateScore(calc, fieldValues, scoreDisplay));
         }
@@ -352,6 +564,43 @@ function renderToggleField(container, field, values, onChange) {
         onChange();
     });
     container.appendChild(row);
+}
+function renderSelectField(container, field, values, onChange) {
+    const row = document.createElement('div');
+    row.className = 'calculator-select-row';
+    const labelWrap = document.createElement('div');
+    labelWrap.className = 'calculator-toggle-label-wrap';
+    const label = document.createElement('span');
+    label.className = 'calculator-field-label';
+    label.textContent = field.label;
+    labelWrap.appendChild(label);
+    if (field.description) {
+        const desc = document.createElement('span');
+        desc.className = 'calculator-field-desc';
+        desc.textContent = field.description;
+        labelWrap.appendChild(desc);
+    }
+    row.appendChild(labelWrap);
+    container.appendChild(row);
+    const selectRow = document.createElement('div');
+    selectRow.className = 'calculator-select-input-row';
+    const select = document.createElement('select');
+    select.className = 'calculator-select-input';
+    select.setAttribute('aria-label', field.label);
+    if (field.selectOptions) {
+        for (const opt of field.selectOptions) {
+            const option = document.createElement('option');
+            option.value = String(opt.points);
+            option.textContent = `${opt.label} (${opt.points})`;
+            select.appendChild(option);
+        }
+    }
+    select.addEventListener('change', () => {
+        values[field.name] = parseInt(select.value, 10);
+        onChange();
+    });
+    selectRow.appendChild(select);
+    container.appendChild(selectRow);
 }
 // -------------------------------------------------------------------
 // Score Computation & Display

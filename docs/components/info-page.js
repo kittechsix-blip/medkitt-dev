@@ -243,6 +243,107 @@ const HBV_SEROLOGY_PAGE = {
     ],
 };
 // -------------------------------------------------------------------
+// Thrombolysis Contraindications (Stroke)
+// -------------------------------------------------------------------
+const STROKE_CONTRAINDICATIONS_PAGE = {
+    id: 'stroke-contraindications',
+    title: 'Thrombolysis Contraindications',
+    subtitle: 'IV Thrombolysis Eligibility \u2014 Acute Ischemic Stroke',
+    sections: [
+        {
+            heading: 'Absolute Contraindications',
+            body: '\u2022 Active internal bleeding (excluding menses)\n\u2022 History of hemorrhagic stroke or stroke of unknown origin\n\u2022 Ischemic stroke within 3 months\n\u2022 Significant head trauma or intracranial/spinal surgery within 3 months\n\u2022 Intracranial neoplasm, AVM, or aneurysm\n\u2022 Known bleeding diathesis (platelets <100,000, INR >1.7, aPTT >40s, PT >15s)\n\u2022 Current anticoagulant use with INR >1.7 or PT >15s\n\u2022 Low-molecular-weight heparin at therapeutic dose within 24 hours\n\u2022 Direct thrombin inhibitor or factor Xa inhibitor within 48 hours (unless lab testing shows normal levels)\n\u2022 Blood glucose <50 mg/dL',
+        },
+        {
+            heading: 'Relative Contraindications',
+            body: '**Time-Based:**\n\u2022 Rapidly improving or minor symptoms (but disabling deficits still warrant treatment)\n\u2022 Pregnancy (weigh risk-benefit; not an absolute contraindication)\n\u2022 Seizure at stroke onset (if residual deficits are due to stroke, not postictal)\n\u2022 Major surgery or serious trauma within 14 days\n\n**Lab/Medication-Based:**\n\u2022 Arterial puncture at non-compressible site within 7 days\n\u2022 Lumbar puncture within 7 days\n\u2022 GI or urinary tract hemorrhage within 21 days\n\u2022 Myocardial infarction within 3 months\n\n**Imaging-Based:**\n\u2022 Large hypodensity on NCCT (>1/3 MCA territory) \u2014 suggests extensive infarction, higher hemorrhagic conversion risk\n\u2022 Intracranial hemorrhage on baseline imaging',
+        },
+        {
+            heading: 'Blood Pressure Requirements',
+            body: '**Before thrombolysis:** BP must be <185/110 mmHg\n\u2022 [Labetalol](#/drug/labetalol) 10\u201320 mg IV bolus (first-line)\n\u2022 [Nicardipine](#/drug/nicardipine) 5 mg/hr IV infusion (if labetalol insufficient)\n\u2022 [Clevidipine](#/drug/clevidipine) 1\u20132 mg/hr IV (alternative)\n\nIf BP cannot be reduced to <185/110: **do NOT give thrombolysis**\n\n**After thrombolysis:** Maintain BP <180/105 \u00D7 24 hours\n\u2022 Same agents as above; neuro checks every 15 min',
+        },
+        {
+            heading: 'Extended Window Considerations (4.5\u20139h)',
+            body: 'Patients in the 4.5\u20139 hour window may still be eligible for IVT if:\n\u2022 Perfusion imaging shows salvageable tissue (DWI-FLAIR mismatch on MRI, or CT perfusion with favorable penumbra)\n\u2022 No additional contraindications beyond standard list\n\u2022 Based on EXTEND trial evidence [3]',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.' },
+        { num: 2, text: 'Mendelson SJ, Prabhakaran S. Diagnosis and Management of TIA and Acute Ischemic Stroke: A Review. JAMA. 2021;325(11):1088-1098.' },
+        { num: 3, text: 'Ma H, et al. Thrombolysis Guided by Perfusion Imaging up to 9 Hours after Onset of Stroke (EXTEND). N Engl J Med. 2019;380(19):1795-1803.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Stroke Imaging: CT vs MRI
+// -------------------------------------------------------------------
+const STROKE_IMAGING_PAGE = {
+    id: 'stroke-imaging',
+    title: 'Stroke Imaging: CT vs MRI',
+    subtitle: 'When to Use Each Modality',
+    sections: [
+        {
+            heading: 'Non-Contrast CT (NCCT)',
+            body: '**First-line imaging for all suspected stroke:**\n\u2022 Rapidly excludes intracranial hemorrhage (\u226495% sensitivity)\n\u2022 Available 24/7 in most EDs\n\u2022 Fast acquisition (\u22641 minute)\n\u2022 Sufficient to initiate IV thrombolysis within 0\u20134.5h window\n\nEarly ischemic signs on NCCT (may be absent in first 6h):\n\u2022 Loss of grey-white differentiation\n\u2022 Sulcal effacement\n\u2022 Insular ribbon sign\n\u2022 Hyperdense vessel sign (MCA dot sign)',
+        },
+        {
+            heading: 'CT Angiography (CTA)',
+            body: '**Obtain with initial NCCT for all stroke patients:**\n\u2022 Identifies large vessel occlusion (LVO) for EVT eligibility\n\u2022 Evaluates carotid and vertebrobasilar stenosis\n\u2022 Should NOT delay thrombolysis \u2014 start tPA/TNK first, then get CTA\n\u2022 Key findings: vessel cutoff sign, thrombus length, collateral grade',
+        },
+        {
+            heading: 'CT Perfusion (CTP)',
+            body: '**Required for extended window (4.5\u201324h) EVT evaluation:**\n\u2022 Identifies ischemic core vs salvageable penumbra\n\u2022 DAWN/DEFUSE-3 criteria require CTP or MRI DWI\n\u2022 Automated software (RAPID) provides ischemic core volume, Tmax >6s volume, and mismatch ratio\n\u2022 Favorable: small core (<70 mL), large penumbra (mismatch ratio >1.8)',
+        },
+        {
+            heading: 'MRI (DWI/FLAIR)',
+            body: '**Preferred when available for:**\n\u2022 TIA workup (DWI shows acute infarction missed on CT)\n\u2022 Posterior fossa / brainstem stroke (CT has poor sensitivity)\n\u2022 Small lacunar infarcts\n\u2022 Extended window IVT: DWI-FLAIR mismatch (DWI+, FLAIR\u2212) suggests onset <4.5h [3]\n\u2022 Wake-up strokes with unknown time of onset\n\n**Limitations:**\n\u2022 Slower acquisition (20\u201330 min)\n\u2022 Less available at night/weekends\n\u2022 Contraindicated with certain implants\n\u2022 Should NOT delay thrombolysis in the standard window',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.' },
+        { num: 2, text: 'Nogueira RG, et al. Thrombectomy 6 to 24 Hours after Stroke with a Mismatch between Deficit and Infarct (DAWN). N Engl J Med. 2018;378(1):11-21.' },
+        { num: 3, text: 'Thomalla G, et al. MRI-Guided Thrombolysis for Stroke with Unknown Time of Onset (WAKE-UP). N Engl J Med. 2018;379(7):611-622.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Stroke Consent: Patient Info (Shareable)
+// -------------------------------------------------------------------
+const STROKE_CONSENT_PAGE = {
+    id: 'stroke-consent',
+    title: 'Thrombolysis: What You Need to Know',
+    subtitle: 'Patient Information \u2014 Clot-Dissolving Treatment for Stroke',
+    shareable: true,
+    sections: [
+        {
+            heading: 'What Is Happening?',
+            body: 'You are having a stroke. A blood clot is blocking blood flow to part of your brain. Without treatment, the affected brain tissue will be permanently damaged.',
+        },
+        {
+            heading: 'What Is the Treatment?',
+            body: 'We are recommending a clot-dissolving medication (called a thrombolytic) given through your IV. This medication works by breaking up the blood clot that is blocking blood flow to your brain.\n\nThe sooner this medication is given, the better the chance of recovery. Every minute of delay means more brain tissue at risk.',
+        },
+        {
+            heading: 'What Are the Benefits?',
+            body: 'Clinical trials show that patients who receive this treatment are significantly more likely to recover with little or no disability:\n\n\u2022 Without treatment: about 26% of patients achieve a good outcome\n\u2022 With treatment: about 39% of patients achieve a good outcome\n\u2022 The earlier the treatment, the greater the benefit\n\u2022 For every 100 patients treated, approximately 13 additional patients recover well',
+        },
+        {
+            heading: 'What Are the Risks?',
+            body: 'The main risk is bleeding:\n\n\u2022 Symptomatic bleeding into the brain occurs in approximately 2\u20137% of patients\n\u2022 This can sometimes be life-threatening\n\u2022 Your medical team will monitor you very closely for the first 24 hours\n\u2022 Minor bleeding (gums, IV site) is more common and usually manageable\n\nOther possible side effects:\n\u2022 Allergic reaction (rare)\n\u2022 Swelling of the tongue or lips (angioedema \u2014 rare, more common if taking ACE inhibitors)',
+        },
+        {
+            heading: 'What Happens If We Don\u2019t Treat?',
+            body: 'Without clot-dissolving medication, the blocked area of your brain will continue to lose blood flow. This can lead to:\n\n\u2022 Permanent weakness or paralysis\n\u2022 Difficulty speaking or understanding speech\n\u2022 Vision loss\n\u2022 Disability requiring long-term care\n\u2022 In severe cases, death',
+        },
+        {
+            heading: 'Emergency Consent',
+            body: 'Because time is critical in stroke treatment, emergency consent may be obtained if the patient is unable to communicate and no family member is immediately available. This is standard practice supported by medical guidelines \u2014 the benefit of rapid treatment outweighs the delay of waiting for formal consent.',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.' },
+        { num: 2, text: 'Wardlaw JM, et al. Thrombolysis for Acute Ischaemic Stroke. Cochrane Database Syst Rev. 2014.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 const INFO_PAGES = {
@@ -252,6 +353,9 @@ const INFO_PAGES = {
     'afib-discharge': AFIB_DISCHARGE_PAGE,
     'pep-patient-info': PEP_PATIENT_INFO,
     'hbv-serology': HBV_SEROLOGY_PAGE,
+    'stroke-contraindications': STROKE_CONTRAINDICATIONS_PAGE,
+    'stroke-imaging': STROKE_IMAGING_PAGE,
+    'stroke-consent': STROKE_CONSENT_PAGE,
 };
 // -------------------------------------------------------------------
 // Modal Overlay
