@@ -59,6 +59,7 @@ const PRIAPISM_RETURN_PRECAUTIONS = {
     id: 'priapism-return-precautions',
     title: 'Return Precautions',
     subtitle: 'Patient Discharge Instructions \u2014 Priapism',
+    shareable: true,
     sections: [
         {
             body: 'You were treated today for priapism (a prolonged erection). Please return to the emergency department immediately if you experience any of the following:',
@@ -125,6 +126,7 @@ const CARDIOVERSION_AFIB_PAGE = {
 const AFIB_DISCHARGE_PAGE = {
     id: 'afib-discharge',
     title: 'Discharge Instructions',
+    shareable: true,
     subtitle: 'Atrial Fibrillation with Rapid Ventricular Response',
     sections: [
         {
@@ -216,7 +218,7 @@ function buildShareText(page) {
         }
         lines.push('');
     }
-    lines.push('Source: CDC 2025 PEP Guidelines & US PHS 2025 Occupational Exposure Guidelines');
+    lines.push('Source: MedKitt Clinical Decision Support \u2014 for informational purposes only.');
     return lines.join('\n').trim();
 }
 /** Share an info page via Web Share API, with clipboard fallback */
