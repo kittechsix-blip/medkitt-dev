@@ -27,10 +27,23 @@ interface InfoPage {
   shareable?: boolean;
 }
 
+interface PictographGroup {
+  count: number;
+  color: string;
+  label: string;
+  symbol?: string;
+}
+
+interface Pictograph {
+  title: string;
+  groups: PictographGroup[];
+}
+
 interface InfoSection {
   heading?: string;
   body: string;
   drugTable?: DrugDosing[];
+  pictographs?: Pictograph[];
 }
 
 // -------------------------------------------------------------------
@@ -362,6 +375,29 @@ const STROKE_CONSENT_PAGE: InfoPage = {
   shareable: true,
   sections: [
     {
+      heading: 'Your Chances of Recovery',
+      body: '',
+      pictographs: [
+        {
+          title: 'WITHOUT Treatment (out of 100 people like you)',
+          groups: [
+            { count: 26, color: '#66BB6A', label: '~26 people recover with little or no disability' },
+            { count: 44, color: '#FFCA28', label: '~44 people have moderate disability' },
+            { count: 30, color: '#EF5350', label: '~30 people have severe disability or die' },
+          ],
+        },
+        {
+          title: 'WITH Tenecteplase Treatment (out of 100 people like you)',
+          groups: [
+            { count: 73, color: '#66BB6A', label: '~73 people recover with little or no disability' },
+            { count: 8, color: '#FFCA28', label: '~8 people have moderate disability' },
+            { count: 17, color: '#EF5350', label: '~19 people have severe disability or die' },
+            { count: 2, color: '#EF5350', label: '~2 people have brain bleeding (included in totals above)', symbol: '\u26A0\uFE0F' },
+          ],
+        },
+      ],
+    },
+    {
       heading: 'What Is Happening?',
       body: 'You are having a stroke. A blood clot is blocking blood flow to part of your brain. Without treatment, the affected brain tissue will be permanently damaged.',
     },
@@ -409,6 +445,71 @@ const INFO_PAGES: Record<string, InfoPage> = {
 };
 
 // -------------------------------------------------------------------
+// Pictograph Renderer
+// -------------------------------------------------------------------
+
+function renderPictograph(picto: Pictograph): HTMLElement {
+  const container = document.createElement('div');
+  container.className = 'pictograph';
+
+  const title = document.createElement('div');
+  title.className = 'pictograph-title';
+  title.textContent = picto.title;
+  container.appendChild(title);
+
+  // Dot grid — 10 per row
+  const grid = document.createElement('div');
+  grid.className = 'pictograph-grid';
+
+  for (const group of picto.groups) {
+    for (let i = 0; i < group.count; i++) {
+      if (group.symbol) {
+        const sym = document.createElement('span');
+        sym.className = 'pictograph-symbol';
+        sym.textContent = group.symbol;
+        grid.appendChild(sym);
+      } else {
+        const dot = document.createElement('span');
+        dot.className = 'pictograph-dot';
+        dot.style.backgroundColor = group.color;
+        grid.appendChild(dot);
+      }
+    }
+  }
+  container.appendChild(grid);
+
+  // Legend
+  const legend = document.createElement('div');
+  legend.className = 'pictograph-legend';
+
+  for (const group of picto.groups) {
+    const item = document.createElement('div');
+    item.className = 'pictograph-legend-item';
+
+    if (group.symbol) {
+      const sym = document.createElement('span');
+      sym.className = 'pictograph-legend-symbol';
+      sym.textContent = group.symbol;
+      item.appendChild(sym);
+    } else {
+      const dot = document.createElement('span');
+      dot.className = 'pictograph-legend-dot';
+      dot.style.backgroundColor = group.color;
+      item.appendChild(dot);
+    }
+
+    const label = document.createElement('span');
+    label.textContent = group.label;
+    item.appendChild(label);
+
+    legend.appendChild(item);
+  }
+  container.appendChild(legend);
+
+  return container;
+}
+
+// -------------------------------------------------------------------
 // Modal Overlay
 // -------------------------------------------------------------------
 
@@ -431,6 +532,15 @@ function buildShareText(page: InfoPage): string {
     if (section.body) {
       // Strip **bold** markers for plain text
       lines.push(section.body.replace(/\*\*(.+?)\*\*/g, '$1'));
+    }
+    if (section.pictographs) {
+      for (const picto of section.pictographs) {
+        lines.push(picto.title);
+        for (const group of picto.groups) {
+          lines.push(`\u2022 ${group.label}`);
+        }
+        lines.push('');
+      }
     }
     lines.push('');
   }
@@ -560,6 +670,12 @@ export function showInfoModal(pageId: string): boolean {
         card.appendChild(regimen);
 
         sectionEl.appendChild(card);
+      }
+    }
+
+    if (section.pictographs) {
+      for (const picto of section.pictographs) {
+        sectionEl.appendChild(renderPictograph(picto));
       }
     }
 
