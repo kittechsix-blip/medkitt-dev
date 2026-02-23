@@ -257,9 +257,33 @@ function renderHeader(node: DecisionNode): HTMLElement {
     if (cont) renderCurrentNode(cont);
   });
 
+  // Share button
+  const shareBtn = document.createElement('button');
+  shareBtn.className = 'btn-text wizard-share';
+  shareBtn.textContent = '\u{1F517}';
+  shareBtn.setAttribute('aria-label', 'Share consult link');
+  shareBtn.addEventListener('click', () => {
+    if (!currentConfig) return;
+    const treeId = Object.keys(TREE_CONFIGS).find(k => TREE_CONFIGS[k] === currentConfig) ?? '';
+    const url = `${window.location.origin}${window.location.pathname}#/tree/${treeId}`;
+    if (navigator.share) {
+      navigator.share({ title: `MedKitt: ${node.title}`, url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        shareBtn.textContent = '\u2713';
+        setTimeout(() => { shareBtn.textContent = '\u{1F517}'; }, 1500);
+      }).catch(() => {});
+    }
+  });
+
+  const rightGroup = document.createElement('div');
+  rightGroup.className = 'wizard-header-right';
+  rightGroup.appendChild(shareBtn);
+  rightGroup.appendChild(topBtn);
+
   header.appendChild(backBtn);
   header.appendChild(progress);
-  header.appendChild(topBtn);
+  header.appendChild(rightGroup);
 
   return header;
 }

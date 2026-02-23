@@ -785,6 +785,18 @@ body {
   color: var(--color-text-muted);
 }
 
+.wizard-header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wizard-share {
+  font-size: 16px;
+  min-height: 36px;
+  padding: 0 6px;
+}
+
 .wizard-top {
   padding-right: 0;
   font-size: 13px;
