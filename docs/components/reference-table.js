@@ -6,6 +6,7 @@ import { PNEUMOTHORAX_CITATIONS, PNEUMOTHORAX_DIAGNOSTIC_TESTS, PNEUMOTHORAX_CLI
 import { PE_TREATMENT_CITATIONS, PE_TREATMENT_DIAGNOSTIC_TESTS, PE_TREATMENT_CLINICAL_NOTES, } from '../data/trees/pe-treatment.js';
 import { CHEST_TUBE_CITATIONS, CHEST_TUBE_CLINICAL_NOTES, } from '../data/trees/chest-tube.js';
 import { STROKE_CITATIONS, STROKE_CLINICAL_NOTES, } from '../data/trees/stroke.js';
+import { NSTEMI_CITATIONS, NSTEMI_CLINICAL_NOTES, } from '../data/trees/nstemi.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -37,6 +38,11 @@ const TREE_REFERENCE_DATA = {
         title: 'Acute Ischemic Stroke Reference',
         citations: STROKE_CITATIONS,
         clinicalNotes: STROKE_CLINICAL_NOTES,
+    },
+    'nstemi': {
+        title: 'NSTEMI Management Reference',
+        citations: NSTEMI_CITATIONS,
+        clinicalNotes: NSTEMI_CLINICAL_NOTES,
     },
 };
 // -------------------------------------------------------------------

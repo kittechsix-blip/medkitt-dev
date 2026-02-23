@@ -374,6 +374,147 @@ const STROKE_CONSENT_PAGE = {
     ],
 };
 // -------------------------------------------------------------------
+// P2Y12 Inhibitor Selection (NSTEMI)
+// -------------------------------------------------------------------
+const NSTEMI_ANTIPLATELET_PAGE = {
+    id: 'nstemi-antiplatelet-cx',
+    title: 'P2Y12 Inhibitor Selection',
+    subtitle: 'Choosing Between Ticagrelor, Prasugrel, and Clopidogrel',
+    sections: [
+        {
+            body: 'All three P2Y12 inhibitors reduce ischemic events when combined with aspirin after ACS/PCI. Selection depends on bleeding risk, ischemic risk, concomitant medications, and specific patient characteristics.',
+        },
+        {
+            heading: 'Ticagrelor (Preferred First-Line)',
+            body: '\u2022 PLATO trial: 16% relative reduction in CV death/MI/stroke vs clopidogrel (NNT 54)\n\u2022 Reversible P2Y12 inhibition \u2014 offset in ~3-5 days\n\u2022 Not dependent on CYP2C19 metabolism\n\u2022 **KEY:** Aspirin must be \u2264100 mg/day (higher doses reduce ticagrelor efficacy)\n\u2022 Side effects: dyspnea (~14%, usually mild), bradycardia\n\u2022 Twice-daily dosing may reduce adherence\n\u2022 Loading: 180 mg \u2192 Maintenance: 90 mg BID \u00D7 12 months',
+        },
+        {
+            heading: 'Prasugrel (High Ischemic Risk)',
+            body: '\u2022 TRITON-TIMI 38: 19% relative reduction in CV death/MI/stroke vs clopidogrel (NNT 46)\n\u2022 More potent and less variable platelet inhibition\n\u2022 **ABSOLUTE CONTRAINDICATION: Prior stroke or TIA** (net clinical harm)\n\u2022 Generally avoid if age \u226575 (no net benefit) or weight <60 kg (consider 5mg maintenance)\n\u2022 Irreversible \u2014 offset ~7 days (longest of the three)\n\u2022 Best for: diabetic patients, prior stent thrombosis on clopidogrel\n\u2022 Loading: 60 mg at PCI \u2192 Maintenance: 10 mg daily \u00D7 12 months',
+        },
+        {
+            heading: 'Clopidogrel (High Bleeding Risk / OAC)',
+            body: '\u2022 Least potent P2Y12 inhibitor but lowest bleeding risk\n\u2022 **Preferred for triple therapy** (OAC + DAPT)\n\u2022 Prodrug requiring CYP2C19 activation \u2014 ~30% of population are poor metabolizers with reduced efficacy\n\u2022 Avoid concurrent omeprazole/esomeprazole (CYP2C19 inhibition) \u2014 use pantoprazole\n\u2022 Loading: 300-600 mg \u2192 Maintenance: 75 mg daily \u00D7 12 months',
+        },
+        {
+            heading: 'Decision Matrix',
+            body: '',
+            drugTable: [
+                { drug: 'Standard ACS (no OAC needed)', regimen: 'Ticagrelor 90mg BID \u2014 first-line per PLATO trial. Aspirin \u2264100mg.' },
+                { drug: 'High ischemic risk (diabetes, stent thrombosis)', regimen: 'Prasugrel 10mg daily \u2014 if NO prior stroke/TIA, age <75, weight \u226560kg.' },
+                { drug: 'On oral anticoagulation (AF, VTE)', regimen: 'Clopidogrel 75mg daily \u2014 lowest bleeding in triple/dual therapy.' },
+                { drug: 'CYP2C19 poor metabolizer', regimen: 'Ticagrelor or prasugrel \u2014 NOT clopidogrel (reduced efficacy).' },
+                { drug: 'CABG likely/planned', regimen: 'Consider deferring P2Y12 until anatomy known. If loaded: hold per drug-specific timing.' },
+            ],
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Wallentin L, et al. Ticagrelor versus Clopidogrel in Patients with Acute Coronary Syndromes (PLATO). N Engl J Med. 2009;361(11):1045-1057.' },
+        { num: 2, text: 'Wiviott SD, et al. Prasugrel versus Clopidogrel in Patients with Acute Coronary Syndromes (TRITON-TIMI 38). N Engl J Med. 2007;357(20):2001-2015.' },
+        { num: 3, text: 'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Conservative Management (NSTEMI)
+// -------------------------------------------------------------------
+const NSTEMI_CONSERVATIVE_PAGE = {
+    id: 'nstemi-conservative',
+    title: 'Conservative Management',
+    subtitle: 'Ischemia-Guided Strategy for Low-Risk NSTEMI',
+    sections: [
+        {
+            body: 'A conservative (ischemia-guided) strategy is appropriate for low-risk NSTEMI patients (TIMI 0-2) without high-risk features. Catheterization is reserved for those who develop recurrent ischemia or have positive stress testing.',
+        },
+        {
+            heading: 'Who Qualifies?',
+            body: '\u2022 TIMI score 0-2\n\u2022 No hemodynamic instability\n\u2022 No refractory angina\n\u2022 No sustained arrhythmias\n\u2022 No heart failure signs\n\u2022 Low-risk troponin trajectory (trending down)',
+        },
+        {
+            heading: 'Medical Therapy',
+            body: '**Anticoagulation:** Fondaparinux 2.5 mg SC daily preferred (lowest bleeding \u2014 OASIS-5 trial)\n**Antiplatelet:** Aspirin 81 mg + clopidogrel 75 mg (or ticagrelor 90 mg BID)\n**Anti-ischemic:** Metoprolol \u2014 target HR <70. Nitroglycerin PRN.\n**Statin:** Atorvastatin 80 mg immediately\n**ACE inhibitor:** Within 24h if no contraindications',
+        },
+        {
+            heading: 'Stress Testing Before Discharge',
+            body: '**Options (in order of preference):**\n\u2022 Exercise treadmill test (if can exercise and ECG interpretable)\n\u2022 Stress echocardiography\n\u2022 Pharmacologic stress MRI/nuclear\n\n**Timing:** Before discharge or within 72 hours\n**If positive:** Upgrade to invasive strategy (catheterization)\n**If negative:** Discharge with medical therapy and close follow-up',
+        },
+        {
+            heading: 'Upgrade to Invasive Strategy If:',
+            body: '\u2022 Positive stress test\n\u2022 Recurrent angina at rest or with minimal exertion\n\u2022 New/worsening heart failure\n\u2022 New sustained arrhythmia\n\u2022 Hemodynamic instability\n\u2022 Rising troponin trajectory',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.' },
+        { num: 2, text: 'Yusuf S, et al. Comparison of Fondaparinux and Enoxaparin in Acute Coronary Syndromes (OASIS-5). N Engl J Med. 2006;354(14):1464-1476.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bedside Echo in ACS (NSTEMI)
+// -------------------------------------------------------------------
+const NSTEMI_POCUS_PAGE = {
+    id: 'nstemi-pocus',
+    title: 'Bedside Echo in ACS',
+    subtitle: 'POCUS Assessment for NSTEMI',
+    sections: [
+        {
+            body: 'Bedside echocardiography (POCUS) in ACS provides rapid assessment of ventricular function, wall motion abnormalities, and mechanical complications. Can be performed in <5 minutes and guides immediate management decisions.',
+        },
+        {
+            heading: 'What to Look For',
+            body: '**Regional Wall Motion Abnormalities (RWMA):**\n\u2022 Hypokinesis (reduced movement)\n\u2022 Akinesis (absent movement)\n\u2022 Dyskinesis (paradoxical movement)\n\u2022 Distribution suggests culprit vessel territory\n\n**Global LV Function:**\n\u2022 Visual EF estimate (normal >55%, reduced <40%)\n\u2022 E-point septal separation (EPSS) \u2014 >10mm suggests EF <40%\n\n**RV Assessment:**\n\u2022 RV dilation (RV:LV ratio >0.6 suggests RV involvement)\n\u2022 RV free wall motion \u2014 McConnell sign (RV free wall akinesis with apical sparing) = acute RV strain\n\u2022 TAPSE <16mm = RV dysfunction',
+        },
+        {
+            heading: 'Mechanical Complications (Emergent)',
+            body: '\u2022 **Free wall rupture:** pericardial effusion + tamponade physiology\n\u2022 **VSD:** new color flow across interventricular septum; step-up in O\u2082 saturation PA vs RA\n\u2022 **Papillary muscle rupture:** severe acute MR with flail leaflet\n\u2022 **LV aneurysm:** thin, akinetic wall segment (late complication)\n\nAll mechanical complications require emergent surgical consultation.',
+        },
+        {
+            heading: 'Views to Obtain',
+            body: '\u2022 **Parasternal long axis (PLAX):** Global LV function, MR, pericardial effusion, EPSS\n\u2022 **Parasternal short axis (PSAX):** Segmental wall motion (sweep base to apex)\n\u2022 **Apical 4-chamber (A4C):** Comparative RV/LV size, TAPSE, regional WMA\n\u2022 **Subxiphoid:** Pericardial effusion, RV size\n\u2022 **IVC:** Volume status (collapsibility guides fluid management)\n\nFor detailed echo technique, see [Basic Echo Views](#/tree/echo-views)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Collet JP, et al. 2020 ESC Guidelines for Management of ACS without Persistent ST-Elevation. Eur Heart J. 2021;42(14):1289-1367.' },
+        { num: 2, text: 'Via G, et al. International Evidence-Based Recommendations for Focused Cardiac Ultrasound. J Am Soc Echocardiogr. 2014;27(7):683.e1-683.e33.' },
+    ],
+};
+// -------------------------------------------------------------------
+// MINOCA Workup & Management
+// -------------------------------------------------------------------
+const NSTEMI_MINOCA_PAGE = {
+    id: 'nstemi-minoca',
+    title: 'MINOCA Workup & Management',
+    subtitle: 'Myocardial Infarction with Non-Obstructive Coronary Arteries',
+    sections: [
+        {
+            body: 'MINOCA is defined as acute MI (troponin criteria) with non-obstructive coronary arteries (\u226450% stenosis) on angiography. Accounts for 5-10% of all MI presentations. Requires systematic evaluation to determine etiology and guide therapy \u2014 standard ACS regimens may be harmful.',
+        },
+        {
+            heading: 'Etiologies',
+            body: '',
+            drugTable: [
+                { drug: 'Coronary spasm (most common)', regimen: 'Treat with CCBs (diltiazem/amlodipine) and nitrates. AVOID beta-blockers (may worsen spasm). Provocative testing (acetylcholine challenge) in cath lab may confirm.' },
+                { drug: 'Plaque disruption/erosion', regimen: 'Standard ACS therapy appropriate (DAPT + statin). OCT/IVUS may identify plaque features not seen on angiography.' },
+                { drug: 'Spontaneous coronary artery dissection (SCAD)', regimen: 'Conservative management preferred. AVOID anticoagulation (may extend dissection). DAPT controversial. Most heal spontaneously. PCI may worsen dissection.' },
+                { drug: 'Takotsubo (stress cardiomyopathy)', regimen: 'Supportive care. AVOID catecholamines/inotropes. Beta-blocker if no cardiogenic shock. EF typically recovers in 1-4 weeks. Screen for QT prolongation.' },
+                { drug: 'Myocarditis', regimen: 'Treat underlying cause. NSAIDs may worsen myocarditis. Anticoagulation if severe LV dysfunction. Cardiac MRI diagnostic (late gadolinium enhancement pattern).' },
+                { drug: 'Coronary thromboembolism', regimen: 'Evaluate for: AF, PFO, endocarditis, hypercoagulable state. Anticoagulation if embolic source identified.' },
+            ],
+        },
+        {
+            heading: 'Mandatory Workup',
+            body: '**Cardiac MRI (within 7 days):**\n\u2022 Distinguishes ischemic vs non-ischemic patterns\n\u2022 T2 mapping: identifies edema (acute injury)\n\u2022 Late gadolinium enhancement: scar pattern\n  \u2014 Subendocardial: ischemic (plaque, spasm, embolism)\n  \u2014 Subepicardial/mid-wall: myocarditis\n  \u2014 Absent with edema: Takotsubo\n\n**Additional testing as indicated:**\n\u2022 OCT/IVUS during index cath (plaque erosion, dissection)\n\u2022 Provocative testing (acetylcholine challenge for spasm)\n\u2022 Hypercoagulability panel if embolic etiology suspected\n\u2022 Screening for pheochromocytoma if Takotsubo',
+        },
+        {
+            heading: 'Key Principle',
+            body: '**Do not reflexively apply standard ACS therapy.** Each MINOCA etiology has specific management \u2014 some standard ACS medications can cause harm:\n\n\u2022 Beta-blockers worsen coronary spasm\n\u2022 Anticoagulation extends SCAD dissection\n\u2022 Catecholamines worsen Takotsubo\n\u2022 NSAIDs worsen myocarditis\n\nDetermine etiology FIRST, then tailor therapy accordingly.',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Tamis-Holland JE, et al. Contemporary Diagnosis and Management of Patients with MI in the Absence of Obstructive CAD: AHA Scientific Statement. Circulation. 2019;139(18):e891-e908.' },
+        { num: 2, text: 'Collet JP, et al. 2020 ESC Guidelines for Management of ACS without Persistent ST-Elevation. Eur Heart J. 2021;42(14):1289-1367.' },
+        { num: 3, text: 'Hayes SN, et al. Spontaneous Coronary Artery Dissection: AHA Scientific Statement. Circulation. 2018;137(19):e523-e557.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 const INFO_PAGES = {
@@ -386,6 +527,10 @@ const INFO_PAGES = {
     'stroke-contraindications': STROKE_CONTRAINDICATIONS_PAGE,
     'stroke-imaging': STROKE_IMAGING_PAGE,
     'stroke-consent': STROKE_CONSENT_PAGE,
+    'nstemi-antiplatelet-cx': NSTEMI_ANTIPLATELET_PAGE,
+    'nstemi-conservative': NSTEMI_CONSERVATIVE_PAGE,
+    'nstemi-pocus': NSTEMI_POCUS_PAGE,
+    'nstemi-minoca': NSTEMI_MINOCA_PAGE,
 };
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes

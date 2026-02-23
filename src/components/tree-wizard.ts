@@ -11,6 +11,7 @@ import { AFIB_RVR_NODES, AFIB_RVR_CITATIONS, AFIB_RVR_MODULE_LABELS } from '../d
 import { CHEST_TUBE_NODES, CHEST_TUBE_CITATIONS, CHEST_TUBE_MODULE_LABELS } from '../data/trees/chest-tube.js';
 import { PEP_NODES, PEP_CITATIONS, PEP_MODULE_LABELS } from '../data/trees/pep.js';
 import { STROKE_NODES, STROKE_CITATIONS, STROKE_MODULE_LABELS } from '../data/trees/stroke.js';
+import { NSTEMI_NODES, NSTEMI_CITATIONS, NSTEMI_MODULE_LABELS } from '../data/trees/nstemi.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -95,6 +96,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'neurology',
     moduleLabels: STROKE_MODULE_LABELS,
     citations: STROKE_CITATIONS,
+  },
+  'nstemi': {
+    nodes: NSTEMI_NODES,
+    entryNodeId: 'nstemi-start',
+    categoryId: 'cardiology',
+    moduleLabels: NSTEMI_MODULE_LABELS,
+    citations: NSTEMI_CITATIONS,
   },
 };
 

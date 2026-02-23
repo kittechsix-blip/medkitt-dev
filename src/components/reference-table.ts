@@ -26,6 +26,10 @@ import {
   STROKE_CITATIONS,
   STROKE_CLINICAL_NOTES,
 } from '../data/trees/stroke.js';
+import {
+  NSTEMI_CITATIONS,
+  NSTEMI_CLINICAL_NOTES,
+} from '../data/trees/nstemi.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -70,6 +74,11 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
     title: 'Acute Ischemic Stroke Reference',
     citations: STROKE_CITATIONS,
     clinicalNotes: STROKE_CLINICAL_NOTES,
+  },
+  'nstemi': {
+    title: 'NSTEMI Management Reference',
+    citations: NSTEMI_CITATIONS,
+    clinicalNotes: NSTEMI_CLINICAL_NOTES,
   },
 };
 

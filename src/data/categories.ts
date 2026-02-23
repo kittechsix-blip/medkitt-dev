@@ -19,6 +19,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 20,
         entryNodeId: 'afib-start',
+      },
+      {
+        id: 'nstemi',
+        title: 'NSTEMI Management',
+        subtitle: 'Diagnosis → Risk Stratification → Revascularization → DAPT → Prevention',
+        categoryId: 'cardiology',
+        version: '1.0',
+        nodeCount: 17,
+        entryNodeId: 'nstemi-start',
       }
     ],
     isCustom: false,
@@ -71,6 +80,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 20,
         entryNodeId: 'stroke-start',
+      },
+      {
+        id: 'nstemi',
+        title: 'NSTEMI Management',
+        subtitle: 'Diagnosis \u2192 Risk Stratification \u2192 Revascularization \u2192 DAPT \u2192 Prevention',
+        categoryId: 'emergency-medicine',
+        version: '1.0',
+        nodeCount: 17,
+        entryNodeId: 'nstemi-start',
       }
     ],
     isCustom: false,

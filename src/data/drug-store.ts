@@ -138,6 +138,37 @@ const ASPIRIN: DrugEntry = {
   ],
 };
 
+const ATORVASTATIN: DrugEntry = {
+  id: 'atorvastatin',
+  name: 'Atorvastatin (Lipitor)',
+  genericName: 'Atorvastatin calcium',
+  drugClass: 'HMG-CoA reductase inhibitor (statin)',
+  route: 'PO',
+  indications: ['Acute coronary syndrome', 'Hyperlipidemia', 'Secondary cardiovascular prevention'],
+  dosing: [
+    {
+      indication: 'ACS / NSTEMI (high-intensity)',
+      regimen: 'Atorvastatin 80 mg PO daily. Initiate within 24 hours of presentation regardless of baseline LDL. Continue indefinitely. Alternative: Rosuvastatin 20-40 mg daily.',
+    },
+  ],
+  contraindications: [
+    'Active liver disease or unexplained persistent transaminase elevation',
+    'Pregnancy and lactation',
+  ],
+  cautions: [
+    'Myopathy/rhabdomyolysis — risk increased with CYP3A4 inhibitors, high dose, advanced age, renal impairment',
+    'Hepatotoxicity — check LFTs at baseline and if symptoms develop',
+    'New-onset diabetes — modest risk increase with high-intensity therapy (NNH ~250)',
+    'Drug interactions — avoid concomitant strong CYP3A4 inhibitors (clarithromycin, itraconazole, HIV protease inhibitors)',
+  ],
+  monitoring: 'Lipid panel at 4-12 weeks, then annually. LFTs at baseline. CK if myalgia develops. Target LDL <70 mg/dL (consider <55 if very high risk).',
+  notes: 'PROVE IT-TIMI 22 trial: high-intensity atorvastatin 80mg reduced cardiovascular events by 16% vs moderate-intensity pravastatin after ACS. Pleiotropic effects include plaque stabilization, anti-inflammatory properties, and endothelial function improvement. Initiate before discharge — in-hospital statin initiation improves long-term adherence.',
+  citations: [
+    'Cannon CP, et al. Intensive versus Moderate Lipid Lowering with Statins after Acute Coronary Syndromes (PROVE IT-TIMI 22). N Engl J Med. 2004;350(15):1495-1504.',
+    'Grundy SM, et al. 2018 AHA/ACC Guideline on the Management of Blood Cholesterol. J Am Coll Cardiol. 2019;73(24):e285-e350.',
+  ],
+};
+
 const APIXABAN: DrugEntry = {
   id: 'apixaban',
   name: 'Apixaban',
@@ -191,6 +222,37 @@ const BIKTARVY: DrugEntry = {
   citations: [
     'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
     'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
+  ],
+};
+
+const BIVALIRUDIN: DrugEntry = {
+  id: 'bivalirudin',
+  name: 'Bivalirudin (Angiomax)',
+  genericName: 'Bivalirudin',
+  drugClass: 'Direct thrombin inhibitor',
+  route: 'IV',
+  indications: ['ACS undergoing PCI', 'HIT with thrombosis requiring anticoagulation'],
+  dosing: [
+    {
+      indication: 'NSTEMI undergoing PCI',
+      regimen: 'Bolus: 0.75 mg/kg IV, then infusion 1.75 mg/kg/hr during procedure. Discontinue at end of PCI or continue at 0.25 mg/kg/hr if needed. ACT target: 225-300 seconds.',
+    },
+  ],
+  contraindications: [
+    'Active major bleeding',
+    'Hypersensitivity to bivalirudin',
+  ],
+  cautions: [
+    'Acute stent thrombosis — higher risk in first 4 hours post-PCI vs UFH+GPI. Mitigated by continuing infusion post-procedure.',
+    'Renal impairment — reduce infusion rate: CrCl 10-29 mL/min reduce to 1 mg/kg/hr; dialysis 0.25 mg/kg/hr',
+    'Short half-life (25 min) — advantage for bleeding risk but requires attention to timing',
+    'No reversal agent — allow drug to clear (short half-life is the "antidote")',
+  ],
+  monitoring: 'ACT during PCI (target 225-300s). aPTT if used post-PCI. Renal function. Signs of bleeding.',
+  notes: 'HORIZONS-AMI and EUROMAX trials demonstrated reduced bleeding with bivalirudin vs UFH + glycoprotein IIb/IIIa inhibitors during PCI, at cost of increased acute stent thrombosis (mitigated by post-PCI infusion). Preferred when bleeding risk is high or HIT history.',
+  citations: [
+    'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.',
+    'Stone GW, et al. Bivalirudin during Primary PCI (HORIZONS-AMI). N Engl J Med. 2008;358(21):2218-2230.',
   ],
 };
 
@@ -582,6 +644,10 @@ const ENOXAPARIN: DrugEntry = {
       indication: 'VTE prophylaxis',
       regimen: '40 mg SC once daily.',
     },
+    {
+      indication: 'ACS / NSTEMI',
+      regimen: '1 mg/kg SC every 12 hours. Duration: until invasive strategy or up to 8 days. CrCl <30 mL/min: 1 mg/kg SC once daily. If PCI >8h after last SC dose: supplemental 0.3 mg/kg IV bolus in cath lab.',
+    },
   ],
   contraindications: [
     'Heparin-induced thrombocytopenia (HIT) \u2014 absolute contraindication due to cross-reactivity with HIT antibodies',
@@ -660,6 +726,39 @@ const LIDOCAINE: DrugEntry = {
   notes: 'For penile block, NEVER use formulations containing epinephrine. The penis is supplied by end-arteries \u2014 epinephrine can cause ischemic necrosis.',
   citations: [
     'Burnett AL, Sharlip ID. Standard Operating Procedures for Priapism. J Sex Med. 2013;10(1):180-94.',
+  ],
+};
+
+const FONDAPARINUX: DrugEntry = {
+  id: 'fondaparinux',
+  name: 'Fondaparinux (Arixtra)',
+  genericName: 'Fondaparinux sodium',
+  drugClass: 'Synthetic factor Xa inhibitor (indirect)',
+  route: 'SC',
+  indications: ['ACS / NSTEMI (conservative management)', 'DVT/PE treatment', 'VTE prophylaxis'],
+  dosing: [
+    {
+      indication: 'NSTEMI (conservative / ischemia-guided strategy)',
+      regimen: '2.5 mg SC once daily. Start on presentation, continue until discharge or up to 8 days. If patient goes to PCI: supplement with UFH 60 units/kg bolus (catheter thrombosis risk).',
+    },
+  ],
+  contraindications: [
+    'CrCl <30 mL/min — contraindicated',
+    'Active major bleeding',
+    'Bacterial endocarditis',
+    'Body weight <50 kg — increased bleeding risk',
+  ],
+  cautions: [
+    'Catheter thrombosis if used alone during PCI — must supplement with UFH bolus in cath lab',
+    'Cannot monitor with aPTT — use anti-Xa levels if monitoring needed',
+    'Neuraxial anesthesia — risk of spinal/epidural hematoma',
+    'No reversal agent available',
+  ],
+  monitoring: 'Renal function at baseline. Anti-Xa levels only if needed (not routine). CBC for bleeding. Signs of catheter thrombosis if proceeding to PCI.',
+  notes: 'OASIS-5 trial: fondaparinux 2.5 mg daily was noninferior to enoxaparin for ischemic events in NSTEMI but with 50% reduction in major bleeding (2.2% vs 4.1%) and significantly lower mortality at 6 months. Preferred anticoagulant for conservative/ischemia-guided management strategy. Must supplement with UFH if patient undergoes PCI due to catheter thrombosis risk.',
+  citations: [
+    'Yusuf S, et al. Comparison of Fondaparinux and Enoxaparin in Acute Coronary Syndromes (OASIS-5). N Engl J Med. 2006;354(14):1464-1476.',
+    'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.',
   ],
 };
 
@@ -753,6 +852,10 @@ const METOPROLOL: DrugEntry = {
       indication: 'A-Fib rate control (maintenance)',
       regimen: 'PO tartrate: 25-100 mg BID. PO succinate (Toprol XL): 25-200 mg daily.',
     },
+    {
+      indication: 'ACS / NSTEMI (anti-ischemic)',
+      regimen: 'IV: 5 mg IV push over 2 min, repeat every 5 min × 3 doses (total 15 mg). Hold if HR <60 or SBP <100. PO: 25-50 mg PO q6h starting 15 min after last IV dose. Target HR: <70 bpm. Transition to metoprolol succinate 50-200 mg daily for long-term.',
+    },
   ],
   contraindications: [
     'Severe sinus bradycardia (HR <50)',
@@ -766,6 +869,7 @@ const METOPROLOL: DrugEntry = {
     'Use cautiously in decompensated HF but safe in compensated HFrEF',
     'May mask hypoglycemia symptoms in diabetic patients',
     'Do NOT combine with IV calcium channel blockers',
+    'Cocaine/methamphetamine-associated ACS — avoid beta-blockers acutely (may worsen coronary vasospasm due to unopposed alpha stimulation). Use benzodiazepines and nitroglycerin instead.',
     'Intermittent dosing naturally encourages dose-by-dose reassessment \u2014 advantage over continuous infusions in unstable patients',
   ],
   monitoring: 'Heart rate and blood pressure before each IV dose. Hold if SBP <90 or HR <55.',
@@ -812,6 +916,41 @@ const NICARDIPINE: DrugEntry = {
   ],
 };
 
+const NITROGLYCERIN: DrugEntry = {
+  id: 'nitroglycerin',
+  name: 'Nitroglycerin',
+  genericName: 'Nitroglycerin (glyceryl trinitrate)',
+  drugClass: 'Organic nitrate (vasodilator)',
+  route: 'SL / IV',
+  indications: ['Acute coronary syndrome', 'Angina pectoris', 'Acute pulmonary edema', 'Hypertensive emergency'],
+  dosing: [
+    {
+      indication: 'ACS / NSTEMI (initial)',
+      regimen: 'SL: 0.4 mg (1 tablet or spray) every 5 min × 3 doses. IV: Start 5-10 mcg/min, titrate by 5-10 mcg/min every 3-5 min. Target: symptom relief and SBP >100. Max typically 200 mcg/min.',
+    },
+  ],
+  contraindications: [
+    'Systolic BP <90 mmHg or ≥30 mmHg below baseline',
+    'Right ventricular infarction (preload-dependent)',
+    'Phosphodiesterase-5 inhibitor use within 24h (sildenafil/vardenafil) or 48h (tadalafil)',
+    'Severe aortic stenosis',
+    'Hypertrophic obstructive cardiomyopathy',
+  ],
+  cautions: [
+    'Hypotension — especially with concurrent antihypertensives, volume depletion, or RV involvement',
+    'Reflex tachycardia — may worsen ischemia; consider concurrent beta-blocker',
+    'Headache — most common side effect (vasodilation)',
+    'Tolerance develops with continuous IV infusion >24-48h',
+    'Must use non-PVC IV tubing — nitroglycerin adsorbs to standard PVC',
+  ],
+  monitoring: 'Continuous BP monitoring during IV infusion. Heart rate. Symptom response. 12-lead ECG for ST-segment changes.',
+  notes: 'Nitroglycerin provides symptomatic relief in ACS through coronary vasodilation, preload reduction, and afterload reduction. No proven mortality benefit in ACS (ISIS-4, GISSI-3), but effective for symptom management. Always rule out RV infarction (right-sided ECG, V4R) before administration — nitrates can cause catastrophic hypotension in RV failure. SL nitroglycerin that relieves chest pain does NOT differentiate cardiac from non-cardiac causes.',
+  citations: [
+    'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.',
+    'Thadani U. Nitrate Therapy and Nitrate Tolerance in Patients with Coronary Artery Disease. Curr Pharm Des. 2014;20(25):3966-79.',
+  ],
+};
+
 const PENICILLIN_G_IV: DrugEntry = {
   id: 'penicillin-g-iv',
   name: 'Penicillin G (Aqueous Crystalline)',
@@ -836,6 +975,39 @@ const PENICILLIN_G_IV: DrugEntry = {
   citations: [
     'CDC. Sexually Transmitted Infections Treatment Guidelines. 2021.',
     'Ropper AH. Neurosyphilis. N Engl J Med. 2019;381(14):1358-1363.',
+  ],
+};
+
+const PRASUGREL: DrugEntry = {
+  id: 'prasugrel',
+  name: 'Prasugrel (Effient)',
+  genericName: 'Prasugrel hydrochloride',
+  drugClass: 'Antiplatelet (irreversible P2Y12 antagonist)',
+  route: 'PO',
+  indications: ['ACS undergoing PCI (high ischemic risk)', 'NSTEMI/UA managed with PCI'],
+  dosing: [
+    {
+      indication: 'ACS / NSTEMI post-PCI',
+      regimen: '60 mg loading dose at time of PCI, then 10 mg PO daily × 12 months. Aspirin 81 mg daily concurrent (do not exceed 100 mg/day). For patients <60 kg: consider 5 mg daily maintenance.',
+    },
+  ],
+  contraindications: [
+    'Prior stroke or TIA — absolute contraindication (net clinical harm in TRITON-TIMI 38)',
+    'Active pathological bleeding',
+    'Hypersensitivity to prasugrel',
+  ],
+  cautions: [
+    'Age ≥75 years — generally not recommended due to increased bleeding risk (no net clinical benefit in TRITON-TIMI 38 subgroup)',
+    'Body weight <60 kg — consider 5 mg daily maintenance dose',
+    'CABG-related bleeding — hold 7 days before elective CABG (longer offset than ticagrelor)',
+    'More potent and less variable platelet inhibition than clopidogrel — advantage in high ischemic risk but higher bleeding',
+    'Not dependent on CYP2C19 metabolism — no genotype interaction (advantage over clopidogrel)',
+  ],
+  monitoring: 'No routine monitoring required. Monitor for signs of bleeding. Hemoglobin/hematocrit if bleeding suspected.',
+  notes: 'TRITON-TIMI 38 trial: prasugrel reduced cardiovascular death/MI/stroke by 19% vs clopidogrel in ACS patients undergoing PCI (NNT 46), but increased major bleeding (NNH 167). NET CLINICAL HARM in patients with prior stroke/TIA — this is an absolute contraindication. Reserved for high ischemic risk patients (e.g., diabetics, stent thrombosis history) undergoing PCI when ticagrelor is not appropriate.',
+  citations: [
+    'Wiviott SD, et al. Prasugrel versus Clopidogrel in Patients with Acute Coronary Syndromes (TRITON-TIMI 38). N Engl J Med. 2007;357(20):2001-2015.',
+    'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.',
   ],
 };
 
@@ -1075,6 +1247,10 @@ const TICAGRELOR: DrugEntry = {
       indication: 'Minor stroke / high-risk TIA (alternative DAPT)',
       regimen: '180 mg loading dose on day 1 + aspirin 325 mg. Then 90 mg BID + aspirin 81 mg \u00D7 30 days total. Alternative to aspirin + clopidogrel when CYP2C19 poor metabolizer status is known or suspected.',
     },
+    {
+      indication: 'ACS / NSTEMI (preferred P2Y12)',
+      regimen: '180 mg loading dose, then 90 mg BID \u00D7 12 months. Aspirin 81 mg daily (do NOT exceed 100 mg/day \u2014 higher doses reduce ticagrelor efficacy). Preferred first-line P2Y12 per PLATO trial. After 12 months: may reduce to 60 mg BID for extended therapy (PEGASUS-TIMI 54).',
+    },
   ],
   contraindications: [
     'Active pathological bleeding',
@@ -1110,6 +1286,10 @@ const UFH: DrugEntry = {
     {
       indication: 'Standard PE / DVT',
       regimen: 'Bolus 80 units/kg IV, then 18 units/kg/hr continuous infusion. Adjust per institutional nomogram.',
+    },
+    {
+      indication: 'ACS / NSTEMI',
+      regimen: 'Bolus: 60 units/kg IV (max 4,000 units). Infusion: 12 units/kg/hr (max 1,000 units/hr). Target aPTT: 50-70 seconds (1.5-2.0× control). Lower doses than PE due to concurrent dual antiplatelet therapy. Adjust per institutional nomogram.',
     },
   ],
   contraindications: [
@@ -1176,8 +1356,10 @@ export const ALL_DRUGS: DrugEntry[] = [
   AMIODARONE,
   APIXABAN,
   ASPIRIN,
+  ATORVASTATIN,
   BENZATHINE_PENICILLIN,
   BIKTARVY,
+  BIVALIRUDIN,
   CEFTRIAXONE,
   CLEVIDIPINE,
   CLOPIDOGREL,
@@ -1191,13 +1373,16 @@ export const ALL_DRUGS: DrugEntry[] = [
   ENOXAPARIN,
   EPINEPHRINE,
   ESMOLOL,
+  FONDAPARINUX,
   LABETALOL,
   LIDOCAINE,
   MAGNESIUM_SULFATE,
   METOPROLOL,
   NICARDIPINE,
+  NITROGLYCERIN,
   PENICILLIN_G_IV,
   PHENYLEPHRINE,
+  PRASUGREL,
   PROCAINAMIDE,
   PROCAINE_PENICILLIN,
   RITONAVIR,
@@ -1230,7 +1415,9 @@ const NAME_TO_ID: [RegExp, string][] = [
   [/amiodarone|cordarone/i, 'amiodarone'],
   [/apixaban/i, 'apixaban'],
   [/aspirin|ASA|acetylsalicylic/i, 'aspirin'],
+  [/atorvastatin|lipitor/i, 'atorvastatin'],
   [/biktarvy|BIC\/FTC\/TAF/i, 'biktarvy'],
+  [/bivalirudin|angiomax/i, 'bivalirudin'],
   [/benzathine.*penicillin/i, 'benzathine-penicillin'],
   [/ceftriaxone/i, 'ceftriaxone'],
   [/clevidipine|cleviprex/i, 'clevidipine'],
@@ -1245,15 +1432,18 @@ const NAME_TO_ID: [RegExp, string][] = [
   [/enoxaparin|LMWH|low.molecular/i, 'enoxaparin'],
   [/epinephrine|adrenaline/i, 'epinephrine'],
   [/esmolol|brevibloc/i, 'esmolol'],
+  [/fondaparinux|arixtra/i, 'fondaparinux'],
   [/labetalol/i, 'labetalol'],
   [/lidocaine/i, 'lidocaine'],
   [/magnesium sulfate|mag sulfate|MgSO4/i, 'magnesium-sulfate'],
   [/metoprolol|lopressor|toprol/i, 'metoprolol'],
   [/nicardipine|cardene/i, 'nicardipine'],
+  [/nitroglycerin|nitro|glyceryl trinitrate|NTG/i, 'nitroglycerin'],
   [/aqueous.*penicillin|penicillin G.*IV|crystalline.*penicillin/i, 'penicillin-g-iv'],
   [/phenylephrine/i, 'phenylephrine'],
   [/procainamide|pronestyl/i, 'procainamide'],
   [/procaine.*penicillin/i, 'procaine-penicillin'],
+  [/prasugrel|effient/i, 'prasugrel'],
   [/ritonavir|norvir/i, 'ritonavir'],
   [/rivaroxaban/i, 'rivaroxaban'],
   [/tenecteplase|TNKase/i, 'tenecteplase'],

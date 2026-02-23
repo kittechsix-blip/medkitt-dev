@@ -1187,6 +1187,10 @@ const TICAGRELOR = {
             indication: 'Minor stroke / high-risk TIA (alternative DAPT)',
             regimen: '180 mg loading dose on day 1 + aspirin 325 mg. Then 90 mg BID + aspirin 81 mg \u00D7 30 days total. Alternative to aspirin + clopidogrel when CYP2C19 poor metabolizer status is known or suspected.',
         },
+        {
+            indication: 'ACS / NSTEMI (preferred P2Y12)',
+            regimen: '180 mg loading dose, then 90 mg BID \u00D7 12 months. Aspirin 81 mg daily (do NOT exceed 100 mg/day \u2014 higher doses reduce ticagrelor efficacy). Preferred first-line P2Y12 per PLATO trial. After 12 months: may reduce to 60 mg BID for extended therapy (PEGASUS-TIMI 54).',
+        },
     ],
     contraindications: [
         'Active pathological bleeding',
@@ -1314,9 +1318,9 @@ export const ALL_DRUGS = [
     NITROGLYCERIN,
     PENICILLIN_G_IV,
     PHENYLEPHRINE,
+    PRASUGREL,
     PROCAINAMIDE,
     PROCAINE_PENICILLIN,
-    PRASUGREL,
     RITONAVIR,
     RIVAROXABAN,
     TDF_FTC,
