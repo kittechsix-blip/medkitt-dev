@@ -186,6 +186,63 @@ const PEP_PATIENT_INFO = {
     ],
 };
 // -------------------------------------------------------------------
+// Hepatitis B Serology Interpretation
+// -------------------------------------------------------------------
+const HBV_SEROLOGY_PAGE = {
+    id: 'hbv-serology',
+    title: 'Hepatitis B Serology',
+    subtitle: 'Interpretation & Post-Exposure Management',
+    sections: [
+        {
+            heading: 'The Three Markers',
+            body: '**HBsAg (Surface Antigen)** — present on the virus surface. Positive = active infection (acute or chronic).\n\n**HBsAb (Surface Antibody)** — also called anti-HBs. Positive = immunity (from vaccination or resolved infection).\n\n**HBcAb (Core Antibody)** — also called anti-HBc. Positive = prior or current infection (does not develop from vaccination).',
+        },
+        {
+            heading: 'Interpretation',
+            body: '',
+            drugTable: [
+                {
+                    drug: 'Susceptible (not immune)',
+                    regimen: 'HBsAg (−), HBsAb (−), HBcAb (−) — never infected, not vaccinated. Needs vaccination.',
+                },
+                {
+                    drug: 'Immune (vaccination)',
+                    regimen: 'HBsAg (−), HBsAb (+), HBcAb (−) — successfully vaccinated. No action needed.',
+                },
+                {
+                    drug: 'Immune (natural infection)',
+                    regimen: 'HBsAg (−), HBsAb (+), HBcAb (+) — prior infection, now resolved with immunity. No action needed.',
+                },
+                {
+                    drug: 'Acute infection',
+                    regimen: 'HBsAg (+), HBsAb (−), HBcAb (+), IgM core Ab (+) — actively infected, early stage. Refer for monitoring; most adults clear spontaneously.',
+                },
+                {
+                    drug: 'Chronic infection',
+                    regimen: 'HBsAg (+), HBsAb (−), HBcAb (+), IgM core Ab (−) — persistent infection >6 months. Refer hepatology for treatment evaluation.',
+                },
+                {
+                    drug: 'Isolated core Ab+',
+                    regimen: 'HBsAg (−), HBsAb (−), HBcAb (+) — possible resolved infection with waned antibody, false positive, or occult infection. Check HBV DNA if clinical concern.',
+                },
+            ],
+        },
+        {
+            heading: 'Post-Exposure Actions',
+            body: '**If exposed patient is susceptible (all markers negative):**\n\u2022 Source HBV-positive or unknown: give HBIG (0.06 mL/kg IM) + start HBV vaccine series\n\u2022 Source HBV-negative: start HBV vaccine series (no HBIG needed)\n\u2022 HBIG is most effective within 24 hours; give within 7 days of exposure\n\n**If exposed patient was previously vaccinated (HBsAb+):**\n\u2022 HBsAb \u226510 mIU/mL: protected, no treatment needed\n\u2022 HBsAb <10 mIU/mL (non-responder): give HBIG + vaccine booster\n\n**If exposed patient has chronic HBV (HBsAg+):**\n\u2022 HBIG and vaccine will not help — refer hepatology\n\u2022 Ensure patient is connected to HBV care',
+        },
+        {
+            heading: 'HBV Vaccine Series',
+            body: '\u2022 Standard: 0, 1, and 6 months (3-dose series)\n\u2022 Accelerated: Heplisav-B (HepB-CpG) — 2 doses, 1 month apart\n\u2022 Check HBsAb 1\u20132 months after final dose to confirm response (\u226510 mIU/mL)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Schillie S, et al. Prevention of Hepatitis B Virus Infection in the United States: Recommendations of the ACIP. MMWR. 2018;67(1):1-31.' },
+        { num: 2, text: 'Terrault NA, et al. Update on Prevention, Diagnosis, and Treatment of Chronic Hepatitis B: AASLD 2018 Hepatitis B Guidance. Hepatology. 2018;67(4):1560-1599.' },
+        { num: 3, text: 'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV — CDC Recommendations, 2025. MMWR. 2025;74(1):1-56.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 const INFO_PAGES = {
@@ -194,6 +251,7 @@ const INFO_PAGES = {
     'cardioversion-afib': CARDIOVERSION_AFIB_PAGE,
     'afib-discharge': AFIB_DISCHARGE_PAGE,
     'pep-patient-info': PEP_PATIENT_INFO,
+    'hbv-serology': HBV_SEROLOGY_PAGE,
 };
 // -------------------------------------------------------------------
 // Modal Overlay
