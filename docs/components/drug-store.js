@@ -455,17 +455,14 @@ function buildWeightCalcPanel(calcs) {
     ageRow.style.display = 'none';
     const ageInput = document.createElement('input');
     ageInput.type = 'number';
-    ageInput.className = 'dose-calc-input';
+    ageInput.className = 'dose-calc-input dose-calc-input-wide';
     ageInput.inputMode = 'numeric';
     ageInput.setAttribute('aria-label', 'Patient age');
     ageInput.step = '1';
-    const ageUnit = document.createElement('span');
-    ageUnit.className = 'dose-calc-unit';
     const ageCalcBtn = document.createElement('button');
     ageCalcBtn.className = 'dose-calc-go-btn';
     ageCalcBtn.textContent = 'Calculate';
     ageRow.appendChild(ageInput);
-    ageRow.appendChild(ageUnit);
     ageRow.appendChild(ageCalcBtn);
     for (const b of brackets) {
         const btn = document.createElement('button');
@@ -475,10 +472,9 @@ function buildWeightCalcPanel(calcs) {
             activeBracket = b.key;
             bracketBtns.forEach(bb => bb.classList.remove('active'));
             btn.classList.add('active');
-            ageInput.placeholder = b.ageLabel;
+            ageInput.placeholder = b.key === 'infant' ? 'Age (in months)' : 'Age (in years)';
             ageInput.min = String(b.min);
             ageInput.max = String(b.max);
-            ageUnit.textContent = b.key === 'infant' ? 'months' : 'years';
             ageInput.value = '';
             ageRow.style.display = 'flex';
             resultsEl.style.display = 'none';

@@ -2154,6 +2154,12 @@ body {
   margin: 0;
 }
 
+.dose-calc-input-wide {
+  width: 140px;
+  font-size: 0.9375rem;
+  font-family: var(--font-sans);
+}
+
 .dose-calc-input:focus {
   outline: none;
   border-color: var(--color-primary);
