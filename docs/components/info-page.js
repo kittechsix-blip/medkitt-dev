@@ -662,6 +662,446 @@ const UTI_DEFINITION_PAGE = {
     ],
 };
 // -------------------------------------------------------------------
+// HSV Workup Criteria (Peds Fever)
+// -------------------------------------------------------------------
+const PF_HSV_CRITERIA_PAGE = {
+    id: 'pf-hsv-criteria',
+    title: 'HSV Workup Criteria',
+    subtitle: 'When to add Acyclovir and order HSV testing',
+    sections: [
+        {
+            heading: 'Clinical Features Suggesting HSV',
+            body: '\u2022 Skin vesicles (mouth, scalp, trunk) \u2014 most specific finding\n\u2022 Seizures (especially focal)\n\u2022 Lethargy or irritability out of proportion to fever\n\u2022 Hepatosplenomegaly\n\u2022 Temperature instability (hypothermia or hyperthermia)\n\u2022 Apnea or respiratory distress\n\u2022 Poor feeding\n\u2022 Bulging fontanelle',
+        },
+        {
+            heading: 'Laboratory Red Flags',
+            body: '\u2022 Thrombocytopenia\n\u2022 Transaminitis (elevated AST/ALT)\n\u2022 Coagulopathy (elevated PT/INR)\n\u2022 CSF pleocytosis (especially lymphocytic)\n\u2022 Elevated CSF protein',
+        },
+        {
+            heading: 'Risk Factors',
+            body: '\u2022 Maternal history of genital HSV (especially primary outbreak near delivery)\n\u2022 Vaginal delivery with active lesions\n\u2022 Prolonged rupture of membranes\n\u2022 Fetal scalp electrode use\n\u2022 Age <21 days (highest risk period)',
+        },
+        {
+            heading: 'HSV Testing to Order',
+            body: '\u2022 HSV PCR \u2014 blood (plasma)\n\u2022 HSV PCR \u2014 CSF\n\u2022 Surface cultures: conjunctiva, throat, nasopharynx, rectum\n\u2022 Vesicle fluid: viral culture and/or PCR (if lesions present)\n\u2022 AST, ALT (hepatic involvement screen)',
+        },
+        {
+            heading: 'Treatment',
+            body: '\u2022 [Acyclovir](#/drug/acyclovir) 20 mg/kg IV q8h\n\u2022 Duration: minimum 5 doses or until HSV PCR results negative\n\u2022 If PCR not resulted after 5 doses \u2192 contact Infectious Disease\n\u2022 Ensure adequate hydration (crystalline nephropathy risk)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Pantell RH, et al. Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old. Pediatrics. 2021;148(2):e2021052228.' },
+        { num: 3, text: 'Kimberlin DW, et al. Guidance on Management of Asymptomatic Neonates Born to Women With Active Genital Herpes Lesions. Pediatrics. 2013;131(2):e572-e549.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Ceftriaxone Contraindications in Neonates (Peds Fever)
+// -------------------------------------------------------------------
+const PF_CEFTRIAXONE_CI_PAGE = {
+    id: 'pf-ceftriaxone-ci',
+    title: 'Ceftriaxone Contraindications (<28 Days)',
+    subtitle: 'Use Cefepime as alternative when contraindicated',
+    sections: [
+        {
+            heading: 'Absolute Contraindications',
+            body: '\u2022 Gestational age <37 weeks (any postnatal age)\n\u2022 Postnatal age <7 days (any gestational age)\n\u2022 Receiving calcium-containing IV products (risk of fatal Ceftriaxone-calcium precipitates in lungs/kidneys)\n\u2022 Known cephalosporin anaphylaxis',
+        },
+        {
+            heading: 'Relative Contraindications (Use with Caution)',
+            body: '\u2022 Total bilirubin >10 mg/dL\n\u2022 Risk factors for hyperbilirubinemia:\n  \u2022 ABO incompatibility\n  \u2022 G6PD deficiency\n  \u2022 Significant bruising/cephalohematoma\n  \u2022 East Asian ethnicity\n  \u2022 Exclusive breastfeeding with weight loss >10%\n\u2022 Ceftriaxone displaces bilirubin from albumin \u2192 increased free bilirubin \u2192 kernicterus risk',
+        },
+        {
+            heading: 'Alternative Agent',
+            body: '\u2022 [Cefepime](#/drug/cefepime) \u2014 4th-generation cephalosporin\n\u2022 Dosing 0-28 days: 50 mg/kg IV q12h\n\u2022 Dosing >28 days: 50 mg/kg IV q8h\n\u2022 Broader gram-negative spectrum than Ceftriaxone\n\u2022 No calcium interaction, no significant bilirubin displacement',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Pantell RH, et al. Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old. Pediatrics. 2021;148(2):e2021052228.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Antimicrobial Dosing Reference (Peds Fever)
+// -------------------------------------------------------------------
+const PF_ABX_DOSING_PAGE = {
+    id: 'pf-abx-dosing',
+    title: 'Antimicrobial Dosing Reference',
+    subtitle: 'Age-based dosing for febrile infant workup',
+    sections: [
+        {
+            heading: 'Empiric Sepsis Coverage (0-7 Days)',
+            body: '\u2022 [Ampicillin](#/drug/ampicillin) 50 mg/kg IV q8h + [Gentamicin](#/drug/gentamicin) 4 mg/kg IV q24h\n\u2022 Covers: GBS, Listeria, E. coli, Enterococcus\n\u2022 Duration: 48h rule-out period (d/c if cultures negative + well-appearing)',
+        },
+        {
+            heading: 'Empiric Sepsis Coverage (8-21 Days)',
+            body: '\u2022 [Ceftriaxone](#/drug/ceftriaxone) 50 mg/kg IV q24h (or [Cefepime](#/drug/cefepime) if [CI](#/info/pf-ceftriaxone-ci))\n\u2022 Duration: 48h rule-out period',
+        },
+        {
+            heading: 'Empiric Sepsis Coverage (22-28 Days)',
+            body: '\u2022 [Ceftriaxone](#/drug/ceftriaxone) 50 mg/kg IV q24h (or [Cefepime](#/drug/cefepime) if [CI](#/info/pf-ceftriaxone-ci))\n\u2022 Duration: 24-36h rule-out period',
+        },
+        {
+            heading: 'Meningitis Dosing (0-7 Days)',
+            body: '\u2022 [Ampicillin](#/drug/ampicillin) 100 mg/kg IV q8h + [Cefepime](#/drug/cefepime) 50 mg/kg IV q12h\n\u2022 D/C [Gentamicin](#/drug/gentamicin) when switching to meningitic dosing\n\u2022 Consider adding [Acyclovir](#/drug/acyclovir) 20 mg/kg IV q8h',
+        },
+        {
+            heading: 'Meningitis Dosing (8-28 Days)',
+            body: '\u2022 [Ceftriaxone](#/drug/ceftriaxone) 50 mg/kg IV q12h + [Ampicillin](#/drug/ampicillin) 75 mg/kg IV q6h\n\u2022 Consider adding [Acyclovir](#/drug/acyclovir) 20 mg/kg IV q8h',
+        },
+        {
+            heading: 'Meningitis Dosing (29-60 Days)',
+            body: '\u2022 [Ceftriaxone](#/drug/ceftriaxone) 50 mg/kg IV q12h + [Vancomycin](#/drug/vancomycin) 15 mg/kg IV q6h\n\u2022 Consider adding [Acyclovir](#/drug/acyclovir) 20 mg/kg IV q8h',
+        },
+        {
+            heading: 'UTI Treatment',
+            body: '\u2022 [Cefazolin](#/drug/cefazolin) 17 mg/kg IV q8h (without bacteremia)\n\u2022 [Cefazolin](#/drug/cefazolin) 33 mg/kg IV q8h (with bacteremia)\n\u2022 Step-down: [Cephalexin](#/drug/cephalexin) 17 mg/kg PO TID\n\u2022 Low-risk 29-60d UTI: [Cephalexin](#/drug/cephalexin) 17 mg/kg PO TID (oral from start)\n\u2022 Total treatment: 10 days (IV + PO combined)',
+        },
+        {
+            heading: 'Drug Level Monitoring',
+            body: '\u2022 [Gentamicin](#/drug/gentamicin): trough before 3rd dose if >2 doses anticipated (goal <1 mcg/mL)\n\u2022 [Vancomycin](#/drug/vancomycin): trough before 4th dose (goal 15-20 mcg/mL for meningitis)\n\u2022 If extended antibiotic course anticipated, monitor renal function (BMP)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Pantell RH, et al. Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old. Pediatrics. 2021;148(2):e2021052228.' },
+        { num: 9, text: 'Dell Children\u2019s EBOC. Febrile Infant 0-60 Days Clinical Pathway. 2024.' },
+    ],
+};
+// -------------------------------------------------------------------
+// UTI Risk Factors & Screening (Peds Fever)
+// -------------------------------------------------------------------
+const PF_UTI_RISK_PAGE = {
+    id: 'pf-uti-risk',
+    title: 'UTI Risk Factors & Screening',
+    subtitle: 'Age-specific screening criteria',
+    sections: [
+        {
+            heading: 'Infants 0-2 Months',
+            body: '\u2022 All febrile infants 0-2 months should have UA obtained\n\u2022 If UA positive \u2192 send catheterized urine culture\n\u2022 Bag specimens: acceptable for screening UA only, NEVER for culture',
+        },
+        {
+            heading: 'Infants 2-6 Months (Female, Not Toilet-Trained)',
+            body: 'UTI probability increases with number of risk factors:\n\n\u2022 Non-Black race\n\u2022 Temperature \u226539\u00b0C (102.2\u00b0F)\n\u2022 Fever \u22652 days\n\u2022 No other source identified\n\u2022 Age <12 months\n\n\u22652 risk factors \u2192 screen with UA',
+        },
+        {
+            heading: 'Infants 2-6 Months (Male)',
+            body: '\u2022 Uncircumcised \u2192 always screen with UA\n\u2022 Circumcised \u2192 screen if \u22653 of the female risk factors present\n\u2022 UTI prevalence in circumcised males is ~0.2% vs ~2% in uncircumcised',
+        },
+        {
+            heading: 'Common Uropathogens',
+            body: '**Gram-negative (most common):**\n\u2022 E. coli (80-90% of pediatric UTIs)\n\u2022 Klebsiella\n\u2022 Proteus (more common in males)\n\u2022 Enterobacter\n\u2022 Pseudomonas (consider if recent instrumentation)\n\n**Gram-positive:**\n\u2022 Enterococcus\n\u2022 Group B Streptococcus (neonates)\n\u2022 Staphylococcus saprophyticus (rare in infants)\n\n**Non-pathogens (likely contaminant):**\n\u2022 Lactobacillus\n\u2022 Coagulase-negative Staphylococcus\n\u2022 Corynebacterium',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Pantell RH, et al. Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old. Pediatrics. 2021;148(2):e2021052228.' },
+        { num: 8, text: 'Roberts KB, et al. Urinary Tract Infection: Clinical Practice Guideline for the Diagnosis and Management of the Initial UTI in Febrile Infants and Children 2 to 24 Months. Pediatrics. 2011;128(3):595-610.' },
+    ],
+};
+// -------------------------------------------------------------------
+// UA Interpretation (Peds Fever)
+// -------------------------------------------------------------------
+const PF_UA_INTERPRET_PAGE = {
+    id: 'pf-ua-interpret',
+    title: 'UA Interpretation',
+    subtitle: 'Positive UA criteria and culture thresholds',
+    sections: [
+        {
+            heading: 'Positive UA Definition',
+            body: '**ANY of the following:**\n\u2022 Leukocyte esterase (LE): trace or greater\n\u2022 Nitrites: positive (very specific but low sensitivity in infants)\n\u2022 WBC: >5/hpf (centrifuged) or >10/hpf (uncentrifuged)\n\u2022 Bacteria on Gram stain\n\nNote: In neonates <30 days, LE and nitrites have lower sensitivity. A negative UA does not rule out UTI in this age group if clinical suspicion is high.',
+        },
+        {
+            heading: 'Culture Thresholds',
+            body: '\u2022 Catheterized specimen: \u226550,000 CFU/mL (single organism) = positive\n\u2022 Suprapubic aspirate: any growth = positive\n\u2022 Bag specimen: NEVER use for culture (high false-positive rate, 85% contamination)\n\u2022 Mixed flora or multiple organisms \u2192 likely contamination \u2192 repeat if clinically indicated',
+        },
+        {
+            heading: 'Enhanced UA (if available)',
+            body: '\u2022 Cell count with differential (automated)\n\u2022 WBC >20 cells/\u00b5L suggests UTI\n\u2022 Bacteria >50,000/mL on flow cytometry\n\u2022 More sensitive than standard dipstick in young infants',
+        },
+        {
+            heading: 'Clinical Correlation',
+            body: '\u2022 Positive UA + positive culture = confirmed UTI \u2192 treat\n\u2022 Positive UA + negative culture = possible early/partially treated UTI or contamination\n\u2022 Negative UA + positive culture = possible UTI (especially neonates) \u2192 treat\n\u2022 Negative UA + negative culture = UTI excluded',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Pantell RH, et al. Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old. Pediatrics. 2021;148(2):e2021052228.' },
+        { num: 8, text: 'Roberts KB, et al. Urinary Tract Infection: Clinical Practice Guideline for the Diagnosis and Management of the Initial UTI in Febrile Infants and Children 2 to 24 Months. Pediatrics. 2011;128(3):595-610.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Discharge Criteria & Return Precautions (Peds Fever)
+// -------------------------------------------------------------------
+const PF_DISCHARGE_PAGE = {
+    id: 'pf-discharge',
+    title: 'Discharge Criteria & Return Precautions',
+    subtitle: 'Checklist before ED discharge',
+    shareable: true,
+    sections: [
+        {
+            heading: 'ED Discharge Criteria (ALL must be met)',
+            body: '\u2022 Well-appearing on exam\n\u2022 Tolerating oral liquids\n\u2022 Reliable caregiver with transportation\n\u2022 PCP or ED follow-up within 24 hours confirmed\n\u2022 Caregiver comfortable with home observation\n\u2022 Good social support (telephone access, reasonable proximity to ED)\n\u2022 Return precaution education completed and understood',
+        },
+        {
+            heading: 'Return Precautions for Caregivers',
+            body: 'Bring your baby back to the emergency department immediately if:\n\n\u2022 Temperature rises above 100.4\u00b0F (38\u00b0C) again\n\u2022 Baby becomes difficult to wake or unusually sleepy\n\u2022 Baby stops eating or drinking, or has fewer than 3 wet diapers in 24 hours\n\u2022 Baby develops a rash, especially blisters or purple spots\n\u2022 Baby has trouble breathing (fast breathing, grunting, ribs showing)\n\u2022 Baby is crying inconsolably and cannot be comforted\n\u2022 Baby seems limp, floppy, or weaker than usual\n\u2022 You are worried for any reason \u2014 trust your instincts',
+        },
+        {
+            heading: 'Follow-Up Instructions',
+            body: '\u2022 PCP or ED follow-up in 24 hours for repeat assessment\n\u2022 If blood cultures were sent: results typically available at 24-48h. If positive, you will be called to return.\n\u2022 If on antibiotics: complete the full course as prescribed\n\u2022 Monitor temperature at home: rectal thermometer is most accurate for infants',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Pantell RH, et al. Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old. Pediatrics. 2021;148(2):e2021052228.' },
+        { num: 9, text: 'Dell Children\u2019s EBOC. Febrile Infant 0-60 Days Clinical Pathway. 2024.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bronchiolitis — NOT Recommended Interventions
+// -------------------------------------------------------------------
+const BRONCH_NOT_RECOMMENDED = {
+    id: 'bronch-not-recommended',
+    title: 'NOT Recommended Interventions',
+    subtitle: 'Evidence-Based Exclusions — Bronchiolitis',
+    sections: [
+        {
+            heading: 'Labs & Diagnostics — NOT Recommended',
+            body: 'The following are **NOT recommended** in routine bronchiolitis:\n\n\u2022 **Chest X-ray** — Does not change management. Leads to inappropriate antibiotic use [1][2]\n\u2022 **Viral testing** — Does not change management in uncomplicated bronchiolitis [1]\n\u2022 **CBC / Blood culture** — Not recommended in well-appearing infants >90 days of age [1]',
+        },
+        {
+            heading: 'Treatments — NOT Recommended',
+            body: '\u2022 **Albuterol / bronchodilators** — No benefit in bronchiolitis. Not the same mechanism as asthma [5]\n\u2022 **Epinephrine (racemic)** — Not recommended for routine use\n\u2022 **Systemic or inhaled corticosteroids** — No benefit. Do not reduce admission rates or LOS [1]\n\u2022 **Antibiotics** — Bronchiolitis is viral. Antibiotics do not help unless secondary bacterial infection confirmed [7]\n\u2022 **Hypertonic saline (3%)** — Mixed evidence, not recommended in the ED setting [6]\n\u2022 **Chest physiotherapy** — No benefit. May worsen respiratory distress [8]\n\u2022 **Deep suction beyond nasopharynx** — Harmful. Use gentle superficial nasal suction only [1]',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Ralston SL, et al. Clinical Practice Guideline: The Diagnosis, Management, and Prevention of Bronchiolitis. Pediatrics. 2014;134(5):e1474-e1502.' },
+        { num: 2, text: 'Christakis DA, et al. Variation in Inpatient Diagnostic Testing and Management of Bronchiolitis. Pediatrics. 2005;115(4):878-84.' },
+        { num: 5, text: 'Gadomski AM, Scribani MB. Bronchodilators for Bronchiolitis. Cochrane Database Syst Rev. 2014;(6):CD001266.' },
+        { num: 6, text: 'Zhang L, et al. Nebulized Hypertonic Saline for Acute Bronchiolitis. Cochrane Database Syst Rev. 2017;(12):CD006458.' },
+        { num: 7, text: 'Spurling GK, et al. Antibiotics for Bronchiolitis in Children. Cochrane Database Syst Rev. 2011;(6):CD005189.' },
+        { num: 8, text: 'Perrotta C, et al. Chest Physiotherapy for Acute Bronchiolitis. Cochrane Database Syst Rev. 2012;(2):CD004873.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bronchiolitis — HFNC Protocol Reference
+// -------------------------------------------------------------------
+const BRONCH_HFNC_PROTOCOL = {
+    id: 'bronch-hfnc-protocol',
+    title: 'HFNC Protocol Reference',
+    subtitle: 'Weight-Based Flow Rates & Monitoring',
+    sections: [
+        {
+            heading: 'Starting Flow Rates',
+            body: '\u2022 **<7 kg:** 4 LPM\n\u2022 **7\u20139 kg:** 6 LPM\n\u2022 **>9 kg:** 6 LPM\n\nStart FiO\u2082 at 21%, titrate to maintain SpO\u2082 \u226590% awake or \u226588% asleep.',
+        },
+        {
+            heading: 'Maximum Flow Rates',
+            body: '\u2022 **\u22647 kg:** 2 LPM/kg (e.g., 5 kg = 10 LPM, 7 kg = 14 LPM)\n\u2022 **>7 kg:** 14 LPM\n\nEscalate by 2 LPM at a time. Monitor for signs of excess flow.',
+        },
+        {
+            heading: 'Monitoring',
+            body: '\u2022 **Initiation:** Q15 min assessment \u2014 BAS score, RR, pulse ox, WOB\n\u2022 **Maintenance:** Continuous pulse ox. Suction PRN. BAS Q4h or per PEWS.\n\u2022 Document HR, RR, pulse ox.',
+        },
+        {
+            heading: 'Contraindications',
+            body: '\u2022 Nasal obstruction\n\u2022 Ingestion/toxins\n\u2022 Life-threatening hypoxia, apnea, or hemodynamic instability\n\u2022 Trauma (maxillofacial, suspected base of skull fracture, chest)\n\u2022 Pneumothorax\n\u2022 Foreign body aspiration',
+        },
+        {
+            heading: 'Proceed with Caution',
+            body: '\u2022 Decreased level of consciousness\n\u2022 Congenital heart disease\n\u2022 Asthma\n\u2022 Chronic lung disease',
+        },
+        {
+            heading: 'Critical Care Consult Triggers',
+            body: '\u2022 Any patient worsening after 60 minutes on HFNC\n\u2022 Severe respiratory distress on HFNC\n\u2022 FiO\u2082 >50%\n\u2022 Flow rates above recommended parameters\n\u2022 Apnea\n\u2022 **NICU consideration:** <44 weeks corrected gestational age, prematurity <32 weeks and <44 weeks post-menstrual age',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Dell Children\'s Medical Center EBOC. Bronchiolitis Clinical Pathway. Rev Oct 2019.' },
+        { num: 2, text: 'Dell Children\'s Medical Center EBOC. HFNC Initiation, Maintenance, and Weaning Pathway. Rev Nov 2021.' },
+        { num: 3, text: 'New South Wales Ministry of Health. Humidified High Flow Nasal Cannula Oxygen Guideline for Metropolitan Pediatric Wards and EDs. 2016.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bronchiolitis — HFNC Weaning & Holiday Protocol
+// -------------------------------------------------------------------
+const BRONCH_HFNC_WEANING = {
+    id: 'bronch-hfnc-weaning',
+    title: 'HFNC Weaning & Holiday Protocol',
+    subtitle: 'Stepwise De-escalation',
+    sections: [
+        {
+            heading: 'Prerequisites for Weaning',
+            body: '\u2022 Stable on current HFNC settings for **\u22654 hours**\n\u2022 BAS consistently <9\n\u2022 Adequate oral intake or stable on NG/IV fluids',
+        },
+        {
+            heading: 'Weaning Steps',
+            body: '\u2022 O\u2082 wean first \u2014 decrease FiO\u2082 to maintain SpO\u2082 goals\n\u2022 Flow wean by physician order \u2014 generally not until stabilized 8\u201312 hours\n\u2022 Decrease flow by **2 LPM every 4 hours**\n\u2022 Change to nasal cannula when on 2 LPM for 4 hours\n\u2022 If BAS \u22659 after decrease, return to previous flow rate',
+        },
+        {
+            heading: 'Holiday Protocol — Eligibility Criteria',
+            body: '**All must be met:**\n\u2022 FiO\u2082 <40%\n\u2022 SpO\u2082 >90% awake and >88% asleep\n\u2022 HR within normal limits while calm\n\u2022 BAS <9\n\n**Exclusions:**\n\u2022 Born <32 weeks gestation\n\u2022 Cardiac disease requiring home medications\n\u2022 Chronic lung disease or on home oxygen\n\u2022 Significant neuromuscular disease',
+        },
+        {
+            heading: 'Holiday Protocol — Procedure',
+            body: '**Start Holiday BID:**\n\u2022 FiO\u2082 >21%: change to 2 LPM at 100%\n\u2022 FiO\u2082 at 21%: take off HFNC, keep on room air\n\u2022 Monitor in room minimum 5 minutes \u2014 if immediate deterioration, return to previous settings\n\n**Reassess within 30\u201360 minutes:**',
+        },
+        {
+            heading: 'Holiday Outcomes',
+            body: '**PASS:** HR, RR, WOB acceptable AND SpO\u2082 >90% \u2192 Wean NC 1 LPM or stay on room air\n\n**PASS TO LFNC:** HR, RR, WOB acceptable BUT SpO\u2082 <90% awake / 88% asleep \u2192 Titrate nasal cannula up to 2 LPM\n\n**NO PASS (Clinical Decompensation):** Severe WOB, HR increase >20 bpm, RR increase by 10 \u2192 Return to previous HFNC settings',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Dell Children\'s Medical Center EBOC. HFNC Initiation, Maintenance, and Weaning Pathway. Rev Nov 2021.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bronchiolitis — HFNC Feeding Guidelines
+// -------------------------------------------------------------------
+const BRONCH_FEEDING = {
+    id: 'bronch-feeding',
+    title: 'HFNC Feeding Guidelines',
+    subtitle: 'Nutrition Management During Respiratory Support',
+    sections: [
+        {
+            heading: 'Initial Assessment',
+            body: 'Upon initiation of HFNC, the child should remain **NPO for approximately 1 hour** to assess clinical response. The attending physician will then determine the appropriate method of nutrition.',
+        },
+        {
+            heading: 'Hydration Options',
+            body: 'If hydration status is of concern:\n\u2022 **Nasogastric tube (NGT)** \u2014 recommend initial trial of Pedialyte before EBM or formula\n\u2022 **IV fluids (IVF)**\n\u2022 **NGT + IVF**\n\u2022 **Nasojejunal tube (NJT)**',
+        },
+        {
+            heading: 'Feeding by BAS Score',
+            body: '\u2022 **Mild (BAS 0\u20133):** May resume PO feeds. First feed observed by staff.\n\u2022 **Moderate to Severe (BAS 4\u201312):** Consider NG feeds.',
+        },
+        {
+            heading: 'When to Make NPO',
+            body: 'If PO feeds have been started, make NPO and consider alternatives if:\n\u2022 Choking/gasping and/or increased WOB during or acutely after PO feeding\n\u2022 Respiratory rate consistently >60 beyond 15 minutes\n\u2022 Child is titrated to maximum HFNC flow rate for weight\n\nAt any time, the physician may make the child NPO and hydrate by other means.',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Dell Children\'s Medical Center EBOC. Bronchiolitis Clinical Pathway. Rev Oct 2019.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bronchiolitis — Hospital Admission Criteria
+// -------------------------------------------------------------------
+const BRONCH_ADMISSION_CRITERIA = {
+    id: 'bronch-admission-criteria',
+    title: 'Hospital Admission Criteria',
+    subtitle: 'Level of Care Assignment',
+    sections: [
+        {
+            heading: 'Acute Care Unit',
+            body: '\u2022 Routine bronchiolitis management\n\u2022 FiO\u2082 <50% to maintain SaO\u2082 \u226590% awake or \u226588% asleep\n\u2022 Continuation of care when transferred from higher acuity unit\n\u2022 HFNC at standard flow rates',
+        },
+        {
+            heading: 'Acute Care Unit with High Acuity Status',
+            body: '\u2022 Significant cardiac or pulmonary comorbidities\n\u2022 Moderate to severe symptoms (see BAS scoring)\n\u2022 Worsening clinical status despite increasing flow rates\n\u2022 Comorbidities requiring discussion between provider and charge RN',
+        },
+        {
+            heading: 'PICU',
+            body: '\u2022 Any patient with worsening clinical status after **60 minutes** of HFNC\n\u2022 Requiring positive pressure ventilation\n\u2022 Witnessed episode of apnea\n\u2022 Flow rates above maximum recommended levels\n\u2022 Severe dehydration or shock',
+        },
+        {
+            heading: 'NICU Consideration',
+            body: '\u2022 Patients not meeting acute care or high acuity criteria and currently <44 weeks corrected gestational age\n\u2022 Prematurity \u226432 weeks gestation and currently <44 weeks post-menstrual age',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Dell Children\'s Medical Center EBOC. Bronchiolitis Clinical Pathway. Rev Oct 2019.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bronchiolitis — Parent Info (English)
+// -------------------------------------------------------------------
+const BRONCH_PARENT_EN = {
+    id: 'bronch-parent-en',
+    title: 'Bronchiolitis: What You Need to Know',
+    subtitle: 'Parent/Caregiver Information',
+    shareable: true,
+    sections: [
+        {
+            heading: 'What Is Bronchiolitis?',
+            body: 'Bronchiolitis is an infection of the small airway tubes (bronchioles) in the lungs. The airways become swollen and fill with mucus, causing a stuffy nose, coughing, wheezing, or difficulty breathing.\n\nIt is caused by a virus \u2014 the same viruses that cause common colds. It mostly affects children under 2 years old because they have smaller airways. It usually goes away on its own in 2 to 3 weeks.',
+        },
+        {
+            heading: 'Symptoms',
+            body: '\u2022 Breathing harder or faster\n\u2022 Runny or stuffy nose\n\u2022 Wheezing\n\u2022 Fever\n\u2022 Cough that may get worse',
+        },
+        {
+            heading: 'What Can I Do at Home?',
+            body: '1. **Watch your child\u2019s breathing.** Always call your doctor if you are not comfortable caring for your child at home.\n\n2. **Fluids are important.** Offer small amounts often. Ask your doctor about Pedialyte if your child is not drinking milk or formula well.\n\n3. **Suction the nose** to help your child breathe, eat, and sleep better. Use saline drops (2\u20133 drops in each nostril) before suctioning with a bulb syringe.',
+        },
+        {
+            heading: 'Signs of Dehydration',
+            body: 'Watch for:\n\u2022 No tears when crying\n\u2022 Fewer wet diapers\n\u2022 Dark-colored urine\n\u2022 Dry mouth, tongue, or lips',
+        },
+        {
+            heading: 'Do NOT Use These Treatments',
+            body: '1. **No cough or cold medicines** \u2014 they do not work for bronchiolitis and are not safe for young children.\n2. **No antibiotics** \u2014 they do not kill viruses.\n3. **No breathing treatments** (such as albuterol) \u2014 they do not help bronchiolitis.',
+        },
+        {
+            heading: 'When to Call Your Doctor',
+            body: '\u2022 Having a harder time breathing\n\u2022 Not eating or drinking as usual\n\u2022 Sleepy, drowsy, or less active\n\u2022 Crying or restless and cannot be calmed\n\u2022 Fever of 100.4\u00b0F (38.0\u00b0C) or higher',
+        },
+        {
+            heading: 'Call 911 or Go to the ER If Your Child:',
+            body: '\u2022 Has pale skin or a blue color around nails or lips\n\u2022 Is breathing fast and shallow\n\u2022 Is struggling for each breath\n\u2022 The space between ribs sinks in with each breath\n\u2022 Is making a grunting sound when breathing\n\u2022 Has a limp or floppy body\n\u2022 Is sleepy all the time, even after a nap',
+        },
+        {
+            heading: 'Stop the Spread',
+            body: 'Wash your hands:\n\u2022 After caring for your child\n\u2022 Before cooking or eating\n\u2022 After blowing your nose, coughing, or sneezing\n\n**No smoking around your child.** Cigarette smoke irritates infected airways and makes it harder to breathe.',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Children\'s Hospital Association of Texas. Bronchiolitis Patient Education Brochure.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Bronchiolitis — Parent Info (Spanish)
+// -------------------------------------------------------------------
+const BRONCH_PARENT_ES = {
+    id: 'bronch-parent-es',
+    title: 'Bronquiolitis: Lo Que Necesita Saber',
+    subtitle: 'Informaci\u00f3n para Padres y Cuidadores',
+    shareable: true,
+    sections: [
+        {
+            heading: '\u00bfQu\u00e9 es la bronquiolitis?',
+            body: 'La bronquiolitis es una infecci\u00f3n de las peque\u00f1as v\u00edas respiratorias (bronquiolos) en los pulmones. Las v\u00edas respiratorias se inflaman y se llenan de mucosidad, causando tos, sibilancia o dificultad para respirar.\n\nEs causada por un virus \u2014 los mismos virus que causan los resfriados comunes. Afecta principalmente a ni\u00f1os menores de 2 a\u00f1os. Generalmente desaparece por s\u00ed misma en 2 a 3 semanas.',
+        },
+        {
+            heading: 'S\u00edntomas',
+            body: '\u2022 Respiraci\u00f3n m\u00e1s r\u00e1pida o dif\u00edcil\n\u2022 Secreci\u00f3n o congesti\u00f3n nasal\n\u2022 Sibilancia o silbido\n\u2022 Fiebre\n\u2022 Tos que podr\u00eda empeorar',
+        },
+        {
+            heading: '\u00bfQu\u00e9 puedo hacer en casa?',
+            body: '1. **Observe la respiraci\u00f3n de su hijo/a.** Siempre llame a su m\u00e9dico si no se siente c\u00f3modo cuidando a su hijo/a en casa.\n\n2. **Los l\u00edquidos son importantes.** Ofrezca peque\u00f1as cantidades con frecuencia. Pregunte a su m\u00e9dico sobre Pedialyte si su hijo/a no est\u00e1 tomando bien la leche o f\u00f3rmula.\n\n3. **Limpie la nariz** para ayudar a su hijo/a a respirar, comer y dormir mejor. Use gotas de soluci\u00f3n salina (2\u20133 gotas en cada fosa nasal) antes de succionar con la pera de succi\u00f3n.',
+        },
+        {
+            heading: 'Se\u00f1ales de Deshidrataci\u00f3n',
+            body: 'Preste atenci\u00f3n a:\n\u2022 Ausencia de l\u00e1grimas al llorar\n\u2022 Menos pa\u00f1ales mojados\n\u2022 Orina de color oscuro\n\u2022 Boca, lengua o labios secos',
+        },
+        {
+            heading: 'Tratamientos que NO Debe Usar',
+            body: '1. **No use medicamentos para la tos o el resfriado** \u2014 no funcionan contra la bronquiolitis y no son seguros para ni\u00f1os peque\u00f1os.\n2. **No use antibi\u00f3ticos** \u2014 no matan los virus.\n3. **No use tratamientos respiratorios** (como albuterol) \u2014 no ayudan con la bronquiolitis.',
+        },
+        {
+            heading: 'Cu\u00e1ndo Llamar a su M\u00e9dico',
+            body: '\u2022 Tiene mucha dificultad para respirar\n\u2022 No come ni bebe como lo hace normalmente\n\u2022 Est\u00e1 adormitado, mareado o menos activo\n\u2022 Llora o est\u00e1 inquieto y no puede calmarlo\n\u2022 Tiene fiebre de 100.4\u00b0F (38.0\u00b0C) o m\u00e1s',
+        },
+        {
+            heading: 'Llame al 911 o Vaya a Urgencias Si Su Hijo/a:',
+            body: '\u2022 Se ve p\u00e1lido o tiene un color azul en las u\u00f1as o alrededor de los labios\n\u2022 Su respiraci\u00f3n es r\u00e1pida o superficial\n\u2022 Se esfuerza en cada respiraci\u00f3n\n\u2022 Tiene un espacio entre las costillas que se hunde con cada respiraci\u00f3n\n\u2022 Hace un sonido como gru\u00f1ido cuando respira\n\u2022 Tiene el cuerpo d\u00e9bil o fl\u00e1cido\n\u2022 Est\u00e1 somnoliento todo el tiempo, incluso despu\u00e9s de una siesta',
+        },
+        {
+            heading: 'Detenga el Contagio',
+            body: 'L\u00e1vese las manos:\n\u2022 Despu\u00e9s de atender a su hijo/a\n\u2022 Antes de comer\n\u2022 Despu\u00e9s de sonarse, toser o estornudar\n\n**No fume cerca del ni\u00f1o/a.** El humo de cigarro es muy irritante para las v\u00edas respiratorias infectadas.',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Children\u2019s Hospital Association of Texas. Folleto de Educaci\u00f3n al Paciente sobre Bronquiolitis.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 const INFO_PAGES = {
@@ -682,6 +1122,19 @@ const INFO_PAGES = {
     'k-hyper-ecg-info': K_HYPER_ECG_PAGE,
     'k-hypo-ecg-info': K_HYPO_ECG_PAGE,
     'uti-definition-info': UTI_DEFINITION_PAGE,
+    'pf-hsv-criteria': PF_HSV_CRITERIA_PAGE,
+    'pf-ceftriaxone-ci': PF_CEFTRIAXONE_CI_PAGE,
+    'pf-abx-dosing': PF_ABX_DOSING_PAGE,
+    'pf-uti-risk': PF_UTI_RISK_PAGE,
+    'pf-ua-interpret': PF_UA_INTERPRET_PAGE,
+    'pf-discharge': PF_DISCHARGE_PAGE,
+    'bronch-not-recommended': BRONCH_NOT_RECOMMENDED,
+    'bronch-hfnc-protocol': BRONCH_HFNC_PROTOCOL,
+    'bronch-hfnc-weaning': BRONCH_HFNC_WEANING,
+    'bronch-feeding': BRONCH_FEEDING,
+    'bronch-admission-criteria': BRONCH_ADMISSION_CRITERIA,
+    'bronch-parent-en': BRONCH_PARENT_EN,
+    'bronch-parent-es': BRONCH_PARENT_ES,
 };
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes

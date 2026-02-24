@@ -43,6 +43,30 @@ const ACETAZOLAMIDE = {
         'Statland JM, et al. Review of the Diagnosis and Treatment of Periodic Paralysis. Muscle Nerve. 2018;57(4):522-530.',
     ],
 };
+const ACYCLOVIR = {
+    id: 'acyclovir',
+    name: 'Acyclovir',
+    genericName: 'Acyclovir',
+    drugClass: 'Antiviral (Nucleoside Analog)',
+    route: 'IV',
+    indications: ['Neonatal HSV (suspected or confirmed)', 'HSV encephalitis'],
+    dosing: [
+        {
+            indication: 'Neonatal HSV (0-3 months)',
+            regimen: '20 mg/kg IV q8h. Duration: minimum 5 doses or until HSV PCR results negative. If PCR not resulted after 5 doses, contact ID.',
+        },
+    ],
+    cautions: [
+        'Crystalline nephropathy — ensure adequate hydration',
+        'Infuse over 1 hour',
+    ],
+    monitoring: 'Renal function (BUN, creatinine). Urine output. Hold tube #4 CSF for HSV PCR. Surface cultures: conjunctiva, throat, nasopharynx, rectum, vesicle fluid if present.',
+    notes: 'Empiric acyclovir should be started in any neonate with suspected HSV — fever, seizures, vesicular rash, CSF pleocytosis, or elevated LFTs without other explanation. Do not wait for PCR results to initiate treatment.',
+    citations: [
+        'Kimberlin DW, et al. Guidance on Management of Asymptomatic Neonates Born to Women with Active Genital Herpes Lesions. Pediatrics. 2013;131(2):e572-e579.',
+        'Red Book: 2021-2024 Report of the Committee on Infectious Diseases. American Academy of Pediatrics.',
+    ],
+};
 const ALBUTEROL_NEB = {
     id: 'albuterol-neb',
     name: 'Albuterol (Nebulized)',
@@ -86,6 +110,7 @@ const AMOXICILLIN_CLAVULANATE = {
         {
             indication: 'Pediatric UTI',
             regimen: '20-40 mg/kg/day divided BID. Max 875 mg/dose.',
+            weightCalc: { dosePerKg: 40, unit: 'mg', maxDose: 875, dailyDivided: 2 },
         },
     ],
     contraindications: [
@@ -103,6 +128,48 @@ const AMOXICILLIN_CLAVULANATE = {
         'Roberts KB. Urinary tract infection: clinical practice guideline for febrile infants and children 2 to 24 months. Pediatrics. 2011;128(3):595-610.',
     ],
 };
+const AMPICILLIN = {
+    id: 'ampicillin',
+    name: 'Ampicillin',
+    genericName: 'Ampicillin sodium',
+    drugClass: 'Aminopenicillin',
+    route: 'IV',
+    indications: ['Neonatal sepsis (empiric)', 'Meningitis (GBS, Listeria, Enterococcus coverage)'],
+    dosing: [
+        {
+            indication: 'Non-meningitic (0-7 days)',
+            regimen: '50 mg/kg IV q8h.',
+        },
+        {
+            indication: 'Non-meningitic (8-28 days)',
+            regimen: '50 mg/kg IV q6h.',
+        },
+        {
+            indication: 'Meningitic (0-7 days)',
+            regimen: '100 mg/kg IV q8h.',
+        },
+        {
+            indication: 'Meningitic (8-28 days)',
+            regimen: '75 mg/kg IV q6h.',
+        },
+        {
+            indication: 'Meningitic (>28 days, added to Ceftriaxone)',
+            regimen: '75 mg/kg IV q6h.',
+        },
+    ],
+    contraindications: [
+        'IgE-mediated penicillin allergy',
+    ],
+    cautions: [
+        'Rash common (non-allergic maculopapular rash, especially with concurrent EBV infection)',
+    ],
+    monitoring: 'Clinical response. CBC, CRP, blood cultures. CSF cultures if meningitis suspected.',
+    notes: 'Covers GBS, Listeria monocytogenes, and Enterococcus — organisms not covered by cephalosporins. Always pair with Gentamicin (0-7d) or Ceftriaxone/Cefepime (8-28d). Meningitic doses are higher to achieve adequate CSF penetration.',
+    citations: [
+        'Puopolo KM, et al. Management of Neonates Born at ≥35 0/7 Weeks\' Gestation With Suspected or Proven Early-Onset Bacterial Sepsis. Pediatrics. 2018;142(6):e20182894.',
+        'Red Book: 2021-2024 Report of the Committee on Infectious Diseases. American Academy of Pediatrics.',
+    ],
+};
 const ALTEPLASE = {
     id: 'alteplase',
     name: 'Alteplase (tPA)',
@@ -114,10 +181,12 @@ const ALTEPLASE = {
         {
             indication: 'High-risk PE',
             regimen: '100 mg IV over 2 hours: 0.6 mg/kg (max 50 mg) over first 15 min, remainder over next 1 hr 45 min. Stop UFH drip before infusion. Post-infusion: check PTT \u2014 if \u226475 restart UFH without bolus; if >75 repeat PTT q2hr until \u226475.',
+            weightCalc: { dosePerKg: 0.6, unit: 'mg', maxDose: 50, label: 'Bolus (first 15 min)' },
         },
         {
             indication: 'Acute ischemic stroke (0\u20134.5h)',
             regimen: '0.9 mg/kg IV (max 90 mg): Give 10% as IV bolus over 1 min, remaining 90% infused over 60 min. BP must be <185/110 before and <180/105 for 24h after. No antithrombotics \u00D7 24h post-infusion.',
+            weightCalc: { dosePerKg: 0.9, unit: 'mg', maxDose: 90 },
         },
     ],
     contraindications: [
@@ -145,6 +214,7 @@ const AMIODARONE = {
         {
             indication: 'A-Fib rhythm control (cardioversion)',
             regimen: 'Load: 300 mg (or 5-7 mg/kg) IV over 30-60 min. Then 1 mg/min infusion. Total 24hr IV dose: 1,200-3,000 mg. Convert to PO 400 mg BID after >24hr IV, until 10g cumulative dose reached, then 200 mg daily maintenance.',
+            weightCalc: { dosePerKg: 5, unit: 'mg', label: 'Load (5 mg/kg)' },
         },
         {
             indication: 'Cardiac arrest (VF/pVT)',
@@ -306,6 +376,7 @@ const BIVALIRUDIN = {
         {
             indication: 'NSTEMI undergoing PCI',
             regimen: 'Bolus: 0.75 mg/kg IV, then infusion 1.75 mg/kg/hr during procedure. Discontinue at end of PCI or continue at 0.25 mg/kg/hr if needed. ACT target: 225-300 seconds.',
+            weightCalc: [{ dosePerKg: 0.75, unit: 'mg', label: 'IV Bolus' }, { dosePerKg: 1.75, unit: 'mg', label: 'Infusion (per hour)' }],
         },
     ],
     contraindications: [
@@ -499,10 +570,12 @@ const CEFAZOLIN = {
         {
             indication: 'Pediatric UTI (inpatient)',
             regimen: '50 mg/kg/day divided q8h. Max 2000 mg/dose.',
+            weightCalc: { dosePerKg: 50, unit: 'mg', maxDose: 2000, dailyDivided: 3 },
         },
         {
             indication: 'Neonatal UTI',
             regimen: '50 mg/kg/day divided q8h.',
+            weightCalc: { dosePerKg: 50, unit: 'mg', dailyDivided: 3 },
         },
     ],
     contraindications: [
@@ -517,6 +590,37 @@ const CEFAZOLIN = {
         'Dell Children\'s EBOC. First Febrile Urinary Tract Infection Clinical Pathway. May 2017.',
         'Dell Children\'s EBOC. UTI Management Pathway (Neonatal). September 2024.',
         'Roberts KB. Urinary tract infection: clinical practice guideline for febrile infants and children 2 to 24 months. Pediatrics. 2011;128(3):595-610.',
+    ],
+};
+const CEFEPIME = {
+    id: 'cefepime',
+    name: 'Cefepime (Maxipime)',
+    genericName: 'Cefepime hydrochloride',
+    drugClass: '4th-Generation Cephalosporin',
+    route: 'IV',
+    indications: ['Neonatal sepsis/meningitis (alternative when Ceftriaxone contraindicated)'],
+    dosing: [
+        {
+            indication: 'Sepsis/meningitis (0-28 days)',
+            regimen: '50 mg/kg IV q12h.',
+        },
+        {
+            indication: 'Meningitis (>28 days)',
+            regimen: '50 mg/kg IV q8h.',
+        },
+    ],
+    contraindications: [
+        'Severe cephalosporin allergy',
+    ],
+    cautions: [
+        'Neurotoxicity (seizures) — especially in renal impairment',
+        'Dose adjust for renal impairment',
+    ],
+    monitoring: 'Renal function, CBC. Monitor for neurotoxicity (altered mental status, seizures) especially with renal impairment or prolonged courses.',
+    notes: 'Use when Ceftriaxone is contraindicated: GA <37 weeks, postnatal age <7 days, receiving calcium-containing IV products, or bilirubin >10 mg/dL. Broader gram-negative coverage than Ceftriaxone including Pseudomonas aeruginosa.',
+    citations: [
+        'Puopolo KM, et al. Management of Neonates Born at ≥35 0/7 Weeks\' Gestation With Suspected or Proven Early-Onset Bacterial Sepsis. Pediatrics. 2018;142(6):e20182894.',
+        'Bradley JS, et al. Nelson\'s Pediatric Antimicrobial Therapy. 29th ed. American Academy of Pediatrics; 2023.',
     ],
 };
 const CEFTRIAXONE = {
@@ -557,10 +661,12 @@ const CEPHALEXIN = {
         {
             indication: 'Pediatric UTI',
             regimen: '50-100 mg/kg/day divided TID-QID. Max 1000 mg/dose.',
+            weightCalc: { dosePerKg: 75, unit: 'mg', maxDose: 1000, dailyDivided: 4 },
         },
         {
             indication: 'Neonatal UTI',
             regimen: '\u226428 days: 75 mg/kg/day divided q8h. \u226529 days: 100 mg/kg/day divided q6h.',
+            weightCalc: [{ dosePerKg: 75, unit: 'mg', dailyDivided: 3, label: '\u226428 days (q8h)' }, { dosePerKg: 100, unit: 'mg', dailyDivided: 4, label: '\u226529 days (q6h)' }],
         },
     ],
     contraindications: [
@@ -619,6 +725,7 @@ const DEXAMETHASONE = {
         {
             indication: 'Croup',
             regimen: '0.6 mg/kg PO as a single dose (max 16 mg). Low-dose alternative: 0.15 mg/kg PO (non-inferior). If unable to tolerate oral: 0.6 mg/kg IM.',
+            weightCalc: [{ dosePerKg: 0.6, unit: 'mg', maxDose: 16, label: 'Standard dose' }, { dosePerKg: 0.15, unit: 'mg', label: 'Low-dose alternative' }],
         },
         {
             indication: 'Cerebral edema',
@@ -627,6 +734,7 @@ const DEXAMETHASONE = {
         {
             indication: 'Airway edema / post-extubation stridor',
             regimen: '0.5 mg/kg IV q6h x 4 doses, starting 12-24 hours before planned extubation.',
+            weightCalc: { dosePerKg: 0.5, unit: 'mg' },
         },
     ],
     contraindications: [
@@ -718,6 +826,7 @@ const CIPROFLOXACIN = {
         {
             indication: 'Pediatric UTI',
             regimen: '20 mg/kg/day divided BID. Max 750 mg/dose (oral).',
+            weightCalc: { dosePerKg: 20, unit: 'mg', maxDose: 750, dailyDivided: 2 },
         },
     ],
     contraindications: [
@@ -868,6 +977,7 @@ const DILTIAZEM = {
         {
             indication: 'A-Fib rate control (acute)',
             regimen: 'Initial bolus: 0.25 mg/kg IV over 2 min (typically 20-25 mg). If inadequate response after 15 min, second bolus: 0.35 mg/kg IV over 2 min. Then continuous infusion: 5-15 mg/hr, titrate to heart rate.',
+            weightCalc: [{ dosePerKg: 0.25, unit: 'mg', label: 'Initial bolus' }, { dosePerKg: 0.35, unit: 'mg', label: 'Second bolus (if needed)' }],
         },
     ],
     contraindications: [
@@ -994,6 +1104,7 @@ const ENOXAPARIN = {
         {
             indication: 'PE / DVT treatment',
             regimen: '1 mg/kg SC every 12 hours, or 1.5 mg/kg SC once daily.',
+            weightCalc: [{ dosePerKg: 1, unit: 'mg', label: 'BID dosing' }, { dosePerKg: 1.5, unit: 'mg', label: 'Daily dosing' }],
         },
         {
             indication: 'VTE prophylaxis',
@@ -1002,6 +1113,7 @@ const ENOXAPARIN = {
         {
             indication: 'ACS / NSTEMI',
             regimen: '1 mg/kg SC every 12 hours. Duration: until invasive strategy or up to 8 days. CrCl <30 mL/min: 1 mg/kg SC once daily. If PCI >8h after last SC dose: supplemental 0.3 mg/kg IV bolus in cath lab.',
+            weightCalc: { dosePerKg: 1, unit: 'mg' },
         },
     ],
     contraindications: [
@@ -1178,6 +1290,38 @@ const FUROSEMIDE = {
     citations: [
         'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
         'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+    ],
+};
+const GENTAMICIN = {
+    id: 'gentamicin',
+    name: 'Gentamicin',
+    genericName: 'Gentamicin sulfate',
+    drugClass: 'Aminoglycoside',
+    route: 'IV',
+    indications: ['Neonatal sepsis (0-7 days, synergy with Ampicillin)'],
+    dosing: [
+        {
+            indication: 'Neonatal sepsis (0-7 days)',
+            regimen: '4 mg/kg IV q24h.',
+        },
+        {
+            indication: 'Neonatal sepsis (8-28 days, if extended use)',
+            regimen: '5 mg/kg IV q24h.',
+        },
+    ],
+    contraindications: [
+        'Known hypersensitivity to aminoglycosides',
+    ],
+    cautions: [
+        'Nephrotoxicity — monitor renal function',
+        'Ototoxicity — risk increases with prolonged use',
+        'Neuromuscular blockade — caution with concurrent paralytics',
+    ],
+    monitoring: 'Drug levels not needed for empiric rule-out period (≤48h). If >2 doses anticipated, obtain trough before 3rd dose (goal <1 mcg/mL). Renal function (BUN, creatinine). Audiometry if prolonged course.',
+    notes: 'Provides synergistic bactericidal activity with Ampicillin against GBS and Listeria. Standard empiric pairing for neonatal sepsis in the first week of life (Ampicillin + Gentamicin). Transition to Ceftriaxone/Cefepime-based regimen after 7 days of life.',
+    citations: [
+        'Puopolo KM, et al. Management of Neonates Born at ≥35 0/7 Weeks\' Gestation With Suspected or Proven Early-Onset Bacterial Sepsis. Pediatrics. 2018;142(6):e20182894.',
+        'Red Book: 2021-2024 Report of the Committee on Infectious Diseases. American Academy of Pediatrics.',
     ],
 };
 const LABETALOL = {
@@ -1465,10 +1609,12 @@ const PREDNISOLONE = {
         {
             indication: 'Croup',
             regimen: '1 mg/kg PO as a single dose (max 60 mg). Non-inferior to dexamethasone 0.6 mg/kg in a 1,252-patient RCT.',
+            weightCalc: { dosePerKg: 1, unit: 'mg', maxDose: 60 },
         },
         {
             indication: 'Asthma exacerbation',
             regimen: '1-2 mg/kg/day PO (max 60 mg) for 3-5 days.',
+            weightCalc: { dosePerKg: 2, unit: 'mg', maxDose: 60 },
         },
     ],
     contraindications: [
@@ -1894,6 +2040,7 @@ const TENECTEPLASE = {
         {
             indication: 'Acute ischemic stroke',
             regimen: '0.25 mg/kg IV bolus (max 25 mg) given over 5 seconds. Single dose \u2014 no infusion required. BP must be <185/110 before administration and <180/105 for 24h after.',
+            weightCalc: { dosePerKg: 0.25, unit: 'mg', maxDose: 25 },
         },
     ],
     contraindications: [
@@ -1992,6 +2139,38 @@ const UFH = {
         'Garcia DA, et al. Parenteral Anticoagulants: ACCP Evidence-Based Clinical Practice Guidelines. Chest. 2012.',
     ],
 };
+const VANCOMYCIN = {
+    id: 'vancomycin',
+    name: 'Vancomycin',
+    genericName: 'Vancomycin hydrochloride',
+    drugClass: 'Glycopeptide',
+    route: 'IV',
+    indications: ['Meningitis (>28 days, added to Ceftriaxone for MRSA/resistant organism coverage)'],
+    dosing: [
+        {
+            indication: 'Meningitic',
+            regimen: '15 mg/kg IV q6h.',
+        },
+        {
+            indication: 'Non-meningitic',
+            regimen: '15 mg/kg IV q8h.',
+        },
+    ],
+    contraindications: [
+        'Known hypersensitivity to vancomycin',
+    ],
+    cautions: [
+        'Red Man Syndrome — infuse over at least 1 hour',
+        'Nephrotoxicity — especially with concurrent aminoglycosides',
+        'Ototoxicity with prolonged use',
+    ],
+    monitoring: 'Obtain trough before 4th dose (goal trough 15-20 mcg/mL for meningitis). Renal function (BUN, creatinine). Drug levels needed if >2 doses anticipated.',
+    notes: 'Added to Ceftriaxone for meningitis in infants >28 days to cover MRSA and resistant GBS/pneumococcus. Not needed in the 0-28 day empiric sepsis regimen (Ampicillin + Gentamicin or Ampicillin + Ceftriaxone provides adequate coverage).',
+    citations: [
+        'Tunkel AR, et al. Practice Guidelines for the Management of Bacterial Meningitis. Clin Infect Dis. 2004;39(9):1267-1284.',
+        'Red Book: 2021-2024 Report of the Committee on Infectious Diseases. American Academy of Pediatrics.',
+    ],
+};
 const VERAPAMIL = {
     id: 'verapamil',
     name: 'Verapamil',
@@ -2033,10 +2212,12 @@ const VERAPAMIL = {
 // -------------------------------------------------------------------
 export const ALL_DRUGS = [
     ACETAZOLAMIDE,
+    ACYCLOVIR,
     ALBUTEROL_NEB,
     ALTEPLASE,
     AMIODARONE,
     AMOXICILLIN_CLAVULANATE,
+    AMPICILLIN,
     APIXABAN,
     ASPIRIN,
     ATORVASTATIN,
@@ -2048,6 +2229,7 @@ export const ALL_DRUGS = [
     CALCIUM_CHLORIDE,
     CALCIUM_GLUCONATE,
     CEFAZOLIN,
+    CEFEPIME,
     CEFTRIAXONE,
     CEPHALEXIN,
     CHLOROTHIAZIDE,
@@ -2068,6 +2250,7 @@ export const ALL_DRUGS = [
     FLUDROCORTISONE,
     FONDAPARINUX,
     FUROSEMIDE,
+    GENTAMICIN,
     LABETALOL,
     LIDOCAINE,
     SODIUM_ZIRCONIUM_CYCLOSILICATE,
@@ -2093,6 +2276,7 @@ export const ALL_DRUGS = [
     TERBUTALINE,
     TICAGRELOR,
     UFH,
+    VANCOMYCIN,
     VERAPAMIL,
 ];
 const DRUG_MAP = {};
@@ -2110,10 +2294,12 @@ export function getAllDrugs() {
 /** Lookup table: maps common drug name fragments to drug store IDs */
 const NAME_TO_ID = [
     [/acetazolamide|diamox/i, 'acetazolamide'],
+    [/acyclovir|zovirax/i, 'acyclovir'],
     [/albuterol|proventil|ventolin/i, 'albuterol-neb'],
     [/alteplase|tPA/i, 'alteplase'],
     [/amiodarone|cordarone/i, 'amiodarone'],
     [/amoxicillin.clavulanate|augmentin|amox.clav/i, 'amoxicillin-clavulanate'],
+    [/ampicillin/i, 'ampicillin'],
     [/apixaban/i, 'apixaban'],
     [/aspirin|ASA|acetylsalicylic/i, 'aspirin'],
     [/atorvastatin|lipitor/i, 'atorvastatin'],
@@ -2125,6 +2311,7 @@ const NAME_TO_ID = [
     [/calcium\s*chloride/i, 'calcium-chloride'],
     [/calcium\s*gluconate/i, 'calcium-gluconate'],
     [/cefazolin|ancef/i, 'cefazolin'],
+    [/cefepime|maxipime/i, 'cefepime'],
     [/ceftriaxone/i, 'ceftriaxone'],
     [/cephalexin|keflex/i, 'cephalexin'],
     [/chlorothiazide|diuril/i, 'chlorothiazide'],
@@ -2145,6 +2332,7 @@ const NAME_TO_ID = [
     [/fludrocortisone|florinef/i, 'fludrocortisone'],
     [/fondaparinux|arixtra/i, 'fondaparinux'],
     [/furosemide|lasix/i, 'furosemide'],
+    [/gentamicin|garamycin/i, 'gentamicin'],
     [/labetalol/i, 'labetalol'],
     [/lidocaine/i, 'lidocaine'],
     [/lokelma|sodium\s*zirconium|szc/i, 'sodium-zirconium-cyclosilicate'],
@@ -2170,6 +2358,7 @@ const NAME_TO_ID = [
     [/terbutaline|brethine/i, 'terbutaline'],
     [/ticagrelor|brilinta/i, 'ticagrelor'],
     [/unfractionated heparin|^UFH$|heparin sodium/i, 'ufh'],
+    [/vancomycin|vancocin/i, 'vancomycin'],
     [/verapamil|calan|isoptin/i, 'verapamil'],
 ];
 /** Try to find a drug store ID from a drug name string. Returns undefined if no match. */

@@ -152,10 +152,21 @@ export function showDrugModal(drugId) {
             indication.className = 'info-page-drug-name';
             indication.textContent = dose.indication;
             card.appendChild(indication);
+            // Build calculator panel (if weightCalc exists) before rendering regimen
+            // so the inline links can reference it
+            let calcPanel = null;
+            if (dose.weightCalc) {
+                const calcs = Array.isArray(dose.weightCalc) ? dose.weightCalc : [dose.weightCalc];
+                calcPanel = buildWeightCalcPanel(calcs);
+                calcPanel.style.display = 'none';
+            }
             const regimen = document.createElement('div');
             regimen.className = 'info-page-drug-regimen';
-            regimen.textContent = dose.regimen;
+            renderRegimenWithCalcLinks(regimen, dose.regimen, calcPanel);
             card.appendChild(regimen);
+            if (calcPanel) {
+                card.appendChild(calcPanel);
+            }
             dosingSection.appendChild(card);
         }
         body.appendChild(dosingSection);
@@ -237,6 +248,280 @@ export function showDrugModal(drugId) {
     overlayEl.appendChild(panel);
     document.body.appendChild(overlayEl);
     return true;
+}
+// -------------------------------------------------------------------
+// Regimen Text with Inline Calc Links
+// -------------------------------------------------------------------
+/** Regex matching weight-based dosing patterns like 0.6 mg/kg, 50 mg/kg/day, 1.75 mg/kg/hr, mcg/kg/min */
+const WEIGHT_DOSE_RE = /(\d+\.?\d*(?:\s*-\s*\d+\.?\d*)?)\s*(mg|mcg|units?)\/kg(?:\/(day|hr|min))?/g;
+/** Parse regimen text — weight-based patterns become tappable links that toggle the calc panel */
+function renderRegimenWithCalcLinks(container, text, calcPanel) {
+    if (!calcPanel) {
+        // No calculator — render as plain text
+        container.textContent = text;
+        return;
+    }
+    let lastIndex = 0;
+    let match;
+    WEIGHT_DOSE_RE.lastIndex = 0;
+    let hasLinks = false;
+    while ((match = WEIGHT_DOSE_RE.exec(text)) !== null) {
+        hasLinks = true;
+        // Text before the match
+        if (match.index > lastIndex) {
+            container.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+        }
+        // Clickable weight-based dose link
+        const link = document.createElement('button');
+        link.className = 'dose-calc-link';
+        link.textContent = match[0];
+        link.setAttribute('aria-label', `Calculate ${match[0]} dose`);
+        link.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const open = calcPanel.style.display !== 'none';
+            calcPanel.style.display = open ? 'none' : 'block';
+            // Scroll panel into view on open
+            if (!open) {
+                requestAnimationFrame(() => calcPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
+            }
+        });
+        container.appendChild(link);
+        lastIndex = match.index + match[0].length;
+    }
+    // Remaining text after last match
+    if (lastIndex < text.length) {
+        container.appendChild(document.createTextNode(text.slice(lastIndex)));
+    }
+    // Fallback: if no regex matches were found despite having weightCalc, show plain text
+    if (!hasLinks) {
+        container.textContent = text;
+    }
+}
+// -------------------------------------------------------------------
+// Weight-Based Dose Calculator
+// -------------------------------------------------------------------
+/** Estimate pediatric weight from age using standard formulas */
+function estimateWeight(ageValue, bracket) {
+    switch (bracket) {
+        case 'infant': return (ageValue * 0.5) + 3.5; // months × 0.5 + 3.5 kg
+        case 'child': return (ageValue * 2) + 10; // years × 2 + 10 kg
+        case 'adolescent': return (ageValue * 2) + 20; // years × 2 + 20 kg
+    }
+}
+/** Calculate per-dose amount for a single WeightCalc entry given a weight in kg.
+ *  For dailyDivided drugs, divides daily total before applying maxDose cap. */
+function calcDose(wc, weightKg) {
+    let rawTotal = weightKg * wc.dosePerKg;
+    let dose = wc.dailyDivided ? rawTotal / wc.dailyDivided : rawTotal;
+    const rawDose = dose;
+    let capped = false;
+    if (wc.maxDose && dose > wc.maxDose) {
+        dose = wc.maxDose;
+        capped = true;
+    }
+    return { dose, capped, rawDose };
+}
+/** Format a number to a clean decimal string (remove trailing zeros) */
+function fmtNum(n) {
+    return n % 1 === 0 ? String(n) : n.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
+}
+/** Build the dose result display for all WeightCalc entries */
+function renderDoseResults(resultsEl, calcs, weightKg, weightSource) {
+    resultsEl.innerHTML = '';
+    resultsEl.style.display = 'block';
+    const header = document.createElement('div');
+    header.className = 'dose-calc-weight-summary';
+    header.textContent = `Patient weight: ${fmtNum(weightKg)} kg ${weightSource}`;
+    resultsEl.appendChild(header);
+    for (const wc of calcs) {
+        const row = document.createElement('div');
+        row.className = 'dose-calc-result-row';
+        const { dose, capped, rawDose } = calcDose(wc, weightKg);
+        // Label (if multiple calcs)
+        if (wc.label) {
+            const label = document.createElement('div');
+            label.className = 'dose-calc-result-label';
+            label.textContent = wc.label;
+            row.appendChild(label);
+        }
+        // Main dose display
+        const doseEl = document.createElement('div');
+        doseEl.className = 'dose-calc-result-value';
+        if (wc.dailyDivided) {
+            doseEl.textContent = `Give ${fmtNum(dose)} ${wc.unit} per dose`;
+            row.appendChild(doseEl);
+            const detail = document.createElement('div');
+            detail.className = 'dose-calc-result-detail';
+            let detailText = `${fmtNum(wc.dosePerKg)} ${wc.unit}/kg/day \u00F7 ${wc.dailyDivided} = ${fmtNum(rawDose)} ${wc.unit}/dose`;
+            if (capped)
+                detailText += ` \u2192 capped at ${fmtNum(wc.maxDose)} ${wc.unit}/dose`;
+            detail.textContent = detailText;
+            row.appendChild(detail);
+            const dailyTotal = dose * wc.dailyDivided;
+            const dailyNote = document.createElement('div');
+            dailyNote.className = 'dose-calc-result-detail';
+            dailyNote.textContent = `Daily total: ${fmtNum(dailyTotal)} ${wc.unit}/day`;
+            row.appendChild(dailyNote);
+        }
+        else {
+            doseEl.textContent = `Give ${fmtNum(dose)} ${wc.unit}`;
+            row.appendChild(doseEl);
+            const detail = document.createElement('div');
+            detail.className = 'dose-calc-result-detail';
+            let detailText = `${fmtNum(wc.dosePerKg)} ${wc.unit}/kg \u00D7 ${fmtNum(weightKg)} kg = ${fmtNum(rawDose)} ${wc.unit}`;
+            if (capped)
+                detailText += ` \u2192 max ${fmtNum(wc.maxDose)} ${wc.unit}`;
+            detail.textContent = detailText;
+            row.appendChild(detail);
+        }
+        resultsEl.appendChild(row);
+    }
+}
+/** Build the full weight-based dose calculator panel */
+function buildWeightCalcPanel(calcs) {
+    const panel = document.createElement('div');
+    panel.className = 'dose-calc-panel';
+    // Results area (shared by both pathways)
+    const resultsEl = document.createElement('div');
+    resultsEl.className = 'dose-calc-results';
+    resultsEl.style.display = 'none';
+    // --- Mode toggle: Known / Unknown ---
+    const modeRow = document.createElement('div');
+    modeRow.className = 'dose-calc-mode-row';
+    const btnKnown = document.createElement('button');
+    btnKnown.className = 'dose-calc-mode-btn active';
+    btnKnown.textContent = 'Weight Known';
+    const btnUnknown = document.createElement('button');
+    btnUnknown.className = 'dose-calc-mode-btn';
+    btnUnknown.textContent = 'Weight Unknown';
+    modeRow.appendChild(btnKnown);
+    modeRow.appendChild(btnUnknown);
+    panel.appendChild(modeRow);
+    // --- Known Weight Panel ---
+    const knownPanel = document.createElement('div');
+    knownPanel.className = 'dose-calc-input-section';
+    const knownRow = document.createElement('div');
+    knownRow.className = 'dose-calc-input-row';
+    const knownInput = document.createElement('input');
+    knownInput.type = 'number';
+    knownInput.className = 'dose-calc-input';
+    knownInput.placeholder = 'kg';
+    knownInput.inputMode = 'decimal';
+    knownInput.setAttribute('aria-label', 'Patient weight in kg');
+    knownInput.min = '0.1';
+    knownInput.max = '300';
+    knownInput.step = 'any';
+    const knownUnit = document.createElement('span');
+    knownUnit.className = 'dose-calc-unit';
+    knownUnit.textContent = 'kg';
+    const knownCalcBtn = document.createElement('button');
+    knownCalcBtn.className = 'dose-calc-go-btn';
+    knownCalcBtn.textContent = 'Calculate';
+    knownRow.appendChild(knownInput);
+    knownRow.appendChild(knownUnit);
+    knownRow.appendChild(knownCalcBtn);
+    knownPanel.appendChild(knownRow);
+    knownCalcBtn.addEventListener('click', () => {
+        const w = parseFloat(knownInput.value);
+        if (!w || w <= 0)
+            return;
+        renderDoseResults(resultsEl, calcs, w, '');
+    });
+    knownInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter')
+            knownCalcBtn.click();
+    });
+    panel.appendChild(knownPanel);
+    // --- Unknown Weight (Pediatric) Panel ---
+    const unknownPanel = document.createElement('div');
+    unknownPanel.className = 'dose-calc-input-section';
+    unknownPanel.style.display = 'none';
+    const bracketLabel = document.createElement('div');
+    bracketLabel.className = 'dose-calc-bracket-label';
+    bracketLabel.textContent = 'Select age group:';
+    unknownPanel.appendChild(bracketLabel);
+    const bracketRow = document.createElement('div');
+    bracketRow.className = 'dose-calc-bracket-row';
+    const brackets = [
+        { key: 'infant', label: '< 1 year', ageLabel: 'Age (months)', min: 0, max: 11 },
+        { key: 'child', label: '1\u201310 years', ageLabel: 'Age (years)', min: 1, max: 10 },
+        { key: 'adolescent', label: '> 10 years', ageLabel: 'Age (years)', min: 11, max: 18 },
+    ];
+    let activeBracket = null;
+    const bracketBtns = [];
+    // Age input row (hidden until bracket selected)
+    const ageRow = document.createElement('div');
+    ageRow.className = 'dose-calc-input-row';
+    ageRow.style.display = 'none';
+    const ageInput = document.createElement('input');
+    ageInput.type = 'number';
+    ageInput.className = 'dose-calc-input';
+    ageInput.inputMode = 'numeric';
+    ageInput.setAttribute('aria-label', 'Patient age');
+    ageInput.step = '1';
+    const ageUnit = document.createElement('span');
+    ageUnit.className = 'dose-calc-unit';
+    const ageCalcBtn = document.createElement('button');
+    ageCalcBtn.className = 'dose-calc-go-btn';
+    ageCalcBtn.textContent = 'Calculate';
+    ageRow.appendChild(ageInput);
+    ageRow.appendChild(ageUnit);
+    ageRow.appendChild(ageCalcBtn);
+    for (const b of brackets) {
+        const btn = document.createElement('button');
+        btn.className = 'dose-calc-bracket-btn';
+        btn.textContent = b.label;
+        btn.addEventListener('click', () => {
+            activeBracket = b.key;
+            bracketBtns.forEach(bb => bb.classList.remove('active'));
+            btn.classList.add('active');
+            ageInput.placeholder = b.ageLabel;
+            ageInput.min = String(b.min);
+            ageInput.max = String(b.max);
+            ageUnit.textContent = b.key === 'infant' ? 'months' : 'years';
+            ageInput.value = '';
+            ageRow.style.display = 'flex';
+            resultsEl.style.display = 'none';
+            ageInput.focus();
+        });
+        bracketBtns.push(btn);
+        bracketRow.appendChild(btn);
+    }
+    unknownPanel.appendChild(bracketRow);
+    unknownPanel.appendChild(ageRow);
+    function calcFromAge() {
+        if (!activeBracket)
+            return;
+        const age = parseFloat(ageInput.value);
+        if (isNaN(age) || age < 0)
+            return;
+        const weightKg = estimateWeight(age, activeBracket);
+        const unitLabel = activeBracket === 'infant' ? 'mo' : 'yo';
+        renderDoseResults(resultsEl, calcs, weightKg, `(estimated from ${fmtNum(age)} ${unitLabel})`);
+    }
+    ageCalcBtn.addEventListener('click', calcFromAge);
+    ageInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter')
+            calcFromAge();
+    });
+    panel.appendChild(unknownPanel);
+    // --- Mode toggle logic ---
+    btnKnown.addEventListener('click', () => {
+        btnKnown.classList.add('active');
+        btnUnknown.classList.remove('active');
+        knownPanel.style.display = 'block';
+        unknownPanel.style.display = 'none';
+        resultsEl.style.display = 'none';
+    });
+    btnUnknown.addEventListener('click', () => {
+        btnUnknown.classList.add('active');
+        btnKnown.classList.remove('active');
+        unknownPanel.style.display = 'block';
+        knownPanel.style.display = 'none';
+        resultsEl.style.display = 'none';
+    });
+    panel.appendChild(resultsEl);
+    return panel;
 }
 // -------------------------------------------------------------------
 // Helpers

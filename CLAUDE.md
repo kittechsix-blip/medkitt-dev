@@ -58,6 +58,34 @@ Each session:
 - Dosing values: `.dose-highlight` class (monospace green pill)
 - Full palette in `FRONTEND_GUIDELINES.md`
 
+## Weight-Based Dose Calculator (MANDATORY)
+
+Every drug with mg/kg dosing MUST include a `weightCalc` field on its `DrugDose` entry. This powers an inline calculator in the Pharmacy modal that lets clinicians enter patient weight (or estimate it from age) to get the exact dose.
+
+**Interface:**
+```typescript
+interface WeightCalc {
+  dosePerKg: number;       // dose per kg (e.g., 0.6 for 0.6 mg/kg)
+  unit: string;            // "mg", "mcg", "units", etc.
+  maxDose?: number;        // max single dose cap
+  dailyDivided?: number;   // if /day dose, number of divisions (e.g., 3 for q8h)
+  label?: string;          // optional label (e.g., "Low-dose alternative")
+}
+```
+
+**Rules:**
+- Single calc: `weightCalc: { dosePerKg: 0.6, unit: 'mg', maxDose: 16 }`
+- Multiple calcs (array): `weightCalc: [{ dosePerKg: 0.25, unit: 'mg', label: 'Initial bolus' }, { dosePerKg: 0.35, unit: 'mg', label: 'Second bolus' }]`
+- For `/day` regimens: set `dailyDivided` (e.g., `3` for q8h, `4` for q6h, `2` for BID). The calculator divides daily total by this number and applies `maxDose` to the per-dose result.
+- Always set `maxDose` when the regimen specifies one.
+- Use `label` when there are multiple calculations or when the calc only covers part of a complex regimen (e.g., "Bolus" vs "Infusion").
+- Skip drugs where mg/kg is a max ceiling for a rate-titrated infusion (e.g., Procainamide 17 mg/kg max).
+
+**Pediatric weight estimation (built into calculator UI):**
+- < 1 year: (months × 0.5) + 3.5 kg
+- 1–10 years: (years × 2) + 10 kg
+- > 10 years: (years × 2) + 20 kg
+
 ## Clinical Content
 
 - All decision tree logic is in `PRD.md` — the source of truth

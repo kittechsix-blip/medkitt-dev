@@ -2069,6 +2069,204 @@ body {
   color: var(--color-text-secondary);
 }
 
+/* Weight-Based Dose Calculator */
+
+/* Inline tappable weight-based dose link (e.g., "0.6 mg/kg") */
+.dose-calc-link {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--color-primary);
+  background: rgba(60, 179, 113, 0.1);
+  border: none;
+  border-bottom: 1px dashed var(--color-primary);
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 1px 3px;
+  transition: background 0.15s;
+}
+
+.dose-calc-link:active {
+  background: rgba(60, 179, 113, 0.25);
+}
+
+.dose-calc-panel {
+  margin-top: 10px;
+  padding: 14px;
+  background: rgba(15, 15, 26, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.dose-calc-mode-row {
+  display: flex;
+  gap: 0;
+  margin-bottom: 14px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.dose-calc-mode-btn {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dose-calc-mode-btn.active {
+  color: var(--color-bg);
+  background: var(--color-primary);
+}
+
+.dose-calc-input-section {
+  margin-bottom: 4px;
+}
+
+.dose-calc-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dose-calc-input {
+  width: 80px;
+  padding: 10px 12px;
+  font-size: 1.125rem;
+  font-family: var(--font-mono);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.dose-calc-input::-webkit-outer-spin-button,
+.dose-calc-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.dose-calc-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(60, 179, 113, 0.15);
+}
+
+.dose-calc-unit {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  min-width: 40px;
+}
+
+.dose-calc-go-btn {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.dose-calc-go-btn:active {
+  background: var(--color-primary-dark);
+}
+
+.dose-calc-bracket-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.dose-calc-bracket-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.dose-calc-bracket-btn {
+  flex: 1;
+  padding: 10px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  text-align: center;
+}
+
+.dose-calc-bracket-btn.active {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(60, 179, 113, 0.1);
+}
+
+.dose-calc-bracket-btn:active {
+  background: rgba(60, 179, 113, 0.15);
+}
+
+/* Dose Calculator Results */
+
+.dose-calc-results {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(60, 179, 113, 0.06);
+  border: 1px solid rgba(60, 179, 113, 0.2);
+  border-radius: var(--radius-sm);
+}
+
+.dose-calc-weight-summary {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dose-calc-result-row {
+  margin-bottom: 8px;
+}
+
+.dose-calc-result-row:last-child {
+  margin-bottom: 0;
+}
+
+.dose-calc-result-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-umber-light);
+  margin-bottom: 2px;
+}
+
+.dose-calc-result-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  line-height: 1.3;
+}
+
+.dose-calc-result-detail {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
 /* Pictograph (outcome visualization) */
 
 .pictograph {

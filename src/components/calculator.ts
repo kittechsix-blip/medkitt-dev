@@ -405,6 +405,96 @@ const TIMI_CALCULATOR: CalculatorDefinition = {
 };
 
 // -------------------------------------------------------------------
+// BAS (Bronchiolitis Assessment Score) Calculator Definition
+// -------------------------------------------------------------------
+
+const BAS_CALCULATOR: CalculatorDefinition = {
+  id: 'bas',
+  title: 'BAS',
+  subtitle: 'Bronchiolitis Assessment Score',
+  description: 'The BAS is a 6-variable clinical assessment tool used to quantify bronchiolitis severity in pediatric patients. Score ranges from 0 (mild) to 12 (severe). Guides respiratory support escalation, weaning decisions, and disposition.',
+  fields: [
+    {
+      name: 'respiratory-rate',
+      label: 'Respiratory Rate (age-adjusted)',
+      type: 'select',
+      points: 0,
+      selectOptions: [
+        { label: '<2 mos: <50 \u00B7 2-12 mos: <40 \u00B7 >1 yr: <30', points: 0 },
+        { label: '<2 mos: 50-60 \u00B7 2-12 mos: 40-50 \u00B7 >1 yr: 30-40', points: 1 },
+        { label: '<2 mos: >60 \u00B7 2-12 mos: >50 \u00B7 >1 yr: >40', points: 2 },
+      ],
+    },
+    {
+      name: 'fio2-spo2',
+      label: 'FiO\u2082 AND O\u2082 Sat',
+      type: 'select',
+      points: 0,
+      selectOptions: [
+        { label: 'FiO\u2082 \u226424% AND SpO\u2082 >90%', points: 0 },
+        { label: 'FiO\u2082 25-39% AND SpO\u2082 >90%', points: 1 },
+        { label: 'FiO\u2082 \u226540% AND SpO\u2082 >90%', points: 2 },
+      ],
+    },
+    {
+      name: 'breath-sounds',
+      label: 'Breath Sounds',
+      type: 'select',
+      points: 0,
+      description: 'Crackles don\u2019t change score',
+      selectOptions: [
+        { label: 'Good air movement, few crackles, few wheezes', points: 0 },
+        { label: 'Decreased air movement, I-E wheezes, or crackles', points: 1 },
+        { label: 'Diminished or absent breath sounds, severe wheezing, prolonged expiratory phase', points: 2 },
+      ],
+    },
+    {
+      name: 'work-of-breathing',
+      label: 'Work of Breathing',
+      type: 'select',
+      points: 0,
+      selectOptions: [
+        { label: 'None to mild subcostal retractions, abdominal breathing', points: 0 },
+        { label: 'Moderate retractions, nasal flaring', points: 1 },
+        { label: 'Severe retractions, nasal flaring, grunting, head bobbing', points: 2 },
+      ],
+    },
+    {
+      name: 'mental-status',
+      label: 'Mental Status',
+      type: 'select',
+      points: 0,
+      selectOptions: [
+        { label: 'Normal to mildly irritable', points: 0 },
+        { label: 'Agitated, restless', points: 1 },
+        { label: 'Lethargic', points: 2 },
+      ],
+    },
+    {
+      name: 'color',
+      label: 'Color',
+      type: 'select',
+      points: 0,
+      selectOptions: [
+        { label: 'Normal', points: 0 },
+        { label: 'Pale', points: 1 },
+        { label: 'Cyanotic', points: 2 },
+      ],
+    },
+  ],
+  results: [
+    { min: -Infinity, max: 4, label: 'Mild', risk: 'Mild', mortality: 'Weanable. Consider discharge if feeding and hydrating well.', colorVar: '--color-primary' },
+    { min: 4, max: 9, label: 'Moderate', risk: 'Moderate', mortality: 'Maintain current support. Supplemental O\u2082 or HFNC may be needed.', colorVar: '--color-warning' },
+    { min: 9, max: Infinity, label: 'Severe', risk: 'Severe', mortality: 'Increase support. Contact primary team. Consider critical care consult.', colorVar: '--color-danger' },
+  ],
+  thresholdNote: 'Mild (0-3): Weanable. Moderate (4-8): Maintain. Severe (9-12): Increase support. Reassess Q15min on HFNC initiation, Q4h on maintenance.',
+  citations: [
+    'Dell Children\u2019s Medical Center EBOC. Bronchiolitis Clinical Pathway. Rev Oct 2019.',
+    'Dell Children\u2019s Medical Center EBOC. HFNC Initiation, Maintenance, and Weaning Pathway. Rev Nov 2021.',
+  ],
+};
+
+// -------------------------------------------------------------------
 // Calculator Registry
 // -------------------------------------------------------------------
 
@@ -414,6 +504,7 @@ const CALCULATORS: Record<string, CalculatorDefinition> = {
   'cha2ds2vasc': CHA2DS2VASC_CALCULATOR,
   'nihss': NIHSS_CALCULATOR,
   'timi': TIMI_CALCULATOR,
+  'bas': BAS_CALCULATOR,
 };
 
 // -------------------------------------------------------------------
