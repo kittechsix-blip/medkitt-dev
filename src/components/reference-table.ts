@@ -38,6 +38,7 @@ import {
   POTASSIUM_CITATIONS,
   POTASSIUM_CLINICAL_NOTES,
 } from '../data/trees/potassium.js';
+import { PEDS_FEVER_CITATIONS } from '../data/trees/peds-fever.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -109,6 +110,10 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
     title: 'Potassium Disorders Reference',
     citations: POTASSIUM_CITATIONS,
     clinicalNotes: POTASSIUM_CLINICAL_NOTES,
+  },
+  'peds-fever': {
+    title: 'Fever < 6 Months Reference',
+    citations: PEDS_FEVER_CITATIONS,
   },
 };
 

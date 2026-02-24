@@ -99,7 +99,7 @@ interface WeightCalc {
 
 ## Current Status
 
-v1.3 — 4 consults, Drug Reference (12 drugs), Medical Calculators (PESI/sPESI)
+v1.19 — 14 consults, Pharmacy (71 drugs), Med-Calc (PESI/sPESI/CHA₂DS₂-VASc/NIHSS/TIMI)
 
 Core build tasks (all complete):
 - [x] Tasks 0-12: Foundation → PWA shell → TypeScript → Router → Categories → Wizard → Results → References → Deploy

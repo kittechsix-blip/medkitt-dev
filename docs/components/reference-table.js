@@ -12,6 +12,7 @@ import { PRIAPISM_CITATIONS, PRIAPISM_CLINICAL_NOTES } from '../data/trees/priap
 import { AFIB_RVR_CITATIONS } from '../data/trees/afib-rvr.js';
 import { PEP_CITATIONS } from '../data/trees/pep.js';
 import { POTASSIUM_CITATIONS, POTASSIUM_CLINICAL_NOTES, } from '../data/trees/potassium.js';
+import { PEDS_FEVER_CITATIONS } from '../data/trees/peds-fever.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -70,6 +71,10 @@ const TREE_REFERENCE_DATA = {
         title: 'Potassium Disorders Reference',
         citations: POTASSIUM_CITATIONS,
         clinicalNotes: POTASSIUM_CLINICAL_NOTES,
+    },
+    'peds-fever': {
+        title: 'Fever < 6 Months Reference',
+        citations: PEDS_FEVER_CITATIONS,
     },
 };
 // -------------------------------------------------------------------

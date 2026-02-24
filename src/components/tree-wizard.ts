@@ -15,6 +15,8 @@ import { STROKE_NODES, STROKE_CITATIONS, STROKE_MODULE_LABELS } from '../data/tr
 import { NSTEMI_NODES, NSTEMI_CITATIONS, NSTEMI_MODULE_LABELS } from '../data/trees/nstemi.js';
 import { POTASSIUM_NODES, POTASSIUM_CITATIONS, POTASSIUM_MODULE_LABELS } from '../data/trees/potassium.js';
 import { UTI_PEDS_NODES, UTI_PEDS_CITATIONS, UTI_PEDS_MODULE_LABELS } from '../data/trees/uti-peds.js';
+import { PEDS_FEVER_NODES, PEDS_FEVER_CITATIONS, PEDS_FEVER_MODULE_LABELS } from '../data/trees/peds-fever.js';
+import { BRONCHIOLITIS_NODES, BRONCHIOLITIS_CITATIONS, BRONCHIOLITIS_MODULE_LABELS } from '../data/trees/bronchiolitis.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -127,6 +129,20 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'pediatrics',
     moduleLabels: UTI_PEDS_MODULE_LABELS,
     citations: UTI_PEDS_CITATIONS,
+  },
+  'peds-fever': {
+    nodes: PEDS_FEVER_NODES,
+    entryNodeId: 'pf-start',
+    categoryId: 'pediatrics',
+    moduleLabels: PEDS_FEVER_MODULE_LABELS,
+    citations: PEDS_FEVER_CITATIONS,
+  },
+  'bronchiolitis': {
+    nodes: BRONCHIOLITIS_NODES,
+    entryNodeId: 'bronch-start',
+    categoryId: 'pediatrics',
+    moduleLabels: BRONCHIOLITIS_MODULE_LABELS,
+    citations: BRONCHIOLITIS_CITATIONS,
   },
 };
 
