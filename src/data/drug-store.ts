@@ -364,6 +364,10 @@ const APIXABAN: DrugEntry = {
       indication: 'PE / DVT treatment',
       regimen: '10 mg twice daily \u00D7 7 days, then 5 mg twice daily \u00D7 3\u20136 months. Extended therapy: 5 mg or 2.5 mg twice daily.',
     },
+    {
+      indication: 'Atrial fibrillation (stroke prevention)',
+      regimen: '5 mg BID. Dose-reduce to 2.5 mg BID if \u22652 of: age \u226580, weight \u226460 kg, creatinine \u22651.5 mg/dL.',
+    },
   ],
   cautions: [
     'Severe renal impairment (CrCl <25 mL/min) \u2014 limited data',
@@ -680,11 +684,29 @@ const CEFTRIAXONE: DrugEntry = {
   genericName: 'Ceftriaxone',
   drugClass: 'Third-generation cephalosporin',
   route: 'IV',
-  indications: ['Neurosyphilis (PCN allergy alternative)', 'Bacterial meningitis', 'Various serious infections'],
+  indications: ['Neurosyphilis (PCN allergy alternative)', 'Bacterial meningitis', 'Various serious infections', 'Pediatric sepsis / neonatal fever', 'Pediatric meningitis', 'Pediatric UTI'],
   dosing: [
     {
       indication: 'Neurosyphilis (if desensitization not feasible)',
       regimen: '2 g IV daily \u00D7 10\u201314 days.',
+    },
+    {
+      indication: 'Pediatric Fever / Neonatal Sepsis',
+      regimen: '50 mg/kg IV q24h (standard). 50 mg/kg IM/IV x1 (single pre-discharge dose). Max 2 g/dose.',
+      weightCalc: [
+        { dosePerKg: 50, unit: 'mg', maxDose: 2000, label: 'Standard (q24h)' },
+        { dosePerKg: 50, unit: 'mg', maxDose: 2000, label: 'Single dose (IM/IV x1)' },
+      ],
+    },
+    {
+      indication: 'Pediatric Meningitis',
+      regimen: '50 mg/kg IV q12h (meningitic dose). Max 2 g/dose.',
+      weightCalc: { dosePerKg: 50, unit: 'mg', maxDose: 2000, label: 'Meningitic (q12h)' },
+    },
+    {
+      indication: 'Pediatric UTI (inpatient/pre-discharge)',
+      regimen: '75 mg/kg IV or IM prior to discharge. Max 2 g/dose.',
+      weightCalc: { dosePerKg: 75, unit: 'mg', maxDose: 2000 },
     },
   ],
   contraindications: [
@@ -909,11 +931,19 @@ const CLOPIDOGREL: DrugEntry = {
   genericName: 'Clopidogrel bisulfate',
   drugClass: 'Antiplatelet (P2Y12 antagonist)',
   route: 'PO',
-  indications: ['Minor ischemic stroke (DAPT)', 'High-risk TIA', 'Acute coronary syndrome', 'Secondary prevention (stent, PAD)'],
+  indications: ['Minor ischemic stroke (DAPT)', 'High-risk TIA', 'Acute coronary syndrome', 'Secondary prevention (stent, PAD)', 'ACS / NSTEMI (P2Y12 inhibitor)'],
   dosing: [
     {
       indication: 'Minor stroke / high-risk TIA (DAPT)',
       regimen: '300 mg loading dose on day 1 + aspirin 325 mg. Then 75 mg daily + aspirin 81 mg \u00D7 21 days total DAPT. After 21 days: single antiplatelet (either agent).',
+    },
+    {
+      indication: 'ACS / NSTEMI (conservative strategy)',
+      regimen: '300 mg loading dose, then 75 mg daily \u00D7 12 months.',
+    },
+    {
+      indication: 'ACS / NSTEMI (pre-PCI)',
+      regimen: '600 mg loading dose, then 75 mg daily \u00D7 12 months. Hold \u22655 days before CABG.',
     },
   ],
   contraindications: [
@@ -1441,7 +1471,7 @@ const MAGNESIUM_SULFATE: DrugEntry = {
   genericName: 'Magnesium sulfate',
   drugClass: 'Electrolyte / Antiarrhythmic adjunct',
   route: 'IV',
-  indications: ['A-Fib / A-Flutter adjunctive rate and rhythm control', 'Torsades de pointes', 'Hypomagnesemia', 'Eclampsia / Pre-eclampsia seizure prophylaxis'],
+  indications: ['A-Fib / A-Flutter adjunctive rate and rhythm control', 'Torsades de pointes', 'Hypomagnesemia', 'Eclampsia / Pre-eclampsia seizure prophylaxis', 'Hypomagnesemia / Hypokalemia adjunct'],
   dosing: [
     {
       indication: 'A-Fib (adjunctive)',
@@ -1450,6 +1480,10 @@ const MAGNESIUM_SULFATE: DrugEntry = {
     {
       indication: 'Torsades de pointes',
       regimen: '1-2 g IV over 5-60 min (faster for unstable patients).',
+    },
+    {
+      indication: 'Hypomagnesemia / Hypokalemia (adjunct)',
+      regimen: '2 g IV over 1 hour. Correct hypomagnesemia before potassium repletion \u2014 hypokalemia is refractory until Mg is repleted.',
     },
   ],
   contraindications: [
@@ -2004,6 +2038,10 @@ const RIVAROXABAN: DrugEntry = {
     {
       indication: 'PE / DVT treatment',
       regimen: '15 mg twice daily with food \u00D7 21 days, then 20 mg once daily with food \u00D7 3\u20136 months. Extended therapy: 20 mg or 10 mg once daily.',
+    },
+    {
+      indication: 'Atrial fibrillation (stroke prevention)',
+      regimen: '20 mg daily with food (CrCl >50 mL/min). 15 mg daily with food (CrCl 15-50 mL/min). Avoid if CrCl <15 mL/min.',
     },
   ],
   cautions: [

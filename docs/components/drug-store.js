@@ -92,8 +92,8 @@ function destroyOverlay() {
     overlayEl?.remove();
     overlayEl = null;
 }
-/** Show a drug detail modal. Returns false if drugId not found. */
-export function showDrugModal(drugId) {
+/** Show a drug detail modal. Optional indicationHint scrolls to a matching dosing card. */
+export function showDrugModal(drugId, indicationHint) {
     const drug = getDrug(drugId);
     if (!drug)
         return false;
@@ -148,6 +148,7 @@ export function showDrugModal(drugId) {
         for (const dose of drug.dosing) {
             const card = document.createElement('div');
             card.className = 'info-page-drug-card';
+            card.setAttribute('data-indication', dose.indication.toLowerCase());
             const indication = document.createElement('div');
             indication.className = 'info-page-drug-name';
             indication.textContent = dose.indication;
@@ -247,6 +248,22 @@ export function showDrugModal(drugId) {
     panel.appendChild(body);
     overlayEl.appendChild(panel);
     document.body.appendChild(overlayEl);
+    // Auto-scroll to matching indication if hint provided
+    if (indicationHint) {
+        const hint = indicationHint.toLowerCase().replace(/-/g, ' ');
+        const cards = body.querySelectorAll('[data-indication]');
+        for (const card of cards) {
+            const ind = card.getAttribute('data-indication') ?? '';
+            if (ind.includes(hint) || hint.split(' ').every(w => ind.includes(w))) {
+                requestAnimationFrame(() => {
+                    card.style.outline = '2px solid var(--color-primary)';
+                    card.style.outlineOffset = '4px';
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+                break;
+            }
+        }
+    }
     return true;
 }
 // -------------------------------------------------------------------

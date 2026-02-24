@@ -152,8 +152,15 @@ function handleInlineLinkClick(e) {
     const linkId = target.getAttribute('data-link-id');
     if (!linkType || !linkId)
         return;
-    if (linkType === 'drug')
-        showDrugModal(linkId);
+    if (linkType === 'drug') {
+        const slashIdx = linkId.indexOf('/');
+        if (slashIdx !== -1) {
+            showDrugModal(linkId.slice(0, slashIdx), linkId.slice(slashIdx + 1));
+        }
+        else {
+            showDrugModal(linkId);
+        }
+    }
     else if (linkType === 'calculator')
         router.navigate(`/calculator/${linkId}`);
     else if (linkType === 'tree')

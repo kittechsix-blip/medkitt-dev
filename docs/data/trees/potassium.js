@@ -237,7 +237,7 @@ export const POTASSIUM_NODES = [
         type: 'info',
         module: 5,
         title: 'Severe Hypokalemia \u2014 IV Replacement',
-        body: '[Potassium Chloride IV](#/drug/potassium-chloride-iv) **5-10 mEq over 15-30 minutes** with continuous cardiac monitoring.\n\nRepeat until hemodynamically stable, ECG changes resolve, and K+ > 3 mEq/L. Then:\n\u2022 20-40 mEq IV at up to 10 mEq/hr (peripheral)\n\u2022 Up to 20 mEq/hr (central line + cardiac monitoring)\n\n**Use glucose-free fluids** \u2014 glucose stimulates insulin and worsens intracellular K+ shift.\n\n**Always check and correct magnesium** \u2014 up to 50% of hypokalemic patients have concurrent hypoMg, which makes K+ repletion refractory.\n\nIf Mg < 2.0 \u2192 [Magnesium Sulfate](#/drug/magnesium-sulfate) 2g IV over 1 hour.',
+        body: '[Potassium Chloride IV](#/drug/potassium-chloride-iv) **5-10 mEq over 15-30 minutes** with continuous cardiac monitoring.\n\nRepeat until hemodynamically stable, ECG changes resolve, and K+ > 3 mEq/L. Then:\n\u2022 20-40 mEq IV at up to 10 mEq/hr (peripheral)\n\u2022 Up to 20 mEq/hr (central line + cardiac monitoring)\n\n**Use glucose-free fluids** \u2014 glucose stimulates insulin and worsens intracellular K+ shift.\n\n**Always check and correct magnesium** \u2014 up to 50% of hypokalemic patients have concurrent hypoMg, which makes K+ repletion refractory.\n\nIf Mg < 2.0 \u2192 [Magnesium Sulfate](#/drug/magnesium-sulfate/hypomagnesemia) 2g IV over 1 hour.',
         citation: [14, 15, 16],
         next: 'k-hypo-workup',
     },
