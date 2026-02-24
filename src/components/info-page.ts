@@ -665,6 +665,81 @@ const K_HYPO_ECG_PAGE: InfoPage = {
 };
 
 // -------------------------------------------------------------------
+// Croup Return Precautions
+// -------------------------------------------------------------------
+
+const CROUP_RETURN_PRECAUTIONS: InfoPage = {
+  id: 'croup-return-precautions',
+  title: 'When to Return to the Emergency Department',
+  subtitle: 'Patient Discharge Instructions — Croup',
+  shareable: true,
+  sections: [
+    {
+      body: 'Your child has been diagnosed with **croup**, a viral infection that causes swelling in the airway. Most children improve within 2 days with treatment, but it\'s important to watch for warning signs that your child needs to return for medical care.',
+    },
+    {
+      heading: 'Call 911 or Return to the Emergency Department Immediately If Your Child Has',
+      body: '**Breathing Problems:**\n• Difficulty breathing that is getting worse\n• Struggling to breathe (chest pulling in deeply between or below the ribs with each breath)\n• Fast breathing or working very hard to breathe\n• Noisy breathing when resting (stridor) that doesn\'t improve or gets worse\n• Pauses in breathing or stops breathing briefly\n\n**Serious Warning Signs:**\n• Blue or gray color around the lips, mouth, or fingernails\n• Extreme drowsiness or difficulty waking up\n• Confusion or unusual behavior\n• Drooling or difficulty swallowing\n• Unable to drink fluids or refusing all liquids',
+    },
+    {
+      heading: 'Return to Your Doctor or Emergency Department If Your Child Has',
+      body: '• Symptoms that don\'t improve after taking the prescribed steroid medicine\n• Barking cough that lasts more than 3 days\n• Fever above 103°F (39.4°C) or fever that lasts more than 3 days\n• Symptoms that improve and then suddenly get worse\n• Trouble sleeping due to breathing problems',
+    },
+    {
+      heading: 'What to Expect at Home',
+      body: '• Symptoms are often **worse at night** and may improve during the day\n• The barking cough typically lasts 1-2 days but can continue for up to 5-7 days\n• Your child may sound worse than they actually are — the barking cough can be scary but doesn\'t always mean severe illness\n• Keep your child calm, as crying and agitation can make breathing more difficult',
+    },
+    {
+      heading: 'Home Care Tips',
+      body: '• Give the steroid medicine exactly as prescribed\n• Keep your child comfortable and calm\n• Offer plenty of fluids to prevent dehydration\n• Use acetaminophen or ibuprofen for fever or discomfort (follow dosing instructions)\n• Keep your child\'s head elevated during sleep if comfortable',
+    },
+    {
+      heading: 'When Symptoms Usually Improve',
+      body: 'Most children start feeling better within 2-3 hours after receiving steroid medication. The cough should gradually improve over the next 2 days. If your child is not improving as expected, contact your doctor.\n\n**Trust your instincts.** If you are worried about your child\'s breathing or overall condition, seek medical attention right away. It\'s always better to be checked and reassured than to wait too long.',
+    },
+  ],
+  citations: [
+    { num: 1, text: 'Bjornson CL, Johnson DW. Croup. Lancet. 2008;371(9609):329-39.' },
+    { num: 2, text: 'Cherry JD. Croup. N Engl J Med. 2008;358(4):384-91.' },
+    { num: 3, text: 'Zoorob R, Sidani M, Murray J. Croup: An Overview. Am Fam Physician. 2011;83(9):1067-73.' },
+    { num: 4, text: 'Aregbesola A, et al. Glucocorticoids for Croup in Children. Cochrane Database Syst Rev. 2023;1:CD001955.' },
+  ],
+};
+
+// -------------------------------------------------------------------
+// Pediatric UTI Definition & Urinalysis
+// -------------------------------------------------------------------
+
+const UTI_DEFINITION_PAGE: InfoPage = {
+  id: 'uti-definition-info',
+  title: 'UTI Definition & Urinalysis',
+  subtitle: 'DCMC Diagnostic Criteria',
+  sections: [
+    {
+      heading: 'UTI Definition',
+      body: 'The presence of pyuria and/or bacteriuria on urinalysis AND a positive urine culture.\n\n\u2022 Pyuria: \u22655 WBCs/hpf in centrifuged specimen (DCMC uses centrifuged specimens) or \u226510 WBCs/hpf in counting chamber\n\u2022 Urine culture positive: \u226550,000 CFU/mL by catheterization or suprapubic aspiration\n\u2022 Clean catch: \u2265100,000 CFU/mL optimal, 50,000-100,000 acceptable with decreased sensitivity/specificity',
+    },
+    {
+      heading: 'Positive UA Definition',
+      body: 'The presence of Leukocyte Esterase OR Nitrites OR microscopic analysis positive for leukocytes or bacteria is suggestive of active UTI.\n\nWhen more than one finding is present simultaneously, sensitivity and specificity increase significantly.\n\n\u2022 Urine dipstick alone cannot report WBC count and bacterial presence \u2014 use with caution\n\u2022 If bag specimen UA is positive, obtain catheterized specimen for culture to avoid contamination',
+    },
+    {
+      heading: 'Complicated UTI',
+      body: 'Defined as UTI with any of the following:\n\u2022 Functional or anatomic abnormality of the urinary tract\n\u2022 Indwelling urinary catheter\n\u2022 Recent urinary tract instrumentation\n\u2022 Recent antibiotic use\n\u2022 Immunosuppression',
+    },
+    {
+      heading: 'Neonatal UTI Definition',
+      body: 'For infants <48 weeks PMA and >7 days of life:\n\n\u2022 UTI defined as >50,000 CFU/mL in catheter obtained specimen\n\u2022 Exclusions: History of Candida infection (consult ID), concomitant bacteremia or meningitis\n\u2022 ESBL: Bacteria with particular resistance to penicillins \u2014 requires expanded antibiotic coverage',
+    },
+  ],
+  citations: [
+    { num: 1, text: 'Dell Children\'s EBOC. First Febrile UTI Clinical Pathway. May 2017.' },
+    { num: 2, text: 'Dell Children\'s EBOC. UTI Management Pathway (Neonatal). September 2024.' },
+    { num: 3, text: 'Roberts KB. UTI: clinical practice guideline for febrile infants 2 to 24 months. Pediatrics. 2011;128(3):595-610.' },
+  ],
+};
+
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 
@@ -672,6 +747,7 @@ const INFO_PAGES: Record<string, InfoPage> = {
   'doac-pe': DOAC_PE_PAGE,
   'priapism-return-precautions': PRIAPISM_RETURN_PRECAUTIONS,
   'cardioversion-afib': CARDIOVERSION_AFIB_PAGE,
+  'croup-return-precautions': CROUP_RETURN_PRECAUTIONS,
   'afib-discharge': AFIB_DISCHARGE_PAGE,
   'pep-patient-info': PEP_PATIENT_INFO,
   'hbv-serology': HBV_SEROLOGY_PAGE,
@@ -684,6 +760,7 @@ const INFO_PAGES: Record<string, InfoPage> = {
   'nstemi-minoca': NSTEMI_MINOCA_PAGE,
   'k-hyper-ecg-info': K_HYPER_ECG_PAGE,
   'k-hypo-ecg-info': K_HYPO_ECG_PAGE,
+  'uti-definition-info': UTI_DEFINITION_PAGE,
 };
 
 // -------------------------------------------------------------------

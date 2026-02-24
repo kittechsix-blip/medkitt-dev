@@ -9,6 +9,7 @@ import { ECHO_VIEWS_NODES, ECHO_VIEWS_CITATIONS, ECHO_VIEWS_MODULE_LABELS } from
 import { PRIAPISM_NODES, PRIAPISM_CITATIONS, PRIAPISM_MODULE_LABELS } from '../data/trees/priapism.js';
 import { AFIB_RVR_NODES, AFIB_RVR_CITATIONS, AFIB_RVR_MODULE_LABELS } from '../data/trees/afib-rvr.js';
 import { CHEST_TUBE_NODES, CHEST_TUBE_CITATIONS, CHEST_TUBE_MODULE_LABELS } from '../data/trees/chest-tube.js';
+import { CROUP_NODES, CROUP_CITATIONS, CROUP_MODULE_LABELS } from '../data/trees/croup.js';
 import { PEP_NODES, PEP_CITATIONS, PEP_MODULE_LABELS } from '../data/trees/pep.js';
 import { STROKE_NODES, STROKE_CITATIONS, STROKE_MODULE_LABELS } from '../data/trees/stroke.js';
 import { NSTEMI_NODES, NSTEMI_CITATIONS, NSTEMI_MODULE_LABELS } from '../data/trees/nstemi.js';
@@ -111,6 +112,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'nephro-rheum-endo',
     moduleLabels: POTASSIUM_MODULE_LABELS,
     citations: POTASSIUM_CITATIONS,
+  },
+  'croup': {
+    nodes: CROUP_NODES,
+    entryNodeId: 'croup-start',
+    categoryId: 'pediatrics',
+    moduleLabels: CROUP_MODULE_LABELS,
+    citations: CROUP_CITATIONS,
   },
 };
 

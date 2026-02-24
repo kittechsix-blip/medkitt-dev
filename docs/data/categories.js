@@ -164,7 +164,23 @@ export const DEFAULT_CATEGORIES = [
     },
     { id: 'ob-gyn', name: 'OB/GYN', icon: 'ob-gyn.png', decisionTrees: [], isCustom: false },
     { id: 'orthopedics', name: 'Ortho', icon: 'ortho.png', decisionTrees: [], isCustom: false },
-    { id: 'pediatrics', name: 'Pediatrics', icon: 'pediatrics.png', decisionTrees: [], isCustom: false },
+    {
+        id: 'pediatrics',
+        name: 'Pediatrics',
+        icon: 'pediatrics.png',
+        decisionTrees: [
+            {
+                id: 'croup',
+                title: 'Croup',
+                subtitle: 'Severity → Glucocorticoids → Epinephrine → Disposition',
+                categoryId: 'pediatrics',
+                version: '1.0',
+                nodeCount: 13,
+                entryNodeId: 'croup-start',
+            }
+        ],
+        isCustom: false,
+    },
     { id: 'pharmacy', name: 'Pharmacy', icon: 'pharmacy.png', decisionTrees: [], isCustom: false },
     {
         id: 'procedures',

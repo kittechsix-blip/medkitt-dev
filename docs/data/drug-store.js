@@ -75,6 +75,34 @@ const ALBUTEROL_NEB = {
         'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
     ],
 };
+const AMOXICILLIN_CLAVULANATE = {
+    id: 'amoxicillin-clavulanate',
+    name: 'Amoxicillin-Clavulanate (Augmentin)',
+    genericName: 'Amoxicillin / Clavulanic acid',
+    drugClass: 'Aminopenicillin + beta-lactamase inhibitor',
+    route: 'PO',
+    indications: ['Pediatric UTI (alternative outpatient)', 'Otitis media', 'Sinusitis', 'Bite wounds'],
+    dosing: [
+        {
+            indication: 'Pediatric UTI',
+            regimen: '20-40 mg/kg/day divided BID. Max 875 mg/dose.',
+        },
+    ],
+    contraindications: [
+        'IgE-mediated penicillin allergy',
+        'History of cholestatic jaundice with amoxicillin-clavulanate',
+    ],
+    cautions: [
+        'Diarrhea common (clavulanate component)',
+        'Hepatotoxicity rare but possible',
+    ],
+    monitoring: 'Clinical response. LFTs if prolonged course or hepatic symptoms. Repeat urine culture if no improvement at 48-72 hours.',
+    notes: 'Alternative empiric outpatient antibiotic for pediatric febrile UTI when cephalexin not tolerated. Per DCMC EBOC guidelines.',
+    citations: [
+        'Dell Children\'s EBOC. First Febrile Urinary Tract Infection Clinical Pathway. May 2017.',
+        'Roberts KB. Urinary tract infection: clinical practice guideline for febrile infants and children 2 to 24 months. Pediatrics. 2011;128(3):595-610.',
+    ],
+};
 const ALTEPLASE = {
     id: 'alteplase',
     name: 'Alteplase (tPA)',
@@ -297,6 +325,39 @@ const BIVALIRUDIN = {
         'Stone GW, et al. Bivalirudin during Primary PCI (HORIZONS-AMI). N Engl J Med. 2008;358(21):2218-2230.',
     ],
 };
+const BUDESONIDE_NEB = {
+    id: 'budesonide-neb',
+    name: 'Budesonide (Nebulized)',
+    genericName: 'Budesonide',
+    drugClass: 'Inhaled corticosteroid',
+    route: 'Inhaled (nebulized)',
+    indications: ['Croup (alternative to oral dexamethasone)', 'Asthma (maintenance)'],
+    dosing: [
+        {
+            indication: 'Croup',
+            regimen: '2 mg nebulized as a single dose. Use when child cannot tolerate oral medication. Onset: 2-4 hours.',
+        },
+        {
+            indication: 'Asthma maintenance',
+            regimen: '0.25-1 mg nebulized BID.',
+        },
+    ],
+    contraindications: [
+        'Known hypersensitivity to budesonide',
+        'Primary treatment of status asthmaticus (not for acute rescue)',
+    ],
+    cautions: [
+        'Slower onset than oral dexamethasone for croup',
+        'Oral thrush with repeated use — rinse mouth after administration',
+        'More expensive and less convenient than oral dexamethasone',
+    ],
+    monitoring: 'Clinical response. Reassess croup severity 2-4 hours after administration.',
+    notes: 'Reserved for children who cannot tolerate oral dexamethasone (vomiting, refusal). A 2023 Cochrane review confirmed efficacy for croup, but oral dexamethasone remains preferred due to ease of administration and faster onset. Single-dose safety profile is excellent.',
+    citations: [
+        'Aregbesola A, et al. Glucocorticoids for Croup in Children. Cochrane Database Syst Rev. 2023;1:CD001955.',
+        'Gates A, Johnson DW, Klassen TP. Glucocorticoids for Croup in Children. JAMA Pediatrics. 2019;173(6):595-596.',
+    ],
+};
 const BUMETANIDE = {
     id: 'bumetanide',
     name: 'Bumetanide',
@@ -427,6 +488,37 @@ const CALCIUM_GLUCONATE = {
         'Rossignol P, et al. Emergency management of severe hyperkalemia. Pharmacol Res. 2016;113(Pt A):585-591.',
     ],
 };
+const CEFAZOLIN = {
+    id: 'cefazolin',
+    name: 'Cefazolin (Ancef)',
+    genericName: 'Cefazolin sodium',
+    drugClass: 'First-generation cephalosporin',
+    route: 'IV',
+    indications: ['Pediatric UTI (inpatient first-line)', 'Surgical prophylaxis'],
+    dosing: [
+        {
+            indication: 'Pediatric UTI (inpatient)',
+            regimen: '50 mg/kg/day divided q8h. Max 2000 mg/dose.',
+        },
+        {
+            indication: 'Neonatal UTI',
+            regimen: '50 mg/kg/day divided q8h.',
+        },
+    ],
+    contraindications: [
+        'IgE-mediated cephalosporin allergy',
+    ],
+    cautions: [
+        'Adjust for renal impairment',
+    ],
+    monitoring: 'Renal function, CBC with prolonged use. Repeat urine culture if no clinical improvement at 48-72 hours.',
+    notes: 'First-line empiric IV antibiotic for inpatient pediatric UTI per DCMC EBOC guidelines.',
+    citations: [
+        'Dell Children\'s EBOC. First Febrile Urinary Tract Infection Clinical Pathway. May 2017.',
+        'Dell Children\'s EBOC. UTI Management Pathway (Neonatal). September 2024.',
+        'Roberts KB. Urinary tract infection: clinical practice guideline for febrile infants and children 2 to 24 months. Pediatrics. 2011;128(3):595-610.',
+    ],
+};
 const CEFTRIAXONE = {
     id: 'ceftriaxone',
     name: 'Ceftriaxone',
@@ -452,6 +544,38 @@ const CEFTRIAXONE = {
     citations: [
         'CDC. Sexually Transmitted Infections Treatment Guidelines. 2021.',
         'Marra CM, et al. Ceftriaxone for Neurosyphilis. Clin Infect Dis. 2019.',
+    ],
+};
+const CEPHALEXIN = {
+    id: 'cephalexin',
+    name: 'Cephalexin (Keflex)',
+    genericName: 'Cephalexin',
+    drugClass: 'First-generation cephalosporin',
+    route: 'PO',
+    indications: ['Pediatric UTI (first-line outpatient)', 'Skin and soft tissue infections'],
+    dosing: [
+        {
+            indication: 'Pediatric UTI',
+            regimen: '50-100 mg/kg/day divided TID-QID. Max 1000 mg/dose.',
+        },
+        {
+            indication: 'Neonatal UTI',
+            regimen: '\u226428 days: 75 mg/kg/day divided q8h. \u226529 days: 100 mg/kg/day divided q6h.',
+        },
+    ],
+    contraindications: [
+        'IgE-mediated cephalosporin allergy',
+    ],
+    cautions: [
+        'Adjust for renal impairment',
+        'GI side effects common',
+    ],
+    monitoring: 'Renal function in neonates and prolonged courses. Repeat urine culture if no clinical improvement at 48-72 hours.',
+    notes: 'First-line empiric outpatient antibiotic for pediatric febrile UTI per DCMC EBOC guidelines.',
+    citations: [
+        'Dell Children\'s EBOC. First Febrile Urinary Tract Infection Clinical Pathway. May 2017.',
+        'Dell Children\'s EBOC. UTI Management Pathway (Neonatal). September 2024.',
+        'Roberts KB. Urinary tract infection: clinical practice guideline for febrile infants and children 2 to 24 months. Pediatrics. 2011;128(3):595-610.',
     ],
 };
 const DARUNAVIR = {
@@ -482,6 +606,46 @@ const DARUNAVIR = {
     citations: [
         'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
         'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
+    ],
+};
+const DEXAMETHASONE = {
+    id: 'dexamethasone',
+    name: 'Dexamethasone',
+    genericName: 'Dexamethasone',
+    drugClass: 'Corticosteroid (glucocorticoid)',
+    route: 'PO/IM/IV',
+    indications: ['Croup (standard of care)', 'Cerebral edema', 'Antiemetic (chemotherapy)', 'Bacterial meningitis (adjunctive)', 'Airway edema'],
+    dosing: [
+        {
+            indication: 'Croup',
+            regimen: '0.6 mg/kg PO as a single dose (max 16 mg). Low-dose alternative: 0.15 mg/kg PO (non-inferior). If unable to tolerate oral: 0.6 mg/kg IM.',
+        },
+        {
+            indication: 'Cerebral edema',
+            regimen: '10 mg IV loading dose, then 4 mg IV/IM q6h.',
+        },
+        {
+            indication: 'Airway edema / post-extubation stridor',
+            regimen: '0.5 mg/kg IV q6h x 4 doses, starting 12-24 hours before planned extubation.',
+        },
+    ],
+    contraindications: [
+        'Systemic fungal infections',
+        'Known hypersensitivity to dexamethasone',
+    ],
+    cautions: [
+        'Single-dose use for croup is safe with minimal adverse effects',
+        'Hyperglycemia with repeated dosing — monitor glucose in diabetics',
+        'Immunosuppression with prolonged use — not a concern with single dose',
+        'May mask signs of infection with prolonged use',
+    ],
+    monitoring: 'Clinical response. For croup: reassess severity 2-3 hours after dose. For prolonged use: blood glucose, signs of infection.',
+    notes: 'Standard of care for croup in ALL severities. A 2023 Cochrane review (45 RCTs, 5,888 children) showed glucocorticoids significantly reduce croup scores at 2, 6, 12, and 24 hours vs placebo. NNT = 7 to prevent one return visit. Single dose provides sustained benefit due to long half-life (~36 hours). Reduces return visits/readmissions by ~50% (RR 0.52). Low-dose (0.15 mg/kg) is non-inferior to standard dose in a 1,252-patient RCT.',
+    citations: [
+        'Aregbesola A, et al. Glucocorticoids for Croup in Children. Cochrane Database Syst Rev. 2023;1:CD001955.',
+        'Bjornson CL, et al. A Randomized Trial of a Single Dose of Oral Dexamethasone for Mild Croup. N Engl J Med. 2004;351(13):1306-13.',
+        'Parker CM, Cooper MN. Prednisolone Versus Dexamethasone for Croup: A Randomized Controlled Trial. Pediatrics. 2019;144(3):e20183772.',
+        'Gates A, Johnson DW, Klassen TP. Glucocorticoids for Croup in Children. JAMA Pediatrics. 2019;173(6):595-596.',
     ],
 };
 const CLEVIDIPINE = {
@@ -541,6 +705,35 @@ const CHLOROTHIAZIDE = {
     notes: 'IV thiazide for synergistic diuresis ("sequential nephron blockade") — blocks NaCl cotransporter in distal convoluted tubule. Metolazone (PO) is an alternative if IV chlorothiazide unavailable.',
     citations: [
         'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
+    ],
+};
+const CIPROFLOXACIN = {
+    id: 'ciprofloxacin',
+    name: 'Ciprofloxacin',
+    genericName: 'Ciprofloxacin',
+    drugClass: 'Fluoroquinolone',
+    route: 'PO/IV',
+    indications: ['Pediatric UTI (IgE-mediated allergy to penicillins AND cephalosporins)', 'Complicated UTI'],
+    dosing: [
+        {
+            indication: 'Pediatric UTI',
+            regimen: '20 mg/kg/day divided BID. Max 750 mg/dose (oral).',
+        },
+    ],
+    contraindications: [
+        'Concurrent tizanidine use',
+        'QT prolongation risk',
+    ],
+    cautions: [
+        'FDA black box warnings (tendon rupture, peripheral neuropathy, CNS effects)',
+        'Generally avoided in children except when benefits outweigh risks',
+        'Musculoskeletal adverse events in pediatric patients',
+    ],
+    monitoring: 'Renal function, QTc if concurrent QT-prolonging agents. Monitor for tendon pain, neuropathy symptoms.',
+    notes: 'Reserved for IgE-mediated allergy to penicillins AND cephalosporins in pediatric UTI. Use with caution in pediatric patients \u2014 FDA approval limited. TMP-SMX only 71% susceptible among E. coli isolates, making ciprofloxacin preferred fluoroquinolone alternative.',
+    citations: [
+        'Dell Children\'s EBOC. First Febrile Urinary Tract Infection Clinical Pathway. May 2017.',
+        'Roberts KB. Urinary tract infection: clinical practice guideline for febrile infants and children 2 to 24 months. Pediatrics. 2011;128(3):595-610.',
     ],
 };
 const CLOPIDOGREL = {
@@ -1261,6 +1454,39 @@ const PRASUGREL = {
         'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.',
     ],
 };
+const PREDNISOLONE = {
+    id: 'prednisolone',
+    name: 'Prednisolone',
+    genericName: 'Prednisolone',
+    drugClass: 'Corticosteroid (glucocorticoid)',
+    route: 'PO',
+    indications: ['Croup (alternative to dexamethasone)', 'Asthma exacerbation', 'Inflammatory conditions'],
+    dosing: [
+        {
+            indication: 'Croup',
+            regimen: '1 mg/kg PO as a single dose (max 60 mg). Non-inferior to dexamethasone 0.6 mg/kg in a 1,252-patient RCT.',
+        },
+        {
+            indication: 'Asthma exacerbation',
+            regimen: '1-2 mg/kg/day PO (max 60 mg) for 3-5 days.',
+        },
+    ],
+    contraindications: [
+        'Systemic fungal infections',
+        'Known hypersensitivity',
+    ],
+    cautions: [
+        'Shorter half-life than dexamethasone (~12-36 hours vs ~36 hours) — may need additional doses for prolonged symptoms',
+        'Available as liquid formulation — easier for young children who cannot swallow tablets',
+        'Bitter taste — may cause vomiting in some children',
+    ],
+    monitoring: 'Clinical response. For croup: reassess severity 2-3 hours after dose.',
+    notes: 'Non-inferior alternative to dexamethasone for croup based on Parker et al. (2019) — 1,252 children randomized to prednisolone 1 mg/kg vs dexamethasone 0.6 mg/kg showed equivalent outcomes for symptom relief and 7-day return visits. Advantage: widely available as liquid formulation. Disadvantage: shorter half-life means symptoms may recur, and bitter taste may cause vomiting.',
+    citations: [
+        'Parker CM, Cooper MN. Prednisolone Versus Dexamethasone for Croup: A Randomized Controlled Trial. Pediatrics. 2019;144(3):e20183772.',
+        'Aregbesola A, et al. Glucocorticoids for Croup in Children. Cochrane Database Syst Rev. 2023;1:CD001955.',
+    ],
+};
 const PROCAINAMIDE = {
     id: 'procainamide',
     name: 'Procainamide',
@@ -1460,6 +1686,41 @@ const RITONAVIR = {
     notes: 'Used at sub-therapeutic dose (100 mg) solely as a pharmacokinetic booster to increase darunavir levels via CYP3A4 inhibition. Not used as a standalone antiretroviral at this dose.',
     citations: [
         'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
+    ],
+};
+const RACEMIC_EPINEPHRINE = {
+    id: 'racemic-epinephrine',
+    name: 'Racemic Epinephrine (Nebulized)',
+    genericName: 'Racemic epinephrine',
+    drugClass: 'Alpha/beta adrenergic agonist',
+    route: 'Inhaled (nebulized)',
+    indications: ['Croup (moderate-severe)', 'Post-extubation stridor'],
+    dosing: [
+        {
+            indication: 'Croup',
+            regimen: '0.5 mL of 2.25% racemic epinephrine diluted in 4.5 mL normal saline, nebulized. May repeat as needed. Alternative: L-epinephrine 0.5 mL/kg of 1:1000 (max 5 mL) nebulized.',
+        },
+        {
+            indication: 'Post-extubation stridor',
+            regimen: '0.5 mL of 2.25% in 4.5 mL NS nebulized. May repeat x1.',
+        },
+    ],
+    contraindications: [
+        'Known hypersensitivity',
+        'Use with caution in underlying cardiac disease',
+    ],
+    cautions: [
+        'Effects are TRANSIENT — onset within minutes, duration only 1-2 hours',
+        'MUST observe minimum 2 hours after administration for symptom rebound',
+        'Tachycardia and tremor are expected side effects',
+        'Multiple doses → strong indicator for hospital admission',
+    ],
+    monitoring: 'Heart rate, respiratory status. Observe minimum 2 hours after each dose for rebound symptoms. Monitor for return of stridor at rest.',
+    notes: 'Provides rapid mucosal vasoconstriction reducing subglottic edema. Relief is temporary — the underlying inflammation persists. Repeated doses may prevent intubation in severe cases. L-epinephrine (1:1000) is an acceptable alternative where racemic formulation is unavailable. Children who require >2 doses should generally be admitted. Always administer with concurrent glucocorticoid (dexamethasone).',
+    citations: [
+        'Cherry JD. Croup. N Engl J Med. 2008;358(4):384-91.',
+        'Zoorob R, Sidani M, Murray J. Croup: An Overview. Am Fam Physician. 2011;83(9):1067-73.',
+        'Smith DK, McDermott AJ, Sullivan JF. Croup: Diagnosis and Management. Am Fam Physician. 2018;97(9):575-580.',
     ],
 };
 const REGULAR_INSULIN = {
@@ -1775,21 +2036,27 @@ export const ALL_DRUGS = [
     ALBUTEROL_NEB,
     ALTEPLASE,
     AMIODARONE,
+    AMOXICILLIN_CLAVULANATE,
     APIXABAN,
     ASPIRIN,
     ATORVASTATIN,
     BENZATHINE_PENICILLIN,
     BIKTARVY,
     BIVALIRUDIN,
+    BUDESONIDE_NEB,
     BUMETANIDE,
     CALCIUM_CHLORIDE,
     CALCIUM_GLUCONATE,
+    CEFAZOLIN,
     CEFTRIAXONE,
+    CEPHALEXIN,
     CHLOROTHIAZIDE,
+    CIPROFLOXACIN,
     CLEVIDIPINE,
     CLOPIDOGREL,
     DABIGATRAN,
     DARUNAVIR,
+    DEXAMETHASONE,
     DIGOXIN,
     DILTIAZEM,
     DOLUTEGRAVIR,
@@ -1814,8 +2081,10 @@ export const ALL_DRUGS = [
     POTASSIUM_CHLORIDE_IV,
     POTASSIUM_CHLORIDE_ORAL,
     PRASUGREL,
+    PREDNISOLONE,
     PROCAINAMIDE,
     PROCAINE_PENICILLIN,
+    RACEMIC_EPINEPHRINE,
     REGULAR_INSULIN,
     RITONAVIR,
     RIVAROXABAN,
@@ -1844,21 +2113,27 @@ const NAME_TO_ID = [
     [/albuterol|proventil|ventolin/i, 'albuterol-neb'],
     [/alteplase|tPA/i, 'alteplase'],
     [/amiodarone|cordarone/i, 'amiodarone'],
+    [/amoxicillin.clavulanate|augmentin|amox.clav/i, 'amoxicillin-clavulanate'],
     [/apixaban/i, 'apixaban'],
     [/aspirin|ASA|acetylsalicylic/i, 'aspirin'],
     [/atorvastatin|lipitor/i, 'atorvastatin'],
     [/biktarvy|BIC\/FTC\/TAF/i, 'biktarvy'],
     [/bivalirudin|angiomax/i, 'bivalirudin'],
+    [/budesonide|pulmicort/i, 'budesonide-neb'],
     [/bumetanide|bumex/i, 'bumetanide'],
     [/benzathine.*penicillin/i, 'benzathine-penicillin'],
     [/calcium\s*chloride/i, 'calcium-chloride'],
     [/calcium\s*gluconate/i, 'calcium-gluconate'],
+    [/cefazolin|ancef/i, 'cefazolin'],
     [/ceftriaxone/i, 'ceftriaxone'],
+    [/cephalexin|keflex/i, 'cephalexin'],
     [/chlorothiazide|diuril/i, 'chlorothiazide'],
+    [/ciprofloxacin|cipro/i, 'ciprofloxacin'],
     [/clevidipine|cleviprex/i, 'clevidipine'],
     [/clopidogrel|plavix/i, 'clopidogrel'],
     [/dabigatran/i, 'dabigatran'],
     [/darunavir|prezista/i, 'darunavir'],
+    [/dexamethasone|decadron/i, 'dexamethasone'],
     [/digoxin|digitalis|lanoxin/i, 'digoxin'],
     [/diltiazem|cardizem/i, 'diltiazem'],
     [/dolutegravir|tivicay/i, 'dolutegravir'],
@@ -1885,6 +2160,8 @@ const NAME_TO_ID = [
     [/procainamide|pronestyl/i, 'procainamide'],
     [/procaine.*penicillin/i, 'procaine-penicillin'],
     [/prasugrel|effient/i, 'prasugrel'],
+    [/prednisolone|prelone|orapred/i, 'prednisolone'],
+    [/racemic.*epinephrine|neb.*epinephrine|vaponefrin/i, 'racemic-epinephrine'],
     [/regular\s*insulin|insulin\s*regular|humulin/i, 'regular-insulin'],
     [/ritonavir|norvir/i, 'ritonavir'],
     [/rivaroxaban/i, 'rivaroxaban'],
