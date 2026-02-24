@@ -27,6 +27,79 @@ export interface DrugEntry {
 // Drug Definitions (Alphabetical)
 // -------------------------------------------------------------------
 
+const ACETAZOLAMIDE: DrugEntry = {
+  id: 'acetazolamide',
+  name: 'Acetazolamide',
+  genericName: 'Acetazolamide',
+  drugClass: 'Carbonic anhydrase inhibitor',
+  route: 'IV/PO',
+  indications: ['Hyperkalemia (nephron bomb — third diuretic)', 'Hypokalemic periodic paralysis (prevention)', 'Metabolic alkalosis', 'Acute mountain sickness'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia (nephron bomb)',
+      regimen: '250-1000 mg IV or PO. Third agent added to loop + thiazide for maximal kaliuresis.',
+    },
+    {
+      indication: 'Periodic paralysis prevention',
+      regimen: 'Variable dosing — no standardized regimen. Typically 125-500 mg PO BID.',
+    },
+    {
+      indication: 'Metabolic alkalosis',
+      regimen: '250-500 mg IV q6-8h.',
+    },
+  ],
+  contraindications: [
+    'Severe hepatic insufficiency',
+    'Hyponatremia',
+    'Hypokalemia (except when combined with K-sparing agents)',
+    'Sulfonamide allergy (cross-reactivity)',
+  ],
+  cautions: [
+    'Causes metabolic acidosis (loss of bicarbonate) — desired effect in alkalosis but monitor in acidotic patients',
+    'Kidney stones (long-term use)',
+    'Paresthesias common',
+  ],
+  monitoring: 'Serum bicarbonate, potassium, renal function. ABG if concern for worsening acidosis.',
+  notes: 'Blocks carbonic anhydrase in proximal tubule — promotes sodium bicarbonate excretion. In the nephron bomb, provides a third point of sequential nephron blockade (proximal tubule). For hypokalemic periodic paralysis: first-line preventive agent — mechanism may involve systemic acidosis reducing attack susceptibility.',
+  citations: [
+    'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
+    'Statland JM, et al. Review of the Diagnosis and Treatment of Periodic Paralysis. Muscle Nerve. 2018;57(4):522-530.',
+  ],
+};
+
+const ALBUTEROL_NEB: DrugEntry = {
+  id: 'albuterol-neb',
+  name: 'Albuterol (Nebulized)',
+  genericName: 'Albuterol sulfate',
+  drugClass: 'Beta-2 adrenergic agonist',
+  route: 'Inhaled (nebulized)',
+  indications: ['Hyperkalemia (potassium shift)', 'Acute bronchospasm'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia',
+      regimen: '10-20 mg nebulized (4-8 standard 2.5 mg nebulizers administered back-to-back). Onset: 30 minutes. Peak: 90-120 minutes. Duration: 2-4 hours.',
+    },
+    {
+      indication: 'Bronchospasm',
+      regimen: '2.5 mg nebulized q20 min x 3 doses, then q1-4h PRN.',
+    },
+  ],
+  contraindications: [
+    'Known hypersensitivity to albuterol',
+  ],
+  cautions: [
+    'Nearly always UNDERDOSED for hyperkalemia in clinical practice',
+    'Standard 2.5 mg neb dose is inadequate — need 10-20 mg total',
+    'Efficacy ~50% lower in ESRD patients',
+    'Tachycardia, tremor, hyperglycemia',
+  ],
+  monitoring: 'Heart rate, potassium level, glucose.',
+  notes: 'In reality, albuterol is nearly always underdosed for hyperkalemia. The real-world efficacy is consequently minimal. Terbutaline SQ is preferred when available — logistically simpler (single injection vs. prolonged nebulization). Expected K+ reduction: 0.6-1.0 mEq/L (at adequate dose).',
+  citations: [
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+  ],
+};
+
 const ALTEPLASE: DrugEntry = {
   id: 'alteplase',
   name: 'Alteplase (tPA)',
@@ -256,6 +329,40 @@ const BIVALIRUDIN: DrugEntry = {
   ],
 };
 
+const BUMETANIDE: DrugEntry = {
+  id: 'bumetanide',
+  name: 'Bumetanide',
+  genericName: 'Bumetanide',
+  drugClass: 'Loop diuretic',
+  route: 'IV',
+  indications: ['Hyperkalemia (kaliuresis — alternative to furosemide)', 'Volume overload'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia (nephron bomb)',
+      regimen: '2-5 mg IV. Equivalent to furosemide 80-200 mg IV (1:40 ratio).',
+    },
+    {
+      indication: 'Volume overload',
+      regimen: '0.5-2 mg IV, may repeat q2-3h.',
+    },
+  ],
+  contraindications: [
+    'Anuria',
+    'Severe hypovolemia',
+    'Hepatic coma',
+  ],
+  cautions: [
+    'More predictable oral bioavailability than furosemide (~80% vs ~50%)',
+    'Same electrolyte monitoring as furosemide',
+    'Replace urine losses',
+  ],
+  monitoring: 'Urine output, electrolytes including K/Mg, fluid balance.',
+  notes: 'Alternative loop diuretic when furosemide is unavailable. Conversion: bumetanide 1 mg ≈ furosemide 40 mg. Same mechanism (Na-K-2Cl blockade in thick ascending limb).',
+  citations: [
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+  ],
+};
+
 const BENZATHINE_PENICILLIN: DrugEntry = {
   id: 'benzathine-penicillin',
   name: 'Benzathine Penicillin G',
@@ -284,6 +391,75 @@ const BENZATHINE_PENICILLIN: DrugEntry = {
   citations: [
     'CDC. Sexually Transmitted Infections Treatment Guidelines. 2021.',
     'IDSA. Practice Guidelines for the Management of Syphilis. 2025.',
+  ],
+};
+
+const CALCIUM_CHLORIDE: DrugEntry = {
+  id: 'calcium-chloride',
+  name: 'Calcium Chloride',
+  genericName: 'Calcium chloride',
+  drugClass: 'Electrolyte / membrane stabilizer',
+  route: 'IV (central line only)',
+  indications: ['Hyperkalemia (membrane stabilization)', 'Hypocalcemia (severe)'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia (central access)',
+      regimen: '1 gram IV over 10 minutes. May repeat 1-2 times. Effect lasts 30-60 minutes.',
+    },
+    {
+      indication: 'Severe hypocalcemia',
+      regimen: '500 mg-1 gram IV over 10 minutes.',
+    },
+  ],
+  contraindications: [
+    'Peripheral IV administration (causes severe tissue necrosis)',
+    'Digoxin toxicity (relative)',
+    'Hypercalcemia',
+  ],
+  cautions: [
+    'CENTRAL LINE ONLY — causes severe extravasation injury peripherally',
+    'Contains 3x more elemental calcium than calcium gluconate per gram',
+    'Rapid infusion → bradycardia, cardiac arrest',
+  ],
+  monitoring: 'Continuous cardiac monitoring. Check ionized calcium. Verify central line placement before infusion.',
+  notes: 'Preferred over calcium gluconate when CENTRAL access is available — provides 3x more elemental calcium per gram (~270 mg Ca per gram). Use calcium gluconate if only peripheral access. For hyperkalemia: treats the rhythm, not the potassium — must follow with definitive K+ lowering therapy.',
+  citations: [
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+    'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
+  ],
+};
+
+const CALCIUM_GLUCONATE: DrugEntry = {
+  id: 'calcium-gluconate',
+  name: 'Calcium Gluconate',
+  genericName: 'Calcium gluconate',
+  drugClass: 'Electrolyte / membrane stabilizer',
+  route: 'IV',
+  indications: ['Hyperkalemia (membrane stabilization)', 'Hypocalcemia'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia (peripheral access)',
+      regimen: '3 grams IV over 10 minutes. May repeat 1-2 times if persistent dangerous arrhythmia. Effect lasts 30-60 minutes.',
+    },
+    {
+      indication: 'Hypocalcemia',
+      regimen: '1-2 grams IV over 10-20 minutes.',
+    },
+  ],
+  contraindications: [
+    'Digoxin toxicity (relative — calcium may worsen digitalis effects)',
+    'Hypercalcemia',
+  ],
+  cautions: [
+    'Lasts only 30-60 minutes — must address underlying hyperkalemia',
+    'Rapid infusion may cause flushing, nausea, hypotension',
+    'Chronic renal failure without ECG changes: risk of calciphylaxis — may withhold',
+  ],
+  monitoring: 'Continuous cardiac monitoring during infusion. Repeat ECG after dose. Check ionized calcium — avoid iCa >3 mM.',
+  notes: 'First-line for hyperkalemia with ECG changes. Use calcium gluconate for PERIPHERAL access (less tissue necrosis risk than calcium chloride). Contains ~270 mg elemental calcium per 10 mL (1 gram). For isolated peaked T-waves without other ECG changes, use is controversial.',
+  citations: [
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+    'Rossignol P, et al. Emergency management of severe hyperkalemia. Pharmacol Res. 2016;113(Pt A):585-591.',
   ],
 };
 
@@ -375,6 +551,35 @@ const CLEVIDIPINE: DrugEntry = {
   citations: [
     'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
     'Pollack CV, et al. Clevidipine for Acute Hypertension: A Systematic Review and Meta-Analysis. Crit Care Med. 2019.',
+  ],
+};
+
+const CHLOROTHIAZIDE: DrugEntry = {
+  id: 'chlorothiazide',
+  name: 'Chlorothiazide',
+  genericName: 'Chlorothiazide sodium',
+  drugClass: 'Thiazide diuretic',
+  route: 'IV',
+  indications: ['Hyperkalemia (nephron bomb — synergistic with loop diuretic)', 'Volume overload (diuretic resistance)'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia (nephron bomb)',
+      regimen: '500-1000 mg IV. Give WITH loop diuretic for sequential nephron blockade.',
+    },
+  ],
+  contraindications: [
+    'Anuria',
+    'Sulfonamide hypersensitivity (cross-reactivity possible)',
+  ],
+  cautions: [
+    'Only use WITH a loop diuretic — thiazide alone has minimal effect on K+ excretion',
+    'Risk of severe hypokalemia, hyponatremia, hypomagnesemia when combined with loop diuretic',
+    'Monitor electrolytes frequently',
+  ],
+  monitoring: 'Electrolytes q2-4h when used in nephron bomb. Urine output.',
+  notes: 'IV thiazide for synergistic diuresis ("sequential nephron blockade") — blocks NaCl cotransporter in distal convoluted tubule. Metolazone (PO) is an alternative if IV chlorothiazide unavailable.',
+  citations: [
+    'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
   ],
 };
 
@@ -599,12 +804,16 @@ const EDOXABAN: DrugEntry = {
 
 const EPINEPHRINE: DrugEntry = {
   id: 'epinephrine',
-  name: 'Epinephrine (Intracavernosal)',
+  name: 'Epinephrine',
   genericName: 'Epinephrine',
   drugClass: 'Non-selective adrenergic agonist (alpha + beta)',
-  route: 'Intracavernosal',
-  indications: ['Ischemic priapism (alternative to phenylephrine)'],
+  route: 'IV/SQ/Intracavernosal',
+  indications: ['Hyperkalemia with hemodynamic instability', 'Ischemic priapism (alternative to phenylephrine)'],
   dosing: [
+    {
+      indication: 'Hyperkalemia with hypotension/bradycardia',
+      regimen: 'Epinephrine infusion 2-10 mcg/min IV. Treats both hyperkalemia AND hemodynamic instability simultaneously. Beta-2 effect shifts K+ intracellularly.',
+    },
     {
       indication: 'Ischemic priapism',
       regimen: '20 mcg (2 mL of 10 mcg/mL solution) intracavernosal every 5 minutes, up to 5 doses total (100 mcg max). Mix: 1 mL epi from cardiac amp (100 mcg/mL) + 9 mL NS = 10 mcg/mL.',
@@ -625,6 +834,7 @@ const EPINEPHRINE: DrugEntry = {
   citations: [
     'Bivalacqua TJ, et al. AUA/SMSNA Guideline on Priapism. J Urol. 2022;208(1):43-52.',
     'Graham BA, et al. Emergency Pharmacotherapy for Priapism. Expert Opin Pharmacother. 2022;23(12):1371-80.',
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
   ],
 };
 
@@ -762,6 +972,75 @@ const FONDAPARINUX: DrugEntry = {
   ],
 };
 
+const FLUDROCORTISONE: DrugEntry = {
+  id: 'fludrocortisone',
+  name: 'Fludrocortisone',
+  genericName: 'Fludrocortisone acetate',
+  drugClass: 'Mineralocorticoid',
+  route: 'PO',
+  indications: ['Hyperkalemia (adjunct — stimulates renal K+ excretion)', 'Adrenal insufficiency', 'Orthostatic hypotension'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia adjunct',
+      regimen: '0.2 mg PO once. Especially useful in patients on ACEi/ARB, tacrolimus, or with suspected type IV RTA.',
+    },
+  ],
+  contraindications: [
+    'Systemic fungal infections',
+    'Active heart failure (sodium retention)',
+  ],
+  cautions: [
+    'Sodium retention → fluid overload, edema, hypertension',
+    'Hypokalemia with prolonged use',
+    'Consider if patient making urine but K+ not falling (inadequate urine K+ content)',
+  ],
+  monitoring: 'Blood pressure, serum potassium, fluid status.',
+  notes: 'Underutilized adjunct for hyperkalemia. Replaces the mineralocorticoid effect suppressed by ACEi/ARBs, tacrolimus, and other causes of type IV RTA. Stimulates ENaC sodium reabsorption and ROMK potassium secretion in the collecting duct. Most effective when combined with adequate sodium delivery to the collecting duct (i.e., after volume resuscitation).',
+  citations: [
+    'Palmer BF, Clegg DJ. Diagnosis and Treatment of Hyperkalemia. Cleve Clin J Med. 2017;84(12):934-942.',
+  ],
+};
+
+const FUROSEMIDE: DrugEntry = {
+  id: 'furosemide',
+  name: 'Furosemide',
+  genericName: 'Furosemide',
+  drugClass: 'Loop diuretic',
+  route: 'IV',
+  indications: ['Hyperkalemia (kaliuresis)', 'Volume overload / pulmonary edema', 'Acute kidney injury (oliguric)'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia (normal renal function)',
+      regimen: '40-80 mg IV. May be sufficient as sole diuretic.',
+    },
+    {
+      indication: 'Hyperkalemia (moderate-severe renal dysfunction)',
+      regimen: '160-250 mg IV. Combine with thiazide +/- acetazolamide for synergistic "nephron bomb."',
+    },
+    {
+      indication: 'Volume overload',
+      regimen: '40-160 mg IV, dose based on renal function and prior diuretic exposure.',
+    },
+  ],
+  contraindications: [
+    'Anuria unresponsive to fluid challenge',
+    'Severe hypovolemia/dehydration',
+    'Hepatic coma (electrolyte shifts)',
+  ],
+  cautions: [
+    'Higher doses needed in renal dysfunction (diuretic resistance)',
+    'Replace urine losses with crystalloid to avoid hypovolemia — use isotonic bicarb if bicarb <22, LR if bicarb ≥22',
+    'Monitor electrolytes: K, Mg, Na, Ca frequently',
+    'Ototoxicity at very high doses or rapid infusion',
+  ],
+  monitoring: 'Urine output (target response within 1-2 hours), serum electrolytes including Mg, fluid balance.',
+  notes: 'Cornerstone of kaliuresis strategy. For life-threatening hyperkalemia, err on the side of more diuretic — excessive diuresis is easily corrected with crystalloid, but inadequate diuretic may lead to unnecessary dialysis. In the "nephron bomb," furosemide blocks the Na-K-2Cl cotransporter in the thick ascending limb.',
+  citations: [
+    'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+  ],
+};
+
 const LABETALOL: DrugEntry = {
   id: 'labetalol',
   name: 'Labetalol',
@@ -878,6 +1157,39 @@ const METOPROLOL: DrugEntry = {
     'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for AF. J Am Coll Cardiol. 2024;83(1):109-279.',
     'Wigginton JG, et al. 2025 AHA Guidelines: Adult Advanced Life Support. Circulation. 2025;152(16_suppl_2):S538-S577.',
     'Moskowitz A, et al. Management of AF with RVR in the ICU. Shock. 2017;48(4):436-440.',
+  ],
+};
+
+const METOLAZONE: DrugEntry = {
+  id: 'metolazone',
+  name: 'Metolazone',
+  genericName: 'Metolazone',
+  drugClass: 'Thiazide-like diuretic',
+  route: 'PO',
+  indications: ['Hyperkalemia (nephron bomb — synergistic with loop diuretic)', 'Diuretic resistance in heart failure'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia (nephron bomb)',
+      regimen: '5-10 mg PO. Give 30 min before IV loop diuretic for optimal synergy.',
+    },
+    {
+      indication: 'Diuretic resistance',
+      regimen: '2.5-10 mg PO daily, given 30 min before loop diuretic.',
+    },
+  ],
+  contraindications: [
+    'Anuria',
+    'Hepatic coma',
+  ],
+  cautions: [
+    'Oral only — use IV chlorothiazide if enteral route unavailable',
+    'Potent synergy with loop diuretics can cause rapid, profound diuresis',
+    'Monitor for severe hypokalemia, hyponatremia, hypomagnesemia',
+  ],
+  monitoring: 'Electrolytes q2-4h during acute use. Urine output. Daily weights.',
+  notes: 'Oral alternative to IV chlorothiazide for sequential nephron blockade. Effective even in severe renal impairment (unlike hydrochlorothiazide). Give 30 min before loop diuretic for optimal timing of sequential blockade.',
+  citations: [
+    'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
   ],
 };
 
@@ -1073,6 +1385,82 @@ const PROCAINE_PENICILLIN: DrugEntry = {
   ],
 };
 
+const POTASSIUM_CHLORIDE_IV: DrugEntry = {
+  id: 'potassium-chloride-iv',
+  name: 'Potassium Chloride (IV)',
+  genericName: 'Potassium chloride',
+  drugClass: 'Electrolyte supplement',
+  route: 'IV',
+  indications: ['Severe hypokalemia (K+ ≤2.5 mEq/L)', 'Hypokalemia with arrhythmia or paralysis'],
+  dosing: [
+    {
+      indication: 'Severe hypokalemia (life-threatening)',
+      regimen: '5-10 mEq IV over 15-30 minutes with continuous cardiac monitoring. Repeat until K+ >3 mEq/L and hemodynamically stable.',
+    },
+    {
+      indication: 'Subsequent replacement',
+      regimen: '20-40 mEq IV. Rate: max 10 mEq/hr via peripheral IV (max concentration 10 mEq/100 mL), max 20 mEq/hr via central line with cardiac monitoring.',
+    },
+  ],
+  contraindications: [
+    'Hyperkalemia',
+    'Severe renal failure with anuria (unable to excrete K+)',
+    'Untreated Addison disease',
+  ],
+  cautions: [
+    'Rates >10 mEq/hr require central venous access + continuous cardiac monitoring',
+    'Use GLUCOSE-FREE IV fluids as carrier (glucose stimulates insulin → worsens intracellular K+ shift)',
+    'Always check and correct magnesium first (hypoMg makes K repletion refractory)',
+    'Risk of phlebitis at peripheral sites with concentrated solutions',
+  ],
+  monitoring: 'Continuous cardiac monitoring during infusion. Recheck K+ every 2-4 hours. Monitor Mg concurrently. Fingerstick glucose if also receiving insulin.',
+  notes: 'IV KCl is ONLY for severe hypokalemia or patients who cannot take oral. Oral KCl is safer (lower rebound hyperkalemia risk). Serum K+ decreases ~0.3 mEq/L per 100 mEq total body deficit, but this relationship is highly variable. KCl is the preferred salt (corrects concurrent chloride deficiency from most common causes).',
+  citations: [
+    'Kim MJ, et al. Potassium Disorders: Hypokalemia and Hyperkalemia. Am Fam Physician. 2023;107(1):59-70.',
+    'Gennari FJ. Hypokalemia. N Engl J Med. 1998;339(7):451-8.',
+  ],
+};
+
+const POTASSIUM_CHLORIDE_ORAL: DrugEntry = {
+  id: 'potassium-chloride-oral',
+  name: 'Potassium Chloride (Oral)',
+  genericName: 'Potassium chloride',
+  drugClass: 'Electrolyte supplement',
+  route: 'PO',
+  indications: ['Mild-moderate hypokalemia (K+ 2.5-3.5 mEq/L)', 'Chronic potassium replacement', 'Hypokalemic periodic paralysis (acute attack — immediate-release only)'],
+  dosing: [
+    {
+      indication: 'Acute replacement',
+      regimen: '20-40 mEq PO. Each 20 mEq raises serum K+ ~0.2 mEq/L. Recheck in 2-4 hours.',
+    },
+    {
+      indication: 'Chronic replacement',
+      regimen: '50-75 mEq PO daily in divided doses (raises serum K+ ~0.14 mEq/L with enhanced effect when combined with ACEi/ARB).',
+    },
+    {
+      indication: 'Periodic paralysis (acute attack)',
+      regimen: '1 mEq/kg (~60 mEq for 60 kg patient) IMMEDIATE-RELEASE or liquid only. Then 0.3 mEq/kg q30min if no improvement. AVOID slow-release — too slow and unpredictable. HIGH rebound hyperkalemia risk.',
+    },
+  ],
+  contraindications: [
+    'Hyperkalemia',
+    'GI obstruction or stricture (for solid dosage forms)',
+    'Severe renal impairment with oliguria',
+  ],
+  cautions: [
+    'GI irritation — take with food and full glass of water',
+    'Dietary potassium alone is INSUFFICIENT for replacement (food K+ is coupled with phosphate, not chloride)',
+    'For periodic paralysis: use immediate-release/liquid ONLY, monitor K+ q30 min, watch for rebound hyperkalemia',
+  ],
+  monitoring: 'Recheck serum K+ 2-4 hours after acute dose. Check Mg (hypoMg causes refractory hypoK). BMP for chronic replacement.',
+  notes: 'Potassium chloride is the PREFERRED salt for most causes of hypokalemia (corrects concurrent metabolic alkalosis and chloride depletion). Potassium bicarbonate may be preferred in RTA with metabolic acidosis. Potassium phosphate for refeeding syndrome. Safer than IV route due to gradual absorption.',
+  citations: [
+    'Kim MJ, et al. Potassium Disorders: Hypokalemia and Hyperkalemia. Am Fam Physician. 2023;107(1):59-70.',
+    'Gennari FJ. Hypokalemia. N Engl J Med. 1998;339(7):451-8.',
+    'Statland JM, et al. Review of the Diagnosis and Treatment of Periodic Paralysis. Muscle Nerve. 2018;57(4):522-530.',
+  ],
+};
+
 const PHENYLEPHRINE: DrugEntry = {
   id: 'phenylephrine',
   name: 'Phenylephrine (Intracavernosal)',
@@ -1142,6 +1530,41 @@ const RITONAVIR: DrugEntry = {
   ],
 };
 
+const REGULAR_INSULIN: DrugEntry = {
+  id: 'regular-insulin',
+  name: 'Regular Insulin (IV)',
+  genericName: 'Insulin regular (human)',
+  drugClass: 'Hormone / potassium-shifting agent',
+  route: 'IV',
+  indications: ['Hyperkalemia (potassium shift)'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia',
+      regimen: '5 units regular insulin IV bolus (NOT subcutaneous). Must give with dextrose unless glucose >250 mg/dL.',
+    },
+    {
+      indication: 'Dextrose co-administration',
+      regimen: 'If glucose <250: D50W 2 ampules (100 mL total, 50g dextrose) OR D10W 500 mL over 4 hours. If glucose 180-250: half-dose dextrose (25g). If glucose >250: no dextrose needed.',
+    },
+  ],
+  contraindications: [
+    'Severe hypoglycemia (give dextrose first)',
+  ],
+  cautions: [
+    'Must be given IV — subcutaneous absorption is unpredictable in critical illness',
+    '5 units (not 10) reduces hypoglycemia risk from 15-20% to <5% with similar K-lowering effect',
+    'Potassium shift lasts ~4 hours — may need redosing',
+    'Risk factors for hypoglycemia: renal dysfunction, no diabetes, low baseline glucose, low body weight, female sex',
+  ],
+  monitoring: 'Fingerstick glucose every 1 hour for 4-6 hours after administration. If glucose <70 mg/dL, give additional dextrose preemptively. Recheck potassium at 1-2 hours.',
+  notes: 'D10W infusion (500 mL over 4 hours) is preferred over D50W bolus — causes less rebound hypoglycemia and less venous irritation. Effect onset: 15-30 minutes. Expected K+ reduction: 0.5-1.2 mEq/L. Duration: ~4 hours — plan definitive elimination therapy.',
+  citations: [
+    'Moussavi K, et al. Management of Hyperkalemia With Insulin and Glucose. J Emerg Med. 2019;57(1):36-42.',
+    'Harel Z, Kamel KS. Optimal Dose of Intravenous Insulin for Hyperkalemia. PLoS One. 2016;11(5):e0154963.',
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+  ],
+};
+
 const RIVAROXABAN: DrugEntry = {
   id: 'rivaroxaban',
   name: 'Rivaroxaban',
@@ -1165,6 +1588,43 @@ const RIVAROXABAN: DrugEntry = {
   citations: [
     'Kahn SR, de Wit K. Pulmonary Embolism. N Engl J Med. 2022.',
     'Freund Y, et al. Acute Pulmonary Embolism: A Review. JAMA. 2022.',
+  ],
+};
+
+const SODIUM_ZIRCONIUM_CYCLOSILICATE: DrugEntry = {
+  id: 'sodium-zirconium-cyclosilicate',
+  name: 'Lokelma (Sodium Zirconium Cyclosilicate)',
+  genericName: 'Sodium zirconium cyclosilicate',
+  drugClass: 'Potassium binder',
+  route: 'PO',
+  indications: ['Hyperkalemia (adjunct — potassium elimination)'],
+  dosing: [
+    {
+      indication: 'Acute hyperkalemia',
+      regimen: '10 grams PO every 8 hours for up to 48-72 hours.',
+    },
+    {
+      indication: 'Maintenance',
+      regimen: '10 grams PO daily (range 5-15 grams daily). For chronic HD patients: 5 grams daily on non-dialysis days.',
+    },
+  ],
+  contraindications: [
+    'NPO patients (oral only)',
+    'Severe constipation, bowel obstruction, impaction',
+    'Abnormal post-operative bowel motility',
+  ],
+  cautions: [
+    'Only MILDLY effective (~0.2 mM reduction at 4h, ~0.4 mM at 24h)',
+    'Do NOT rely on as sole treatment for severe hyperkalemia',
+    'Do NOT delay dialysis while waiting for SZC to work',
+    'Each 5g dose contains 400 mg sodium (18 mEq) — 10g q8h = ~677 mL NS equivalent sodium/day',
+    'May alter GI absorption of pH-dependent drugs (separate by 2 hours): increased absorption of weak acids (furosemide, atorvastatin), decreased exposure to weak bases (dabigatran, tacrolimus, clopidogrel)',
+  ],
+  monitoring: 'Serum potassium, signs of volume overload/edema, GI symptoms.',
+  notes: 'Next-generation potassium binder (replaces Kayexalate which is antiquated and dangerous). May help avoid or delay dialysis in borderline cases. For anuric patients with severe hyperkalemia, SZC alone will inevitably fail. Patiromer is an alternative but even less effective for acute management (~0.23 mM at 7 hours).',
+  citations: [
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+    'Long B, et al. Controversies in Management of Hyperkalemia. J Emerg Med. 2018;55(2):192-205.',
   ],
 };
 
@@ -1195,6 +1655,43 @@ const TDF_FTC: DrugEntry = {
   citations: [
     'Tanner MR, et al. Antiretroviral PEP After Sexual, IDU, or Other Nonoccupational Exposure to HIV. MMWR. 2025;74(1):1-56.',
     'Gandhi RT, et al. Antiretroviral Drugs for Treatment and Prevention of HIV. JAMA. 2023;329(1):63-84.',
+  ],
+};
+
+const TERBUTALINE: DrugEntry = {
+  id: 'terbutaline',
+  name: 'Terbutaline',
+  genericName: 'Terbutaline sulfate',
+  drugClass: 'Beta-2 adrenergic agonist',
+  route: 'SQ',
+  indications: ['Hyperkalemia (potassium shift)', 'Acute asthma/bronchospasm'],
+  dosing: [
+    {
+      indication: 'Hyperkalemia',
+      regimen: '0.5 mg SQ (or 7 mcg/kg SQ). Onset: 5 minutes. Peak effect: 30-60 minutes. Duration: 3-6 hours.',
+    },
+    {
+      indication: 'Asthma',
+      regimen: '0.25 mg SQ, may repeat q15-30 min PRN, max 0.5 mg in 4 hours.',
+    },
+  ],
+  contraindications: [
+    'Baseline tachycardia (relative)',
+    'Risk of tachyarrhythmia (relative)',
+    'Active myocardial infarction (relative)',
+    'History of seizures (rare, relative)',
+    'Brittle diabetes (relative)',
+  ],
+  cautions: [
+    'Beta-2 metabolic effects: hyperglycemia, hypokalemia, hyperlactatemia',
+    'Some beta-1 activity (~10:1 beta-2:beta-1 ratio)',
+    'MAO inhibitors/TCAs increase hypertension risk',
+  ],
+  monitoring: 'Heart rate, blood pressure, serum potassium, glucose.',
+  notes: 'Terbutaline is logistically superior to nebulized albuterol for hyperkalemia — single SQ injection vs. 4-8 back-to-back nebulizers. Similar potassium-lowering efficacy. Bioavailability: 100% SQ. Peak plasma concentration: ~30 min. ~90% renally eliminated, ~60% unchanged drug. Expected K+ reduction: ~0.5-1 mEq/L.',
+  citations: [
+    'Sowinski KM, et al. Subcutaneous terbutaline use in CKD to reduce potassium concentrations. Am J Kidney Dis. 2005;45(6):1040-5.',
+    'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
   ],
 };
 
@@ -1352,6 +1849,8 @@ const VERAPAMIL: DrugEntry = {
 // -------------------------------------------------------------------
 
 export const ALL_DRUGS: DrugEntry[] = [
+  ACETAZOLAMIDE,
+  ALBUTEROL_NEB,
   ALTEPLASE,
   AMIODARONE,
   APIXABAN,
@@ -1360,7 +1859,11 @@ export const ALL_DRUGS: DrugEntry[] = [
   BENZATHINE_PENICILLIN,
   BIKTARVY,
   BIVALIRUDIN,
+  BUMETANIDE,
+  CALCIUM_CHLORIDE,
+  CALCIUM_GLUCONATE,
   CEFTRIAXONE,
+  CHLOROTHIAZIDE,
   CLEVIDIPINE,
   CLOPIDOGREL,
   DABIGATRAN,
@@ -1373,22 +1876,30 @@ export const ALL_DRUGS: DrugEntry[] = [
   ENOXAPARIN,
   EPINEPHRINE,
   ESMOLOL,
+  FLUDROCORTISONE,
   FONDAPARINUX,
+  FUROSEMIDE,
   LABETALOL,
   LIDOCAINE,
+  SODIUM_ZIRCONIUM_CYCLOSILICATE,
   MAGNESIUM_SULFATE,
+  METOLAZONE,
   METOPROLOL,
   NICARDIPINE,
   NITROGLYCERIN,
   PENICILLIN_G_IV,
   PHENYLEPHRINE,
+  POTASSIUM_CHLORIDE_IV,
+  POTASSIUM_CHLORIDE_ORAL,
   PRASUGREL,
   PROCAINAMIDE,
   PROCAINE_PENICILLIN,
+  REGULAR_INSULIN,
   RITONAVIR,
   RIVAROXABAN,
-  TDF_FTC,
   TENECTEPLASE,
+  TDF_FTC,
+  TERBUTALINE,
   TICAGRELOR,
   UFH,
   VERAPAMIL,
@@ -1411,6 +1922,8 @@ export function getAllDrugs(): DrugEntry[] {
 
 /** Lookup table: maps common drug name fragments to drug store IDs */
 const NAME_TO_ID: [RegExp, string][] = [
+  [/acetazolamide|diamox/i, 'acetazolamide'],
+  [/albuterol|proventil|ventolin/i, 'albuterol-neb'],
   [/alteplase|tPA/i, 'alteplase'],
   [/amiodarone|cordarone/i, 'amiodarone'],
   [/apixaban/i, 'apixaban'],
@@ -1418,8 +1931,12 @@ const NAME_TO_ID: [RegExp, string][] = [
   [/atorvastatin|lipitor/i, 'atorvastatin'],
   [/biktarvy|BIC\/FTC\/TAF/i, 'biktarvy'],
   [/bivalirudin|angiomax/i, 'bivalirudin'],
+  [/bumetanide|bumex/i, 'bumetanide'],
   [/benzathine.*penicillin/i, 'benzathine-penicillin'],
+  [/calcium\s*chloride/i, 'calcium-chloride'],
+  [/calcium\s*gluconate/i, 'calcium-gluconate'],
   [/ceftriaxone/i, 'ceftriaxone'],
+  [/chlorothiazide|diuril/i, 'chlorothiazide'],
   [/clevidipine|cleviprex/i, 'clevidipine'],
   [/clopidogrel|plavix/i, 'clopidogrel'],
   [/dabigatran/i, 'dabigatran'],
@@ -1432,22 +1949,30 @@ const NAME_TO_ID: [RegExp, string][] = [
   [/enoxaparin|LMWH|low.molecular/i, 'enoxaparin'],
   [/epinephrine|adrenaline/i, 'epinephrine'],
   [/esmolol|brevibloc/i, 'esmolol'],
+  [/fludrocortisone|florinef/i, 'fludrocortisone'],
   [/fondaparinux|arixtra/i, 'fondaparinux'],
+  [/furosemide|lasix/i, 'furosemide'],
   [/labetalol/i, 'labetalol'],
   [/lidocaine/i, 'lidocaine'],
+  [/lokelma|sodium\s*zirconium|szc/i, 'sodium-zirconium-cyclosilicate'],
   [/magnesium sulfate|mag sulfate|MgSO4/i, 'magnesium-sulfate'],
+  [/metolazone|zaroxolyn/i, 'metolazone'],
   [/metoprolol|lopressor|toprol/i, 'metoprolol'],
   [/nicardipine|cardene/i, 'nicardipine'],
   [/nitroglycerin|nitro|glyceryl trinitrate|NTG/i, 'nitroglycerin'],
   [/aqueous.*penicillin|penicillin G.*IV|crystalline.*penicillin/i, 'penicillin-g-iv'],
   [/phenylephrine/i, 'phenylephrine'],
+  [/kcl\s*iv|potassium\s*chloride.*iv|iv\s*potassium/i, 'potassium-chloride-iv'],
+  [/kcl\s*oral|potassium\s*chloride.*oral|oral\s*potassium|k-dur|klor-con/i, 'potassium-chloride-oral'],
   [/procainamide|pronestyl/i, 'procainamide'],
   [/procaine.*penicillin/i, 'procaine-penicillin'],
   [/prasugrel|effient/i, 'prasugrel'],
+  [/regular\s*insulin|insulin\s*regular|humulin/i, 'regular-insulin'],
   [/ritonavir|norvir/i, 'ritonavir'],
   [/rivaroxaban/i, 'rivaroxaban'],
   [/tenecteplase|TNKase/i, 'tenecteplase'],
   [/tenofovir.*emtricitabine|truvada|TDF\/FTC/i, 'tdf-ftc'],
+  [/terbutaline|brethine/i, 'terbutaline'],
   [/ticagrelor|brilinta/i, 'ticagrelor'],
   [/unfractionated heparin|^UFH$|heparin sodium/i, 'ufh'],
   [/verapamil|calan|isoptin/i, 'verapamil'],

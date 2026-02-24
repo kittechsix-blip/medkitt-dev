@@ -30,6 +30,14 @@ import {
   NSTEMI_CITATIONS,
   NSTEMI_CLINICAL_NOTES,
 } from '../data/trees/nstemi.js';
+import { ECHO_VIEWS_CITATIONS } from '../data/trees/echo-views.js';
+import { PRIAPISM_CITATIONS, PRIAPISM_CLINICAL_NOTES } from '../data/trees/priapism.js';
+import { AFIB_RVR_CITATIONS } from '../data/trees/afib-rvr.js';
+import { PEP_CITATIONS } from '../data/trees/pep.js';
+import {
+  POTASSIUM_CITATIONS,
+  POTASSIUM_CLINICAL_NOTES,
+} from '../data/trees/potassium.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -80,6 +88,28 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
     citations: NSTEMI_CITATIONS,
     clinicalNotes: NSTEMI_CLINICAL_NOTES,
   },
+  'echo-views': {
+    title: 'Basic Echo Views Reference',
+    citations: ECHO_VIEWS_CITATIONS,
+  },
+  'priapism': {
+    title: 'Priapism Management Reference',
+    citations: PRIAPISM_CITATIONS,
+    clinicalNotes: PRIAPISM_CLINICAL_NOTES,
+  },
+  'afib-rvr': {
+    title: 'A-Fib with RVR Reference',
+    citations: AFIB_RVR_CITATIONS,
+  },
+  'pep': {
+    title: 'HIV Post-Exposure Prophylaxis Reference',
+    citations: PEP_CITATIONS,
+  },
+  'potassium': {
+    title: 'Potassium Disorders Reference',
+    citations: POTASSIUM_CITATIONS,
+    clinicalNotes: POTASSIUM_CLINICAL_NOTES,
+  },
 };
 
 // -------------------------------------------------------------------
@@ -104,7 +134,16 @@ export function renderReferencePanel(container: HTMLElement, treeId?: string): v
     return;
   }
 
-  // No treeId or unknown — show all tree references
+  // Unknown treeId — show message, not all references
+  if (treeId) {
+    const msg = document.createElement('p');
+    msg.style.color = 'var(--color-text-muted)';
+    msg.textContent = 'No references available for this consult.';
+    container.appendChild(msg);
+    return;
+  }
+
+  // No treeId at all — show all tree references
   const allHeading = document.createElement('h2');
   allHeading.className = 'reference-heading';
   allHeading.textContent = 'Reference Tables';

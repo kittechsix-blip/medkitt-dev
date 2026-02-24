@@ -515,6 +515,82 @@ const NSTEMI_MINOCA_PAGE = {
     ],
 };
 // -------------------------------------------------------------------
+// Hyperkalemia ECG Findings
+// -------------------------------------------------------------------
+const K_HYPER_ECG_PAGE = {
+    id: 'k-hyper-ecg-info',
+    title: 'Hyperkalemia ECG Findings',
+    subtitle: 'ECG Progression by Potassium Level',
+    sections: [
+        {
+            heading: 'Early Changes (K+ 5.5-6.5 mEq/L)',
+            body: '**Peaked T-waves** — narrow-based, symmetric, tall. Most sensitive early finding but not specific. Best seen in precordial leads V2-V4.\n\nFlattened P-waves.\n\nST-segment depression.',
+        },
+        {
+            heading: 'Moderate Changes (K+ 6.5-7.5 mEq/L)',
+            body: 'PR interval prolongation → first-degree AV block.\n\nFurther P-wave flattening or complete loss of P-waves.\n\nContinued T-wave peaking.',
+        },
+        {
+            heading: 'Severe Changes (K+ 7.0-8.0 mEq/L)',
+            body: '**QRS widening** (> 120 ms) — intraventricular conduction delay.\n\nLoss of P-waves.\n\nBradycardia from prolonged PR and QRS.\n\nBundle branch block patterns.\n\nJunctional or escape rhythms.\n\nSecond- or third-degree AV block.',
+        },
+        {
+            heading: 'Life-Threatening (K+ > 8.0 mEq/L)',
+            body: '**Sine wave pattern** — merged wide QRS complexes with peaked T-waves. Pathognomonic.\n\nVentricular fibrillation.\n\nAsystole or pulseless electrical activity.\n\nComplete heart block.',
+        },
+        {
+            heading: 'Most Dangerous ECG Findings',
+            body: 'The following findings are associated with serious adverse events (VF, cardiac arrest, death within 6 hours):\n\n• **Bradycardia** — RR 12.3\n• **Junctional rhythm** — RR 7.5\n• **Prolonged QRS** — RR 4.7\n\nFrequency in severe hyperkalemia (K+ ≥ 6.5):\n• Peaked T-waves: 35.7%\n• Prolonged PR: 12.1%\n• Bradycardia: 12.0%\n• Widened QRS: 7.8%\n• Escape rhythm: 7.1%\n• High-degree AV block: 3.5%\n• Ventricular arrhythmias: 0.7%',
+        },
+        {
+            heading: 'Clinical Pearls',
+            body: 'ECG changes typically do not manifest until K+ exceeds 6.5 mEq/L. [1]\n\nECG changes have **low sensitivity** for detecting hyperkalemia and do not correlate reliably with specific K+ levels. [2]\n\nThe **rate of potassium rise** is often more important than the absolute level — patients with lower baseline K+ who experience rapid increases are at higher risk. [3]\n\nChronic hyperkalemia (e.g., dialysis patients) is better tolerated — these patients may have elevated K+ with fewer ECG manifestations. [1]\n\n**Never rule out dangerous hyperkalemia based on a normal ECG.** Sensitivity for peaked T-waves is only ~34%. [3]',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Sandau KE, et al. Update to Practice Standards for ECG Monitoring in Hospital Settings. Circulation. 2017;136(19):e273-e344.' },
+        { num: 2, text: 'Kim MJ, et al. Potassium Disorders: Hypokalemia and Hyperkalemia. Am Fam Physician. 2023;107(1):59-70.' },
+        { num: 3, text: 'Nakayama T, et al. Baseline Potassium Levels and Their Association With ECG Abnormalities in Hyperkalaemia. Nephrology. 2025;30(7):e70100.' },
+        { num: 4, text: 'Durfey N, et al. Severe Hyperkalemia: Can the ECG Risk Stratify? West J Emerg Med. 2017;18(5):963-971.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Hypokalemia ECG Findings
+// -------------------------------------------------------------------
+const K_HYPO_ECG_PAGE = {
+    id: 'k-hypo-ecg-info',
+    title: 'Hypokalemia ECG Findings',
+    subtitle: 'ECG Changes and Arrhythmia Risk',
+    sections: [
+        {
+            heading: 'Classic ECG Findings',
+            body: 'The earliest change is **decreased T-wave amplitude**, progressing as potassium declines.\n\n• **T-wave flattening/inversion** (27% of patients) — most common finding\n• **ST-segment depression** (16%) — upsloping morphology\n• **QTc prolongation** (14%) — often actually QTU prolongation with T-U wave fusion\n• **Prominent U waves** (> 1 mm amplitude) — most specific finding\n• U waves larger than T-waves in same lead (U:T ratio > 1)\n\nBest seen in leads V2 and V3.\n\nECG changes are present in only about **40% of hypokalemic patients**. [1]',
+        },
+        {
+            heading: 'Quantitative ECG Effects',
+            body: 'For each 1 mmol/L decrease in potassium within the low range (2.0-4.1): [4]\n\n• QTc prolongation: **+12.8 ms**\n• T-wave amplitude reduction: **-43.1 μV**\n• PR interval prolongation: **+4.6 ms**\n• P-wave duration prolongation: **+2.7 ms**',
+        },
+        {
+            heading: 'Arrhythmia Risk',
+            body: 'QTc prolongation increases risk of **Torsades de Pointes**.\n\n**AVOID QT-prolonging drugs** in hypokalemia:\n• Amiodarone, sotalol\n• Fluoroquinolones\n• Ondansetron\n• Haloperidol, droperidol\n• Methadone\n\nOther arrhythmias:\n• First- or second-degree AV block\n• Atrial fibrillation\n• PVCs\n• Ventricular tachycardia\n• Ventricular fibrillation and cardiac arrest\n\n**Digitalis toxicity** is potentiated by hypokalemia — monitor carefully in patients on digoxin.',
+        },
+        {
+            heading: 'Severe Hypokalemia (K+ < 2.5 mEq/L)',
+            body: 'Characteristic findings include:\n\n• **Prominent U waves** with T-U fusion\n• ST-segment depression\n• T-wave flattening or inversion\n• Apparent QT prolongation (often QTU interval)\n• Widened QRS in severe cases\n\nLife-threatening arrhythmias may occur: VT, Torsades de Pointes, VF, cardiac arrest. [2] [3]',
+        },
+        {
+            heading: 'Clinical Pearls',
+            body: 'ECG changes do NOT reliably correlate with specific K+ levels. [2]\n\nThe **rapidity of decline** is more predictive of ECG changes than the absolute level. [2]\n\nConsider hypokalemia in any patient with **new-onset AF or VT**.\n\nU waves are a classic teaching point but present in only ~20% of hypokalemic patients — QTc prolongation is the most clinically significant finding.\n\nAlways obtain ECG when hypokalemia is identified to determine treatment urgency. [2]',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Kildegaard H, et al. Prevalence and Prognostic Value of ECG Abnormalities in Hypokalemia. J Intern Med. 2024;295(4):544-556.' },
+        { num: 2, text: 'Kim MJ, et al. Potassium Disorders: Hypokalemia and Hyperkalemia. Am Fam Physician. 2023;107(1):59-70.' },
+        { num: 3, text: 'Sandau KE, et al. Update to Practice Standards for ECG Monitoring in Hospital Settings. Circulation. 2017;136(19):e273-e344.' },
+        { num: 4, text: 'Krogager ML, et al. Relationship Between Serum K+ and ECG Characteristics in 163,547 Individuals. J Electrocardiol. 2019;57:104-111.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 const INFO_PAGES = {
@@ -531,6 +607,8 @@ const INFO_PAGES = {
     'nstemi-conservative': NSTEMI_CONSERVATIVE_PAGE,
     'nstemi-pocus': NSTEMI_POCUS_PAGE,
     'nstemi-minoca': NSTEMI_MINOCA_PAGE,
+    'k-hyper-ecg-info': K_HYPER_ECG_PAGE,
+    'k-hypo-ecg-info': K_HYPO_ECG_PAGE,
 };
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes

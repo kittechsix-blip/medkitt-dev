@@ -11,6 +11,7 @@ import { ECHO_VIEWS_CITATIONS } from '../data/trees/echo-views.js';
 import { PRIAPISM_CITATIONS, PRIAPISM_CLINICAL_NOTES } from '../data/trees/priapism.js';
 import { AFIB_RVR_CITATIONS } from '../data/trees/afib-rvr.js';
 import { PEP_CITATIONS } from '../data/trees/pep.js';
+import { POTASSIUM_CITATIONS, POTASSIUM_CLINICAL_NOTES, } from '../data/trees/potassium.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -64,6 +65,11 @@ const TREE_REFERENCE_DATA = {
     'pep': {
         title: 'HIV Post-Exposure Prophylaxis Reference',
         citations: PEP_CITATIONS,
+    },
+    'potassium': {
+        title: 'Potassium Disorders Reference',
+        citations: POTASSIUM_CITATIONS,
+        clinicalNotes: POTASSIUM_CLINICAL_NOTES,
     },
 };
 // -------------------------------------------------------------------

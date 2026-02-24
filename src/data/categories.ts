@@ -89,6 +89,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 17,
         entryNodeId: 'nstemi-start',
+      },
+      {
+        id: 'potassium',
+        title: 'Potassium Disorders',
+        subtitle: 'HyperK vs HypoK \u2192 Severity \u2192 Treatment \u2192 Monitoring',
+        categoryId: 'emergency-medicine',
+        version: '1.0',
+        nodeCount: 24,
+        entryNodeId: 'k-start',
       }
     ],
     isCustom: false,
@@ -122,7 +131,23 @@ export const DEFAULT_CATEGORIES: Category[] = [
     isCustom: false,
   },
   { id: 'med-calc',             name: 'Med-Calc',              icon: 'med-calc.png',          decisionTrees: [], isCustom: false },
-  { id: 'nephro-rheum-endo',    name: 'Nephro/Rheum/Endo',     icon: 'nephro-rheum-endo.png', decisionTrees: [], isCustom: false },
+  {
+    id: 'nephro-rheum-endo',
+    name: 'Nephro/Rheum/Endo',
+    icon: 'nephro-rheum-endo.png',
+    decisionTrees: [
+      {
+        id: 'potassium',
+        title: 'Potassium Disorders',
+        subtitle: 'HyperK vs HypoK \u2192 Severity \u2192 Treatment \u2192 Monitoring',
+        categoryId: 'nephro-rheum-endo',
+        version: '1.0',
+        nodeCount: 24,
+        entryNodeId: 'k-start',
+      }
+    ],
+    isCustom: false,
+  },
   {
     id: 'neurology',
     name: 'Neurology',
