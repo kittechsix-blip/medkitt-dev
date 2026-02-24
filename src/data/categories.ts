@@ -98,6 +98,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 24,
         entryNodeId: 'k-start',
+      },
+      {
+        id: 'uti-peds',
+        title: 'UTI (First Febrile) / Neonatal',
+        subtitle: 'Age → Screening → Antibiotics → Imaging → Disposition',
+        categoryId: 'emergency-medicine',
+        version: '1.0',
+        nodeCount: 28,
+        entryNodeId: 'uti-start',
       }
     ],
     isCustom: false,
@@ -180,6 +189,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 13,
         entryNodeId: 'croup-start',
+      },
+      {
+        id: 'uti-peds',
+        title: 'UTI (First Febrile) / Neonatal',
+        subtitle: 'Age → Screening → Antibiotics → Imaging → Disposition',
+        categoryId: 'pediatrics',
+        version: '1.0',
+        nodeCount: 28,
+        entryNodeId: 'uti-start',
       }
     ],
     isCustom: false,

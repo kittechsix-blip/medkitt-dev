@@ -14,6 +14,7 @@ import { PEP_NODES, PEP_CITATIONS, PEP_MODULE_LABELS } from '../data/trees/pep.j
 import { STROKE_NODES, STROKE_CITATIONS, STROKE_MODULE_LABELS } from '../data/trees/stroke.js';
 import { NSTEMI_NODES, NSTEMI_CITATIONS, NSTEMI_MODULE_LABELS } from '../data/trees/nstemi.js';
 import { POTASSIUM_NODES, POTASSIUM_CITATIONS, POTASSIUM_MODULE_LABELS } from '../data/trees/potassium.js';
+import { UTI_PEDS_NODES, UTI_PEDS_CITATIONS, UTI_PEDS_MODULE_LABELS } from '../data/trees/uti-peds.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -119,6 +120,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'pediatrics',
     moduleLabels: CROUP_MODULE_LABELS,
     citations: CROUP_CITATIONS,
+  },
+  'uti-peds': {
+    nodes: UTI_PEDS_NODES,
+    entryNodeId: 'uti-start',
+    categoryId: 'pediatrics',
+    moduleLabels: UTI_PEDS_MODULE_LABELS,
+    citations: UTI_PEDS_CITATIONS,
   },
 };
 
