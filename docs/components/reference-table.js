@@ -7,6 +7,10 @@ import { PE_TREATMENT_CITATIONS, PE_TREATMENT_DIAGNOSTIC_TESTS, PE_TREATMENT_CLI
 import { CHEST_TUBE_CITATIONS, CHEST_TUBE_CLINICAL_NOTES, } from '../data/trees/chest-tube.js';
 import { STROKE_CITATIONS, STROKE_CLINICAL_NOTES, } from '../data/trees/stroke.js';
 import { NSTEMI_CITATIONS, NSTEMI_CLINICAL_NOTES, } from '../data/trees/nstemi.js';
+import { ECHO_VIEWS_CITATIONS } from '../data/trees/echo-views.js';
+import { PRIAPISM_CITATIONS, PRIAPISM_CLINICAL_NOTES } from '../data/trees/priapism.js';
+import { AFIB_RVR_CITATIONS } from '../data/trees/afib-rvr.js';
+import { PEP_CITATIONS } from '../data/trees/pep.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -44,6 +48,23 @@ const TREE_REFERENCE_DATA = {
         citations: NSTEMI_CITATIONS,
         clinicalNotes: NSTEMI_CLINICAL_NOTES,
     },
+    'echo-views': {
+        title: 'Basic Echo Views Reference',
+        citations: ECHO_VIEWS_CITATIONS,
+    },
+    'priapism': {
+        title: 'Priapism Management Reference',
+        citations: PRIAPISM_CITATIONS,
+        clinicalNotes: PRIAPISM_CLINICAL_NOTES,
+    },
+    'afib-rvr': {
+        title: 'A-Fib with RVR Reference',
+        citations: AFIB_RVR_CITATIONS,
+    },
+    'pep': {
+        title: 'HIV Post-Exposure Prophylaxis Reference',
+        citations: PEP_CITATIONS,
+    },
 };
 // -------------------------------------------------------------------
 // Render: Reference Panel (standalone page)
@@ -63,7 +84,15 @@ export function renderReferencePanel(container, treeId) {
         renderTreeReference(container, data);
         return;
     }
-    // No treeId or unknown — show all tree references
+    // Unknown treeId — show message, not all references
+    if (treeId) {
+        const msg = document.createElement('p');
+        msg.style.color = 'var(--color-text-muted)';
+        msg.textContent = 'No references available for this consult.';
+        container.appendChild(msg);
+        return;
+    }
+    // No treeId at all — show all tree references
     const allHeading = document.createElement('h2');
     allHeading.className = 'reference-heading';
     allHeading.textContent = 'Reference Tables';
