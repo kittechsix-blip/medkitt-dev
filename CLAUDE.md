@@ -95,11 +95,16 @@ interface WeightCalc {
 
 ## Category System
 
-23 EM categories (alphabetical) + custom "Add" option + 2 tool categories (Drug Reference, Medical Calculators). Categories with content: Infectious Disease (Neurosyphilis), Ultrasound (Pneumothorax POCUS, Basic Echo Views), Pulmonology (PE Treatment).
+19 EM categories (alphabetical) + custom "Add" option + 2 tool categories (Pharmacy, Med-Calc).
+
+**Category view conventions (ALWAYS follow):**
+- Consults within each category are **sorted alphabetically** by title (`category-view.ts` sorts at render time)
+- Categories with **3+ consults** show a search/filter input at the top
+- When adding a new consult to `categories.ts`, no need to maintain alphabetical order in the data array — the view handles sorting automatically
 
 ## Current Status
 
-v1.19 — 14 consults, Pharmacy (71 drugs), Med-Calc (PESI/sPESI/CHA₂DS₂-VASc/NIHSS/TIMI)
+v1.20 — 15 consults, Pharmacy (71 drugs), Med-Calc (PESI/sPESI/CHA₂DS₂-VASc/NIHSS/TIMI/BAS)
 
 Core build tasks (all complete):
 - [x] Tasks 0-12: Foundation → PWA shell → TypeScript → Router → Categories → Wizard → Results → References → Deploy

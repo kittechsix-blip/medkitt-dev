@@ -482,6 +482,13 @@ body {
   box-shadow: 0 0 0 2px rgba(60, 179, 113, 0.15);
 }
 
+/* Category view search — full width variant */
+.category-search-input {
+  flex: unset;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
 /* Search results */
 .search-results {
   margin-top: 8px;

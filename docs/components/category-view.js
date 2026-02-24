@@ -41,16 +41,36 @@ export function renderCategoryView(container, categoryId) {
     header.appendChild(icon);
     header.appendChild(name);
     container.appendChild(header);
-    // Tree list or empty state
+    // Tree list or empty state — always alphabetical
     if (category.decisionTrees.length === 0) {
         renderEmptyState(container);
     }
     else {
-        renderTreeList(container, category.decisionTrees);
+        const sorted = [...category.decisionTrees].sort((a, b) => a.title.localeCompare(b.title));
+        renderTreeList(container, sorted);
     }
 }
-/** Render the list of decision trees */
+/** Render the list of decision trees with optional search filter */
 function renderTreeList(container, trees) {
+    // Search filter — show for 3+ consults
+    if (trees.length >= 3) {
+        const searchInput = document.createElement('input');
+        searchInput.type = 'search';
+        searchInput.className = 'home-search-input category-search-input';
+        searchInput.placeholder = 'Filter consults\u2026';
+        searchInput.setAttribute('aria-label', 'Filter consults in this category');
+        container.appendChild(searchInput);
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.trim().toLowerCase();
+            const cards = list.querySelectorAll('.tree-card');
+            cards.forEach((card, i) => {
+                const match = !q
+                    || trees[i].title.toLowerCase().includes(q)
+                    || trees[i].subtitle.toLowerCase().includes(q);
+                card.style.display = match ? '' : 'none';
+            });
+        });
+    }
     const list = document.createElement('div');
     list.className = 'tree-list';
     for (const tree of trees) {

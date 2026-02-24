@@ -314,6 +314,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 8,
         entryNodeId: 'echo-views-start',
+      },
+      {
+        id: 'echo-epss',
+        title: 'Echo-EPSS for Systolic Function',
+        subtitle: 'PLAX \u2192 M-Mode \u2192 Measure EPSS \u2192 Interpret \u2192 Grey Zone',
+        categoryId: 'us-rads',
+        version: '1.0',
+        nodeCount: 10,
+        entryNodeId: 'epss-start',
       }
     ],
     isCustom: false,

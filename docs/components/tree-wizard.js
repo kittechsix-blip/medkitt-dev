@@ -16,6 +16,7 @@ import { POTASSIUM_NODES, POTASSIUM_CITATIONS, POTASSIUM_MODULE_LABELS } from '.
 import { UTI_PEDS_NODES, UTI_PEDS_CITATIONS, UTI_PEDS_MODULE_LABELS } from '../data/trees/uti-peds.js';
 import { PEDS_FEVER_NODES, PEDS_FEVER_CITATIONS, PEDS_FEVER_MODULE_LABELS } from '../data/trees/peds-fever.js';
 import { BRONCHIOLITIS_NODES, BRONCHIOLITIS_CITATIONS, BRONCHIOLITIS_MODULE_LABELS } from '../data/trees/bronchiolitis.js';
+import { ECHO_EPSS_NODES, ECHO_EPSS_CITATIONS, ECHO_EPSS_MODULE_LABELS } from '../data/trees/echo-epss.js';
 import { router } from '../services/router.js';
 import { renderInlineCitations } from './reference-table.js';
 import { showInfoModal } from './info-page.js';
@@ -126,6 +127,13 @@ const TREE_CONFIGS = {
         categoryId: 'pediatrics',
         moduleLabels: BRONCHIOLITIS_MODULE_LABELS,
         citations: BRONCHIOLITIS_CITATIONS,
+    },
+    'echo-epss': {
+        nodes: ECHO_EPSS_NODES,
+        entryNodeId: 'epss-start',
+        categoryId: 'us-rads',
+        moduleLabels: ECHO_EPSS_MODULE_LABELS,
+        citations: ECHO_EPSS_CITATIONS,
     },
 };
 let engine = null;
@@ -632,9 +640,9 @@ function renderNodeImages(container, node) {
 // -------------------------------------------------------------------
 // Helpers
 // -------------------------------------------------------------------
-/** Render body text with line breaks preserved. Supports [text](#/info/id), [text](#/drug/id), and [text](#/calculator/id) inline links. */
+/** Render body text with line breaks preserved. Supports [text](#/info/id), [text](#/drug/id), [text](#/calculator/id), [text](#/tree/id), and [text](https://url) links. */
 function renderBodyText(container, text) {
-    const linkPattern = /\[([^\]]+)\]\(#\/(info|drug|calculator|tree)\/([^)]+)\)/g;
+    const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
     const lines = text.split('\n');
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
@@ -649,24 +657,38 @@ function renderBodyText(container, text) {
             let match;
             while ((match = linkPattern.exec(line)) !== null) {
                 const linkLabel = match[1];
-                const linkType = match[2]; // 'info' or 'drug'
-                const linkId = match[3];
+                const linkUrl = match[2];
                 // Text before the link
                 if (match.index > lastIndex) {
-                    p.appendChild(document.createTextNode(line.slice(lastIndex, match.index)));
+                    appendBoldAware(p, line.slice(lastIndex, match.index));
                 }
-                // Inline link — uses data attributes + event delegation for iOS Safari reliability
-                const link = document.createElement('button');
-                link.className = 'body-inline-link';
-                link.textContent = linkLabel;
-                link.setAttribute('data-link-type', linkType);
-                link.setAttribute('data-link-id', linkId);
-                p.appendChild(link);
+                if (linkUrl.startsWith('http://') || linkUrl.startsWith('https://')) {
+                    // External link — opens in new tab
+                    const link = document.createElement('a');
+                    link.className = 'body-inline-link';
+                    link.href = linkUrl;
+                    link.textContent = linkLabel;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    p.appendChild(link);
+                }
+                else {
+                    // Internal link — uses data attributes + event delegation for iOS Safari reliability
+                    const parts = linkUrl.replace(/^#\//, '').split('/');
+                    const linkType = parts[0];
+                    const linkId = parts.slice(1).join('/');
+                    const link = document.createElement('button');
+                    link.className = 'body-inline-link';
+                    link.textContent = linkLabel;
+                    link.setAttribute('data-link-type', linkType);
+                    link.setAttribute('data-link-id', linkId);
+                    p.appendChild(link);
+                }
                 lastIndex = match.index + match[0].length;
             }
             // Text after the last link
             if (lastIndex < line.length) {
-                p.appendChild(document.createTextNode(line.slice(lastIndex)));
+                appendBoldAware(p, line.slice(lastIndex));
             }
             container.appendChild(p);
         }
