@@ -1170,6 +1170,175 @@ const SD_SUMMARY = {
     ],
 };
 // -------------------------------------------------------------------
+// A-Fib RVR — Steps Summary
+// -------------------------------------------------------------------
+const AFIB_SUMMARY = {
+    id: 'afib-summary',
+    title: 'A-Fib RVR Management Steps',
+    subtitle: 'Quick-reference for rate control, cardioversion, and anticoagulation',
+    sections: [
+        {
+            heading: '1. Initial Assessment',
+            body: '• [Confirm A-Fib RVR on 12-lead ECG — identify precipitants](#/node/afib-start)\n• [Assess hemodynamic stability](#/node/afib-stability)',
+        },
+        {
+            heading: '2. Unstable — Cardiovert',
+            body: '• [Screen for WPW — if yes, AV nodal blockers are CONTRAINDICATED](#/node/afib-unstable-wpw)\n• [Synchronized cardioversion 200J biphasic + sedation](#/node/afib-cardioversion-protocol)',
+        },
+        {
+            heading: '3. Stable — Rate Control',
+            body: '• [Beta-blocker (Metoprolol) or CCB (Diltiazem) — do NOT combine](#/node/afib-stable-drugs)\n• [CCB contraindicated if EF ≤40% or decompensated HF](#/node/afib-stable-drugs)\n• [IV Magnesium as adjunct — blocks slow Ca channels at AV node](#/node/afib-stable-drugs)',
+        },
+        {
+            heading: '4. Refractory — Escalate',
+            body: '• [Add IV Magnesium, Digoxin, or switch to Amiodarone](#/node/afib-refractory)\n• [Consider rhythm control if rate control fails](#/node/afib-rhythm-control)',
+        },
+        {
+            heading: '5. Anticoagulation',
+            body: '• [NOAF — generally do NOT anticoagulate (will revert)](#/node/afib-noaf-anticoag)\n• [Known/Chronic AF — CHA₂DS₂-VASc score guides anticoagulation](#/node/afib-cha2ds2vasc)',
+        },
+        {
+            heading: '6. Disposition',
+            body: '• [Continue agent that achieved rate control — target HR <100–110](#/node/afib-disposition)\n• [Cardiology follow-up for new-onset AF or refractory symptoms](#/node/afib-disposition)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for Atrial Fibrillation. J Am Coll Cardiol. 2024.' },
+    ],
+};
+// -------------------------------------------------------------------
+// PE Treatment — Steps Summary
+// -------------------------------------------------------------------
+const PE_SUMMARY = {
+    id: 'pe-summary',
+    title: 'PE Treatment Steps Summary',
+    subtitle: 'Risk stratification and management by hemodynamic status',
+    sections: [
+        {
+            heading: '1. Risk Stratify',
+            body: '• [Assess hemodynamic stability (SBP <90 = high risk)](#/node/pe-hemodynamics)\n• [Evaluate RV function on echo or CTPA](#/node/pe-rv)\n• [Check troponin for myocardial injury](#/node/pe-troponin-rv-pos)\n• [PESI/sPESI for clinical severity](#/node/pe-severity)',
+        },
+        {
+            heading: '2. High Risk (Unstable)',
+            body: '• [Start IV heparin (bolus 80 u/kg then 18 u/kg/hr)](#/node/pe-high-heparin)\n• [Screen for thrombolytic contraindications](#/node/pe-high-lytic-check)\n• [Alteplase 100 mg over 2 hours — stop heparin during infusion](#/node/pe-high-lytic-protocol)\n• [If thrombolysis fails → mechanical thrombectomy, CDT, or ECMO](#/node/pe-high-respond-no)',
+        },
+        {
+            heading: '3. Intermediate-High Risk',
+            body: '• [IV heparin + evaluate reperfusion strategy](#/node/pe-int-high-strategy)\n• [CDT/EKOS for moderate clot, CDT + mechanical for severe/proximal](#/node/pe-int-high-strategy)\n• [Monitor on systemic heparin trial if stable](#/node/pe-int-high-heparin)',
+        },
+        {
+            heading: '4. Intermediate-Low Risk',
+            body: '• [Start anticoagulation — UFH or LMWH (enoxaparin)](#/node/pe-int-low-treat)\n• [Monitor for clinical worsening — escalate if needed](#/node/pe-int-low-treat)',
+        },
+        {
+            heading: '5. Low Risk',
+            body: '• [Anticoagulate — UFH, LMWH, or oral DOAC](#/node/pe-low-treat)\n• [Consider outpatient management if all discharge criteria met](#/node/pe-low-treat)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Konstantinides SV, et al. 2019 ESC Guidelines for Acute Pulmonary Embolism. Eur Heart J. 2020.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Hyperkalemia — Steps Summary
+// -------------------------------------------------------------------
+const K_SUMMARY = {
+    id: 'k-summary',
+    title: 'Potassium Disorders Steps Summary',
+    subtitle: 'Stepwise management of hyperkalemia and hypokalemia',
+    sections: [
+        {
+            heading: '1. Initial Assessment',
+            body: '• [Check K+ level — classify as hyperK, hypoK, or borderline](#/node/k-start)\n• [Rule out pseudohyperkalemia if result is unexpected](#/node/k-pseudo)\n• [Get ECG immediately for any hyperkalemia](#/node/k-hyper-ecg)',
+        },
+        {
+            heading: '2. Severe HyperK — Temporize (all simultaneously)',
+            body: '• [IV Calcium (Gluconate 3g or Chloride 1g) — membrane stabilization](#/node/k-hyper-calcium)\n• [Regular Insulin 5 units IV + Dextrose — intracellular K+ shift](#/node/k-hyper-insulin)\n• [Terbutaline 0.5 mg SQ or Albuterol 10–20 mg neb — K+ shift](#/node/k-hyper-beta2)',
+        },
+        {
+            heading: '3. Volume Resuscitate',
+            body: '• [Bicarb <22 → isotonic bicarbonate as resuscitative fluid](#/node/k-hyper-bicarb)\n• [Bicarb ≥22 → LR or Plasmalyte. Do NOT use normal saline](#/node/k-hyper-step2)',
+        },
+        {
+            heading: '4. Kaliuresis + Elimination',
+            body: '• [Furosemide ± thiazide ± acetazolamide ± fludrocortisone ("nephron bomb")](#/node/k-hyper-step3)\n• [Lokelma (SZC) 10g PO q8h — mild adjunct, do not rely on alone](#/node/k-hyper-step4)\n• [Dialysis if anuric or all other measures fail](#/node/k-hyper-step5)',
+        },
+        {
+            heading: '5. Hypokalemia',
+            body: '• [Severe (K+ ≤2.5) → KCl 5–10 mEq IV over 15–30 min with cardiac monitoring](#/node/k-hypo-severe)\n• [Mild-Moderate → KCl 20–40 mEq PO](#/node/k-hypo-mild)\n• [Always check and correct magnesium — hypoMg makes K+ repletion refractory](#/node/k-hypo-severe)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Acute Ischemic Stroke — Steps Summary
+// -------------------------------------------------------------------
+const STROKE_SUMMARY = {
+    id: 'stroke-summary',
+    title: 'Ischemic Stroke Steps Summary',
+    subtitle: 'Time-critical reperfusion pathway — every minute counts',
+    sections: [
+        {
+            heading: '1. Immediate Actions',
+            body: '• [Fingerstick glucose (only required pre-tPA lab)](#/node/stroke-start)\n• [NIHSS score — disabling if ≥6](#/node/stroke-deficit)\n• [Establish last known well time](#/node/stroke-timing)\n• [CT head non-contrast to rule out hemorrhage](#/node/stroke-start)',
+        },
+        {
+            heading: '2. Standard IVT Window (0–4.5h)',
+            body: '• [Review thrombolysis contraindications — BP must be <185/110](#/node/stroke-ivt-check)\n• [Tenecteplase 0.25 mg/kg IV bolus (preferred) or Alteplase 0.9 mg/kg](#/node/stroke-ivt-treat)\n• [Post-tPA: BP <180/105 × 24h, neuro checks q15min, no antithrombotics × 24h](#/node/stroke-ivt-treat)',
+        },
+        {
+            heading: '3. Extended Window + EVT',
+            body: '• [4.5–9h → perfusion imaging for IVT eligibility (EXTEND criteria)](#/node/stroke-extended-ivt)\n• [LVO on CTA → activate neurointerventional team for EVT](#/node/stroke-evt-eligible)\n• [EVT window up to 24h with LVO + favorable perfusion (DAWN/DEFUSE-3)](#/node/stroke-evt-window)',
+        },
+        {
+            heading: '4. Minor Stroke (NIHSS 0–5)',
+            body: '• [ABCD2 ≥4 or infarct → DAPT: Aspirin 325 + Clopidogrel 300 load](#/node/stroke-dapt)\n• [Low risk → single antiplatelet (Aspirin)](#/node/stroke-single-antiplatelet)',
+        },
+        {
+            heading: '5. Secondary Prevention',
+            body: '• [AF detected → DOAC (Apixaban or Rivaroxaban), do NOT bridge with heparin](#/node/stroke-afib)\n• [Carotid stenosis 70–99% → CEA within 2 weeks](#/node/stroke-atherosclerotic)\n• [High-intensity statin for all, BP target <130/80](#/node/stroke-other-prevention)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Powers WJ, et al. 2019 Guidelines for Early Management of Acute Ischemic Stroke. Stroke. 2019.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Pneumothorax POCUS — Steps Summary
+// -------------------------------------------------------------------
+const PTX_SUMMARY = {
+    id: 'ptx-summary',
+    title: 'Pneumothorax POCUS Steps Summary',
+    subtitle: 'Sequential sonographic signs for bedside pneumothorax diagnosis',
+    sections: [
+        {
+            heading: 'Setup',
+            body: '• [High-frequency linear probe, longitudinal, anterior chest 3rd–4th ICS MCL](#/node/pneumothorax-start)\n• [Patient supine — free air rises anteriorly](#/node/pneumothorax-start)',
+        },
+        {
+            heading: 'Step 1: Lung Sliding',
+            body: '• [Lung sliding PRESENT → pneumothorax excluded at this location](#/node/ptx-lung-sliding)\n• [Lung sliding ABSENT → proceed to B-line assessment](#/node/ptx-lung-sliding)',
+        },
+        {
+            heading: 'Step 2: B-Lines',
+            body: '• [B-lines present (even without sliding) → NOT pneumothorax](#/node/ptx-blines-check)\n• [No B-lines + no sliding (A-lines only) → high suspicion for PTX](#/node/ptx-a-profile)',
+        },
+        {
+            heading: 'Step 3: Lung Point',
+            body: '• [Scan laterally — find transition zone where sliding resumes](#/node/ptx-lung-point)\n• [Lung point found → PNEUMOTHORAX CONFIRMED (100% specific, pathognomonic)](#/node/ptx-confirmed)\n• [Location estimates size: anterior=small, lateral=moderate, posterior=large](#/node/ptx-confirmed)',
+        },
+        {
+            heading: 'Step 4: M-Mode',
+            body: '• [Barcode/stratosphere sign → highly suggestive (no lung movement)](#/node/ptx-mmode)\n• [Seashore sign → normal lung movement, reassess findings](#/node/ptx-reassess)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Lichtenstein DA, et al. Ultrasound Diagnosis of Occult Pneumothorax. Crit Care Med. 2005.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 const INFO_PAGES = {
@@ -1205,6 +1374,11 @@ const INFO_PAGES = {
     'bronch-parent-es': BRONCH_PARENT_ES,
     'precip-delivery-summary': PRECIP_DELIVERY_SUMMARY,
     'sd-summary': SD_SUMMARY,
+    'afib-summary': AFIB_SUMMARY,
+    'pe-summary': PE_SUMMARY,
+    'k-summary': K_SUMMARY,
+    'stroke-summary': STROKE_SUMMARY,
+    'ptx-summary': PTX_SUMMARY,
 };
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes

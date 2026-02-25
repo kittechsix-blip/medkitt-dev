@@ -11,7 +11,7 @@ export const POTASSIUM_NODES = [
         type: 'question',
         module: 1,
         title: 'Potassium Level',
-        body: 'What is the serum potassium level?\n\nConfirm result with clinical context. Consider repeating if unexpected.',
+        body: '[Potassium Disorders Steps Summary](#/info/k-summary) — stepwise management of hyperkalemia and hypokalemia.\n\nWhat is the serum potassium level?\n\nConfirm result with clinical context. Consider repeating if unexpected.',
         options: [
             {
                 label: 'Hyperkalemia (K+ > 5.5 mEq/L)',

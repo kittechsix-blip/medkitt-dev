@@ -11,7 +11,7 @@ export const AFIB_RVR_NODES = [
         type: 'info',
         module: 1,
         title: 'A-Fib RVR: Initial Assessment',
-        body: 'Atrial fibrillation with rapid ventricular response (RVR) is characterized by an irregularly irregular rhythm with a ventricular rate typically 120\u2013180 bpm. Confirm with 12-lead ECG.\n\nCOMMON PRECIPITANTS\n\u2022 Electrolyte abnormalities (K\u207a, Mg\u00b2\u207a)\n\u2022 Sepsis / infection\n\u2022 Pulmonary embolism\n\u2022 Thyrotoxicosis\n\u2022 Alcohol use / withdrawal\n\u2022 Pain / agitation\n\u2022 Respiratory failure / hypoxia\n\u2022 Underlying cardiac disease (valvular, ischemic, HF)\n\nAlways treat underlying causes alongside rate control. A-Fib RVR is often a symptom of another process \u2014 rate control alone may be insufficient if the precipitant is not addressed.',
+        body: '[A-Fib RVR Management Steps](#/info/afib-summary) \u2014 quick-reference for rate control, cardioversion, and anticoagulation.\n\nAtrial fibrillation with rapid ventricular response (RVR) is characterized by an irregularly irregular rhythm with a ventricular rate typically 120\u2013180 bpm. Confirm with 12-lead ECG.\n\nCOMMON PRECIPITANTS\n\u2022 Electrolyte abnormalities (K\u207a, Mg\u00b2\u207a)\n\u2022 Sepsis / infection\n\u2022 Pulmonary embolism\n\u2022 Thyrotoxicosis\n\u2022 Alcohol use / withdrawal\n\u2022 Pain / agitation\n\u2022 Respiratory failure / hypoxia\n\u2022 Underlying cardiac disease (valvular, ischemic, HF)\n\nAlways treat underlying causes alongside rate control. A-Fib RVR is often a symptom of another process \u2014 rate control alone may be insufficient if the precipitant is not addressed.',
         citation: [1, 3],
         next: 'afib-stability',
     },
