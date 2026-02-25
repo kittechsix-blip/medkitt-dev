@@ -234,7 +234,7 @@ export function renderInlineCitations(container: HTMLElement, citationNums: numb
 
     const textEl = document.createElement('span');
     textEl.className = 'reference-citation-text';
-    textEl.textContent = cite.text;
+    renderCitationText(textEl, cite.text);
 
     item.appendChild(numEl);
     item.appendChild(textEl);
@@ -335,6 +335,27 @@ function renderClinicalNotes(container: HTMLElement, notes: string[]): void {
 // Citations Panel
 // -------------------------------------------------------------------
 
+/** Render citation text with URLs as clickable links. */
+function renderCitationText(parent: HTMLElement, text: string): void {
+  const urlPattern = /(https?:\/\/[^\s]+)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = urlPattern.exec(text)) !== null) {
+    if (m.index > last) parent.appendChild(document.createTextNode(text.slice(last, m.index)));
+    const a = document.createElement('a');
+    a.href = m[1];
+    a.textContent = m[1];
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.style.color = 'var(--color-primary)';
+    a.style.wordBreak = 'break-all';
+    parent.appendChild(a);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
+  if (last === 0) parent.textContent = text;
+}
+
 function renderCitationsPanel(container: HTMLElement, citations: Citation[]): void {
   const section = document.createElement('div');
   section.className = 'reference-section';
@@ -357,7 +378,7 @@ function renderCitationsPanel(container: HTMLElement, citations: Citation[]): vo
 
     const textEl = document.createElement('span');
     textEl.className = 'reference-citation-text';
-    textEl.textContent = cite.text;
+    renderCitationText(textEl, cite.text);
 
     item.appendChild(numEl);
     item.appendChild(textEl);

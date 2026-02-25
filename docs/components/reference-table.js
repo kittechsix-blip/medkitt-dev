@@ -170,7 +170,7 @@ export function renderInlineCitations(container, citationNums, citations) {
         numEl.textContent = `[${cite.num}]`;
         const textEl = document.createElement('span');
         textEl.className = 'reference-citation-text';
-        textEl.textContent = cite.text;
+        renderCitationText(textEl, cite.text);
         item.appendChild(numEl);
         item.appendChild(textEl);
         list.appendChild(item);
@@ -250,6 +250,29 @@ function renderClinicalNotes(container, notes) {
 // -------------------------------------------------------------------
 // Citations Panel
 // -------------------------------------------------------------------
+/** Render citation text with URLs as clickable links. */
+function renderCitationText(parent, text) {
+    const urlPattern = /(https?:\/\/[^\s]+)/g;
+    let last = 0;
+    let m;
+    while ((m = urlPattern.exec(text)) !== null) {
+        if (m.index > last)
+            parent.appendChild(document.createTextNode(text.slice(last, m.index)));
+        const a = document.createElement('a');
+        a.href = m[1];
+        a.textContent = m[1];
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.style.color = 'var(--color-primary)';
+        a.style.wordBreak = 'break-all';
+        parent.appendChild(a);
+        last = m.index + m[0].length;
+    }
+    if (last < text.length)
+        parent.appendChild(document.createTextNode(text.slice(last)));
+    if (last === 0)
+        parent.textContent = text;
+}
 function renderCitationsPanel(container, citations) {
     const section = document.createElement('div');
     section.className = 'reference-section';
@@ -267,7 +290,7 @@ function renderCitationsPanel(container, citations) {
         numEl.textContent = `[${cite.num}]`;
         const textEl = document.createElement('span');
         textEl.className = 'reference-citation-text';
-        textEl.textContent = cite.text;
+        renderCitationText(textEl, cite.text);
         item.appendChild(numEl);
         item.appendChild(textEl);
         list.appendChild(item);
