@@ -1546,11 +1546,15 @@ const NITROGLYCERIN = {
     genericName: 'Nitroglycerin (glyceryl trinitrate)',
     drugClass: 'Organic nitrate (vasodilator)',
     route: 'SL / IV',
-    indications: ['Acute coronary syndrome', 'Angina pectoris', 'Acute pulmonary edema', 'Hypertensive emergency'],
+    indications: ['Acute coronary syndrome', 'Angina pectoris', 'Acute pulmonary edema', 'Hypertensive emergency', 'Tocolysis (uterine relaxation)'],
     dosing: [
         {
             indication: 'ACS / NSTEMI (initial)',
             regimen: 'SL: 0.4 mg (1 tablet or spray) every 5 min × 3 doses. IV: Start 5-10 mcg/min, titrate by 5-10 mcg/min every 3-5 min. Target: symptom relief and SBP >100. Max typically 200 mcg/min.',
+        },
+        {
+            indication: 'Tocolysis (Shoulder Dystocia / Zavanelli)',
+            regimen: 'SL: 0.4 mg (1 spray or tablet) × 1 dose. Provides rapid uterine relaxation to facilitate cephalic replacement (Zavanelli maneuver) prior to emergency cesarean section. Onset: 1-2 minutes SL. Alternative to terbutaline SQ.',
         },
     ],
     contraindications: [
@@ -1572,6 +1576,33 @@ const NITROGLYCERIN = {
     citations: [
         'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e189-e228.',
         'Thadani U. Nitrate Therapy and Nitrate Tolerance in Patients with Coronary Artery Disease. Curr Pharm Des. 2014;20(25):3966-79.',
+    ],
+};
+const OXYTOCIN = {
+    id: 'oxytocin',
+    name: 'Oxytocin (Pitocin)',
+    genericName: 'Oxytocin',
+    drugClass: 'Uterotonic',
+    route: 'IV infusion',
+    indications: ['Precipitous Delivery — Third Stage (PPH prevention)', 'Postpartum hemorrhage', 'Labor augmentation'],
+    dosing: [
+        {
+            indication: 'Precipitous Delivery — Third Stage',
+            regimen: '20 units in 1L NS (or LR). Infuse at 250 mL/hr. Max 40 units over 4–10 hrs. Start after placental delivery. Do NOT give IV push — can cause profound hypotension.',
+        },
+    ],
+    contraindications: [
+        'Hypersensitivity to oxytocin',
+    ],
+    cautions: [
+        'Water intoxication with prolonged high-dose infusion (antidiuretic effect)',
+        'Uterine hyperstimulation — can cause fetal distress if given before delivery',
+        'Do NOT give IV push — risk of severe hypotension, tachycardia, and cardiac arrhythmia',
+    ],
+    monitoring: 'Uterine tone, vaginal bleeding, vital signs, fluid balance. If prolonged infusion: monitor for signs of water intoxication (hyponatremia, confusion, seizures).',
+    notes: 'First-line uterotonic for PPH prevention and treatment. Uterine atony is the most common cause of postpartum hemorrhage. Empiric use after placental delivery is recommended — do not wait for signs of bleeding. Combine with bimanual uterine massage until uterus is firm.',
+    citations: [
+        'ACOG Practice Bulletin No. 183: Postpartum Hemorrhage. Obstet Gynecol. 2017;130(4):e168-e186.',
     ],
 };
 const PENICILLIN_G_IV = {
@@ -2037,7 +2068,7 @@ const TERBUTALINE = {
     genericName: 'Terbutaline sulfate',
     drugClass: 'Beta-2 adrenergic agonist',
     route: 'SQ',
-    indications: ['Hyperkalemia (potassium shift)', 'Acute asthma/bronchospasm'],
+    indications: ['Hyperkalemia (potassium shift)', 'Acute asthma/bronchospasm', 'Tocolysis (uterine relaxation)'],
     dosing: [
         {
             indication: 'Hyperkalemia',
@@ -2046,6 +2077,10 @@ const TERBUTALINE = {
         {
             indication: 'Asthma',
             regimen: '0.25 mg SQ, may repeat q15-30 min PRN, max 0.5 mg in 4 hours.',
+        },
+        {
+            indication: 'Tocolysis (Shoulder Dystocia / Zavanelli)',
+            regimen: '0.25 mg SQ or IM × 1 dose. Provides rapid uterine relaxation to facilitate cephalic replacement (Zavanelli maneuver) prior to emergency cesarean section. Onset: 5 minutes SQ.',
         },
     ],
     contraindications: [
@@ -2297,6 +2332,7 @@ export const ALL_DRUGS = [
     METOPROLOL,
     NICARDIPINE,
     NITROGLYCERIN,
+    OXYTOCIN,
     PENICILLIN_G_IV,
     PHENYLEPHRINE,
     POTASSIUM_CHLORIDE_IV,
@@ -2379,6 +2415,7 @@ const NAME_TO_ID = [
     [/metoprolol|lopressor|toprol/i, 'metoprolol'],
     [/nicardipine|cardene/i, 'nicardipine'],
     [/nitroglycerin|nitro|glyceryl trinitrate|NTG/i, 'nitroglycerin'],
+    [/oxytocin|pitocin/i, 'oxytocin'],
     [/aqueous.*penicillin|penicillin G.*IV|crystalline.*penicillin/i, 'penicillin-g-iv'],
     [/phenylephrine/i, 'phenylephrine'],
     [/kcl\s*iv|potassium\s*chloride.*iv|iv\s*potassium/i, 'potassium-chloride-iv'],

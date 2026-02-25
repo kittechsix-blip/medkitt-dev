@@ -13,6 +13,7 @@ import { AFIB_RVR_CITATIONS } from '../data/trees/afib-rvr.js';
 import { PEP_CITATIONS } from '../data/trees/pep.js';
 import { POTASSIUM_CITATIONS, POTASSIUM_CLINICAL_NOTES, } from '../data/trees/potassium.js';
 import { PEDS_FEVER_CITATIONS } from '../data/trees/peds-fever.js';
+import { PRECIP_DELIVERY_CITATIONS } from '../data/trees/precip-delivery.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -75,6 +76,10 @@ const TREE_REFERENCE_DATA = {
     'peds-fever': {
         title: 'Fever < 6 Months Reference',
         citations: PEDS_FEVER_CITATIONS,
+    },
+    'precip-delivery': {
+        title: 'Precipitous Delivery Reference',
+        citations: PRECIP_DELIVERY_CITATIONS,
     },
 };
 // -------------------------------------------------------------------

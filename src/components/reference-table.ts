@@ -39,6 +39,7 @@ import {
   POTASSIUM_CLINICAL_NOTES,
 } from '../data/trees/potassium.js';
 import { PEDS_FEVER_CITATIONS } from '../data/trees/peds-fever.js';
+import { PRECIP_DELIVERY_CITATIONS } from '../data/trees/precip-delivery.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -114,6 +115,10 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
   'peds-fever': {
     title: 'Fever < 6 Months Reference',
     citations: PEDS_FEVER_CITATIONS,
+  },
+  'precip-delivery': {
+    title: 'Precipitous Delivery Reference',
+    citations: PRECIP_DELIVERY_CITATIONS,
   },
 };
 

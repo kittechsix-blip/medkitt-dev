@@ -18,6 +18,8 @@ import { UTI_PEDS_NODES, UTI_PEDS_CITATIONS, UTI_PEDS_MODULE_LABELS } from '../d
 import { PEDS_FEVER_NODES, PEDS_FEVER_CITATIONS, PEDS_FEVER_MODULE_LABELS } from '../data/trees/peds-fever.js';
 import { BRONCHIOLITIS_NODES, BRONCHIOLITIS_CITATIONS, BRONCHIOLITIS_MODULE_LABELS } from '../data/trees/bronchiolitis.js';
 import { ECHO_EPSS_NODES, ECHO_EPSS_CITATIONS, ECHO_EPSS_MODULE_LABELS } from '../data/trees/echo-epss.js';
+import { SHOULDER_DYSTOCIA_NODES, SHOULDER_DYSTOCIA_CITATIONS, SHOULDER_DYSTOCIA_MODULE_LABELS } from '../data/trees/shoulder-dystocia.js';
+import { PRECIP_DELIVERY_NODES, PRECIP_DELIVERY_CITATIONS, PRECIP_DELIVERY_MODULE_LABELS } from '../data/trees/precip-delivery.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -151,6 +153,20 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'us-rads',
     moduleLabels: ECHO_EPSS_MODULE_LABELS,
     citations: ECHO_EPSS_CITATIONS,
+  },
+  'shoulder-dystocia': {
+    nodes: SHOULDER_DYSTOCIA_NODES,
+    entryNodeId: 'sd-start',
+    categoryId: 'ob-gyn',
+    moduleLabels: SHOULDER_DYSTOCIA_MODULE_LABELS,
+    citations: SHOULDER_DYSTOCIA_CITATIONS,
+  },
+  'precip-delivery': {
+    nodes: PRECIP_DELIVERY_NODES,
+    entryNodeId: 'precip-start',
+    categoryId: 'ob-gyn',
+    moduleLabels: PRECIP_DELIVERY_MODULE_LABELS,
+    citations: PRECIP_DELIVERY_CITATIONS,
   },
 };
 

@@ -192,7 +192,32 @@ export const DEFAULT_CATEGORIES: Category[] = [
     ],
     isCustom: false,
   },
-  { id: 'ob-gyn',               name: 'OB/GYN',                icon: 'ob-gyn.png',            decisionTrees: [], isCustom: false },
+  {
+    id: 'ob-gyn',
+    name: 'OB/GYN',
+    icon: 'ob-gyn.png',
+    decisionTrees: [
+      {
+        id: 'precip-delivery',
+        title: 'Precipitous Delivery',
+        subtitle: 'Assessment → Preparation → Labor → Delivery → Placenta & Postpartum',
+        categoryId: 'ob-gyn',
+        version: '1.0',
+        nodeCount: 20,
+        entryNodeId: 'precip-start',
+      },
+      {
+        id: 'shoulder-dystocia',
+        title: 'Shoulder Dystocia',
+        subtitle: 'Recognition \u2192 McRoberts + Suprapubic \u2192 Rotational \u2192 Posterior Arm \u2192 Last Resort',
+        categoryId: 'ob-gyn',
+        version: '1.0',
+        nodeCount: 11,
+        entryNodeId: 'sd-start',
+      }
+    ],
+    isCustom: false,
+  },
   { id: 'orthopedics',          name: 'Ortho',                 icon: 'ortho.png',             decisionTrees: [], isCustom: false },
   {
     id: 'pediatrics',
