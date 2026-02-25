@@ -44,6 +44,10 @@ import {
   NEONATAL_RESUS_CITATIONS,
   NEONATAL_RESUS_CLINICAL_NOTES,
 } from '../data/trees/neonatal-resus.js';
+import {
+  DISTAL_RADIUS_CITATIONS,
+  DISTAL_RADIUS_CLINICAL_NOTES,
+} from '../data/trees/distal-radius.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -128,6 +132,11 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
     title: 'Neonatal Resuscitation (NRP) Reference',
     citations: NEONATAL_RESUS_CITATIONS,
     clinicalNotes: NEONATAL_RESUS_CLINICAL_NOTES,
+  },
+  'distal-radius': {
+    title: 'Distal Radius Fracture Reduction Reference',
+    citations: DISTAL_RADIUS_CITATIONS,
+    clinicalNotes: DISTAL_RADIUS_CLINICAL_NOTES,
   },
 };
 

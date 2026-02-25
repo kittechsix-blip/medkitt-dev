@@ -21,6 +21,7 @@ import { ECHO_EPSS_NODES, ECHO_EPSS_CITATIONS, ECHO_EPSS_MODULE_LABELS } from '.
 import { SHOULDER_DYSTOCIA_NODES, SHOULDER_DYSTOCIA_CITATIONS, SHOULDER_DYSTOCIA_MODULE_LABELS } from '../data/trees/shoulder-dystocia.js';
 import { PRECIP_DELIVERY_NODES, PRECIP_DELIVERY_CITATIONS, PRECIP_DELIVERY_MODULE_LABELS } from '../data/trees/precip-delivery.js';
 import { NEONATAL_RESUS_NODES, NEONATAL_RESUS_CITATIONS, NEONATAL_RESUS_MODULE_LABELS } from '../data/trees/neonatal-resus.js';
+import { DISTAL_RADIUS_NODES, DISTAL_RADIUS_CITATIONS, DISTAL_RADIUS_MODULE_LABELS } from '../data/trees/distal-radius.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -175,6 +176,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'pediatrics',
     moduleLabels: NEONATAL_RESUS_MODULE_LABELS,
     citations: NEONATAL_RESUS_CITATIONS,
+  },
+  'distal-radius': {
+    nodes: DISTAL_RADIUS_NODES,
+    entryNodeId: 'dr-start',
+    categoryId: 'orthopedics',
+    moduleLabels: DISTAL_RADIUS_MODULE_LABELS,
+    citations: DISTAL_RADIUS_CITATIONS,
   },
 };
 

@@ -15,6 +15,7 @@ import { POTASSIUM_CITATIONS, POTASSIUM_CLINICAL_NOTES, } from '../data/trees/po
 import { PEDS_FEVER_CITATIONS } from '../data/trees/peds-fever.js';
 import { PRECIP_DELIVERY_CITATIONS } from '../data/trees/precip-delivery.js';
 import { NEONATAL_RESUS_CITATIONS, NEONATAL_RESUS_CLINICAL_NOTES, } from '../data/trees/neonatal-resus.js';
+import { DISTAL_RADIUS_CITATIONS, DISTAL_RADIUS_CLINICAL_NOTES, } from '../data/trees/distal-radius.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -86,6 +87,11 @@ const TREE_REFERENCE_DATA = {
         title: 'Neonatal Resuscitation (NRP) Reference',
         citations: NEONATAL_RESUS_CITATIONS,
         clinicalNotes: NEONATAL_RESUS_CLINICAL_NOTES,
+    },
+    'distal-radius': {
+        title: 'Distal Radius Fracture Reduction Reference',
+        citations: DISTAL_RADIUS_CITATIONS,
+        clinicalNotes: DISTAL_RADIUS_CLINICAL_NOTES,
     },
 };
 // -------------------------------------------------------------------

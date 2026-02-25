@@ -1286,11 +1286,16 @@ const LIDOCAINE: DrugEntry = {
   genericName: 'Lidocaine',
   drugClass: 'Amide local anesthetic',
   route: 'Local injection',
-  indications: ['Dorsal penile nerve block', 'Local anesthesia for minor procedures', 'Nerve blocks'],
+  indications: ['Dorsal penile nerve block', 'Hematoma block', 'Local anesthesia for minor procedures', 'Nerve blocks'],
   dosing: [
     {
       indication: 'Dorsal penile nerve block',
       regimen: '10 mL total of 1% lidocaine WITHOUT epinephrine: 5 mL injected at 10 o\u2019clock and 5 mL at 2 o\u2019clock at penile base, under Buck\u2019s fascia.',
+    },
+    {
+      indication: 'Hematoma block',
+      regimen: '5–10 mL of 1% plain lidocaine (10 mg/mL) injected directly into fracture hematoma via 20-gauge needle. Aspirate dark blood to confirm placement. US-guided for improved accuracy. Wait 5–10 min for full effect. For combined radius + ulna fractures, second injection into ulnar hematoma.',
+      weightCalc: { dosePerKg: 4.5, unit: 'mg', label: 'Max dose (1% = 10 mg/mL)' },
     },
   ],
   contraindications: [
@@ -1301,6 +1306,7 @@ const LIDOCAINE: DrugEntry = {
     'Max dose without epi: 4.5 mg/kg',
     'Aspirate before injecting to avoid intravascular injection',
     'Wait 5\u201310 min for full anesthetic effect',
+    'Hematoma block: fracture hematoma contiguous with marrow space — rapid systemic absorption similar to IO',
   ],
   monitoring: 'Test block adequacy with pinprick before procedure. Onset: 2\u20135 min. Duration: 30\u201360 min.',
   notes: 'For penile block, NEVER use formulations containing epinephrine. The penis is supplied by end-arteries \u2014 epinephrine can cause ischemic necrosis.',

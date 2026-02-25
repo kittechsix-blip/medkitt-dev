@@ -1504,6 +1504,103 @@ const NRP_SUMMARY: InfoPage = {
   ],
 };
 
+// -------------------------------------------------------------------
+// Distal Radius — Steps Summary
+// -------------------------------------------------------------------
+
+const DR_SUMMARY: InfoPage = {
+  id: 'dr-summary',
+  title: 'Distal Radius Reduction Steps Summary',
+  subtitle: 'Quick-reference TRAMP checklist — review before reduction',
+  sections: [
+    {
+      heading: '1. Assessment',
+      body: '• ["Obtain & Maintain" — Is position acceptable? Will it shift?](#/node/dr-start)\n• [Evaluate AP + lateral films — radial height, inclination, volar tilt](#/node/dr-assess)\n• [Open / grossly unstable → surgical consult](#/node/dr-surgical)\n• [Pediatric remodeling — plane of motion only, rotation does NOT remodel](#/node/dr-peds)',
+    },
+    {
+      heading: '2. Analgesia',
+      body: '• [Hematoma block (preferred) — 5–10 mL 1% lidocaine into fracture, fastest discharge](#/node/dr-hema-block)\n• [Procedural sedation — ketamine/propofol, requires NPO + monitoring team](#/node/dr-proc-sed)\n• [Regional — Bier block or US-guided nerve blocks, superior but longer setup](#/node/dr-regional)',
+    },
+    {
+      heading: '3. T — Traction',
+      body: '• [Apply longitudinal traction — waterski position, lean back, steady pull](#/node/dr-traction)\n• [Make circles to free fragment — recreate length before reducing](#/node/dr-traction)\n• [Finger traps for sustained traction — frees hands for splinting](#/node/dr-traction)',
+    },
+    {
+      heading: '4. R — Reduction',
+      body: '• [Exaggerate the deformity FIRST — unlocks dorsal periosteal hinge](#/node/dr-reduce)\n• [Push distal fragment palmar (volar) with thumbs](#/node/dr-reduce)\n• [Ulnar deviate to restore radial inclination](#/node/dr-reduce)',
+    },
+    {
+      heading: '5. A — Apply',
+      body: '• [Plaster NOT fiberglass — fiberglass sets too fast to mold](#/node/dr-apply)\n• [10 layers, 6-inch, measure on uninjured side, cut thumb hole](#/node/dr-apply)\n• [MINIMAL padding at fracture (2 layers Webril) — padding defeats mold](#/node/dr-apply)',
+    },
+    {
+      heading: '6. M — Mold',
+      body: '• [Flat hands (thenar eminences) — NEVER fingertips](#/node/dr-mold)\n• [Oval cross-section, 3-point pressure: dorsal at fracture, volar proximal + distal](#/node/dr-mold)\n• [Do NOT squeeze. Do NOT move hands while plaster sets](#/node/dr-mold)',
+    },
+    {
+      heading: '7. P — Position',
+      body: '• [10° flexion + ulnar deviation — counteracts dorsal displacement](#/node/dr-position)\n• [Elbow, MCPs, and thumb must remain FREE](#/node/dr-position)',
+    },
+    {
+      heading: '8. Post-Reduction',
+      body: '• [X-ray: 2nd metacarpal line parallel to radius, cast index <0.80](#/node/dr-post-xray)\n• ["Straight cast = crooked bone" — round cast = inadequate mold](#/node/dr-post-xray)\n• [If inadequate: remove cast, top up analgesia, re-attempt full TRAMP](#/node/dr-re-attempt)\n• [If 2 attempts fail → ortho consult](#/node/dr-re-attempt)',
+    },
+  ],
+  citations: [
+    { num: 1, text: 'Sayal A. Fracture Reduction Demonstration. Emergency Medicine Cases. YouTube.' },
+    { num: 2, text: 'AO Surgery Reference. Distal Radius — Splinting and Positioning. AO Foundation.' },
+  ],
+};
+
+// -------------------------------------------------------------------
+// Distal Radius — Hematoma Block Evidence
+// -------------------------------------------------------------------
+
+const DR_HEMA_EVIDENCE: InfoPage = {
+  id: 'dr-hema-evidence',
+  title: 'Hematoma Block — Evidence & Technique',
+  subtitle: 'Comprehensive efficacy data, comparative studies, and technique variations',
+  sections: [
+    {
+      heading: 'Technique',
+      body: '**Standard approach:** Identify fracture site on dorsal wrist. Prep with chlorhexidine. Insert 20-gauge needle at dorsal fracture line. Aspirate — dark blood confirms placement in fracture hematoma. Inject 5–10 mL of 1% plain lidocaine. Wait 5–10 minutes for full effect. [3][6]\n\n**Ultrasound guidance:** Real-time visualization of needle entering fracture gap improves accuracy, reduces pain during injection, and may improve block success. Particularly valuable in pediatric patients and those with difficult anatomy. [5][7][8]\n\n**Combined fractures:** For radius + ulna, a second injection into the ulnar fracture hematoma is required for complete analgesia. [6]',
+    },
+    {
+      heading: 'Dosing & Safety',
+      body: '**Max dose:** 4.5 mg/kg without epinephrine (1% lidocaine = 10 mg/mL).\n\n**Critical safety point:** The fracture hematoma is contiguous with the medullary canal — lidocaine is absorbed directly into marrow vasculature. Systemic absorption is rapid, similar to intraosseous (IO) administration. Respect weight-based dosing limits strictly. [3][5]\n\n**Signs of toxicity:** Perioral numbness, metallic taste, tinnitus → seizures → cardiac arrest. Have lipid emulsion available for LAST (local anesthetic systemic toxicity).',
+    },
+    {
+      heading: 'Efficacy vs Procedural Sedation',
+      body: '**ED length of stay:** Hematoma block patients discharge in a mean of 1.5 hours vs 4.6 hours for procedural sedation — a 3-hour time savings. [4]\n\n**ENP-led reductions:** Emergency nurse practitioners using hematoma blocks achieved 87.2% successful first-attempt reduction rate, comparable to physician-led sedation results. Mean pain scores were acceptable (VAS 3.2 during reduction). [4]\n\n**No NPO requirement:** Hematoma block does not require fasting assessment, dedicated monitoring nurse, or capnography — reducing resource utilization significantly. [3][4]\n\n**Wilderness/austere settings:** Hematoma block is the preferred analgesia technique for fracture reduction in resource-limited environments where sedation monitoring is unavailable. [3]',
+    },
+    {
+      heading: 'Efficacy vs Regional Anesthesia',
+      body: '**Bier\'s block comparison:** Oakley et al. (2023) found hematoma block and Bier\'s block provided equivalent reduction quality and patient satisfaction for distal radius fractures, with hematoma block requiring fewer resources and shorter setup. [10]\n\n**US-guided nerve blocks:** Christensen et al. (2025) found US-guided nerve blocks achieved 94% first-attempt reduction success vs 74% for hematoma block, with lower pain scores during reduction. However, nerve blocks required ultrasound proficiency and additional setup time. [12]\n\n**Axillary block comparison:** Rook et al. (2025) demonstrated superior analgesia with US-guided axillary nerve block vs hematoma block, but at the cost of longer preparation and higher technical skill requirements. [13]\n\n**Cochrane review:** Handoll et al. (2002) found insufficient evidence to definitively recommend one anesthesia technique over another for distal radius reduction. Choice should be based on clinician skill, available resources, and patient factors. [9]\n\n**Regional vs hematoma meta-analysis:** Guirguis et al. (2025) concluded regional anesthesia provided superior analgesia but hematoma block remained appropriate first-line for straightforward reductions given its simplicity and speed. [11]',
+    },
+    {
+      heading: 'Advantages',
+      body: '• **Speed:** Can be performed in <5 minutes, full effect in 5–10 min\n• **Simplicity:** No specialized equipment beyond needle and syringe (US optional)\n• **No fasting required:** Can proceed immediately on arrival\n• **No monitoring team:** Single provider can perform block and reduction\n• **Cost-effective:** Minimal supplies, shorter ED stay\n• **Pediatric safe:** Well-studied in adolescents, US guidance helpful for precision [5][6]\n• **Difficult airway patients:** Avoids sedation risks entirely [5]',
+    },
+    {
+      heading: 'Limitations',
+      body: '• **Incomplete analgesia:** Some patients report moderate pain during reduction (VAS 3–5) — less complete than sedation or regional blocks\n• **Marrow absorption risk:** Rapid systemic uptake requires strict weight-based dosing\n• **Single-site only:** Each fracture site requires a separate injection\n• **No muscle relaxation:** Unlike sedation, does not relax forearm musculature — may make reduction technically harder in muscular patients\n• **Lower first-attempt success:** 74% vs 94% compared to US-guided nerve blocks in one RCT [12]\n• **Not suitable for:** Open fractures, severely comminuted fractures requiring prolonged manipulation, or patients requiring general anesthesia for other reasons',
+    },
+  ],
+  citations: [
+    { num: 3, text: 'Fink PB, et al. WMS CPG for Acute Pain in Austere Environments: 2024 Update. Wilderness Environ Med. 2024;35(2):198-218.' },
+    { num: 4, text: 'Hagness C, et al. Haematoma Blocks in Closed Reduction of DRF by ENPs. Injury. 2025;56(8):112526.' },
+    { num: 5, text: 'Gawel RJ, Chen AE. US-Guided Hematoma Block in Adolescent With Difficult Airway. Pediatr Emerg Care. 2025;41(2):143-145.' },
+    { num: 6, text: 'Singh A, Khalil P. POCUS-Guided Hematoma Block for Forearm Fracture. Pediatr Emerg Care. 2021;37(10):533-535.' },
+    { num: 7, text: 'Fathi M, et al. US-Guided Hematoma Block in DRF Reduction: RCT. Emerg Med J. 2015;32(6):474-7.' },
+    { num: 8, text: 'Gottlieb M, Cosby K. US-Guided Hematoma Block for Distal Radial/Ulnar Fractures. J Emerg Med. 2015;48(3):310-2.' },
+    { num: 9, text: 'Handoll HH, et al. Anaesthesia for Treating DRF in Adults. Cochrane Database Syst Rev. 2002;(3):CD003320.' },
+    { num: 10, text: 'Oakley B, et al. Bier\'s Block vs Haematoma Block for DRF. Ann R Coll Surg Engl. 2023;105(5):434-440.' },
+    { num: 11, text: 'Guirguis J, et al. Regional Anaesthesia vs Haematoma Block in DRF. Injury. 2025;56(12):112815.' },
+    { num: 12, text: 'Christensen AB, et al. US-Guided Nerve Blocks Improve Closed Reduction of Colles\' Fractures: RCT. Acta Anaesthesiol Scand. 2025;69(6):e70063.' },
+    { num: 13, text: 'Rook B, et al. US-guided Axillary Nerve Block vs Hematoma Block: RCT. Am J Emerg Med. 2025;100:175-181.' },
+  ],
+};
+
 const INFO_PAGES: Record<string, InfoPage> = {
   'doac-pe': DOAC_PE_PAGE,
   'priapism-return-precautions': PRIAPISM_RETURN_PRECAUTIONS,
@@ -1543,6 +1640,8 @@ const INFO_PAGES: Record<string, InfoPage> = {
   'stroke-summary': STROKE_SUMMARY,
   'ptx-summary': PTX_SUMMARY,
   'nrp-summary': NRP_SUMMARY,
+  'dr-summary': DR_SUMMARY,
+  'dr-hema-evidence': DR_HEMA_EVIDENCE,
 };
 
 // -------------------------------------------------------------------

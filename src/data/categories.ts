@@ -227,7 +227,23 @@ export const DEFAULT_CATEGORIES: Category[] = [
     ],
     isCustom: false,
   },
-  { id: 'orthopedics',          name: 'Ortho',                 icon: 'ortho.png',             decisionTrees: [], isCustom: false },
+  {
+    id: 'orthopedics',
+    name: 'Ortho',
+    icon: 'ortho.png',
+    decisionTrees: [
+      {
+        id: 'distal-radius',
+        title: 'Distal Radius Fracture Reduction',
+        subtitle: 'Obtain & Maintain → Hematoma Block → TRAMP Reduction → Post-Reduction',
+        categoryId: 'orthopedics',
+        version: '1.0',
+        nodeCount: 17,
+        entryNodeId: 'dr-start',
+      },
+    ],
+    isCustom: false,
+  },
   {
     id: 'pediatrics',
     name: 'Pediatrics',
