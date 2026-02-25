@@ -22,6 +22,7 @@ import { SHOULDER_DYSTOCIA_NODES, SHOULDER_DYSTOCIA_CITATIONS, SHOULDER_DYSTOCIA
 import { PRECIP_DELIVERY_NODES, PRECIP_DELIVERY_CITATIONS, PRECIP_DELIVERY_MODULE_LABELS } from '../data/trees/precip-delivery.js';
 import { NEONATAL_RESUS_NODES, NEONATAL_RESUS_CITATIONS, NEONATAL_RESUS_MODULE_LABELS } from '../data/trees/neonatal-resus.js';
 import { DISTAL_RADIUS_NODES, DISTAL_RADIUS_CITATIONS, DISTAL_RADIUS_MODULE_LABELS } from '../data/trees/distal-radius.js';
+import { SPLINTING_NODES, SPLINTING_CITATIONS, SPLINTING_MODULE_LABELS } from '../data/trees/splinting.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -183,6 +184,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     categoryId: 'orthopedics',
     moduleLabels: DISTAL_RADIUS_MODULE_LABELS,
     citations: DISTAL_RADIUS_CITATIONS,
+  },
+  'splinting': {
+    nodes: SPLINTING_NODES,
+    entryNodeId: 'splint-start',
+    categoryId: 'orthopedics',
+    moduleLabels: SPLINTING_MODULE_LABELS,
+    citations: SPLINTING_CITATIONS,
   },
 };
 

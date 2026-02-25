@@ -1601,6 +1601,87 @@ const DR_HEMA_EVIDENCE: InfoPage = {
   ],
 };
 
+// -------------------------------------------------------------------
+// Splinting — General Principles
+// -------------------------------------------------------------------
+
+const SPLINT_PRINCIPLES: InfoPage = {
+  id: 'splint-principles',
+  title: 'General Splinting Principles',
+  subtitle: 'Materials, padding, technique, and neurovascular checks',
+  sections: [
+    {
+      heading: 'Materials',
+      body: '**Plaster** — moldable, sets in 3–5 min, exothermic reaction. Better for fractures requiring 3-point molding. Standard: 8–12 layers depending on site.\n\n**Fiberglass** — lighter, stronger, water-resistant, sets faster. Better for stable fractures where molding is not critical. More expensive.\n\n**Stockinette** — cotton tube applied directly to skin. Protects from plaster irritation. Fold over edges for a clean finish.\n\n**Webril (cast padding)** — soft cotton roll. Provides cushioning between skin and plaster. Standard: 2–4 layers.\n\n**Elastic bandage (ACE wrap)** — secures the splint. Wrap distally to proximally. Should be snug but not tight.',
+    },
+    {
+      heading: 'Padding',
+      body: '• **2–4 layers Webril** over the entire splinted area\n• **Extra padding** over bony prominences (malleoli, olecranon, styloids, calcaneus)\n• **Minimal padding** directly over the fracture site when molding is needed — excessive padding defeats the mold\n• Cotton between fingers for gutter splints to prevent maceration',
+    },
+    {
+      heading: 'Application Technique',
+      body: '1. Dip plaster in **lukewarm water** (not hot — the exothermic reaction adds additional heat and can burn)\n2. Squeeze out excess water gently — do not wring\n3. Smooth layers together on a flat surface to remove air pockets\n4. Apply to the limb and **mold with flat palms** (thenar eminences)\n5. **Never use fingertips** — creates pressure points → skin necrosis\n6. Hold the mold until plaster sets (3–5 minutes) — do NOT move hands during setting\n7. Secure with elastic bandage — snug, not constricting',
+    },
+    {
+      heading: 'Positioning',
+      body: '**Position of function** (unless otherwise specified):\n• **Wrist:** 15–20° extension\n• **MCP joints:** 70–90° flexion (for gutter splints — prevents collateral ligament contracture)\n• **IP joints:** slight flexion (10–20°)\n• **Elbow:** 90° flexion\n• **Ankle:** 90° dorsiflexion (neutral — prevents equinus contracture)\n• **Thumb:** abducted, slightly opposed ("holding a can")',
+    },
+    {
+      heading: 'Neurovascular Checks',
+      body: '**Before AND after splinting — document both.**\n\n• **Sensation:** Light touch in each nerve distribution (median, ulnar, radial for upper; deep peroneal, superficial peroneal, tibial, sural for lower)\n• **Motor:** Thumb opposition (median), finger abduction (ulnar), wrist/finger extension (radial), toe dorsiflexion (deep peroneal), toe plantarflexion (tibial)\n• **Vascular:** Capillary refill <2 seconds, pulses palpable (radial/ulnar for upper; dorsalis pedis/posterior tibial for lower)\n• **Color and temperature:** Compare to uninjured side',
+    },
+    {
+      heading: 'A+P Institution Preference',
+      body: '**Our institution prefers A+P (anterior + posterior) splints over sugar tong for forearm fractures.**\n\n• Two separate plaster slabs (one dorsal, one volar) rather than one continuous slab wrapping around the elbow\n• Provides equivalent AP stability without restricting elbow motion\n• Less bulky, better patient comfort, easier to adjust\n• Use sugar tong only when rotational control (pronation/supination) is specifically required',
+    },
+    {
+      heading: 'Discharge Instructions',
+      body: '• **Elevate** above the level of the heart — reduces swelling\n• **Ice** 20 minutes on / 20 minutes off (over padding, not directly on skin)\n• **Finger/toe exercises** — wiggle frequently to prevent stiffness and monitor for compartment syndrome\n• **Loosen elastic bandage** if swelling increases — mark the outer edge so patient knows where to unwind\n\n**Return immediately for:**\n• Increasing pain not relieved by elevation and medication\n• Numbness, tingling, or inability to move fingers/toes\n• Fingers/toes turning blue, white, or cold\n• Splint feels too tight, causes pressure pain\n• These are **compartment syndrome warning signs** — a surgical emergency',
+    },
+  ],
+  citations: [
+    { num: 1, text: 'Cheng J, et al. "The Splinter Series." ALiEM. https://www.aliem.com/splinter-series/' },
+    { num: 3, text: 'Boyd AS, et al. Splints and Casts: Indications and Methods. Am Fam Physician. 2009;80(5):491-9.' },
+    { num: 6, text: 'Eiff MP, Hatch RL. Fracture Management for Primary Care. 3rd ed. Elsevier; 2018.' },
+  ],
+};
+
+// -------------------------------------------------------------------
+// Splinting — Quick Reference Table
+// -------------------------------------------------------------------
+
+const SPLINT_SUMMARY: InfoPage = {
+  id: 'splint-summary',
+  title: 'Splinting Quick Reference',
+  subtitle: 'All fractures → splint types at a glance with technique links',
+  sections: [
+    {
+      heading: 'Humerus',
+      body: '• Proximal humerus → [Sling / Cuff & Collar](#/node/splint-sling)\n• Humeral shaft → [Coaptation Splint](#/node/splint-coaptation) (→ functional brace at 1–2 wk)\n• Supracondylar → [Long Arm Posterior](#/node/splint-long-arm-post) or [Double Sugar Tong](#/node/splint-double-sugar-tong)',
+    },
+    {
+      heading: 'Forearm',
+      body: '• Olecranon / coronoid → [Long Arm Posterior](#/node/splint-long-arm-post)\n• Radius/ulna proximal or midshaft → [Long Arm Posterior](#/node/splint-long-arm-post) or [Double Sugar Tong](#/node/splint-double-sugar-tong)\n• Radius distal, isolated → [Thumb Spica](#/node/splint-thumb-spica) or [Volar](#/node/splint-volar)\n• Radius/ulna distal, complex → [Sugar Tong](#/node/splint-sugar-tong) (**A+P preferred**)\n• Ulna styloid → [Sugar Tong](#/node/splint-sugar-tong) (**A+P preferred**)',
+    },
+    {
+      heading: 'Wrist & Hand',
+      body: '• Scaphoid / trapezium / lunate fracture → [Thumb Spica](#/node/splint-thumb-spica)\n• Lunate dislocation → [Sugar Tong](#/node/splint-sugar-tong) (**A+P preferred**)\n• Triquetrum / pisiform / trapezoid / capitate / hamate → [Volar](#/node/splint-volar)\n• UCL injury / thumb MCP dislocation / De Quervain → [Thumb Spica](#/node/splint-thumb-spica)\n• 1st metacarpal → [Thumb Spica](#/node/splint-thumb-spica)\n• 2nd / 3rd metacarpal → [Radial Gutter](#/node/splint-radial-gutter) or [Volar](#/node/splint-volar)\n• 4th / 5th metacarpal (boxer) → [Ulnar Gutter](#/node/splint-ulnar-gutter)\n• 1st phalanx → [Thumb Spica](#/node/splint-thumb-spica)\n• 2nd / 3rd prox/mid phalanx → [Radial Gutter](#/node/splint-radial-gutter) or buddy taping\n• 4th / 5th prox/mid phalanx → [Ulnar Gutter](#/node/splint-ulnar-gutter) or buddy taping\n• Distal phalanx → Aluminum U-shaped (stack) splint',
+    },
+    {
+      heading: 'Lower Extremity',
+      body: '• Distal tibia / distal fibula → [Posterior Short Leg](#/node/splint-post-short-leg) (± [Stirrup](#/node/splint-stirrup))\n• Ankle sprain grade 2/3 → [Stirrup](#/node/splint-stirrup)\n• Talus / calcaneus / navicular / cuboid / cuneiform → [Posterior Short Leg](#/node/splint-post-short-leg)\n• Metatarsal → [Posterior Short Leg](#/node/splint-post-short-leg)\n• Lisfranc → [Posterior Short Leg](#/node/splint-post-short-leg) (non-weight bearing)',
+    },
+    {
+      heading: 'Key Positions',
+      body: '• **Wrist:** 15–20° extension\n• **MCP (gutter splints):** 70–90° flexion\n• **Elbow:** 90° flexion\n• **Ankle:** 90° dorsiflexion (neutral)\n• **Thumb:** abducted, slightly opposed',
+    },
+  ],
+  citations: [
+    { num: 3, text: 'Boyd AS, et al. Splints and Casts: Indications and Methods. Am Fam Physician. 2009;80(5):491-9.' },
+    { num: 6, text: 'Eiff MP, Hatch RL. Fracture Management for Primary Care. 3rd ed. Elsevier; 2018.' },
+  ],
+};
+
 const INFO_PAGES: Record<string, InfoPage> = {
   'doac-pe': DOAC_PE_PAGE,
   'priapism-return-precautions': PRIAPISM_RETURN_PRECAUTIONS,
@@ -1642,6 +1723,8 @@ const INFO_PAGES: Record<string, InfoPage> = {
   'nrp-summary': NRP_SUMMARY,
   'dr-summary': DR_SUMMARY,
   'dr-hema-evidence': DR_HEMA_EVIDENCE,
+  'splint-principles': SPLINT_PRINCIPLES,
+  'splint-summary': SPLINT_SUMMARY,
 };
 
 // -------------------------------------------------------------------
