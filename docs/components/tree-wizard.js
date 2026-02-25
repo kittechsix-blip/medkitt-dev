@@ -157,6 +157,7 @@ let currentTreeId = null;
 let currentConfig = null;
 let currentEntryNodeId = null;
 let delegatedContainer = null;
+let jumpNodeListenerRegistered = false;
 /** Handle clicks on inline links via event delegation (most reliable on iOS Safari) */
 function handleInlineLinkClick(e) {
     const target = e.target.closest('[data-link-type]');
@@ -181,6 +182,13 @@ function handleInlineLinkClick(e) {
         router.navigate(`/calculator/${linkId}`);
     else if (linkType === 'tree')
         router.navigate('/tree/' + linkId);
+    else if (linkType === 'node') {
+        // Jump to a specific node within the current tree
+        if (engine && delegatedContainer) {
+            engine.jumpToNode(linkId);
+            renderCurrentNode(delegatedContainer);
+        }
+    }
     else
         showInfoModal(linkId);
 }
@@ -201,6 +209,16 @@ export function renderTreeWizard(container, treeId) {
         }
         container.addEventListener('click', handleInlineLinkClick);
         delegatedContainer = container;
+    }
+    // Listen for node-jump events from info page modals (register once)
+    if (!jumpNodeListenerRegistered) {
+        jumpNodeListenerRegistered = true;
+        window.addEventListener('medkitt-jump-node', ((e) => {
+            if (engine && delegatedContainer) {
+                engine.jumpToNode(e.detail);
+                renderCurrentNode(delegatedContainer);
+            }
+        }));
     }
     // Check for category-specific entry point override
     const entryOverride = sessionStorage.getItem('medkitt-tree-entry');

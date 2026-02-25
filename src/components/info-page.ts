@@ -1206,6 +1206,78 @@ const BRONCH_PARENT_ES: InfoPage = {
 };
 
 // -------------------------------------------------------------------
+// Precipitous Delivery — Delivery Steps Summary
+// -------------------------------------------------------------------
+
+const PRECIP_DELIVERY_SUMMARY: InfoPage = {
+  id: 'precip-delivery-summary',
+  title: 'Delivery Steps Summary',
+  subtitle: 'Quick-reference checklist for ED precipitous delivery',
+  sections: [
+    {
+      heading: 'Preparation',
+      body: '• [Page OB and Pediatrics STAT — assign team roles](#/node/precip-callhelp)\n• [Gather delivery equipment and position patient](#/node/precip-equipment)\n• [Confirm vertex presentation with bedside U/S if time permits](#/node/precip-equipment)',
+    },
+    {
+      heading: 'Stage 2 — Delivering the Baby',
+      body: '• [Coach pushing: deep breath → bear down 10 sec × 3 per contraction](#/node/precip-coaching)\n• [Support perineum, control occiput — slow, controlled head delivery](#/node/precip-head)\n• [Sweep finger around neck — check for nuchal cord](#/node/precip-nuchal)\n• [If tight cord → double clamp and cut](#/node/precip-nuchal-cut)\n• [Deliver shoulders: gentle downward then upward traction](#/node/precip-shoulders)\n• [If turtle sign → Shoulder Dystocia emergency](#/tree/shoulder-dystocia)',
+    },
+    {
+      heading: 'Cord & Baby',
+      body: '• [Clamp cord in two places, cut between — delayed clamping 30–60 sec if vigorous](#/node/precip-cord)\n• [Place baby skin-to-skin, dry and stimulate, APGAR at 1 and 5 min](#/node/precip-baby)\n• [If not breathing or HR <100 → initiate NRP](#/node/precip-baby)',
+    },
+    {
+      heading: 'Stage 3 — Placenta & Postpartum',
+      body: '• [Gentle cord traction + counter-pressure on fundus — never force](#/node/precip-placenta)\n• [Inspect placenta for completeness — save for pathology](#/node/precip-placenta-exam)\n• [Start Oxytocin 20 units in 1L NS at 250 mL/hr — bimanual massage](#/node/precip-oxytocin)\n• [Assess lacerations: repair 1st/2nd degree, defer 3rd/4th to OB](#/node/precip-lacerations)\n• [Monitor mom × 1 hour: uterine tone, bleeding, vitals q15 min](#/node/precip-complete)',
+    },
+  ],
+  citations: [
+    { num: 1, text: 'Pope KS, Tibbles CD. Precipitous Delivery. In: Walls RM, ed. Rosen\'s Emergency Medicine. 9th ed. Elsevier; 2018.' },
+    { num: 2, text: 'Weiner GM, ed. Textbook of Neonatal Resuscitation (NRP). 8th ed. AAP; 2021.' },
+  ],
+};
+
+// -------------------------------------------------------------------
+// Shoulder Dystocia — Steps Summary
+// -------------------------------------------------------------------
+
+const SD_SUMMARY: InfoPage = {
+  id: 'sd-summary',
+  title: 'Shoulder Dystocia Steps Summary',
+  subtitle: 'Quick-reference escalation checklist — know the maneuvers before you need them',
+  sections: [
+    {
+      heading: '1. Recognize',
+      body: '• [Turtle sign — fetal head retracts against perineum after delivery](#/node/sd-start)\n• [Failure to deliver body with standard traction and pushing](#/node/sd-start)',
+    },
+    {
+      heading: '2. Initial Response',
+      body: '• [Announce "shoulder dystocia" — call OB, Peds/NICU, Anesthesia](#/node/sd-initial)\n• [Start the clock — designate timekeeper (call out every 30 sec)](#/node/sd-initial)\n• [You have ~4–5 minutes before hypoxic injury risk](#/node/sd-initial)',
+    },
+    {
+      heading: '3. First-Line (resolves 50–60%)',
+      body: '• [McRoberts maneuver — sharply flex legs onto abdomen](#/node/sd-mcroberts)\n• [Suprapubic pressure — fist above pubic bone, push shoulder to oblique](#/node/sd-mcroberts)',
+    },
+    {
+      heading: '4. Second-Line (if first-line fails)',
+      body: '• [Wood\'s screw — rotate posterior shoulder 180° in corkscrew fashion](#/node/sd-rotational)\n• [Rubin\'s — push posterior shoulder to flex across chest](#/node/sd-rotational)\n• [Posterior arm delivery — sweep arm across fetal chest](#/node/sd-posterior-arm)',
+    },
+    {
+      heading: '5. Last Resort',
+      body: '• [Zavanelli — push head back in, emergency C-section](#/node/sd-last-resort)\n• [All-fours (Gaskin) — mother on hands and knees](#/node/sd-last-resort)\n• [Deliberate clavicle fracture / Symphysiotomy / Abdominal rescue](#/node/sd-last-resort)',
+    },
+    {
+      heading: 'Post-Delivery',
+      body: '• [Neonatal assessment — Apgar, check for brachial plexus palsy and fractures](#/node/sd-resolved)\n• [Maternal assessment — lacerations, hemorrhage](#/node/sd-resolved)\n• [Document all maneuvers, timing, and personnel](#/node/sd-resolved)',
+    },
+  ],
+  citations: [
+    { num: 1, text: 'ACOG Practice Bulletin No. 40: Shoulder Dystocia. 2002 (Reaffirmed 2015).' },
+    { num: 2, text: 'Gherman RB, et al. The McRoberts\' maneuver for shoulder dystocia. Am J Obstet Gynecol. 1997.' },
+  ],
+};
+
+// -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
 
@@ -1240,47 +1312,100 @@ const INFO_PAGES: Record<string, InfoPage> = {
   'bronch-admission-criteria': BRONCH_ADMISSION_CRITERIA,
   'bronch-parent-en': BRONCH_PARENT_EN,
   'bronch-parent-es': BRONCH_PARENT_ES,
+  'precip-delivery-summary': PRECIP_DELIVERY_SUMMARY,
+  'sd-summary': SD_SUMMARY,
 };
 
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes
 // -------------------------------------------------------------------
 
-/** Render a line of info page body text, making [N] citation refs clickable. */
+/** Append text to a parent element, converting **bold** markers to <strong> elements. */
+function infoBoldAware(parent: HTMLElement, text: string): void {
+  const boldPattern = /\*\*(.+?)\*\*/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = boldPattern.exec(text)) !== null) {
+    if (m.index > last) parent.appendChild(document.createTextNode(text.slice(last, m.index)));
+    const strong = document.createElement('strong');
+    strong.textContent = m[1];
+    parent.appendChild(strong);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
+  if (last === 0 && text.length > 0) parent.textContent = text;
+}
+
+/** Render a line of info page body text with inline links, bold, and citation refs. */
 function renderInfoBodyLine(container: HTMLElement, line: string): void {
-  const citePattern = /\[(\d+)\](?:\[(\d+)\])*/g;
+  // Combined pattern: markdown links [text](#/path) OR citation refs [N]
+  const combinedPattern = /\[([^\]]+)\]\((#\/[^)]+)\)|\[(\d+)\](?:\[(\d+)\])*/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
+  let hasMatch = false;
 
-  while ((match = citePattern.exec(line)) !== null) {
-    // Text before the citation(s)
+  while ((match = combinedPattern.exec(line)) !== null) {
+    hasMatch = true;
+    // Text before this match
     if (match.index > lastIndex) {
-      container.appendChild(document.createTextNode(line.slice(lastIndex, match.index)));
+      infoBoldAware(container, line.slice(lastIndex, match.index));
     }
 
-    // The full match might be [1][2] or [1], [2] — parse all numbers
-    const fullMatch = match[0];
-    const nums = fullMatch.match(/\d+/g) ?? [];
-    for (let i = 0; i < nums.length; i++) {
-      const num = nums[i];
+    if (match[1] && match[2]) {
+      // Markdown link: [label](#/type/id)
+      const linkLabel = match[1];
+      const linkUrl = match[2];
+      const parts = linkUrl.replace(/^#\//, '').split('/');
+      const linkType = parts[0];
+      const linkId = parts.slice(1).join('/');
       const btn = document.createElement('button');
-      btn.className = 'cite-link';
-      btn.textContent = `[${num}]`;
-      btn.addEventListener('click', () => scrollToCitation(num));
+      btn.className = 'body-inline-link';
+      btn.textContent = linkLabel;
+      btn.setAttribute('data-link-type', linkType);
+      btn.setAttribute('data-link-id', linkId);
+      btn.addEventListener('click', () => {
+        destroyOverlay();
+        if (linkType === 'node') {
+          // Dispatch custom event for tree wizard to handle node jump
+          window.dispatchEvent(new CustomEvent('medkitt-jump-node', { detail: linkId }));
+        } else if (linkType === 'tree') {
+          window.location.hash = '#/tree/' + linkId;
+        } else if (linkType === 'drug') {
+          // Re-open as drug modal after brief delay to let overlay destroy
+          const slashIdx = linkId.indexOf('/');
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent('medkitt-show-drug', {
+              detail: slashIdx !== -1 ? { id: linkId.slice(0, slashIdx), hint: linkId.slice(slashIdx + 1) } : { id: linkId }
+            }));
+          }, 50);
+        }
+      });
       container.appendChild(btn);
+    } else {
+      // Citation ref: [N] or [N][N]
+      const fullMatch = match[0];
+      const nums = fullMatch.match(/\d+/g) ?? [];
+      for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        const btn = document.createElement('button');
+        btn.className = 'cite-link';
+        btn.textContent = `[${num}]`;
+        btn.addEventListener('click', () => scrollToCitation(num));
+        container.appendChild(btn);
+      }
     }
 
-    lastIndex = match.index + fullMatch.length;
+    lastIndex = match.index + match[0].length;
   }
 
-  // Remaining text after last citation
+  // Remaining text after last match
   if (lastIndex < line.length) {
-    container.appendChild(document.createTextNode(line.slice(lastIndex)));
+    infoBoldAware(container, line.slice(lastIndex));
   }
 
-  // If no citations found, just set text
-  if (lastIndex === 0) {
-    container.textContent = line;
+  // If no matches found, render with bold support
+  if (!hasMatch) {
+    infoBoldAware(container, line);
   }
 }
 

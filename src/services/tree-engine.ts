@@ -166,6 +166,19 @@ export class TreeEngine {
     return this.nodes.get(entryNodeId) ?? null;
   }
 
+  /** Jump directly to any node in the tree (e.g., from a summary page).
+   *  Clears history and answers — treats the target as a fresh starting point. */
+  jumpToNode(nodeId: string): DecisionNode | null {
+    if (!this.session) return null;
+    const node = this.nodes.get(nodeId);
+    if (!node) return null;
+    this.session.history = [];
+    this.session.answers = {};
+    this.session.currentNodeId = nodeId;
+    this.saveSession();
+    return node;
+  }
+
   /** Reset the session — start over */
   reset(): void {
     this.session = null;
