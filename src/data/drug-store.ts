@@ -1158,8 +1158,8 @@ const EPINEPHRINE: DrugEntry = {
   name: 'Epinephrine',
   genericName: 'Epinephrine',
   drugClass: 'Non-selective adrenergic agonist (alpha + beta)',
-  route: 'IV/SQ/Intracavernosal',
-  indications: ['Hyperkalemia with hemodynamic instability', 'Ischemic priapism (alternative to phenylephrine)'],
+  route: 'IV/IO/SQ/ET/Intracavernosal',
+  indications: ['Hyperkalemia with hemodynamic instability', 'Ischemic priapism (alternative to phenylephrine)', 'Neonatal resuscitation (NRP)'],
   dosing: [
     {
       indication: 'Hyperkalemia with hypotension/bradycardia',
@@ -1168,6 +1168,22 @@ const EPINEPHRINE: DrugEntry = {
     {
       indication: 'Ischemic priapism',
       regimen: '20 mcg (2 mL of 10 mcg/mL solution) intracavernosal every 5 minutes, up to 5 doses total (100 mcg max). Mix: 1 mL epi from cardiac amp (100 mcg/mL) + 9 mL NS = 10 mcg/mL.',
+    },
+    {
+      indication: 'Neonatal resuscitation (NRP) — IV/IO',
+      regimen: '0.01-0.03 mg/kg of 1:10,000 (0.1-0.3 mL/kg) IV/IO. Repeat every 3-5 minutes. Flush with 1-3 mL NS. IV/IO preferred over ET route.',
+      weightCalc: [
+        { dosePerKg: 0.01, unit: 'mg', label: 'Low dose (0.01 mg/kg)' },
+        { dosePerKg: 0.03, unit: 'mg', label: 'High dose (0.03 mg/kg)' },
+      ],
+    },
+    {
+      indication: 'Neonatal resuscitation (NRP) — ET',
+      regimen: '0.05-0.1 mg/kg of 1:10,000 (0.5-1 mL/kg) via endotracheal tube. Use only if IV/IO access not available. Higher dose needed — absorption is unpredictable via ET route.',
+      weightCalc: [
+        { dosePerKg: 0.05, unit: 'mg', label: 'Low dose ET (0.05 mg/kg)' },
+        { dosePerKg: 0.1, unit: 'mg', label: 'High dose ET (0.1 mg/kg)' },
+      ],
     },
   ],
   contraindications: [
@@ -1186,6 +1202,7 @@ const EPINEPHRINE: DrugEntry = {
     'Bivalacqua TJ, et al. AUA/SMSNA Guideline on Priapism. J Urol. 2022;208(1):43-52.',
     'Graham BA, et al. Emergency Pharmacotherapy for Priapism. Expert Opin Pharmacother. 2022;23(12):1371-80.',
     'Palmer BF, Clegg DJ. Hyperkalemia treatment standard. Nephrol Dial Transplant. 2024;39(7):1097-1104.',
+    'AHA/AAP. 2025 Guidelines for Neonatal Resuscitation. Circulation. 2025;152(Suppl 1):S399-S445.',
   ],
 };
 

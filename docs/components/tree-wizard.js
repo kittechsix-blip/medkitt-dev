@@ -19,6 +19,7 @@ import { BRONCHIOLITIS_NODES, BRONCHIOLITIS_CITATIONS, BRONCHIOLITIS_MODULE_LABE
 import { ECHO_EPSS_NODES, ECHO_EPSS_CITATIONS, ECHO_EPSS_MODULE_LABELS } from '../data/trees/echo-epss.js';
 import { SHOULDER_DYSTOCIA_NODES, SHOULDER_DYSTOCIA_CITATIONS, SHOULDER_DYSTOCIA_MODULE_LABELS } from '../data/trees/shoulder-dystocia.js';
 import { PRECIP_DELIVERY_NODES, PRECIP_DELIVERY_CITATIONS, PRECIP_DELIVERY_MODULE_LABELS } from '../data/trees/precip-delivery.js';
+import { NEONATAL_RESUS_NODES, NEONATAL_RESUS_CITATIONS, NEONATAL_RESUS_MODULE_LABELS } from '../data/trees/neonatal-resus.js';
 import { router } from '../services/router.js';
 import { renderInlineCitations } from './reference-table.js';
 import { showInfoModal } from './info-page.js';
@@ -150,6 +151,13 @@ const TREE_CONFIGS = {
         categoryId: 'ob-gyn',
         moduleLabels: PRECIP_DELIVERY_MODULE_LABELS,
         citations: PRECIP_DELIVERY_CITATIONS,
+    },
+    'neonatal-resus': {
+        nodes: NEONATAL_RESUS_NODES,
+        entryNodeId: 'nrp-start',
+        categoryId: 'pediatrics',
+        moduleLabels: NEONATAL_RESUS_MODULE_LABELS,
+        citations: NEONATAL_RESUS_CITATIONS,
     },
 };
 let engine = null;

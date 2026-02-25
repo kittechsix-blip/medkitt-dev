@@ -40,6 +40,10 @@ import {
 } from '../data/trees/potassium.js';
 import { PEDS_FEVER_CITATIONS } from '../data/trees/peds-fever.js';
 import { PRECIP_DELIVERY_CITATIONS } from '../data/trees/precip-delivery.js';
+import {
+  NEONATAL_RESUS_CITATIONS,
+  NEONATAL_RESUS_CLINICAL_NOTES,
+} from '../data/trees/neonatal-resus.js';
 
 // -------------------------------------------------------------------
 // Tree Reference Data Registry
@@ -119,6 +123,11 @@ const TREE_REFERENCE_DATA: Record<string, TreeReferenceData> = {
   'precip-delivery': {
     title: 'Precipitous Delivery Reference',
     citations: PRECIP_DELIVERY_CITATIONS,
+  },
+  'neonatal-resus': {
+    title: 'Neonatal Resuscitation (NRP) Reference',
+    citations: NEONATAL_RESUS_CITATIONS,
+    clinicalNotes: NEONATAL_RESUS_CLINICAL_NOTES,
   },
 };
 

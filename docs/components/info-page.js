@@ -1341,6 +1341,48 @@ const PTX_SUMMARY = {
 // -------------------------------------------------------------------
 // Page Registry
 // -------------------------------------------------------------------
+// -------------------------------------------------------------------
+// Neonatal Resuscitation (NRP) — Steps Summary
+// -------------------------------------------------------------------
+const NRP_SUMMARY = {
+    id: 'nrp-summary',
+    title: 'NRP Steps Summary',
+    subtitle: 'Quick-reference checklist for neonatal resuscitation',
+    sections: [
+        {
+            heading: '1. Preparation',
+            body: '• [Assign team roles — leader, airway, compressor, meds, recorder](#/node/nrp-preparation)\n• [Monitoring setup: SpO2 right wrist (preductal), temp over liver](#/node/nrp-preparation)\n• [Equipment: radiant warmer ON, T-piece, pulse ox, suction, intubation kit, UVC kit](#/node/nrp-preparation)\n• [Cord management plan: DCC 30-60s vigorous, ICM ≥35wk non-vigorous](#/node/nrp-cord-mgmt)',
+        },
+        {
+            heading: '2. Initial Evaluation',
+            body: '• [Three questions: Term? Breathing/Crying? Good Tone?](#/node/nrp-initial-eval)\n• [Yes to ALL → routine care (skin-to-skin, DCC, warmth)](#/node/nrp-routine)\n• [No to ANY → proceed to initial steps](#/node/nrp-initial-steps)',
+        },
+        {
+            heading: '3. Initial Steps — Golden 30 Seconds',
+            body: '• [Warm (radiant heater, NO blankets), Dry, Position (sniffing), Stimulate (flick feet, rub back)](#/node/nrp-initial-steps)\n• [Clear airway PRN — mouth then nose, avoid vigorous suctioning](#/node/nrp-initial-steps)\n• [Meconium: do NOT delay PPV for suctioning (2025)](#/node/nrp-meconium)\n• [30-sec reassessment: breathing + HR ≥100 → post-resus care](#/node/nrp-golden30-eval)',
+        },
+        {
+            heading: '4. PPV (HR <100 or apnea)',
+            body: '• [T-piece preferred, C-E grip, PIP 20-25, rate 40-60/min, 21% FiO2 ≥35wk](#/node/nrp-ppv)\n• [SpO2 targets: 1\u2019=60-65%, 5\u2019=80-85%, 10\u2019=85-95%](#/node/nrp-spo2-targets)\n• [If not improving → MR SOPA corrective steps](#/node/nrp-corrective)\n• [Advanced airway: ETT or LMA ≥34wk >2kg](#/node/nrp-advanced-airway)\n• [Neonatal numbers: ETT, blade, UVC, epi, glucose, fluids](#/node/nrp-ett-sizing)',
+        },
+        {
+            heading: '5. CPR (HR <60 despite effective PPV)',
+            body: '• [MUST intubate first — 2-thumb encircling, 3:1 ratio, 120 events/min](#/node/nrp-cpr)\n• [100% FiO2, establish UVC/IO access](#/node/nrp-cpr)\n• [Reassess every 60 seconds](#/node/nrp-cpr-eval)',
+        },
+        {
+            heading: '6. Medications (HR <60 after CPR)',
+            body: '• [Epinephrine IV/IO: 0.01-0.03 mg/kg of 1:10,000 q3-5min](#/node/nrp-epinephrine)\n• [UVC procedure: 2 arteries, 1 vein — insert 2 cm](#/node/nrp-uvc)\n• [Volume: NS 10 mL/kg, pRBCs 10 mL/kg, D10W 2 mL/kg](#/node/nrp-volume)\n• [No response after 20 min → consider discontinuation](#/node/nrp-discontinuation)',
+        },
+        {
+            heading: '7. Post-Resuscitation',
+            body: '• [APGAR at 1, 5, 10 min — normothermia 36.5-37.5°C](#/node/nrp-postresus)\n• [Glucose monitoring, NICU transfer, therapeutic hypothermia criteria](#/node/nrp-postresus)\n• [Family communication and team debrief](#/node/nrp-postresus)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'AHA/AAP. 2025 Guidelines for Neonatal Resuscitation. Circulation. 2025;152(Suppl 1):S399-S445.' },
+        { num: 2, text: 'Weiner GM, ed. Textbook of Neonatal Resuscitation (NRP). 8th ed. AAP; 2021.' },
+    ],
+};
 const INFO_PAGES = {
     'doac-pe': DOAC_PE_PAGE,
     'priapism-return-precautions': PRIAPISM_RETURN_PRECAUTIONS,
@@ -1379,6 +1421,7 @@ const INFO_PAGES = {
     'k-summary': K_SUMMARY,
     'stroke-summary': STROKE_SUMMARY,
     'ptx-summary': PTX_SUMMARY,
+    'nrp-summary': NRP_SUMMARY,
 };
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes

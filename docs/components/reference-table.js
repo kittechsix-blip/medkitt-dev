@@ -14,6 +14,7 @@ import { PEP_CITATIONS } from '../data/trees/pep.js';
 import { POTASSIUM_CITATIONS, POTASSIUM_CLINICAL_NOTES, } from '../data/trees/potassium.js';
 import { PEDS_FEVER_CITATIONS } from '../data/trees/peds-fever.js';
 import { PRECIP_DELIVERY_CITATIONS } from '../data/trees/precip-delivery.js';
+import { NEONATAL_RESUS_CITATIONS, NEONATAL_RESUS_CLINICAL_NOTES, } from '../data/trees/neonatal-resus.js';
 const TREE_REFERENCE_DATA = {
     'neurosyphilis': {
         title: 'Neurosyphilis Reference',
@@ -80,6 +81,11 @@ const TREE_REFERENCE_DATA = {
     'precip-delivery': {
         title: 'Precipitous Delivery Reference',
         citations: PRECIP_DELIVERY_CITATIONS,
+    },
+    'neonatal-resus': {
+        title: 'Neonatal Resuscitation (NRP) Reference',
+        citations: NEONATAL_RESUS_CITATIONS,
+        clinicalNotes: NEONATAL_RESUS_CLINICAL_NOTES,
     },
 };
 // -------------------------------------------------------------------

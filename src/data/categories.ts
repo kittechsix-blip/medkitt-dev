@@ -125,6 +125,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 37,
         entryNodeId: 'pf-start',
+      },
+      {
+        id: 'neonatal-resus',
+        title: 'Neonatal Resuscitation (NRP)',
+        subtitle: 'Initial Eval → PPV → CPR → Epinephrine → UVC → Post-Resuscitation',
+        categoryId: 'emergency-medicine',
+        version: '1.0',
+        nodeCount: 25,
+        entryNodeId: 'nrp-start',
       }
     ],
     isCustom: false,
@@ -259,6 +268,15 @@ export const DEFAULT_CATEGORIES: Category[] = [
         version: '1.0',
         nodeCount: 37,
         entryNodeId: 'pf-start',
+      },
+      {
+        id: 'neonatal-resus',
+        title: 'Neonatal Resuscitation (NRP)',
+        subtitle: 'Initial Eval → PPV → CPR → Epinephrine → UVC → Post-Resuscitation',
+        categoryId: 'pediatrics',
+        version: '1.0',
+        nodeCount: 25,
+        entryNodeId: 'nrp-start',
       }
     ],
     isCustom: false,
