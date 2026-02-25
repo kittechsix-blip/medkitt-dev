@@ -50,13 +50,8 @@ export const SHOULDER_DYSTOCIA_NODES = [
         images: [
             {
                 src: 'images/shoulder-dystocia/mcroberts-maneuver.png',
-                alt: 'Illustration showing McRoberts maneuver with maternal legs sharply flexed onto abdomen while an assistant applies suprapubic pressure above the pubic bone to dislodge the fetal anterior shoulder',
-                caption: 'McRoberts maneuver with simultaneous suprapubic pressure. Legs are hyperflexed onto the abdomen while downward pressure is applied just above the pubic bone.',
-            },
-            {
-                src: 'images/shoulder-dystocia/suprapubic-pressure.png',
-                alt: 'Illustration showing suprapubic pressure technique with a fist placed above the maternal pubic bone pushing the fetal shoulder toward the oblique diameter',
-                caption: 'Suprapubic pressure: Push the anterior shoulder off the symphysis toward the oblique diameter.',
+                alt: 'Illustration showing McRoberts maneuver with maternal legs sharply flexed onto abdomen (step 1) while an assistant applies suprapubic pressure to the fetal anterior shoulder (step 2), with inset diagram showing pelvic rotation and opening of the birth canal',
+                caption: 'McRoberts maneuver: (1) Legs flexed onto abdomen rotates pelvis, aligns sacrum, and opens birth canal. (2) Suprapubic pressure applied to fetal anterior shoulder.',
             },
         ],
         next: 'sd-first-check',
