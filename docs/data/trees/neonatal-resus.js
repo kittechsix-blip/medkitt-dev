@@ -12,7 +12,7 @@ export const NEONATAL_RESUS_NODES = [
         type: 'info',
         module: 1,
         title: 'Neonatal Resuscitation (NRP)',
-        body: '[NRP Steps Summary](#/info/nrp-summary) — quick-reference checklist for neonatal resuscitation.\n\n**Neonatal resuscitation** follows a systematic, stepwise approach from initial assessment through advanced interventions.\n\n**Key statistics:** [1]\n• ~90% of newborns transition without intervention beyond warmth, drying, and stimulation\n• ~10% need early support (PPV, supplemental O2)\n• <1% need extensive resuscitation (CPR + medications)\n\n**Modules:**\n• Module 1: Preparation & Initial Assessment — team, equipment, cord management, initial evaluation\n• Module 2: Initial Steps — Golden 30 Seconds (warm, dry, position, stimulate, clear)\n• Module 3: Positive Pressure Ventilation — PPV technique, corrective steps, advanced airway\n• Module 4: Chest Compressions — CPR technique, intubation\n• Module 5: Medications & Vascular Access — epinephrine, UVC, volume resuscitation\n• Module 6: Post-Resuscitation — APGAR, normothermia, NICU transfer\n\n**Cross-links:**\n• [Precipitous Delivery](#/tree/precip-delivery) — ED delivery management\n• [Shoulder Dystocia](#/tree/shoulder-dystocia) — if turtle sign during delivery',
+        body: '[Algorithm — Quick Reference](#/node/nrp-algorithm-ref)\n[Setup and Tools — Quick Reference](#/node/nrp-setup-ref)\n[NRP Steps Summary](#/info/nrp-summary) — quick-reference checklist for neonatal resuscitation.\n\n**Neonatal resuscitation** follows a systematic, stepwise approach from initial assessment through advanced interventions.\n\n**Key statistics:** [1]\n• ~90% of newborns transition without intervention beyond warmth, drying, and stimulation\n• ~10% need early support (PPV, supplemental O2)\n• <1% need extensive resuscitation (CPR + medications)\n\n**Modules:**\n• Module 1: Preparation & Initial Assessment — team, equipment, cord management, initial evaluation\n• Module 2: Initial Steps — Golden 30 Seconds (warm, dry, position, stimulate, clear)\n• Module 3: Positive Pressure Ventilation — PPV technique, corrective steps, advanced airway\n• Module 4: Chest Compressions — CPR technique, intubation\n• Module 5: Medications & Vascular Access — epinephrine, UVC, volume resuscitation\n• Module 6: Post-Resuscitation — APGAR, normothermia, NICU transfer\n\n**Cross-links:**\n• [Precipitous Delivery](#/tree/precip-delivery) — ED delivery management\n• [Shoulder Dystocia](#/tree/shoulder-dystocia) — if turtle sign during delivery',
         citation: [1, 2],
         next: 'nrp-preparation',
     },
@@ -355,6 +355,39 @@ export const NEONATAL_RESUS_NODES = [
         recommendation: 'Post-resuscitation: APGAR at 1/5/10 min, maintain normothermia (36.5-37.5°C), check glucose, NICU transfer for any neonate requiring PPV or more. Therapeutic hypothermia eligibility: ≥36 wk, mod-severe HIE, within 6 hours. Team debrief.',
         confidence: 'definitive',
         citation: [1, 2],
+    },
+    // =====================================================================
+    // QUICK REFERENCE IMAGE NODES (accessible via links on start page)
+    // =====================================================================
+    {
+        id: 'nrp-algorithm-ref',
+        type: 'info',
+        module: 1,
+        title: 'NRP Algorithm — Quick Reference',
+        body: 'Neonatal resuscitation algorithm overview — systematic stepwise approach from birth through compressions and epinephrine.\n\nReference: emergencymedicinecases.com',
+        images: [
+            {
+                src: 'images/neonatal-resus/nrp-algorithm.png',
+                alt: 'NRP algorithm flowchart showing stepwise neonatal resuscitation from birth assessment through initial steps, PPV, chest compressions, and epinephrine with SpO2 targets, ventilation numbers, and post-resuscitation STABLE mnemonic',
+                caption: 'NRP Algorithm. Reference: emergencymedicinecases.com',
+            },
+        ],
+        next: 'nrp-start',
+    },
+    {
+        id: 'nrp-setup-ref',
+        type: 'info',
+        module: 1,
+        title: 'NRP Setup and Tools — Quick Reference',
+        body: 'Neonatal resuscitation equipment sizing and setup reference — term vs preterm numbers, UVC anatomy, and monitoring placement.\n\nReference: Dr. Andrew Kitlowski MD, EM Simulation Cases',
+        images: [
+            {
+                src: 'images/neonatal-resus/nrp-setup-tools.png',
+                alt: 'Neonatal resuscitation setup reference showing term vs preterm equipment sizes (blade, ETT, UVC, epinephrine, glucose, fluid/blood), umbilical cord anatomy with 2 arteries and 1 vein, UVC insertion depth (2 cm), and annotated neonatal monitoring photo showing preductal O2 sat, EKG probes, ETT, NG tube, temperature probe placement over liver',
+                caption: 'NRP Setup and Tools. Reference: Dr. Andrew Kitlowski MD, EM Simulation Cases',
+            },
+        ],
+        next: 'nrp-start',
     },
 ];
 export const NEONATAL_RESUS_NODE_COUNT = NEONATAL_RESUS_NODES.length;
