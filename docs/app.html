@@ -173,21 +173,21 @@
     </svg>
     <span class="legal-banner-text">
       <strong>NOT FDA CLEARED:</strong> For educational use only. Not a substitute for clinical judgment.
-      <a href="#" onclick="showLegalDetails(); return false;" style="color: #fff; text-decoration: underline;">Learn more</a>
+      <a href="#" id="legal-learn-more" style="color: #fff; text-decoration: underline;">Learn more</a>
     </span>
-    <button class="legal-banner-close" onclick="dismissBanner()" aria-label="Dismiss">×</button>
+    <button class="legal-banner-close" id="legal-banner-close" aria-label="Dismiss">×</button>
   </div>
 
   <!-- Legal Details Modal -->
-  <div id="legal-modal" class="legal-modal-overlay" onclick="closeLegalModal(event)">
-    <div class="legal-modal" onclick="event.stopPropagation()">
+  <div id="legal-modal" class="legal-modal-overlay">
+    <div class="legal-modal">
       <h2>Important Legal Information</h2>
       <p><strong>Not a Medical Device:</strong> MedKitt is NOT an FDA-cleared medical device and has not been reviewed or approved by the U.S. Food and Drug Administration.</p>
       <p><strong>Educational Purpose Only:</strong> This application is designed for educational and clinical decision support purposes only. It does not provide medical advice, diagnosis, or treatment recommendations.</p>
       <p><strong>Professional Judgment Required:</strong> Always use your clinical judgment and training. Consult with qualified medical professionals for patient care decisions.</p>
       <p><strong>No Liability:</strong> The creators, developers, and affiliates of MedKitt assume no liability for patient outcomes, errors, or omissions resulting from use of this tool.</p>
       <p><strong>Licensed Use:</strong> This tool is intended for use by licensed healthcare professionals and medical students under supervision only.</p>
-      <button class="legal-modal-btn" onclick="closeLegalModal()">I Understand</button>
+      <button class="legal-modal-btn" id="legal-modal-close-btn">I Understand</button>
     </div>
   </div>
 
@@ -210,45 +210,11 @@
     <footer class="legal-footer">
       <p><strong>© 2026 MedKitt</strong> — Not an FDA-cleared medical device.</p>
       <p>For educational and decision support purposes only. Does not replace clinical judgment.</p>
-      <p>By using this application, you agree to our <a href="#" onclick="showLegalDetails(); return false;">Terms of Use</a>.</p>
+      <p>By using this application, you agree to our <a href="#" id="legal-terms-link">Terms of Use</a>.</p>
     </footer>
   </div>
   
-  <script>
-    // Check if banner was previously dismissed
-    document.addEventListener('DOMContentLoaded', function() {
-      const bannerDismissed = localStorage.getItem('medkitt-banner-dismissed');
-      if (bannerDismissed === 'true') {
-        hideBanner();
-      } else {
-        document.body.classList.add('has-legal-banner');
-      }
-    });
-    
-    function dismissBanner() {
-      localStorage.setItem('medkitt-banner-dismissed', 'true');
-      hideBanner();
-    }
-    
-    function hideBanner() {
-      const banner = document.getElementById('legal-banner');
-      if (banner) {
-        banner.style.display = 'none';
-      }
-      document.body.classList.remove('has-legal-banner');
-    }
-    
-    function showLegalDetails() {
-      document.getElementById('legal-modal').classList.add('active');
-    }
-    
-    function closeLegalModal(event) {
-      if (!event || event.target === document.getElementById('legal-modal')) {
-        document.getElementById('legal-modal').classList.remove('active');
-      }
-    }
-  </script>
-  
+  <script src="legal-banner.js"></script>
   <script src="app.js" type="module"></script>
 </body>
 </html>
