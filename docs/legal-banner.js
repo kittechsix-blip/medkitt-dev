@@ -73,7 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var closeBtn = document.getElementById('legal-banner-close');
-  if (closeBtn) closeBtn.addEventListener('click', dismissBanner);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', dismissBanner);
+    closeBtn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      dismissBanner();
+    });
+  }
 
   // ── Learn More / Terms links → Legal Modal ──
   var learnMoreLink = document.getElementById('legal-learn-more');
