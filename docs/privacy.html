@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - MedKitt</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #252542;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --text-muted: #718096;
+            --accent-primary: #00d4aa;
+            --accent-secondary: #00b894;
+            --accent-hover: #00f5c4;
+            --border-color: #2d3748;
+            --warning-bg: #742a2a;
+            --warning-text: #fed7d7;
+            --warning-border: #c53030;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* Top Disclaimer Banner */
+        .disclaimer-banner {
+            background: var(--warning-bg);
+            color: white;
+            padding: 12px 24px;
+            font-size: 13px;
+            text-align: center;
+            border-bottom: 3px solid var(--warning-border);
+        }
+        .disclaimer-banner strong {
+            color: var(--warning-text);
+        }
+        .disclaimer-banner a {
+            color: #90cdf4;
+            text-decoration: underline;
+        }
+        
+        /* Header */
+        .app-header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .app-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .app-header .logo span {
+            font-size: 28px;
+        }
+        .logo-accent {
+            color: var(--accent-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        
+        .page-header {
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .page-header .subtitle {
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .effective-date {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 12px;
+        }
+        
+        /* Policy Sections */
+        .policy-section {
+            margin-bottom: 40px;
+        }
+        .policy-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .policy-section h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+        .policy-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 24px 0 12px 0;
+        }
+        .policy-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+        .policy-section ul, .policy-section ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        .policy-section li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--accent-primary);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .info-box h4 {
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .info-box p, .info-box li {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .info-box ul {
+            margin-bottom: 0;
+        }
+        
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+        .data-table th, .data-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .data-table th {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .data-table td {
+            color: var(--text-secondary);
+        }
+        .data-table tr:hover td {
+            background: rgba(0, 212, 170, 0.05);
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(0, 212, 170, 0.05) 100%);
+            border: 1px solid var(--accent-primary);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .highlight-box h4 {
+            color: var(--accent-primary);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 48px;
+            border: 1px solid var(--border-color);
+        }
+        .contact-section h2 {
+            color: var(--accent-primary);
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .contact-section p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .contact-email {
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .app-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 32px 24px;
+            margin-top: 64px;
+        }
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 28px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .data-table {
+                font-size: 12px;
+            }
+            .data-table th, .data-table td {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <strong>⚠️ NOT A MEDICAL DEVICE — NOT FDA CLEARED:</strong> MedKitt is for educational reference only.
+        <a href="index.html">Review Full Disclaimer</a>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+        <a href="app.html" class="logo">
+            <span>⚕️</span>
+            <span class="logo-accent">Med</span>Kitt
+        </a>
+        <nav class="nav-links">
+            <a href="app.html">App</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <div class="subtitle">Legal Documentation</div>
+            <h1>Privacy Policy</h1>
+            <p class="effective-date"><strong>Effective Date:</strong> February 26, 2026</p>
+            <p class="effective-date"><strong>Last Updated:</strong> February 26, 2026</p>
+        </div>
+
+        <section class="policy-section">
+            <h2>Introduction</h2>
+            <p>MedKitt ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your information when you use the MedKitt Clinical Decision Support Progressive Web Application ("MedKitt," "the App," or "our Service").</p>
+            <p>MedKitt is a client-side only Progressive Web Application designed for licensed healthcare professionals. We have architected our application with privacy by design principles, minimizing data collection and ensuring that sensitive information remains under your control.</p>
+            
+            <div class="highlight-box">
+                <h4>🔒 Privacy-First Architecture</h4>
+                <p>MedKitt operates entirely client-side. We do not operate servers that store your data, and no patient information or Protected Health Information (PHI) is collected, transmitted, or stored by our systems.</p>
+            </div>
+        </section>
+
+        <section class="policy-section">
+            <h2>Information We Collect</h2>
+            <p>We collect only the minimum information necessary to provide and improve our Service. The types of information we collect are:</p>
+            
+            <h3>1. Information Stored Locally (LocalStorage)</h3>
+            <p>MedKitt uses your browser's LocalStorage to store the following data <strong>locally on your device only</strong>:</p>
+            <ul>
+                <li><strong>Session State:</strong> Your acknowledgment of legal disclaimers and terms of service</li>
+                <li><strong>UI Preferences:</strong> Display settings, theme preferences, and interface customizations</li>
+                <li><strong>Application State:</strong> Recently viewed consults, favorites, and navigation history within the App</li>
+                <li><strong>Offline Caching:</strong> Clinical content cached for offline access (no PHI included)</li>
+            </ul>
+            <p><strong>Important:</strong> This data never leaves your device. We do not have access to your LocalStorage data, and it cannot be accessed by our servers or third parties.</p>
+
+            <h3>2. Email Communications (Idea Board Submissions)</h3>
+            <p>When you voluntarily submit feedback, feature requests, or ideas through our Idea Board submission form, we collect:</p>
+            <ul>
+                <li><strong>Email Address:</strong> To respond to your submission if necessary</li>
+                <li><strong>Message Content:</strong> Your feedback, suggestions, or reported issues</li>
+                <li><strong>Submission Timestamp:</strong> Date and time of your submission</li>
+                <li><strong>Device Information:</strong> Browser type and operating system (for technical support purposes only)</li>
+            </ul>
+
+            <h3>3. Technical Information (Anonymous)</h3>
+            <p>We may collect limited, anonymized technical information to improve App performance:</p>
+            <ul>
+                <li>Error logs and crash reports (no personally identifiable information)</li>
+                <li>Anonymous usage patterns (e.g., most-accessed consults, feature usage)</li>
+                <li>Performance metrics (page load times, responsiveness)</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>What We Do NOT Collect</h2>
+            <div class="info-box">
+                <h4>🚫 Prohibited Data Collection</h4>
+                <p>MedKitt explicitly does NOT collect, store, or process:</p>
+                <ul>
+                    <li>Patient identifiers (names, medical record numbers, dates of birth)</li>
+                    <li>Protected Health Information (PHI) as defined by HIPAA</li>
+                    <li>Clinical data entered by users</li>
+                    <li>Geolocation data</li>
+                    <li>Contacts or personal directories</li>
+                    <li>Biometric data</li>
+                    <li>Payment or financial information</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="policy-section">
+            <h2>How We Use Your Information</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Information Type</th>
+                        <th>Purpose of Use</th>
+                        <th>Legal Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LocalStorage Data</td>
+                        <td>App functionality, session persistence, UI preferences</td>
+                        <td>Legitimate interest (user experience)</td>
+                    </tr>
+                    <tr>
+                        <td>Email Address</td>
+                        <td>Responding to feedback, sending updates (with consent)</td>
+                        <td>Consent</td>
+                    </tr>
+                    <tr>
+                        <td>Idea Board Content</td>
+                        <td>Product improvement and feature development</td>
+                        <td>Legitimate interest</td>
+                    </tr>
+                    <tr>
+                        <td>Anonymous Analytics</td>
+                        <td>Performance optimization and error correction</td>
+                        <td>Legitimate interest</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="policy-section">
+            <h2>Data Retention</h2>
+            <h3>LocalStorage Data</h3>
+            <p>Data stored in your browser's LocalStorage persists until you:</p>
+            <ul>
+                <li>Clear your browser cache and site data</li>
+                <li>Uninstall the Progressive Web App</li>
+                <li>Explicitly delete data through your browser settings</li>
+            </ul>
+
+            <h3>Email Submissions</h3>
+            <p>Idea Board submissions and associated email addresses are retained for:</p>
+            <ul>
+                <li><strong>Active Period:</strong> 24 months from submission date</li>
+                <li><strong>After 24 months:</strong> Anonymized for statistical analysis or deleted upon request</li>
+            </ul>
+
+            <h3>Anonymous Technical Data</h3>
+            <p>Anonymized analytics and error logs are retained for up to 36 months to support long-term performance analysis and improvement.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>Data Sharing and Third Parties</h2>
+            
+            <div class="highlight-box">
+                <h4>🛡️ No Third-Party Data Sharing</h4>
+                <p>We do not sell, rent, trade, or otherwise transfer your personal information to third parties. We do not share your data with:</p>
+                <ul>
+                    <li>Advertising networks or data brokers</li>
+                    <li>Social media platforms</li>
+                    <li>Analytics providers that track individual users</li>
+                    <li>Healthcare institutions or employers</li>
+                    <li>Government agencies (except as required by law)</li>
+                </ul>
+            </div>
+
+            <h3>Limited Service Providers</h3>
+            <p>We may use the following categories of service providers, who are bound by contractual obligations to protect your data:</p>
+            <ul>
+                <li><strong>Email Service Providers:</strong> For processing Idea Board submissions and responses (e.g., secure email gateways)</li>
+                <li><strong>Hosting Providers:</strong> For serving the static PWA files (no access to LocalStorage data)</li>
+                <li><strong>Error Tracking Services:</strong> For anonymous error reporting (no personally identifiable information)</li>
+            </ul>
+
+            <h3>Legal Requirements</h3>
+            <p>We may disclose information if required to do so by law or in response to valid requests by public authorities (e.g., court orders, subpoenas). However, given our minimal data collection practices, such disclosures would be limited to:</p>
+            <ul>
+                <li>Idea Board submission records (email address and message content only)</li>
+                <li>No patient data or PHI exists to disclose</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>Data Security</h2>
+            <p>We implement appropriate technical and organizational measures to protect your information:</p>
+            
+            <h3>Security Measures</h3>
+            <ul>
+                <li><strong>Content Security Policy (CSP):</strong> Strict CSP headers prevent unauthorized script execution and data exfiltration</li>
+                <li><strong>HTTPS Encryption:</strong> All communications between your device and our servers are encrypted using TLS 1.3</li>
+                <li><strong>No Server-Side Storage:</strong> LocalStorage data never transits to our servers, eliminating server-side breach risks</li>
+                <li><strong>Subresource Integrity:</strong> External resources are validated to prevent tampering</li>
+                <li><strong>Regular Security Audits:</strong> Periodic review of application security posture</li>
+            </ul>
+
+            <h3>Your Responsibilities</h3>
+            <p>As MedKitt operates on your device, you are responsible for:</p>
+            <ul>
+                <li>Securing your device with appropriate authentication (PIN, password, biometrics)</li>
+                <li>Keeping your operating system and browser updated</li>
+                <li>Not using MedKitt on shared or public devices for accessing sensitive consults</li>
+                <li>Clearing browser data if you sell or transfer your device</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>⚠️ Security Limitations</h4>
+                <p>No method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee absolute security. However, our client-side only architecture significantly reduces attack vectors compared to traditional web applications.</p>
+            </div>
+        </section>
+
+        <section class="policy-section">
+            <h2>Your Rights and Choices</h2>
+            <p>Depending on your jurisdiction, you may have the following rights regarding your personal information:</p>
+            
+            <h3>Access and Portability</h3>
+            <p>You can access your LocalStorage data at any time through your browser's developer tools. Since LocalStorage data is stored locally, you have complete control and visibility.</p>
+
+            <h3>Deletion Rights</h3>
+            <p>You may request deletion of your personal information:</p>
+            <ul>
+                <li><strong>LocalStorage Data:</strong> Clear your browser cache or site data for MedKitt</li>
+                <li><strong>Idea Board Submissions:</strong> Email us at privacy@medkitt.example.com to request deletion of specific submissions</li>
+            </ul>
+
+            <h3>Correction Rights</h3>
+            <p>If you believe any information we hold about you is inaccurate, you may request correction by contacting us.</p>
+
+            <h3>Consent Withdrawal</h3>
+            <p>You may withdraw consent for email communications at any time by:</p>
+            <ul>
+                <li>Clicking the "unsubscribe" link in any email</li>
+                <li>Contacting us directly at privacy@medkitt.example.com</li>
+            </ul>
+
+            <h3>How to Exercise Your Rights</h3>
+            <p>To exercise any of these rights, please contact us at <a href="mailto:privacy@medkitt.example.com" class="contact-email">privacy@medkitt.example.com</a>. We will respond to your request within 30 days.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>Children's Privacy</h2>
+            <p>MedKitt is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately so we can delete such information.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>International Data Transfers</h2>
+            <p>MedKitt is developed and operated in the United States. If you access MedKitt from outside the United States:</p>
+            <ul>
+                <li>Your LocalStorage data remains on your device and is not transferred internationally</li>
+                <li>Idea Board submissions may be processed and stored in the United States</li>
+                <li>By submitting information through the Idea Board, you consent to transfer of that information to the United States</li>
+            </ul>
+            <p>We do not currently transfer personal data to countries outside the United States other than as described above.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Changes will be effective immediately upon posting the updated policy in the App. We will notify users of material changes through:</p>
+            <ul>
+                <li>A notice banner in the App</li>
+                <li>Email notification (for users who have submitted Idea Board feedback)</li>
+                <li>Updated effective date at the top of this policy</li>
+            </ul>
+            <p>Your continued use of MedKitt after any changes constitutes acceptance of the updated Privacy Policy. We encourage you to review this policy periodically.</p>
+        </section>
+
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+            <p><strong>Email:</strong> <a href="mailto:privacy@medkitt.example.com" class="contact-email">privacy@medkitt.example.com</a></p>
+            <p><strong>Address:</strong><br>
+            MedKitt Privacy Office<br>
+            123 Healthcare Plaza, Suite 500<br>
+            Medical City, Texas 12345<br>
+            United States</p>
+            <p style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">We aim to respond to all privacy-related inquiries within 5 business days.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>© 2026 MedKitt. All rights reserved.</p>
+            <p>MedKitt is a clinical reference tool for licensed healthcare professionals. Not a medical device. Not FDA cleared.</p>
+            <div class="footer-links">
+                <a href="app.html">Application</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

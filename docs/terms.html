@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - MedKitt</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #252542;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --text-muted: #718096;
+            --accent-primary: #00d4aa;
+            --accent-secondary: #00b894;
+            --accent-hover: #00f5c4;
+            --border-color: #2d3748;
+            --warning-bg: #742a2a;
+            --warning-text: #fed7d7;
+            --warning-border: #c53030;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* Top Disclaimer Banner */
+        .disclaimer-banner {
+            background: var(--warning-bg);
+            color: white;
+            padding: 12px 24px;
+            font-size: 13px;
+            text-align: center;
+            border-bottom: 3px solid var(--warning-border);
+        }
+        .disclaimer-banner strong {
+            color: var(--warning-text);
+        }
+        .disclaimer-banner a {
+            color: #90cdf4;
+            text-decoration: underline;
+        }
+        
+        /* Header */
+        .app-header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .app-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .app-header .logo span {
+            font-size: 28px;
+        }
+        .logo-accent {
+            color: var(--accent-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        
+        .page-header {
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .page-header .subtitle {
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .effective-date {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 12px;
+        }
+        
+        /* TOS Sections */
+        .tos-section {
+            margin-bottom: 40px;
+        }
+        .tos-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .tos-section h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+        .tos-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 24px 0 12px 0;
+        }
+        .tos-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 20px 0 10px 0;
+        }
+        .tos-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+        .tos-section ul, .tos-section ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        .tos-section li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .warning-box h4 {
+            color: var(--warning-text);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .warning-box p, .warning-box li {
+            color: white;
+            font-size: 14px;
+        }
+        .warning-box ul {
+            margin-bottom: 0;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--accent-primary);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .info-box h4 {
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .info-box p, .info-box li {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .info-box ul {
+            margin-bottom: 0;
+        }
+        
+        /* Agreement Box */
+        .agreement-box {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        .agreement-box h3 {
+            color: var(--accent-primary);
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .agreement-box p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 48px;
+            border: 1px solid var(--border-color);
+        }
+        .contact-section h2 {
+            color: var(--accent-primary);
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .contact-section p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .contact-email {
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .app-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 32px 24px;
+            margin-top: 64px;
+        }
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 28px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .agreement-box {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <strong>⚠️ NOT A MEDICAL DEVICE — NOT FDA CLEARED:</strong> MedKitt is for educational reference only.
+        <a href="index.html">Review Full Disclaimer</a>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+        <a href="app.html" class="logo">
+            <span>⚕️</span>
+            <span class="logo-accent">Med</span>Kitt
+        </a>
+        <nav class="nav-links">
+            <a href="app.html">App</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <div class="subtitle">Legal Documentation</div>
+            <h1>Terms of Service</h1>
+            <p class="effective-date"><strong>Effective Date:</strong> February 26, 2026</p>
+            <p class="effective-date"><strong>Last Updated:</strong> February 26, 2026</p>
+        </div>
+
+        <div class="agreement-box">
+            <h3>Agreement to Terms</h3>
+            <p>By accessing or using MedKitt, you agree to be bound by these Terms of Service. If you do not agree to these terms, you must not access or use the application.</p>
+        </div>
+
+        <section class="tos-section">
+            <h2>1. Definitions</h2>
+            <p>For the purposes of these Terms of Service:</p>
+            <ul>
+                <li><strong>"MedKitt,"</strong> <strong>"the App,"</strong> or <strong>"the Service"</strong> refers to the MedKitt Clinical Decision Support Progressive Web Application and all associated content.</li>
+                <li><strong>"User,"</strong> <strong>"you,"</strong> or <strong>"your"</strong> refers to the individual accessing or using the Service.</li>
+                <li><strong>"We,"</strong> <strong>"us,"</strong> or <strong>"our"</strong> refers to MedKitt and its operators.</li>
+                <li><strong>"Content"</strong> refers to all clinical information, decision trees, drug references, medical calculators, and other materials available through the Service.</li>
+                <li><strong>"PHI"</strong> means Protected Health Information as defined by HIPAA.</li>
+                <li><strong>"FDA"</strong> means the U.S. Food and Drug Administration.</li>
+            </ul>
+        </section>
+
+        <section class="tos-section">
+            <h2>2. Eligibility and User Requirements</h2>
+            
+            <h3>2.1 Qualified Users Only</h3>
+            <p>MedKitt is designed exclusively for licensed healthcare professionals and supervised medical trainees. By using the Service, you represent and warrant that you meet one of the following criteria:</p>
+            <ol>
+                <li>You are a licensed physician, nurse practitioner, physician assistant, pharmacist, or other licensed healthcare professional in good standing in your jurisdiction;</li>
+                <li>You are a medical, nursing, pharmacy, or allied health student currently enrolled in an accredited educational program and acting under the direct supervision of a licensed practitioner;</li>
+                <li>You are a healthcare professional in an accredited residency, fellowship, or training program;</li>
+                <li>You are a licensed healthcare professional holding valid credentials in a jurisdiction where you are authorized to practice.</li>
+            </ol>
+
+            <h3>2.2 Prohibited Users</h3>
+            <p>You may NOT use MedKitt if:</p>
+            <ul>
+                <li>You are under 18 years of age;</li>
+                <li>You are a layperson seeking medical advice for yourself or others;</li>
+                <li>You are not qualified to interpret clinical information or make healthcare decisions;</li>
+                <li>Your use would violate any professional licensing requirements in your jurisdiction;</li>
+                <li>Your healthcare institution prohibits the use of non-FDA-cleared clinical reference tools;</li>
+                <li>You have had your medical license suspended, revoked, or restricted by any licensing authority.</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Verification Responsibility</h4>
+                <p>We do not verify credentials or licenses. You are solely responsible for ensuring you meet all eligibility requirements. Use of MedKitt without appropriate qualifications may violate professional licensing laws and these Terms of Service.</p>
+            </div>
+
+            <h3>2.3 Professional Standards</h3>
+            <p>As a condition of use, you agree to:</p>
+            <ul>
+                <li>Comply with all applicable laws, regulations, and professional standards governing your practice;</li>
+                <li>Maintain professional liability insurance as required by your jurisdiction or employer;</li>
+                <li>Not use MedKitt for any purpose that would violate medical ethics or professional conduct standards;</li>
+                <li>Report any software errors or content inaccuracies that could affect patient safety.</li>
+            </ul>
+        </section>
+
+        <section class="tos-section">
+            <h2>3. Medical Disclaimer and Educational Purpose</h2>
+            
+            <div class="warning-box">
+                <h4>⚠️ CRITICAL MEDICAL DISCLAIMER</h4>
+                <p><strong>MEDKITT IS FOR EDUCATIONAL AND CLINICAL DECISION SUPPORT PURPOSES ONLY. IT DOES NOT PROVIDE MEDICAL ADVICE.</strong></p>
+                <ul style="margin-top: 12px;">
+                    <li>MedKitt is NOT a medical device and has NOT been cleared, approved, or authorized by the FDA.</li>
+                    <li>Content is synthesized from publicly available medical literature and clinical guidelines.</li>
+                    <li>Information is NOT a substitute for professional medical judgment, diagnosis, or treatment.</li>
+                    <li>Never disregard professional medical advice or delay seeking it because of information accessed through MedKitt.</li>
+                </ul>
+            </div>
+
+            <h3>3.1 No Provider-Patient Relationship</h3>
+            <p>Use of MedKitt does not create a doctor-patient, provider-patient, or any other healthcare provider relationship between you and MedKitt, its developers, or operators. MedKitt does not provide medical services, render medical opinions, or assume any duty of care.</p>
+
+            <h3>3.2 Institutional Protocol Verification Required</h3>
+            <p>You MUST verify all clinical information accessed through MedKitt against:</p>
+            <ul>
+                <li>Current clinical guidelines from relevant professional societies (AHA/ACC, ESC, IDSA, ADA, etc.);</li>
+                <li>Your institution's protocols, policies, and clinical pathways;</li>
+                <li>Your pharmacy and therapeutics committee policies and formulary;</li>
+                <li>Applicable standard of care requirements in your jurisdiction.</li>
+            </ul>
+
+            <h3>3.3 Limitations of Content</h3>
+            <p>MedKitt content may not reflect:</p>
+            <ul>
+                <li>Your institution's specific drug formulary or restricted medication policies;</li>
+                <li>Local antimicrobial resistance patterns or formulary restrictions;</li>
+                <li>Institutional quality improvement initiatives or safety protocols;</li>
+                <li>Regional variations in standard of care or practice guidelines;</li>
+                <li>The most recent updates to clinical guidelines published after content was last reviewed.</li>
+            </ul>
+        </section>
+
+        <section class="tos-section">
+            <h2>4. FDA Regulatory Status</h2>
+            
+            <h3>4.1 Not a Medical Device</h3>
+            <p><strong>MedKitt is NOT a medical device</strong> under the U.S. Food, Drug, and Cosmetic Act (21 U.S.C. § 321(h)) and has NOT been:</p>
+            <ul>
+                <li>Cleared under FDA 510(k) premarket notification;</li>
+                <li>Approved under FDA Premarket Approval (PMA);</li>
+                <li>Authorized under FDA Emergency Use Authorization;</li>
+                <li>Registered as a medical device with the FDA;</li>
+                <li>Subject to FDA inspection or oversight as a medical device manufacturer.</li>
+            </ul>
+
+            <h3>4.2 21st Century Cures Act — CDS Exemption</h3>
+            <p>MedKitt is designed to qualify for the Clinical Decision Support (CDS) exemption under Section 3060(a) of the 21st Century Cures Act (amending 21 U.S.C. § 360j(o)). This exemption applies only to FDA regulatory classification and does NOT:</p>
+            <ul>
+                <li>Limit professional liability or malpractice exposure;</li>
+                <li>Exempt MedKitt from state medical board regulations;</li>
+                <li>Exempt users from their duty of care to patients;</li>
+                <li>Constitute FDA endorsement or approval of the Service.</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>📋 Regulatory Compliance Requirements</h4>
+                <p>To maintain CDS exemption status, MedKitt:</p>
+                <ul>
+                    <li>Is intended for use by licensed healthcare professionals who rely on independent clinical judgment;</li>
+                    <li>Provides transparent references to supporting clinical guidelines and literature;</li>
+                    <li>Explicitly requires users to independently review and verify all recommendations;</li>
+                    <li>Does not directly process patient-specific data to generate treatment recommendations without professional oversight.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tos-section">
+            <h2>5. Intellectual Property Rights</h2>
+            
+            <h3>5.1 Ownership</h3>
+            <p>MedKitt and its original content (excluding content provided by users), features, and functionality are and will remain the exclusive property of MedKitt and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries.</p>
+
+            <h3>5.2 License Grant</h3>
+            <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to:</p>
+            <ul>
+                <li>Access and use MedKitt for your personal, professional clinical reference purposes;</li>
+                <li>Download and install the Progressive Web App on devices you own or control;</li>
+                <li>Use offline-cached content for reference during periods of limited connectivity.</li>
+            </ul>
+
+            <h3>5.3 License Restrictions</h3>
+            <p>You may NOT:</p>
+            <ul>
+                <li>Reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any material from MedKitt, except as incidental to normal use;</li>
+                <li>Remove any copyright, trademark, or other proprietary notices from our materials;</li>
+                <li>Reverse engineer, decompile, disassemble, or otherwise attempt to derive source code from the App;</li>
+                <li>Use MedKitt content to develop competing clinical reference tools or applications;</li>
+                <li>Sell, license, sublicense, rent, lease, or otherwise commercialize MedKitt or its content;</li>
+                <li>Use any automated system (spiders, robots, data mining techniques) to access or extract data from MedKitt.</li>
+            </ul>
+
+            <h3>5.4 Trademarks</h3>
+            <p>The MedKitt name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of MedKitt or its affiliates. You may not use such marks without our prior written permission.</p>
+        </section>
+
+        <section class="tos-section">
+            <h2>6. Prohibited Uses</h2>
+            <p>You agree NOT to use MedKitt:</p>
+            
+            <h3>6.1 Clinical Prohibitions</h3>
+            <ul>
+                <li>As the sole or primary basis for any clinical diagnosis or treatment decision;</li>
+                <li>To override attending physician orders or institutional protocols without appropriate review;</li>
+                <li>To provide medical advice to patients, family members, or laypersons;</li>
+                <li>In emergency situations where immediate action is required and you lack time to verify information;</li>
+                <li>For any purpose that violates the standard of care in your jurisdiction.</li>
+            </ul>
+
+            <h3>6.2 Technical Prohibitions</h3>
+            <ul>
+                <li>In any way that violates any applicable federal, state, local, or international law or regulation;</li>
+                <li>To transmit or procure the sending of any advertising or promotional material without our consent;</li>
+                <li>To impersonate or attempt to impersonate MedKitt, a MedKitt employee, another user, or any other person;</li>
+                <li>To engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Service;</li>
+                <li>To introduce malicious code, viruses, Trojan horses, worms, or other harmful material;</li>
+                <li>To attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of the Service.</li>
+            </ul>
+
+            <h3>6.3 Content Misuse</h3>
+            <ul>
+                <li>To create a database of clinical content for redistribution;</li>
+                <li>To train artificial intelligence or machine learning models without written authorization;</li>
+                <li>To generate automated clinical recommendations for non-professional use;</li>
+                <li>To circumvent any content protection or access controls.</li>
+            </ul>
+        </section>
+
+        <section class="tos-section">
+            <h2>7. Disclaimer of Warranties</h2>
+            
+            <h3>7.1 As-Is Basis</h3>
+            <p>MEDKITT IS PROVIDED ON AN <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE"</strong> BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.</p>
+
+            <h3>7.2 No Warranty Disclaimer</h3>
+            <p>To the fullest extent permitted by applicable law, we disclaim all warranties, express or implied, including but not limited to:</p>
+            <ul>
+                <li>Implied warranties of merchantability, fitness for a particular purpose, and non-infringement;</li>
+                <li>Warranties that MedKitt will be uninterrupted, timely, secure, or error-free;</li>
+                <li>Warranties regarding the accuracy, reliability, completeness, or timeliness of content;</li>
+                <li>Warranties that any errors will be corrected or that the Service is free of viruses or other harmful components.</li>
+            </ul>
+
+            <h3>7.3 Content Accuracy</h3>
+            <p>While we strive to provide accurate and up-to-date clinical information, medical knowledge evolves rapidly. We do not warrant that:</p>
+            <ul>
+                <li>Content reflects the most current clinical guidelines or literature;</li>
+                <li>Drug information, dosing, or interactions are complete or accurate;</li>
+                <li>Clinical pathways are appropriate for any specific patient or clinical scenario;</li>
+                <li>Content is appropriate or available for use in all jurisdictions.</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Clinical Judgment Required</h4>
+                <p>YOU ASSUME ALL RISK FOR SELECTING, USING, AND RELYING UPON MEDKITT CONTENT. YOU MUST EXERCISE YOUR OWN INDEPENDENT PROFESSIONAL JUDGMENT IN EVALUATING ALL INFORMATION ACCESSED THROUGH THIS SERVICE.</p>
+            </div>
+        </section>
+
+        <section class="tos-section">
+            <h2>8. Limitation of Liability</h2>
+            
+            <h3>8.1 No Liability for Clinical Outcomes</h3>
+            <p>To the maximum extent permitted by applicable law, in no event shall MedKitt, its developers, operators, licensors, affiliates, officers, directors, employees, agents, or contractors be liable for:</p>
+            <ul>
+                <li>Any adverse patient outcomes, medical errors, or patient harm;</li>
+                <li>Wrongful death, personal injury, or disability claims;</li>
+                <li>Professional malpractice, negligence, or disciplinary actions;</li>
+                <li>Loss of medical license, hospital privileges, or professional standing;</li>
+                <li>Economic damages, consequential losses, or lost profits;</li>
+                <li>Claims arising from reliance on outdated, incomplete, or incorrect information.</li>
+            </ul>
+
+            <h3>8.2 Damages Cap</h3>
+            <p>To the maximum extent permitted by law, in no event shall the total liability of MedKitt and its affiliates to you for all claims arising out of or relating to these Terms or your use of the Service exceed:</p>
+            <ul>
+                <li>The amount you have paid to us for access to the Service in the 12 months preceding the claim, OR</li>
+                <li>One hundred United States dollars (USD $100.00), whichever is greater.</li>
+            </ul>
+
+            <h3>8.3 Essential Purpose</h3>
+            <p>The limitations of damages set forth above are fundamental elements of the basis of the bargain between you and MedKitt. MedKitt would not be able to provide the Service on an economically reasonable basis without such limitations.</p>
+
+            <h3>8.4 Jurisdictional Variations</h3>
+            <p>Some jurisdictions do not allow the exclusion or limitation of liability for consequential or incidental damages. In such jurisdictions, our liability shall be limited to the maximum extent permitted by law.</p>
+        </section>
+
+        <section class="tos-section">
+            <h2>9. Indemnification</h2>
+            <p>You agree to defend, indemnify, and hold harmless MedKitt, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to:</p>
+            <ul>
+                <li>Your violation of these Terms of Service;</li>
+                <li>Your use of MedKitt, including but not limited to any clinical decisions made based on Content;</li>
+                <li>Any patient harm, adverse outcome, or malpractice claim arising from your use of the Service;</li>
+                <li>Your violation of any applicable law, regulation, or professional licensing requirement;</li>
+                <li>Your violation of any rights of a third party.</li>
+            </ul>
+        </section>
+
+        <section class="tos-section">
+            <h2>10. Term and Termination</h2>
+            
+            <h3>10.1 Term</h3>
+            <p>These Terms of Service remain in full force and effect while you use MedKitt. You may terminate your use at any time by discontinuing access to the Service and uninstalling the Progressive Web App.</p>
+
+            <h3>10.2 Termination by Us</h3>
+            <p>We may terminate or suspend your access to MedKitt immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you:</p>
+            <ul>
+                <li>Breach any provision of these Terms of Service;</li>
+                <li>Use the Service in a manner that could create liability for us or harm our reputation;</li>
+                <li>Engage in fraudulent, abusive, or illegal activity;</li>
+                <li>Violate professional licensing requirements or standards of care;</li>
+                <li>Provide false information regarding your qualifications or credentials;</li>
+                <li>Attempt to reverse engineer, hack, or compromise the security of the Service.</li>
+            </ul>
+
+            <h3>10.3 Effect of Termination</h3>
+            <p>Upon termination:</p>
+            <ul>
+                <li>Your right to use MedKitt will immediately cease;</li>
+                <li>All licenses and rights granted to you under these Terms will terminate;</li>
+                <li>LocalStorage data on your device remains under your control (we cannot delete it remotely);</li>
+                <li>Provisions that by their nature should survive termination shall survive (including intellectual property, disclaimers, indemnification, and limitations of liability).</li>
+            </ul>
+        </section>
+
+        <section class="tos-section">
+            <h2>11. Governing Law and Jurisdiction</h2>
+            
+            <h3>11.1 Governing Law</h3>
+            <p>These Terms of Service and any dispute or claim arising out of or in connection with them shall be governed by and construed in accordance with the laws of the <strong>State of Texas</strong>, United States of America, without regard to its conflict of law provisions.</p>
+
+            <h3>11.2 Jurisdiction</h3>
+            <p>Any legal suit, action, or proceeding arising out of, or related to, these Terms or MedKitt shall be instituted exclusively in the federal or state courts located in <strong>Harris County, Texas</strong>. You waive any and all objections to the exercise of jurisdiction over you by such courts and to venue in such courts.</p>
+
+            <h3>11.3 Class Action Waiver</h3>
+            <p>You agree that any proceedings, whether in arbitration or court, will be conducted only on an individual basis and not in a class, consolidated, or representative action. You waive any right to participate in class actions.</p>
+
+            <h3>11.4 International Users</h3>
+            <p>If you access MedKitt from outside the United States, you do so at your own risk and are responsible for compliance with local laws. These Terms constitute the entire agreement between you and MedKitt regarding your use of the Service.</p>
+        </section>
+
+        <section class="tos-section">
+            <h2>12. Modifications to Terms</h2>
+            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. Changes will be effective immediately upon posting the updated Terms in the App. We will notify users of material changes through:</p>
+            <ul>
+                <li>A notice banner displayed upon next access to the Service;</li>
+                <li>Updated effective date at the top of these Terms;</li>
+                <li>For material changes affecting your rights, direct notification to users who have provided contact information.</li>
+            </ul>
+            <p>Your continued use of MedKitt after any changes constitutes acceptance of the revised Terms. If you do not agree to the new terms, you must stop using the Service.</p>
+        </section>
+
+        <section class="tos-section">
+            <h2>13. Miscellaneous</h2>
+            
+            <h3>13.1 Entire Agreement</h3>
+            <p>These Terms of Service, together with our Privacy Policy, constitute the entire agreement between you and MedKitt regarding the Service and supersede all prior and contemporaneous agreements, proposals, or representations.</p>
+
+            <h3>13.2 Severability</h3>
+            <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
+
+            <h3>13.3 Waiver</h3>
+            <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. No waiver of any term shall be deemed a further or continuing waiver of such term or any other term.</p>
+
+            <h3>13.4 Assignment</h3>
+            <p>You may not assign or transfer these Terms, by operation of law or otherwise, without our prior written consent. We may assign or transfer these Terms, at our sole discretion, without restriction. Subject to the foregoing, these Terms will bind and inure to the benefit of the parties, their successors, and permitted assigns.</p>
+
+            <h3>13.5 Headings</h3>
+            <p>The headings used in these Terms are for convenience only and shall not affect the interpretation of these Terms.</p>
+
+            <h3>13.6 Contact Information</h3>
+            <p>If you have any questions about these Terms, please contact us at <a href="mailto:legal@medkitt.example.com" class="contact-email">legal@medkitt.example.com</a>.</p>
+        </section>
+
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, concerns, or legal inquiries regarding these Terms of Service, please contact us:</p>
+            <p><strong>Email:</strong> <a href="mailto:legal@medkitt.example.com" class="contact-email">legal@medkitt.example.com</a></p>
+            <p><strong>Address:</strong><br>
+            MedKitt Legal Department<br>
+            123 Healthcare Plaza, Suite 500<br>
+            Medical City, Texas 12345<br>
+            United States</p>
+            <p style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">We aim to respond to all legal inquiries within 10 business days.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>© 2026 MedKitt. All rights reserved.</p>
+            <p>MedKitt is a clinical reference tool for licensed healthcare professionals. Not a medical device. Not FDA cleared.</p>
+            <div class="footer-links">
+                <a href="app.html">Application</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
