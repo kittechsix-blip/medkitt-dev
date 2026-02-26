@@ -239,9 +239,89 @@ build/dev-macos-arm64/
         └── build.json
 ```
 
+## ⚖️ Legal Notices & Disclaimers
+
+### FDA Disclaimer
+
+**MedKitt is NOT an FDA-cleared medical device.** This application has not been reviewed, cleared, or approved by the U.S. Food and Drug Administration (FDA). It does not meet the criteria for a medical device under 21 U.S.C. § 321(h) and is not intended for use in the diagnosis, cure, mitigation, treatment, or prevention of disease.
+
+### Intended Use
+
+MedKitt is designed and intended solely for:
+- **Educational purposes** - For medical students, residents, and healthcare professionals in training
+- **Clinical decision support** - As a reference tool to supplement, not replace, clinical judgment
+- **Informational reference** - To provide quick access to evidence-based guidelines and protocols
+
+### User Acknowledgments
+
+By using MedKitt, you acknowledge and agree to the following:
+
+1. **Not a Substitute for Professional Judgment**
+   - MedKitt is for informational purposes only and does NOT replace clinical judgment, training, or the advice of qualified medical professionals
+   - Always verify information against current clinical guidelines and institutional protocols
+   - Use your professional training and experience when making patient care decisions
+
+2. **Licensed Healthcare Provider Requirement**
+   - MedKitt is intended for use by licensed healthcare professionals and medical students under supervision only
+   - Users must only use this tool within their scope of practice and professional licensure
+   - Unauthorized use by non-medical personnel is prohibited
+
+3. **Assumption of Risk**
+   - You assume full responsibility for any clinical decisions made using information from MedKitt
+   - The creators, developers, contributors, and affiliates of MedKitt assume no liability for:
+     - Patient outcomes
+     - Medical errors or omissions
+     - Adverse events
+     - Clinical decision-making based on this tool's content
+
+4. **No Medical Advice**
+   - MedKitt does not provide medical advice, diagnosis, or treatment recommendations
+   - Content is provided "AS IS" without warranty of any kind, express or implied
+   - Always consult appropriate specialists and current clinical guidelines
+
+### Data Privacy & Security
+
+- **No Patient Data**: MedKitt does not collect, store, or transmit any patient health information (PHI)
+- **Local Storage Only**: All data remains on your device
+- **No Analytics**: We do not track usage or collect analytics
+- **No Internet Required**: The application functions entirely offline
+- **HIPAA Compliance**: While MedKitt does not handle PHI, users are responsible for ensuring their use complies with HIPAA and other applicable privacy regulations
+
+### Intellectual Property
+
+- All clinical guidelines cited in MedKitt belong to their respective copyright holders (CDC, ESC, AHA, etc.)
+- MedKitt's code and design are provided for educational purposes
+- Redistribution or commercial use requires explicit permission
+
+### Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL MEDIATEKK, ITS CREATORS, DEVELOPERS, CONTRIBUTORS, OR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:
+- DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA, OR OTHER INTANGIBLE LOSSES
+- DAMAGES RESULTING FROM THE USE OR INABILITY TO USE THE APPLICATION
+- DAMAGES RESULTING FROM ANY CLINICAL DECISIONS MADE BASED ON INFORMATION PROVIDED BY THE APPLICATION
+- DAMAGES RESULTING FROM UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA
+
+### Governing Law
+
+These legal notices shall be governed by and construed in accordance with the laws of the United States and the State of Texas, without regard to its conflict of law provisions.
+
+### Changes to Legal Notices
+
+We reserve the right to modify these legal notices at any time. Changes will be effective immediately upon posting to the application or repository. Your continued use of MedKitt constitutes acceptance of any modified terms.
+
+### Contact
+
+For questions regarding these legal notices, contact:
+- Email: hello@medkitt.app
+- GitHub Issues: https://github.com/kittechsix-blip/medkitt-dev/issues
+
+---
+
 ## 📄 License
 
 Prototype for educational/evaluation purposes. Not for clinical use without proper validation.
+
+**Copyright © 2026 MedKitt. All rights reserved.**
 
 ## 🙏 Credits
 

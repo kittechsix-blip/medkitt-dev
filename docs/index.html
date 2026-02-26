@@ -22,8 +22,327 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>MedKitt — Clinical Consults, Solved</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Legal Disclaimer Splash Screen Styles */
+        .legal-splash-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 26, 0.98);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .legal-splash-modal {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 107, 107, 0.3);
+        }
+        
+        .legal-splash-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .legal-splash-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .legal-splash-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #ff6b6b;
+        }
+        
+        .legal-splash-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin: 0 0 8px;
+        }
+        
+        .legal-splash-subtitle {
+            font-size: 14px;
+            color: #a0a0b0;
+            margin: 0;
+        }
+        
+        .legal-splash-content {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .legal-splash-content h3 {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 0 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .legal-splash-content p {
+            color: #c0c0d0;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0 0 12px;
+        }
+        
+        .legal-checkbox-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px;
+        }
+        
+        .legal-checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .legal-checkbox-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .legal-checkbox-item.checked {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        .legal-checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            flex-shrink: 0;
+            cursor: pointer;
+            accent-color: #4caf50;
+        }
+        
+        .legal-checkbox-text {
+            font-size: 13px;
+            color: #e0e0f0;
+            line-height: 1.5;
+        }
+        
+        .legal-checkbox-text strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .legal-splash-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .legal-splash-btn {
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        
+        .legal-splash-btn-primary {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: #fff;
+        }
+        
+        .legal-splash-btn-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .legal-splash-btn-primary:disabled {
+            background: #3a3a4a;
+            color: #6a6a7a;
+            cursor: not-allowed;
+        }
+        
+        .legal-splash-btn-secondary {
+            background: transparent;
+            color: #a0a0b0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .legal-splash-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+        
+        .legal-splash-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .legal-splash-footer p {
+            font-size: 11px;
+            color: #707080;
+            margin: 0;
+        }
+        
+        .legal-splash-hidden {
+            display: none !important;
+        }
+        
+        .fda-warning-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 107, 107, 0.15);
+            color: #ff6b6b;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Legal Disclaimer Splash Screen -->
+    <div id="legal-splash" class="legal-splash-overlay">
+        <div class="legal-splash-modal">
+            <div class="legal-splash-header">
+                <div class="legal-splash-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+                        <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                </div>
+                <span class="fda-warning-badge">Not FDA Cleared</span>
+                <h1 class="legal-splash-title">Important Legal Notice</h1>
+                <p class="legal-splash-subtitle">Please read and acknowledge before using MedKitt</p>
+            </div>
+            
+            <div class="legal-splash-content">
+                <h3>Required Acknowledgments</h3>
+                <p>MedKitt is a clinical decision support tool designed to assist licensed healthcare professionals. By proceeding, you acknowledge and agree to the following:</p>
+            </div>
+            
+            <ul class="legal-checkbox-list">
+                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
+                    <input type="checkbox" id="ack-1" onchange="updateAcknowledgeButton()">
+                    <label for="ack-1" class="legal-checkbox-text">
+                        <strong>Not a Medical Device</strong>
+                        I understand that MedKitt is NOT an FDA-cleared medical device and has not been reviewed or approved by the U.S. Food and Drug Administration.
+                    </label>
+                </li>
+                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
+                    <input type="checkbox" id="ack-2" onchange="updateAcknowledgeButton()">
+                    <label for="ack-2" class="legal-checkbox-text">
+                        <strong>Not a Substitute for Professional Judgment</strong>
+                        I understand that MedKitt is for informational purposes only and does NOT replace my clinical judgment, training, or the advice of qualified medical professionals.
+                    </label>
+                </li>
+                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
+                    <input type="checkbox" id="ack-3" onchange="updateAcknowledgeButton()">
+                    <label for="ack-3" class="legal-checkbox-text">
+                        <strong>Licensed Healthcare Provider</strong>
+                        I confirm that I am a licensed healthcare professional or medical student under supervision, and I will use this tool only within my scope of practice and licensure.
+                    </label>
+                </li>
+                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
+                    <input type="checkbox" id="ack-4" onchange="updateAcknowledgeButton()">
+                    <label for="ack-4" class="legal-checkbox-text">
+                        <strong>Assumption of Risk & Liability</strong>
+                        I understand that I assume full responsibility for any clinical decisions made using information from MedKitt. The creators, developers, and affiliates of MedKitt assume no liability for patient outcomes, errors, or omissions.
+                    </label>
+                </li>
+            </ul>
+            
+            <div class="legal-splash-actions">
+                <button id="acknowledge-btn" class="legal-splash-btn legal-splash-btn-primary" disabled onclick="acknowledgeAndProceed()">
+                    I Acknowledge and Agree — Enter MedKitt
+                </button>
+                <button class="legal-splash-btn legal-splash-btn-secondary" onclick="exitApplication()">
+                    I Do Not Agree — Exit
+                </button>
+            </div>
+            
+            <div class="legal-splash-footer">
+                <p>© 2026 MedKitt. By clicking "I Acknowledge and Agree," you accept these terms.<br>
+                This acknowledgment will be saved for future visits.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user has already acknowledged
+        document.addEventListener('DOMContentLoaded', function() {
+            const hasAcknowledged = localStorage.getItem('medkitt-legal-acknowledged');
+            if (hasAcknowledged === 'true') {
+                document.getElementById('legal-splash').classList.add('legal-splash-hidden');
+            }
+        });
+        
+        function toggleCheckbox(item) {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            item.classList.toggle('checked', checkbox.checked);
+            updateAcknowledgeButton();
+        }
+        
+        function updateAcknowledgeButton() {
+            const checkboxes = document.querySelectorAll('.legal-checkbox-item input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            const btn = document.getElementById('acknowledge-btn');
+            btn.disabled = !allChecked;
+            checkboxes.forEach(cb => {
+                cb.closest('.legal-checkbox-item').classList.toggle('checked', cb.checked);
+            });
+        }
+        
+        function acknowledgeAndProceed() {
+            localStorage.setItem('medkitt-legal-acknowledged', 'true');
+            localStorage.setItem('medkitt-legal-acknowledged-date', new Date().toISOString());
+            document.getElementById('legal-splash').classList.add('legal-splash-hidden');
+        }
+        
+        function exitApplication() {
+            window.location.href = 'https://www.google.com';
+        }
+    </script>
+
+    <!-- Original page content continues below -->
     <div class="bg-gradient"></div>
     <div class="bg-grid"></div>
     
@@ -57,7 +376,7 @@
                     <img src="assets/medkitt-brand-logo.png" alt="MedKitt" class="hero-logo-img">
                 </div>
                 <h1 class="hero-title">Clinical consults, <span class="hero-title-accent">solved.</span></h1>
-                <p class="hero-subtitle">Evidence-based clinical decision support for healthcare professionals. Guided consults built on current evidence, accessible in 60 seconds.</p>
+                <p class="hero-subtitle">Evidence-based clinical decision support for healthcare professionals.</p>
                 <div class="hero-cta">
                     <a href="./app.html" class="btn btn-primary">
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -104,7 +423,7 @@
             </svg>
         </div>
     </section>
-    
+
     <!-- PWA Install Hero Section -->
     <section class="pwa-hero-section" id="install">
         <div class="container">
@@ -326,276 +645,15 @@
         </div>
     </section>
 
-    <section class="install-guide" id="install">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Install</span>
-                <h2 class="section-title">Add to <span class="accent">Home Screen</span></h2>
-                <p class="section-subtitle">Works offline once installed — no app store required</p>
-            </div>
-            <div class="install-grid">
-                <div class="install-card glass-card">
-                    <div class="install-card-header">
-                        <svg class="install-platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>
-                        <h3 class="install-card-title">iPhone / iPad</h3>
-                    </div>
-                    <div class="install-steps">
-                        <div class="install-step">
-                            <div class="install-step-num">1</div>
-                            <div class="install-step-content">
-                                <p>Open MedKitt in <strong>Safari</strong></p>
-                            </div>
-                        </div>
-                        <div class="install-step">
-                            <div class="install-step-num">2</div>
-                            <div class="install-step-content">
-                                <p>Tap the <strong>Share</strong> button</p>
-                                <div class="install-icon-hint">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                                    <span>Square with arrow pointing up</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="install-step">
-                            <div class="install-step-num">3</div>
-                            <div class="install-step-content">
-                                <p>Scroll down, tap <strong>"Add to Home Screen"</strong></p>
-                            </div>
-                        </div>
-                        <div class="install-step">
-                            <div class="install-step-num">4</div>
-                            <div class="install-step-content">
-                                <p>Tap <strong>"Add"</strong> in the top right</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="install-card glass-card">
-                    <div class="install-card-header">
-                        <svg class="install-platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        <h3 class="install-card-title">Chrome / Desktop</h3>
-                    </div>
-                    <div class="install-steps">
-                        <div class="install-step">
-                            <div class="install-step-num">1</div>
-                            <div class="install-step-content">
-                                <p>Open MedKitt in <strong>Chrome</strong></p>
-                            </div>
-                        </div>
-                        <div class="install-step">
-                            <div class="install-step-num">2</div>
-                            <div class="install-step-content">
-                                <p>Click the <strong>install icon</strong> in the address bar</p>
-                                <div class="install-icon-hint">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                    <span>Download icon in URL bar</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="install-step">
-                            <div class="install-step-num">3</div>
-                            <div class="install-step-content">
-                                <p>Click <strong>"Install"</strong> in the popup</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="install-card glass-card">
-                    <div class="install-card-header">
-                        <svg class="install-platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                        <h3 class="install-card-title">Android</h3>
-                    </div>
-                    <div class="install-steps">
-                        <div class="install-step">
-                            <div class="install-step-num">1</div>
-                            <div class="install-step-content">
-                                <p>Open MedKitt in <strong>Chrome</strong></p>
-                            </div>
-                        </div>
-                        <div class="install-step">
-                            <div class="install-step-num">2</div>
-                            <div class="install-step-content">
-                                <p>Tap the <strong>three-dot menu</strong></p>
-                                <div class="install-icon-hint">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
-                                    <span>Top-right corner</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="install-step">
-                            <div class="install-step-num">3</div>
-                            <div class="install-step-content">
-                                <p>Tap <strong>"Add to Home screen"</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="install-cta">
-                <a href="./app.html" class="btn btn-primary">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Open MedKitt
-                </a>
-                <p class="install-hint">Open the link above, then follow the steps for your device</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="trust" id="trust">
-        <div class="container">
-            <div class="verification-badge-container" id="verification-badge"></div>
-        </div>
-    </section>
-    
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">FAQ</span>
-                <h2 class="section-title">Common <span class="accent">questions</span></h2>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item glass-card">
-                    <button class="faq-question">
-                        <span>Is MedKitt free to use?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes, MedKitt is completely free for all healthcare professionals. We believe clinical decision support should be accessible to everyone at the point of care.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card">
-                    <button class="faq-question">
-                        <span>Does it work offline?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! MedKitt is a Progressive Web App (PWA) that works completely offline. Once installed, all consults, drug references, and calculators are available without an internet connection.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card">
-                    <button class="faq-question">
-                        <span>Is patient data stored or transmitted?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No. MedKitt does not collect, store, or transmit any patient information. All data stays on your device. We have no analytics, no tracking, and no server-side data storage.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card">
-                    <button class="faq-question">
-                        <span>How do I request a new consult?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Use our Community Idea Board above! Submit your idea and others can upvote it. We prioritize building the most requested consults from the community.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card">
-                    <button class="faq-question">
-                        <span>What guidelines are consults based on?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>All consults cite current, evidence-based guidelines including CDC (2021), ESC (2019), and specialty society recommendations. Guidelines are reviewed and updated regularly.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <footer class="footer">
-        <div class="footer-accent-line"></div>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo-wrap">
-                        <img src="assets/badge-48.png" alt="MedKitt" class="footer-logo-badge">
-                        <span class="footer-logo-text"><span class="logo-med">Med</span><span class="logo-kitt">Kitt</span></span>
-                    </div>
-                    <p class="footer-tagline">Clinical consults, solved.</p>
-                    <p class="footer-description">Evidence-based clinical decision support for healthcare professionals. Built by an EM physician at Dell Seton.</p>
-                </div>
-                <div class="footer-links">
-                    <h4 class="footer-heading">Product</h4>
-                    <ul class="footer-list">
-                        <li><a href="./app.html">Live App</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#consults">Consults</a></li>
-                        <li><a href="#idea-board">Idea Board</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4 class="footer-heading">Resources</h4>
-                    <ul class="footer-list">
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="https://github.com/kittechsix-blip/medkitt" target="_blank">GitHub</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4 class="footer-heading">Contact</h4>
-                    <ul class="footer-list">
-                        <li><a href="mailto:hello@medkitt.app">hello@medkitt.app</a></li>
-                        <li><a href="#idea-board">Submit Feedback</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="footer-bottom">
-                <p class="footer-disclaimer"><strong>Medical Disclaimer:</strong> MedKitt is a clinical decision support tool and does not replace clinical judgment. Always verify information and consult appropriate specialists for complex cases. Not for use in emergent situations where immediate action is required.</p>
+                <p class="footer-disclaimer"><strong>Medical Disclaimer:</strong> MedKitt is NOT an FDA-cleared medical device. This tool is for educational and decision support purposes only and does not replace professional medical judgment. Always verify information and consult appropriate specialists.</p>
                 <p class="footer-copyright">© 2026 MedKitt. Built with care for healthcare professionals.</p>
             </div>
         </div>
     </footer>
-    
-    <div class="modal-overlay" id="idea-modal">
-        <div class="modal glass-card">
-            <button class="modal-close" id="modal-close">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
-            <div class="modal-header">
-                <h3 class="modal-title">Submit Your Idea</h3>
-                <p class="modal-subtitle">Suggest a new consult pathway for the community</p>
-            </div>
-            <form class="modal-form" id="idea-form">
-                <div class="form-group">
-                    <label for="idea-title">Consult Title</label>
-                    <input type="text" id="idea-title" name="title" placeholder="e.g., DKA Management Protocol" required>
-                </div>
-                <div class="form-group">
-                    <label for="idea-specialty">Specialty</label>
-                    <select id="idea-specialty" name="specialty" required>
-                        <option value="">Select a specialty...</option>
-                        <option value="Emergency Medicine">Emergency Medicine</option>
-                        <option value="Cardiology">Cardiology</option>
-                        <option value="Pulmonology">Pulmonology</option>
-                        <option value="Infectious Disease">Infectious Disease</option>
-                        <option value="Neurology">Neurology</option>
-                        <option value="Nephrology">Nephrology</option>
-                        <option value="Gastroenterology">Gastroenterology</option>
-                        <option value="OB/GYN">OB/GYN</option>
-                        <option value="Pediatrics">Pediatrics</option>
-                        <option value="Surgery">Surgery</option>
-                        <option value="Anesthesia">Anesthesia</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="idea-description">Description</label>
-                    <textarea id="idea-description" name="description" rows="3" placeholder="Briefly describe what this consult should cover..." required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="idea-email">Your Email (optional)</label>
-                    <input type="email" id="idea-email" name="email" placeholder="For updates when this is built">
-                </div>
-                <div class="form-coming-soon">
-                    <span class="coming-soon-badge">Coming Soon</span>
-                    <p>Live submissions are being set up. For now, email your ideas to <a href="mailto:hello@medkitt.app">hello@medkitt.app</a></p>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full" disabled>Submit Idea</button>
-            </form>
-        </div>
-    </div>
-    
+
     <script src="script.js"></script>
     <script src="config/components.js"></script>
     <script src="components/pwa-install-hero.js"></script>
