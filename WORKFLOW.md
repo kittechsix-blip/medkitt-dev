@@ -116,3 +116,8 @@ This will:
 - Use feature branches for all changes
 - Test on the dev site before promoting to production
 - Keep the `docs/` folder ready for GitHub Pages
+
+## GitHub Actions Workflow
+
+The deployment workflow file is at: `.github/workflows/deploy-dev.yml`
+If you cannot push it via git, manually create it via GitHub web interface.
