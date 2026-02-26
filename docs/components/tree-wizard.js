@@ -470,11 +470,8 @@ function renderQuestionNode(content, node, container) {
         }
         content.appendChild(linkRow);
     }
-    if (node.citation?.length) {
-        const cite = document.createElement('div');
-        cite.className = 'wizard-citation';
-        cite.textContent = `Evidence: ${node.citation.map(n => `[${n}]`).join(' ')}`;
-        content.appendChild(cite);
+    if (node.citation?.length && currentConfig) {
+        renderInlineCitations(content, node.citation, currentConfig.citations);
     }
     // Option buttons
     if (node.options) {
@@ -525,11 +522,8 @@ function renderInfoNode(content, node, container) {
     content.appendChild(body);
     // Images (e.g., ultrasound reference images)
     renderNodeImages(content, node);
-    if (node.citation?.length) {
-        const cite = document.createElement('div');
-        cite.className = 'wizard-citation';
-        cite.textContent = `Evidence: ${node.citation.map(n => `[${n}]`).join(' ')}`;
-        content.appendChild(cite);
+    if (node.citation?.length && currentConfig) {
+        renderInlineCitations(content, node.citation, currentConfig.citations);
     }
     if (node.next) {
         const continueBtn = document.createElement('button');
