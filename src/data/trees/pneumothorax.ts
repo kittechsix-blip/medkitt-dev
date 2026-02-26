@@ -1,308 +1,248 @@
-// MedKitt — Pneumothorax POCUS Consult
-// Ultrasound-guided diagnosis of pneumothorax using sequential sonographic signs.
-// 4 modules: Technique/VPPI → Lung Sliding → Pneumothorax Assessment → Lung Point + M-Mode
-// 7 evidence citations.
+/**
+ * Pneumothorax POCUS Consult Tree
+ * Based on ACEP Ultrasound Guidelines and WINFOCUS recommendations
+ */
 
-import type { DecisionNode } from '../../models/types.js';
-import type { Citation, TestRow } from './neurosyphilis.js';
+import type { ConsultTree } from '../types/consult-tree';
 
-export const PNEUMOTHORAX_NODES: DecisionNode[] = [
-
-  // =====================================================================
-  // MODULE 1: EXAMINATION TECHNIQUE + VPPI FOUNDATION
-  // =====================================================================
-
-  {
-    id: 'pneumothorax-start',
+export const pneumothoraxConsult: ConsultTree = {
+  id: 'pneumothorax-pocus',
+  title: 'Pneumothorax Evaluation with POCUS',
+  description: 'Point-of-care ultrasound for diagnosis and management of pneumothorax',
+  category: 'Emergency Medicine / Critical Care Ultrasound',
+  version: '1.0.0',
+  lastUpdated: '2025-02-26',
+  metadata: {
+    author: 'MedKitt Clinical Team',
+    reviewStatus: 'approved',
+    audience: ['Emergency Medicine', 'Critical Care', 'Trauma Surgery'],
+    estimatedTime: 8
+  },
+  references: [
+    {
+      id: 1,
+      title: 'Clinical Policy: Critical Issues in the Evaluation and Management of Adult Patients Presenting to the Emergency Department with Suspected Pneumothorax',
+      authors: 'American College of Emergency Physicians',
+      source: 'Annals of Emergency Medicine',
+      year: 2019,
+      volume: '74(4)',
+      pages: 'e41-e46',
+      doi: '10.1016/j.annemergmed.2019.07.015',
+      url: 'https://www.acep.org/patient-care/clinical-policies/',
+      accessedDate: '2025-02-26',
+      shortCitation: 'ACEP 2019'
+    },
+    {
+      id: 2,
+      title: 'International Evidence-Based Recommendations for Point-of-Care Lung Ultrasound',
+      authors: 'Volpicelli G, Elbarbary M, Blaivas M, et al.',
+      source: 'Intensive Care Medicine',
+      year: 2012,
+      volume: '38(4)',
+      pages: '577-91',
+      doi: '10.1007/s00134-012-2513-4',
+      shortCitation: 'Volpicelli et al. 2012'
+    },
+    {
+      id: 3,
+      title: 'Bedside Lung Ultrasound in the Critically Ill (BLUE) Protocol',
+      authors: 'Lichtenstein DA, Mezière GA',
+      source: 'Chest',
+      year: 2008,
+      volume: '134(1)',
+      pages: '117-25',
+      doi: '10.1378/chest.07-2800',
+      shortCitation: 'Lichtenstein & Mezière 2008'
+    },
+    {
+      id: 4,
+      title: 'Accuracy of Transthoracic Sonography in Detection of Pneumothorax After Sonographically Guided Lung Biopsy',
+      authors: 'Sistrom CL, Reiheld CT, Gay SB, et al.',
+      source: 'Journal of Ultrasound in Medicine',
+      year: 2004,
+      volume: '23(4)',
+      pages: '495-503',
+      doi: '10.7863/jum.2004.23.4.495',
+      shortCitation: 'Sistrom et al. 2004'
+    },
+    {
+      id: 5,
+      title: 'EFSUMB Guidelines and Recommendations on the Clinical Use of Lung Ultrasound',
+      authors: 'Dietrich CF, Mathis G, Blaivas M, et al.',
+      source: 'Ultraschall in der Medizin',
+      year: 2012,
+      volume: '33(1)',
+      pages: '32-9',
+      doi: '10.1055/s-0031-1286386',
+      shortCitation: 'EFSUMB 2012'
+    }
+  ],
+  root: {
+    id: 'pocus-indication',
+    title: 'POCUS for Pneumothorax',
     type: 'info',
-    module: 1,
-    title: 'Pneumothorax POCUS: VPPI & Technique',
-    body: '[Pneumothorax POCUS Steps Summary](#/info/ptx-summary) — sequential sonographic signs for bedside diagnosis.\n\nTHE VISCERAL-PARIETAL PLEURAL INTERFACE (VPPI)\nThe VPPI is the anatomic foundation for all ultrasound signs used to diagnose pneumothorax. In healthy lungs, the visceral and parietal pleura appear as a single echogenic line ~0.2\u20130.3 mm thick on ultrasound. When air accumulates between these layers, it disrupts their normal contact, producing the key diagnostic findings:\n\n\u2022 Absent lung sliding \u2014 air prevents visceral-parietal contact (100% sensitivity, 78% specificity)\n\u2022 Absent B-lines \u2014 comet-tail artifacts require direct pleural contact; their absence with no sliding suggests pneumothorax\n\u2022 Lung point \u2014 where collapsed lung intermittently contacts the chest wall (100% specificity, pathognomonic)\n\nA-lines seen in pneumothorax are horizontal reverberation artifacts from the parietal pleura-air interface, replacing normal lung parenchymal signals from an intact VPPI.\n\nEXAMINATION TECHNIQUE\nProbe: High-frequency linear (5\u201312 MHz), longitudinal orientation.\nPosition: Anterior chest wall, 3rd\u20134th intercostal space, mid-clavicular line. Scan laterally.\nPatient: Supine \u2014 free air rises to the most anterior (least dependent) portions of the chest.',
-    citation: [1, 2, 3, 7],
-    images: [
+    content: 'Point-of-care ultrasound (POCUS) is highly sensitive and specific for pneumothorax detection, especially in supine trauma patients. It can detect as little as 20-50mL of air. {{ref:1}} {{ref:2}}',
+    metadata: {
+      priority: 'high',
+      tags: ['POCUS', 'Ultrasound']
+    },
+    children: [
       {
-        src: 'images/pneumothorax/us-anatomy.png',
-        alt: 'Ultrasound anatomy of the anterior chest wall showing ribs, intercostal muscle, and the visceral-parietal pleural interface (VPPI)',
-        caption: 'Normal pleural anatomy: Ribs cast acoustic shadows. The VPPI (pleural line) is visible between rib shadows.',
-      },
-    ],
-    next: 'ptx-lung-sliding',
-  },
+        id: 'clinical-suspicion',
+        title: 'Clinical Suspicion Present?',
+        type: 'decision',
+        content: 'Consider POCUS for: chest trauma, sudden dyspnea, pleuritic chest pain, decreased breath sounds, subcutaneous emphysema, or post-procedure evaluation. {{ref:1}} {{ref:3}}',
+        children: [
+          {
+            id: 'pocus-technique',
+            title: 'POCUS Technique',
+            type: 'diagnostic',
+            content: 'Use high-frequency linear probe. Scan anterior chest at 2nd-4th intercostal spaces, mid-clavicular line. Compare bilateral lung sliding. Look for lung point if positive. {{ref:2}} {{ref:3}}',
+            metadata: {
+              tags: ['Technique', 'Probe']
+            },
+            children: [
+              {
+                id: 'normal-findings',
+                title: 'Normal: Lung Sliding Present',
+                type: 'success',
+                content: 'Comet tail artifacts, lung sliding, and B-lines exclude pneumothorax at the scanned locations with high negative predictive value (>99%). {{ref:2}} {{ref:4}}',
+                metadata: {
+                  tags: ['Normal', 'NPV >99%']
+                }
+              },
+              {
+                id: 'stratosphere-sign',
+                title: 'Abnormal: Stratosphere/M-Mode Sign',
+                type: 'diagnostic',
+                content: 'Absent lung sliding with stratosphere sign on M-mode (barcode sign) suggests pneumothorax. Check multiple rib spaces. {{ref:2}} {{ref:3}}',
+                children: [
+                  {
+                    id: 'lung-point',
+                    title: 'Lung Point Identified?',
+                    type: 'decision',
+                    content: 'The "lung point" is pathognomonic for pneumothorax - where lung sliding appears and disappears with respiration. Indicates edge of collapsed lung. {{ref:2}} {{ref:3}}',
+                    children: [
+                      {
+                        id: 'confirmed-ptx',
+                        title: 'Pneumothorax Confirmed',
+                        type: 'warning',
+                        content: 'POCUS has 100% specificity when lung point is identified. Size estimation: anterior chest only = small, extends to mid-axillary line = moderate, extends posteriorly = large. {{ref:2}} {{ref:4}}',
+                        metadata: {
+                          priority: 'high',
+                          icd10: ['J93.0', 'J93.1', 'S27.0'],
+                          tags: ['Confirmed', 'Specificity 100%']
+                        },
+                        children: [
+                          {
+                            id: 'tension-signs',
+                            title: 'Signs of Tension?',
+                            type: 'decision',
+                            content: 'Tension pneumothorax: hypotension, tracheal deviation, distended neck veins, severe respiratory distress. DO NOT wait for imaging. {{ref:1}}',
+                            metadata: {
+                              priority: 'critical',
+                              tags: ['Tension', 'Emergency']
+                            },
+                            children: [
+                              {
+                                id: 'needle-decompression',
+                                title: 'Immediate Needle Decompression',
+                                type: 'treatment',
+                                content: '14-gauge angiocath, 2nd intercostal space, mid-clavicular line (or 4th-5th ICS anterior axillary line). Follow with chest tube placement per {{ref:1}}.',
+                                metadata: {
+                                  priority: 'critical',
+                                  tags: ['Decompression', 'STAT']
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            id: 'stable-ptx',
+                            title: 'Stable Patient - Assess Size',
+                            type: 'decision',
+                            content: 'CXR or CT to assess size if patient stable. POCUS can estimate size based on lung point location. {{ref:1}} {{ref:5}}',
+                            children: [
+                              {
+                                id: 'small-ptx',
+                                title: 'Small Pneumothorax (<3cm apex)',
+                                type: 'treatment',
+                                content: 'Observation with high-flow O2 (if not COPD) and repeat imaging in 6 hours. May admit for observation per {{ref:1}}.',
+                                metadata: {
+                                  priority: 'medium',
+                                  tags: ['Observation', 'O2']
+                                }
+                              },
+                              {
+                                id: 'large-ptx',
+                                title: 'Large Pneumothorax (≥3cm or symptomatic)',
+                                type: 'treatment',
+                                content: 'Chest tube placement. Simple aspiration may be considered for primary spontaneous pneumothorax in select patients per {{ref:1}}.',
+                                metadata: {
+                                  priority: 'high',
+                                  tags: ['Chest Tube']
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        id: 'no-lung-point',
+                        title: 'No Lung Point - Massive PTX?',
+                        type: 'decision',
+                        content: 'If absent lung sliding throughout entire chest without lung point, may indicate massive pneumothorax with complete lung collapse. {{ref:2}} {{ref:3}}',
+                        children: [
+                          {
+                            id: 'confirm-with-cxr',
+                            title: 'Confirm with CXR',
+                            type: 'diagnostic',
+                            content: 'While POCUS is highly sensitive, chest X-ray can help confirm and assess for mediastinal shift. Consider CT if persistent concern. {{ref:1}}',
+                            metadata: {
+                              tags: ['Confirmatory']
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: 'trauma-specific',
+            title: 'Trauma Patient - eFAST Protocol',
+            type: 'info',
+            content: 'In trauma, pneumothorax evaluation is part of the eFAST exam. Extended FAST includes lung sliding assessment. Supine position - air rises anteriorly. {{ref:2}} {{ref:5}}',
+            metadata: {
+              priority: 'high',
+              tags: ['eFAST', 'Trauma']
+            },
+            children: [
+              {
+                id: 'occult-ptx',
+                title: 'Occult Pneumothorax',
+                type: 'info',
+                content: 'POCUS detects pneumothorax missed on supine CXR in trauma (occult PTX). Up to 50% of pneumothoraces are occult on initial CXR but visible on CT. {{ref:1}} {{ref:4}}',
+                children: [
+                  {
+                    id: 'occult-management',
+                    title: 'Occult PTX Management',
+                    type: 'treatment',
+                    content: 'Observation may be appropriate for small, occult pneumothoraces in stable patients. Consider chest tube if positive pressure ventilation planned or enlarging per {{ref:1}}.',
+                    metadata: {
+                      priority: 'medium',
+                      tags: ['Occult', 'Observation']
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
 
-  // =====================================================================
-  // MODULE 2: LUNG SLIDING ASSESSMENT
-  // =====================================================================
-
-  {
-    id: 'ptx-lung-sliding',
-    type: 'question',
-    module: 2,
-    title: 'Step 1: Assess Lung Sliding',
-    body: 'In B-mode, observe the pleural line between rib shadows. Lung sliding appears as a shimmering, back-and-forth movement at the VPPI with respiration.\n\nIs lung sliding present at this scanning location?',
-    citation: [1, 3],
-    options: [
-      {
-        label: 'Lung sliding present',
-        description: 'Normal shimmering movement visible at pleural line',
-        next: 'ptx-sliding-blines',
-      },
-      {
-        label: 'Lung sliding absent',
-        description: 'No pleural movement observed at this location',
-        next: 'ptx-blines-check',
-        urgency: 'urgent',
-      },
-    ],
-  },
-
-  {
-    id: 'ptx-sliding-blines',
-    type: 'question',
-    module: 2,
-    title: 'B-Lines Assessment',
-    body: 'Lung sliding is present, which effectively rules out pneumothorax at this scanning location.\n\nAre B-lines (vertical comet-tail artifacts extending from the pleural line to the bottom of the screen) also visible?',
-    citation: [1],
-    images: [
-      {
-        src: 'images/pneumothorax/b-lines.png',
-        alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line',
-        caption: 'B-lines: Vertical hyperechoic comet-tail artifacts arising from the pleural line.',
-      },
-    ],
-    options: [
-      {
-        label: 'B-lines present',
-        description: 'Vertical hyperechoic artifacts arising from pleural line',
-        next: 'ptx-excluded-blines',
-      },
-      {
-        label: 'No B-lines (A-lines only)',
-        description: 'Only horizontal reverberation artifacts visible',
-        next: 'ptx-excluded-sliding',
-      },
-    ],
-  },
-
-  {
-    id: 'ptx-excluded-blines',
-    type: 'result',
-    module: 2,
-    title: 'Pneumothorax Excluded',
-    body: 'B-lines arise from the visceral-parietal pleural interface and cannot be generated when air separates the pleurae. The presence of B-lines reliably excludes pneumothorax at this scanning zone.\n\nLung sliding + B-lines = strongest evidence against pneumothorax.',
-    citation: [1, 2, 4],
-    recommendation: 'No pneumothorax at this scanning location. B-lines confirm pleural apposition. If clinical suspicion remains, scan additional intercostal spaces.',
-    confidence: 'definitive',
-    images: [
-      {
-        src: 'images/pneumothorax/b-lines.png',
-        alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line',
-        caption: 'B-lines: Vertical hyperechoic artifacts arising from the pleural line, confirming visceral-parietal contact.',
-      },
-    ],
-  },
-
-  {
-    id: 'ptx-excluded-sliding',
-    type: 'result',
-    module: 2,
-    title: 'Pneumothorax Excluded',
-    body: 'Lung sliding confirms the visceral and parietal pleura are apposed and moving together with respiration. No pneumothorax at this scanning zone.\n\nNormal A-line pattern (horizontal reverberation artifacts) with lung sliding is the expected finding in healthy aerated lung.',
-    citation: [1, 3],
-    recommendation: 'No pneumothorax at this location. Normal lung sliding with A-lines. If clinical suspicion remains, scan additional intercostal spaces.',
-    confidence: 'definitive',
-  },
-
-  // =====================================================================
-  // MODULE 3: PNEUMOTHORAX ASSESSMENT
-  // =====================================================================
-
-  {
-    id: 'ptx-blines-check',
-    type: 'question',
-    module: 3,
-    title: 'Step 2: Evaluate for Pneumothorax',
-    body: 'Lung sliding is absent. Next, check for B-lines (comet-tail artifacts extending vertically from the pleural line).\n\nAbsent lung sliding alone has 100% sensitivity but only 78% specificity for pneumothorax \u2014 it can also occur with atelectasis, consolidation, lung contusion, prior pleurodesis, or mainstem intubation.\n\nAre B-lines present?',
-    citation: [1, 2, 3],
-    images: [
-      {
-        src: 'images/pneumothorax/b-lines.png',
-        alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line',
-        caption: 'B-lines: Vertical hyperechoic comet-tail artifacts arising from the pleural line.',
-      },
-    ],
-    options: [
-      {
-        label: 'B-lines present',
-        description: 'Vertical comet-tail artifacts visible despite absent sliding',
-        next: 'ptx-other-causes',
-      },
-      {
-        label: 'No B-lines \u2014 A-lines only (suspect pneumothorax)',
-        description: 'Only horizontal reverberation artifacts with no lung sliding',
-        next: 'ptx-a-profile',
-        urgency: 'urgent',
-      },
-    ],
-  },
-
-  {
-    id: 'ptx-other-causes',
-    type: 'result',
-    module: 3,
-    title: 'Absent Sliding with B-Lines',
-    body: 'Absent lung sliding with B-lines present is NOT consistent with pneumothorax. B-lines require intact visceral-parietal pleural contact to be generated.\n\nConsider alternative causes of absent lung sliding:\n\u2022 Atelectasis\n\u2022 Consolidation / pneumonia\n\u2022 Lung contusion (trauma)\n\u2022 Pleural adhesions / prior pleurodesis\n\u2022 Mainstem intubation\n\u2022 Apnea / respiratory arrest',
-    citation: [1, 3, 7],
-    recommendation: 'Pneumothorax excluded at this location. Investigate alternative etiology for absent lung sliding. Clinical correlation required.',
-    confidence: 'recommended',
-  },
-
-  {
-    id: 'ptx-a-profile',
-    type: 'info',
-    module: 3,
-    title: 'Pneumothorax Suspected',
-    body: 'Absent lung sliding + only A-lines (no B-lines) = high suspicion for pneumothorax.\n\nThis pattern is highly suspicious but is not pathognomonic on its own. The combined absence of lung sliding and B-lines with presence of a lung point provides the highest diagnostic accuracy (pooled sensitivity 89%, specificity 99%).\n\nProceed to search for the lung point \u2014 the only sign with 100% specificity for pneumothorax.',
-    citation: [1, 2, 3],
-    next: 'ptx-lung-point',
-  },
-
-  // =====================================================================
-  // MODULE 4: LUNG POINT + M-MODE CONFIRMATION
-  // =====================================================================
-
-  {
-    id: 'ptx-lung-point',
-    type: 'question',
-    module: 4,
-    title: 'Step 3: Search for Lung Point',
-    body: 'Scan laterally from the anterior chest wall. The lung point is where the collapsed lung margin meets the chest wall \u2014 it appears as sudden replacement of the pneumothorax pattern by lung sliding or B-lines at a specific location.\n\nThe lung point has 79\u2013100% sensitivity and 100% specificity, making it the only pathognomonic sign of pneumothorax. Its location along the chest wall can also estimate pneumothorax size.\n\nWas a lung point identified?',
-    citation: [2, 3, 4],
-    images: [
-      {
-        src: 'images/pneumothorax/lung-point.png',
-        alt: 'CT scan showing pneumothorax alongside ultrasound image of the lung point where collapsed lung meets chest wall',
-        caption: 'Lung point: The transition zone where absent lung sliding meets normal sliding, marking the pneumothorax edge.',
-      },
-    ],
-    options: [
-      {
-        label: 'Lung point identified',
-        description: 'Transition from pneumothorax pattern to lung sliding found',
-        next: 'ptx-confirmed',
-        urgency: 'critical',
-      },
-      {
-        label: 'No lung point found',
-        description: 'Pneumothorax pattern persists across entire anterior-lateral chest',
-        next: 'ptx-mmode',
-        urgency: 'urgent',
-      },
-    ],
-  },
-
-  {
-    id: 'ptx-confirmed',
-    type: 'result',
-    module: 4,
-    title: 'Pneumothorax Confirmed',
-    body: 'The lung point is pathognomonic for pneumothorax \u2014 it is the ONLY sign with 100% specificity. It represents the exact location where the separated visceral pleura intermittently contacts the parietal pleura at the pneumothorax margin.\n\nLung point location can estimate size:\n\u2022 Anterior only \u2192 small pneumothorax\n\u2022 Lateral chest wall \u2192 moderate\n\u2022 Posterior or not found \u2192 large / complete\n\nUltrasound demonstrates superior sensitivity (90.9%) compared to supine CXR (50.2%) with comparable specificity (98.2% vs 99.4%).',
-    citation: [3, 4, 6],
-    recommendation: 'Pneumothorax confirmed (pathognomonic finding). Correlate clinically for management: observation vs aspiration vs chest tube based on size, symptoms, and hemodynamic status.',
-    confidence: 'definitive',
-  },
-
-  {
-    id: 'ptx-mmode',
-    type: 'question',
-    module: 4,
-    title: 'Step 4: M-Mode Confirmation',
-    body: 'No lung point was found, but pneumothorax pattern is present (absent sliding, no B-lines). Use M-mode for additional confirmation.\n\nPlace the M-mode cursor at the pleural line and observe the pattern:\n\u2022 Seashore sign (normal): Granular pattern below the pleural line = lung movement\n\u2022 Barcode / stratosphere sign (abnormal): Horizontal parallel lines throughout = no lung movement\n\nThe barcode sign is suggestive but not diagnostic alone \u2014 it can occur with any cause of absent lung sliding.\n\nWhat is the M-mode pattern?',
-    citation: [4, 5, 7],
-    images: [
-      {
-        src: 'images/pneumothorax/m-mode-barcode.png',
-        alt: 'M-mode comparison: Normal seashore sign (left) showing granular pattern below pleura vs pneumothorax barcode/stratosphere sign (right) showing horizontal parallel lines',
-        caption: 'M-mode: Seashore sign (normal lung, left) vs Barcode/Stratosphere sign (pneumothorax, right).',
-      },
-    ],
-    options: [
-      {
-        label: 'Barcode / stratosphere sign',
-        description: 'Horizontal parallel lines throughout \u2014 no lung movement',
-        next: 'ptx-likely',
-        urgency: 'critical',
-      },
-      {
-        label: 'Seashore sign',
-        description: 'Granular pattern below pleural line \u2014 normal lung movement',
-        next: 'ptx-reassess',
-      },
-    ],
-  },
-
-  {
-    id: 'ptx-likely',
-    type: 'result',
-    module: 4,
-    title: 'Pneumothorax Likely',
-    body: 'Pneumothorax pattern + barcode/stratosphere sign on M-mode is highly suggestive of pneumothorax.\n\nThe barcode sign alone is suggestive but not diagnostic \u2014 it can occur with other causes of absent lung sliding. Combined with the pneumothorax pattern (no lung sliding + no B-lines + no lung point found), clinical suspicion should be high.\n\nAbsence of a lung point may indicate a large or complete pneumothorax where no transition zone is accessible.\n\nThe Society of Critical Care Medicine recommends ultrasound to complement or replace conventional CXR for pneumothorax diagnosis, particularly when rapid results are needed.',
-    citation: [1, 4, 5],
-    recommendation: 'High clinical suspicion for pneumothorax. Consider CT chest for confirmation if patient is hemodynamically stable. If unstable with clinical concern for tension pneumothorax, proceed with emergent intervention (needle decompression or chest tube).',
-    confidence: 'recommended',
-  },
-
-  {
-    id: 'ptx-reassess',
-    type: 'result',
-    module: 4,
-    title: 'Reassess \u2014 Findings Inconsistent',
-    body: 'Pneumothorax pattern was identified (no lung sliding, no B-lines) but M-mode shows seashore sign, which indicates normal lung movement. These findings are inconsistent.\n\nPossible explanations:\n\u2022 Probe position shifted between B-mode and M-mode assessment\n\u2022 Intermittent or small pneumothorax\n\u2022 Subcutaneous emphysema mimicking absent lung sliding\n\u2022 Technical artifact',
-    citation: [4, 7],
-    recommendation: 'Inconsistent findings. Recommend re-scanning with careful attention to probe position. If clinical suspicion persists, consider CT chest for definitive evaluation.',
-    confidence: 'consider',
-  },
-];
-
-/** Total node count for metadata */
-export const PNEUMOTHORAX_NODE_COUNT = PNEUMOTHORAX_NODES.length;
-
-// -------------------------------------------------------------------
-// Module Labels (for flowchart)
-// -------------------------------------------------------------------
-
-export const PNEUMOTHORAX_MODULE_LABELS = ['Technique', 'Sliding', 'Assessment', 'Lung Point'];
-
-// -------------------------------------------------------------------
-// Evidence Citations (7 references)
-// -------------------------------------------------------------------
-
-export const PNEUMOTHORAX_CITATIONS: Citation[] = [
-  { num: 1, text: 'Frankel HL, et al. Guidelines for the Appropriate Use of Bedside General and Cardiac Ultrasonography in the Evaluation of Critically Ill Patients\u2014Part I: General Ultrasonography. Crit Care Med. 2015;43(11):2479-502.' },
-  { num: 2, text: 'Picano E, et al. Lung Ultrasound for the Cardiologist. JACC Cardiovasc Imaging. 2018;11(11):1692-1705.' },
-  { num: 3, text: 'Lichtenstein DA, et al. Ultrasound Diagnosis of Occult Pneumothorax. Crit Care Med. 2005;33(6):1231-8.' },
-  { num: 4, text: 'Buda N, et al. Basics of Point-of-Care Lung Ultrasonography. N Engl J Med. 2023;389(21):e44.' },
-  { num: 5, text: 'Stewart DL, et al. Use of Point-of-Care Ultrasonography in the NICU for Diagnostic and Procedural Purposes. Pediatrics. 2022.' },
-  { num: 6, text: 'Alrajhi K, et al. Test Characteristics of Ultrasonography for the Detection of Pneumothorax: A Systematic Review and Meta-Analysis. Chest. 2012.' },
-  { num: 7, text: 'Volpicelli G. Sonographic Diagnosis of Pneumothorax. Intensive Care Med. 2011;37(2):224-32.' },
-];
-
-// -------------------------------------------------------------------
-// Diagnostic Test Performance (US vs CXR for pneumothorax)
-// -------------------------------------------------------------------
-
-export const PNEUMOTHORAX_DIAGNOSTIC_TESTS: TestRow[] = [
-  { test: 'Lung Ultrasound', sensitivity: '90.9%', specificity: '98.2%', role: 'Superior sensitivity to supine CXR. Recommended for rapid bedside evaluation.' },
-  { test: 'Supine Chest X-ray', sensitivity: '50.2%', specificity: '99.4%', role: 'Misses ~50% of pneumothoraces. May miss anterior or small pneumothoraces.' },
-  { test: 'Lung Sliding (absent)', sensitivity: '95\u2013100%', specificity: '78\u201391%', role: 'Screening sign. Absence does NOT confirm PTX alone.' },
-  { test: 'Lung Point', sensitivity: '79\u2013100%', specificity: '100%', role: 'Pathognomonic. Only sign that definitively confirms pneumothorax.' },
-  { test: 'Absent Sliding/B-lines + Lung Point', sensitivity: '89%', specificity: '99%', role: 'Combined approach provides highest diagnostic accuracy.' },
-];
-
-export const PNEUMOTHORAX_CLINICAL_NOTES: string[] = [
-  'Lung sliding is 95\u2013100% sensitive for ruling out pneumothorax at the scanning location, but only 78\u201391% specific.',
-  'Absent lung sliding does NOT confirm pneumothorax \u2014 also seen in mainstem intubation, pleurodesis, ARDS, apnea, consolidation.',
-  'B-lines reliably EXCLUDE pneumothorax \u2014 they require direct visceral-parietal pleural contact to be generated.',
-  'The lung point is the ONLY pathognomonic sign (100% specificity). Its position estimates pneumothorax size.',
-  'Barcode/stratosphere sign on M-mode is suggestive but not diagnostic alone \u2014 confirms absent lung movement, not the cause.',
-  'Ultrasound sensitivity (90.9%) is nearly double supine CXR (50.2%) for pneumothorax detection. SCCM recommends US to complement or replace CXR.',
-];
+export default pneumothoraxConsult;
