@@ -1,0 +1,231 @@
+{
+  "source": "pubmed",
+  "query": "(neurosyphilis OR syphilis treatment) AND (guidelines OR management OR ceftriaxone OR penicillin) AND (2023:3000[PDAT])",
+  "articles": [
+    {
+      "pmid": "41732618",
+      "title": "Simultaneous Diagnosis of Myasthenia Gravis and Neurosyphilis, With Symptoms Improving After Neurosyphilis Treatment: A Case Report.",
+      "abstract": "Simultaneous diagnosis of myasthenia gravis (MG) and early asymptomatic neurosyphilis is extremely rare. There have only been two cases described in the literature. To the best of our knowledge, this was the first case of MG resolving with concurrent treatment of neurosyphilis. Our patient was a 67-year-old male who presented to the hospital with a diffuse rash, bilateral ptosis, bilateral facial weakness, and bulbar symptoms (dysarthria, difficulty with mastication, and difficulty drinking flui...",
+      "authors": [
+        "Ortiz JF",
+        "Lannen NJ",
+        "Peralta MD"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41732618/"
+    },
+    {
+      "pmid": "41728479",
+      "title": "A Rare Case of Syphilitic Charcot Arthropathy Involving the Foot in an Asian Patient: A Case Report and Review of Literature.",
+      "abstract": "Syphilis is an infection caused by <i>Treponema pallidum</i>. Without treatment, neurosyphilis may develop and lead to complications such as Charcot arthropathy (CA). First described by Jean-Martin Charcot, this condition was initially recognized as a manifestation of syphilitic infection. With the advent of antibiotics, the incidence of syphilis declined; however, it has since re-emerged in regions including Europe, North America, and China. In recent years, there has been a relative paucity of...",
+      "authors": [
+        "Cheong T",
+        "Mehta K"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41728479/"
+    },
+    {
+      "pmid": "41728433",
+      "title": "Meningovascular Neurosyphilis Presenting as Multifocal Stroke: A Case Report and Literature Review.",
+      "abstract": "Neurosyphilis (NS) remains a diagnostic challenge due to its diverse clinical manifestations and its ability to mimic other neurological disorders. Despite the global decline in syphilis incidence during the antibiotic era, a recent resurgence has led to an increase in atypical and meningovascular presentations. Early diagnosis is critical, as timely treatment can prevent irreversible neurological damage. We report the case of a 38-year-old immunocompetent male who presented with acute vertigo, ...",
+      "authors": [
+        "Al-Anbagi U",
+        "Nashwan AJ",
+        "Poolakundan H"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41728433/"
+    },
+    {
+      "pmid": "41725190",
+      "title": "Is three really what we need? Relative effectiveness of benzathine penicillin G and doxycycline treatment regimens for late or unknown duration syphilis in 6 United States jurisdictions, 2016-2021.",
+      "abstract": "Little evidence supports the need for 3 weekly benzathine penicillin G (BPG) injections to treat late or unknown duration syphilis, and completion of the regimen may be difficult. We compared treatment effectiveness of 1 versus 3 doses of BPG and doxycycline. We conducted a retrospective cohort study using surveillance data for male and female cases diagnosed with late or unknown duration syphilis between 2016 and 2021 from 6 jurisdictions. We categorized BPG and doxycycline treatment based on t...",
+      "authors": [
+        "Pugsley RA",
+        "Davis NL",
+        "Cope AB"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41725190/"
+    },
+    {
+      "pmid": "41725182",
+      "title": "Strong real-world evidence that a single dose of benzathine penicillin G or a 28-day course of oral doxycycline is not inferior to three doses of benzathine penicillin G for the treatment of late latent or syphilis of unknown duration.",
+      "abstract": "",
+      "authors": [
+        "Kojima N",
+        "Klausner JD"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41725182/"
+    },
+    {
+      "pmid": "41711179",
+      "title": "Probable ceftriaxone-resistant neurosyphilis in an HIV-positive patient: A case report of clinical failure and response to doxycycline.",
+      "abstract": "Neurosyphilis remains a severe manifestation of syphilis, particularly in individuals living with HIV, where atypical presentations and treatment challenges are more common. Although ceftriaxone is considered an alternative to penicillin G, emerging reports suggest possible therapeutic failure in immunocompromised hosts. We describe a 63-year-old man with well-controlled HIV infection who developed seizures and altered mental status. Cerebrospinal fluid analysis confirmed neurosyphilis, and he w...",
+      "authors": [
+        "Patel BB",
+        "Patel RB",
+        "Ponda A"
+      ],
+      "publication_date": "2026 Mar",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41711179/"
+    },
+    {
+      "pmid": "41709345",
+      "title": "Seroprevalence and optimized quantitative PCR detection of Entamoeba histolytica using self-collected rectal swabs among men who have sex with men in southern Taiwan: a cross-sectional study.",
+      "abstract": "Amebiasis, caused by Entamoeba histolytica, has emerged as a sexually transmitted enteric infection among men who have sex with men (MSM) and people with HIV (PWH) in developed countries. While previous surveillance studies in Taiwan among PWH showed ongoing transmission, investigation on E. histolytica infection among non-HIV MSM using newer diagnostic methods and ELISA-IgG seroprevalence surveys is lacking. From March 2024 to February 2025, we conducted a cross-sectional study during an LGBTQ\u2009...",
+      "authors": [
+        "Tsai CS",
+        "Watanabe K",
+        "Kawashima A"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41709345/"
+    },
+    {
+      "pmid": "41701463",
+      "title": "A chameleon disease.",
+      "abstract": "",
+      "authors": [
+        "London F"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41701463/"
+    },
+    {
+      "pmid": "41694867",
+      "title": "A Pre-pandemic Baseline: Assessing Gaps in Sexually Transmitted Infection Knowledge Among Healthcare Providers at the Obstetrics and Gynecology Department of a Saudi Tertiary Care Hospital.",
+      "abstract": "\u00a0Assessing the competency of healthcare providers in managing sexually transmitted infections (STIs) is critical for reproductive health. This 2019 study established a pre-pandemic baseline by evaluating the knowledge, diagnostic, and management practices of healthcare providers in the Department of Obstetrics and Gynecology\u00a0(OB/GYN) at King Abdulaziz University Hospital (KAUH) in Jeddah, Saudi Arabia. \u00a0A descriptive cross-sectional study was conducted among 136 of 156 eligible physicians (87.2%...",
+      "authors": [
+        "Majed L",
+        "Adwan K",
+        "Majed R"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41694867/"
+    },
+    {
+      "pmid": "41689488",
+      "title": "Evaluations and Treatment among Infants Exposed to Syphilis in Utero, 6 U.S. States, 2018-2021.",
+      "abstract": "Contemporary data on evaluations and treatment of infants exposed to syphilis in utero are limited. This study analyzed population-based surveillance data to describe the management of exposed infants. Findings indicate inconsistent implementation of recommended guidelines for evaluations and treatment of infants exposed to syphilis in utero.",
+      "authors": [
+        "Nlandu MV",
+        "Lewis EL",
+        "Carlson JM"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41689488/"
+    },
+    {
+      "pmid": "41678724",
+      "title": "Clinical Features and Risk Factors for Chronic Syphilitic Uveitis.",
+      "abstract": "To investigate clinical features and identify risk factors associated with chronic syphilitic uveitis. A retrospective chart review was performed of patients diagnosed with syphilitic uveitis at the University of Illinois Hospital and the University of Nebraska Medical Center between January 2015 and July 2024. Patients aged 18+ with syphilitic uveitis and at least 3 post-penicillin treatment follow-ups were included. Chronic uveitis was defined as inflammation persisting longer than 3\u2009months or...",
+      "authors": [
+        "Sureshkumar H",
+        "Song A",
+        "Nguyen NV"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41678724/"
+    },
+    {
+      "pmid": "41676190",
+      "title": "Acute transverse myelitis in an immunocompetent patient: syphilis and cytomegalovirus-a case report.",
+      "abstract": "Acute transverse myelitis (ATM) is a pathological heterogenous inflammatory condition which causes acute or subacute spinal cord dysfunction. Diagnosis is challenging as the absence of magnetic resonance imaging (MRI) spinal cord lesions do no exclude this as a differential when patients present with well-defined dermatomal paraesthesia or myotome weakness. In approximately 40% of patient, there is a lack of MRI cord abnormalities. In addition, there are numerous of causes of ATM which contribut...",
+      "authors": [
+        "Tang ECW",
+        "Pearson D",
+        "Warner G"
+      ],
+      "publication_date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41676190/"
+    },
+    {
+      "pmid": "41676164",
+      "title": "Policies towards elimination of congenital syphilis in Latin America and the Caribbean: a regional review.",
+      "abstract": "Syphilis remains an important public health challenge in the Americas, with a rising incidence among adults, including pregnant women, leading to an increased number of cases of congenital syphilis. The syphilis resurgence stems from health system gaps, behavioral changes and social determinants. A regional survey and policy review in Latin America and the Caribbean showed that most countries have national policies for syphilis screening and have made progress in the implementation of rapid test...",
+      "authors": [
+        "Nuche-Berenguer B",
+        "Mena M",
+        "Sereno L"
+      ],
+      "publication_date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41676164/"
+    },
+    {
+      "pmid": "41675851",
+      "title": "Idiopathic unilateral ocular vasculitis in a young adult: a case report on clinical course and steroid response.",
+      "abstract": "Ocular vasculitis is an inflammatory condition affecting intraocular blood vessels, commonly associated with systemic diseases like Beh\u00e7et's disease, sarcoidosis, and tuberculosis. However, idiopathic isolated ocular vasculitis is rare, particularly in young adults, and presents diagnostic difficulties. Timely recognition is vital to prevent vision loss. We present a 25-year-old male with unilateral, painless, progressive visual blurring and floaters in the left eye. Examination showed anterior ...",
+      "authors": [
+        "Us Saba SN",
+        "Bacha Z",
+        "Hameed A"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41675851/"
+    },
+    {
+      "pmid": "41675816",
+      "title": "Cerebral neurosyphilis mimicking acute frontal lobe infarction: a case report.",
+      "abstract": "Syphilis, caused by Treponema pallidum, the \"great imitator,\" has re-emerged as a public health concern. It presents with diverse manifestations, ranging from asymptomatic meningitis and psychiatric changes to meningovascular syphilis presenting as ischemic stroke. We aim to report a case of an elderly male with cerebral neurosyphilis mimicking an acute frontal lobe infarction, emphasizing the importance of considering syphilis in patients with atypical risk factors or clinical presentations. A ...",
+      "authors": [
+        "Yadav RS",
+        "Shrestha R",
+        "Pant DK"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41675816/"
+    },
+    {
+      "pmid": "41671009",
+      "title": "Effectiveness of treating gestational syphilis in the last trimester on the incidence of congenital syphilis: a systematic review and meta-analysis.",
+      "abstract": "To evaluate the effectiveness and safety of treatment for gestational syphilis during the third trimester on maternal and perinatal outcomes, according to the timing of administration relative to delivery, and assess the certainty of the body of evidence. This systematic review included randomized controlled trials, quasiexperimental studies, cohort studies, and case series involving women diagnosed with GS at 28 weeks\u2019 gestation or later, treated with penicillin or other antibiotics. Search was...",
+      "authors": [
+        "Guti\u00e9rrez-Tamayo AM",
+        "Mirama-Calder\u00f3n LV",
+        "Vallejo-Ortega MT"
+      ],
+      "publication_date": "2025 Dec",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41671009/"
+    },
+    {
+      "pmid": "41658754",
+      "title": "A Case of Facial Nerve Palsy As the Initial Presentation of Early Neurosyphilis: A Diagnostic Challenge.",
+      "abstract": "Neurosyphilis remains a diagnostic challenge, particularly when it presents with cranial neuropathies that mimic more common conditions such as Bell's palsy, underscoring the need for heightened clinical awareness amid the global resurgence of syphilis, especially among men who have sex with men (MSM). We report the case of a 40-year-old, previously healthy man who presented with acute-onset left peripheral facial nerve palsy, initially treated as Bell's palsy with corticosteroids; however, subt...",
+      "authors": [
+        "Kewan T",
+        "River Y"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41658754/"
+    },
+    {
+      "pmid": "41641345",
+      "title": "A rare case of concurrent longitudinally extensive myelitis and retinal vein occlusion.",
+      "abstract": "Neurosyphilis can affect multiple organ systems, but simultaneous involvement of the spinal cord and retinal vasculature is exceedingly rare. We report a 36-year-old man presenting first with unilateral branch retinal vein occlusion (BRVO) and, two weeks later, progressive paraparesis due to longitudinally extensive transverse myelitis. Serologic tests were positive for syphilis, and cerebrospinal fluid (CSF) VDRL confirmed neurosyphilis. Spinal MRI showed a longitudinal T2-hyperintense lesion f...",
+      "authors": [
+        "Koleri J",
+        "Al Samawi MSA",
+        "Ahmedullah HS"
+      ],
+      "publication_date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41641345/"
+    },
+    {
+      "pmid": "41641067",
+      "title": "Risk Compensation in the Context of Sexually Transmitted Infections in Women Using the Dapivirine Vaginal Ring in Africa: A Scoping Review.",
+      "abstract": "Sexually transmitted infections (STIs) remain a critical public health challenge globally, with Africa facing the highest incidence and mortality rates. The Dapivirine Vaginal Ring (DVR) is a discreet HIV prevention tool for women but does not protect against other non-HIV STIs. Like any other HIV biomedical prevention tool, DVR might lead to increased STI prevalence. Thus, this scoping review assessed the prevalence of STIs and the sociocultural, economic, and demographic factors influencing ST...",
+      "authors": [
+        "Dine RD",
+        "Ogunniyi TJ",
+        "Yisa SS"
+      ],
+      "publication_date": "2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41641067/"
+    }
+  ],
+  "count": 19,
+  "scraped_at": "2026-02-26T09:57:01.798676"
+}

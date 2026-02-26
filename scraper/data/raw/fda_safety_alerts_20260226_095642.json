@@ -1,0 +1,28 @@
+{
+  "source": "fda",
+  "url": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications",
+  "alerts": [],
+  "alert_count": 0,
+  "drugs_monitored": [
+    "ceftriaxone",
+    "penicillin",
+    "benzathine",
+    "doxycycline",
+    "azithromycin",
+    "tenofovir",
+    "emtricitabine",
+    "dolutegravir",
+    "raltegravir",
+    "aspirin",
+    "clopidogrel",
+    "ticagrelor",
+    "heparin",
+    "enoxaparin",
+    "warfarin",
+    "apixaban",
+    "rivaroxaban",
+    "alteplase",
+    "tenecteplase"
+  ],
+  "scraped_at": "2026-02-26T09:56:42.086922"
+}

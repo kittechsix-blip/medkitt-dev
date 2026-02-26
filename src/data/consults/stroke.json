@@ -1,0 +1,115 @@
+{
+  "id": "stroke",
+  "name": "Acute Ischemic Stroke",
+  "version": "1.0",
+  "last_updated": "2026-02-26T09:57:39.474353",
+  "node_count": 22,
+  "nodes": [
+    {
+      "id": "stroke-start",
+      "type": "info",
+      "title": "Ischemic Stroke Assumed"
+    },
+    {
+      "id": "nihss"
+    },
+    {
+      "id": "stroke-deficit",
+      "type": "question",
+      "title": "Deficit Severity"
+    },
+    {
+      "id": "nihss"
+    },
+    {
+      "id": "stroke-timing",
+      "type": "question",
+      "title": "Time from Last Known Well"
+    },
+    {
+      "id": "stroke-ivt-check",
+      "type": "question",
+      "title": "IVT Eligibility"
+    },
+    {
+      "id": "stroke-ivt-treat",
+      "type": "info",
+      "title": "Administer Thrombolysis"
+    },
+    {
+      "id": "stroke-lvo-check",
+      "type": "question",
+      "title": "Large Vessel Occlusion?"
+    },
+    {
+      "id": "stroke-no-ivt",
+      "type": "question",
+      "title": "IVT Contraindicated"
+    },
+    {
+      "id": "stroke-extended-ivt",
+      "type": "question",
+      "title": "Extended IVT Window (4.5\\u20139h)"
+    },
+    {
+      "id": "stroke-evt-window",
+      "type": "question",
+      "title": "EVT Eligibility (6\\u201324h)"
+    },
+    {
+      "id": "stroke-evt-eligible",
+      "type": "result",
+      "title": "Activate Neurointerventional Team"
+    },
+    {
+      "id": "stroke-late",
+      "type": "info",
+      "title": "Beyond Reperfusion Window"
+    },
+    {
+      "id": "stroke-minor",
+      "type": "question",
+      "title": "Minor Stroke Workup"
+    },
+    {
+      "id": "stroke-dapt",
+      "type": "result",
+      "title": "Dual Antiplatelet Therapy (DAPT)"
+    },
+    {
+      "id": "stroke-single-antiplatelet",
+      "type": "result",
+      "title": "Single Antiplatelet Therapy"
+    },
+    {
+      "id": "stroke-post-treatment",
+      "type": "info",
+      "title": "Post-Thrombolysis Management"
+    },
+    {
+      "id": "stroke-antiplatelet-start",
+      "type": "info",
+      "title": "Antiplatelet Initiation"
+    },
+    {
+      "id": "stroke-etiology",
+      "type": "question",
+      "title": "Stroke Etiology Workup"
+    },
+    {
+      "id": "stroke-afib",
+      "type": "result",
+      "title": "Cardioembolic Stroke \\u2014 Anticoagulation"
+    },
+    {
+      "id": "stroke-atherosclerotic",
+      "type": "result",
+      "title": "Large Artery Atherosclerotic Stroke"
+    },
+    {
+      "id": "stroke-other-prevention",
+      "type": "result",
+      "title": "Secondary Prevention \\u2014 Other/Cryptogenic"
+    }
+  ]
+}

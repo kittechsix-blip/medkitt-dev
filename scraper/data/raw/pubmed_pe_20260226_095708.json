@@ -1,0 +1,186 @@
+{
+  "source": "pubmed",
+  "query": "(pulmonary embolism treatment OR PE anticoagulation) AND (guidelines OR DOAC OR heparin) AND (2023:3000[PDAT])",
+  "articles": [
+    {
+      "pmid": "41729147",
+      "title": "ACR Appropriateness Criteria\u00ae Chest Pain-Child.",
+      "abstract": "Chest pain is a common complaint in children and adolescents. The causes of chest pain are varied and include musculoskeletal, pulmonary or pleural, gastrointestinal, psychogenic, and cardiac etiologies. The etiology of pediatric chest pain is often benign but typically generates evaluation in the emergency room, urgent care, or outpatient setting. Diagnostic imaging is often used in the evaluation of pediatric chest pain. This document will discuss various clinical scenarios for children presen...",
+      "authors": [
+        "Dorfman SR",
+        "Chan SS"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41729147/"
+    },
+    {
+      "pmid": "41728524",
+      "title": "When a Pulmonary Embolism Precedes the Fall: Anticoagulation Challenges in Traumatic Intracranial Hemorrhage.",
+      "abstract": "Pulmonary embolism (PE) is typically managed with urgent systemic anticoagulation or reperfusion therapy. However, management becomes complex when PE occurs concurrently with traumatic intracranial hemorrhage (ICH), where anticoagulation may worsen bleeding. A 74-year-old male patient presented after syncope and traumatic head injury. He was hypoxic and tachycardic on arrival with concern for right ventricular strain. Given persistent clinical concern, CT angiography of the chest demonstrated a ...",
+      "authors": [
+        "Nasim S",
+        "Mushtaq R",
+        "Mushtaq K"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41728524/"
+    },
+    {
+      "pmid": "41712898",
+      "title": "2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines.",
+      "abstract": "The \"2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults\" is a de novo guideline that provides comprehensive recommendations for the evaluation, management, and follow-up of adult patients (\u226518 years of age) with acute pulmonary embolism (acute PE). A key feature of this guideline is the introduction of the AHA/ACC Acute Pulmonary Embolism Clinical Categories, which enhance the precision of severity classification, p...",
+      "authors": [
+        "Creager MA",
+        "Barnes GD",
+        "Giri J"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41712898/"
+    },
+    {
+      "pmid": "41712677",
+      "title": "2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines.",
+      "abstract": "The \"2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults\" is a de novo guideline that provides comprehensive recommendations for the evaluation, management, and follow-up of adult patients (\u226518 years of age) with acute pulmonary embolism (PE). A key feature of this guideline is the introduction of the AHA/ACC Acute Pulmonary Embolism Clinical Categories, which enhance the precision of severity classification, prognos...",
+      "authors": [
+        "Creager MA",
+        "Barnes GD"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41712677/"
+    },
+    {
+      "pmid": "41704979",
+      "title": "Cerebral Venous Sinus Thrombosis Presenting as an Acute Stroke Syndrome.",
+      "abstract": "Cerebral venous sinus thrombosis (CVST) is an uncommon cause of stroke and can present in ways that closely resemble arterial transient ischemic attack or ischemic stroke. Early recognition is important because management differs from typical stroke pathways, and initial noncontrast head CT may be normal. We report a 63-year-old male patient with a history of remote pulmonary embolism, pulmonary hypertension, and a family history of venous thromboembolism who presented with several weeks of head...",
+      "authors": [
+        "Rivera K",
+        "Harvey N",
+        "Capote D"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41704979/"
+    },
+    {
+      "pmid": "41692486",
+      "title": "Delayed-onset, persisting autoimmune heparin-induced thrombocytopenia with thrombosis following craniofacial surgery.",
+      "abstract": "We report a case of a patient who developed delayed-onset, persisting autoimmune heparin-induced thrombocytopenia (HIT) following prophylactic anticoagulation with unfractionated heparin (UFH) after surgical treatment of a complex midfacial and mandibular fracture. Four days after stopping prophylactic anticoagulation, the patient developed pulmonary embolism and mild thrombocytopenia. HIT was initially not suspected and therapeutic anticoagulation was started. The patient subsequently developed...",
+      "authors": [
+        "Will VJ",
+        "Tritschler T",
+        "Marx CE"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41692486/"
+    },
+    {
+      "pmid": "41682919",
+      "title": "Understanding Cardio-Oncology: A Survey-Based Study Conducted by the Heart Failure Association of the Polish Cardiac Society and the Polish Society of Clinical Oncology.",
+      "abstract": "<b>Background</b>: The European Society of Cardiology (ESC) published the first guidelines on cardio-oncology in 2022. Implementing the 272 proposed recommendations into everyday clinical practice has become a mandatory challenge for countries belonging to the ESC community. <b>Methods</b>: The study aimed to assess cardio-oncology knowledge and the degree of implementation of ESC guidelines among cardiologists registered with the Heart Failure Association of the Polish Cardiac Society and oncol...",
+      "authors": [
+        "Szmit S",
+        "K\u0119pski J",
+        "Ksi\u0105\u017cczyk M"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41682919/"
+    },
+    {
+      "pmid": "41677103",
+      "title": "Dose-Response Efficacy and Safety of Factor XI/XIa Inhibitors in Atrial Fibrillation; a Systematic Review and Meta-Analysis With Subgroup Exploration and Trial Sequential Validation.",
+      "abstract": "Factor XI/XIa inhibitors are emerging anticoagulants with potential to reduce bleeding complications in atrial fibrillation (AF) patients. This meta-analysis evaluated their efficacy and safety compared to direct oral anticoagulants (DOACs) and explored dose optimization. A systematic search of PubMed, Cochrane, and Embase was conducted through March 2025 following PRISMA guidelines. Randomized controlled trials (RCTs) comparing Factor XI/XIa inhibitors with DOACs in AF patients were included. O...",
+      "authors": [
+        "Faizan MA",
+        "Rehman T",
+        "Dandamudi M"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41677103/"
+    },
+    {
+      "pmid": "41674048",
+      "title": "Bilateral Adrenal Infarction as an Uncommon Complication of Heparin-Induced Thrombocytopenia: A Case Report.",
+      "abstract": "BACKGROUND Heparin-induced thrombocytopenia (HIT) is an immune-mediated reaction that occurs 5-10 days after heparin exposure. Antibodies against platelet factor 4 (PF4) activate platelets and lead to a hypercoagulable state, causing thrombotic complications, including deep venous thrombosis, pulmonary embolism, stroke, and myocardial infarction. Given the widespread use of prophylactic heparin in clinical practice, prompt recognition and management are crucial due to the associated high morbidi...",
+      "authors": [
+        "Singla A",
+        "Addanki A",
+        "Shahnawaz A"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41674048/"
+    },
+    {
+      "pmid": "41665554",
+      "title": "Thrombotic and Hemorrhagic Adverse Events of Direct Oral Anticoagulants: An Analysis of Sex-Related Differences Using Food and Drug Administration Adverse Event Reporting System.",
+      "abstract": "Sex-related differences in the safety profiles of direct oral anticoagulants (DOACs) remain insufficiently understood. This study aimed to evaluate sex-specific differences in the most frequently reported hemorrhagic and thrombotic adverse events (AEs) associated with DOAC therapy using data from the Food and Drug Administration Adverse Event Reporting System (FAERS). A retrospective pharmacovigilance analysis was conducted using FAERS reports from each DOAC's approval date through 2024. Only ca...",
+      "authors": [
+        "\u015eahinba\u015f M",
+        "\u015eahinba\u015f B",
+        "A\u011faday\u0131 E"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41665554/"
+    },
+    {
+      "pmid": "41664640",
+      "title": "Systolic blood pressure range in patients with intermediate- to high-risk pulmonary embolism undergoing advanced treatment: a systematic review.",
+      "abstract": "Despite continuous advances in management over the last two decades for pulmonary embolism (PE), treating intermediate- to high-risk PE remains challenging. There is a critical need to expand our understanding of the clinical spectrum beyond systolic blood pressure (SBP) to inform the intricate decision-making process for initiating advanced treatment in patients with intermediate- to high-risk PE. We aimed to characterize the range of SBP values in patients with intermediate- to high-risk PE un...",
+      "authors": [
+        "Lopez-de la Garza H",
+        "Jerjes-Sanchez C",
+        "Lozano-Corres VE"
+      ],
+      "publication_date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41664640/"
+    },
+    {
+      "pmid": "41651731",
+      "title": "Lung Retransplantation after Heart-lung Transplantation: A Case Report.",
+      "abstract": "Lung retransplantation after prior heart-lung transplantation is uncommon and presents significant surgical and immunologic challenges. We report the case of a 24-year-old male with a history of congenital heart disease and Eisenmenger syndrome who underwent heart-lung transplantation in January 2018. While his cardiac function remained stable postoperatively, his pulmonary function declined 2 years later due to chronic lung allograft dysfunction (CLAD), confirmed by a 17% drop in forced expirat...",
+      "authors": [
+        "Laradhi A",
+        "Otary BA",
+        "Dawary M"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41651731/"
+    },
+    {
+      "pmid": "41647011",
+      "title": "Bilateral Adrenal Hemorrhage After Laminectomy: A Rare Complication.",
+      "abstract": "Bilateral adrenal hemorrhage is a rare but life-threatening condition that can result in adrenal insufficiency. We present the case of a 63-year-old man who developed bilateral adrenal hemorrhage following a fall from 3 feet height on a ladder. He fell backwards, striking his lower back on the adjacent dry wall and landed on the ground. He was admitted for a traumatic L1 burst fracture and was treated with T11-L3 fusion and T12-L3 laminectomy. Postoperatively, he received prophylactic subcutaneo...",
+      "authors": [
+        "Sharma S",
+        "Rizk MA",
+        "Qadeer H"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41647011/"
+    },
+    {
+      "pmid": "41645951",
+      "title": "The effect of anticoagulants on preventing venous thromboembolism in cancer patients: A systematic review and meta-analysis.",
+      "abstract": "Background We aimed to evaluate the efficacy and safety of anticoagulant therapy, especially direct oral anticoagulant (DOAC) therapy, for primary prevention of venous thromboembolism (VTE), including deep vein thrombosis and pulmonary embolism (PE), in non-bedridden cancer patients undergoing chemotherapy. Methods English and Chinese literature published from the inception of the databases up to December 2022 was extracted from five databases: PubMed, Embase, MEDLINE, Wanfang Medical and CNKI. ...",
+      "authors": [
+        "Ma J",
+        "Ke X",
+        "Zhu D"
+      ],
+      "publication_date": "2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41645951/"
+    },
+    {
+      "pmid": "41641617",
+      "title": "Efficacy and Safety of Direct Oral Anticoagulants in Extended Venous Thromboembolism: A Placebo Controlled Grade Assessed Meta analysis.",
+      "abstract": "Venous thromboembolism (VTE), including deep vein thrombosis and pulmonary embolism, is a major cardiovascular condition associated with substantial morbidity, mortality, and risk of recurrence. Extended anticoagulation is frequently required beyond the initial treatment phase, yet the optimal strategy remains uncertain. Direct oral anticoagulants (DOACs) provide practical advantages over vitamin K antagonists, but their role in long-term secondary prevention warrants clarification.We performed ...",
+      "authors": [
+        "Bacha Z",
+        "Qazi K",
+        "Khalid AA"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41641617/"
+    }
+  ],
+  "count": 15,
+  "scraped_at": "2026-02-26T09:57:08.149533"
+}

@@ -1,0 +1,42 @@
+# MedKitt Scrapling Pipeline - Dependencies
+# Install with: pip install -r scraper/requirements.txt
+
+# Core scraping framework
+scrapling>=0.2.0
+
+# Web requests
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Data processing
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+html5lib>=1.1
+
+# PubMed API
+biopython>=1.81
+
+# Data comparison
+deepdiff>=6.6.0
+difflib
+
+# Configuration
+pyyaml>=6.0.1
+
+# Scheduling
+schedule>=1.2.0
+
+# GitHub integration
+PyGithub>=2.1.0
+
+# Email notifications
+secure-smtplib>=0.1.0
+
+# Utilities
+python-dateutil>=2.8.0
+tqdm>=4.66.0
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0

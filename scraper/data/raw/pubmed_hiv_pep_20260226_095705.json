@@ -1,0 +1,172 @@
+{
+  "source": "pubmed",
+  "query": "(HIV post-exposure prophylaxis OR HIV PEP) AND (guidelines OR tenofovir OR emtricitabine OR dolutegravir) AND (2023:3000[PDAT])",
+  "articles": [
+    {
+      "pmid": "41716436",
+      "title": "Healthcare Workers' Experiences With Hepatitis B Virus Post-Exposure Prophylaxis Management at a Military Hospital in Ghana: A Qualitative Study.",
+      "abstract": "Hepatitis B virus (HBV) infection poses a significant occupational risk to healthcare workers (HCWs), particularly in high-endemic settings like Ghana. Despite the availability of post-exposure prophylaxis (PEP), adherence remains suboptimal due to systemic and individual-level barriers. This study explored the experiences of HCWs in managing HBV PEP following occupational exposures. An exploratory qualitative design was employed at a Military Hospital in Accra. Data were collected through 5 foc...",
+      "authors": [
+        "Lasidji Narh B",
+        "Senoo-Dogbey VE"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41716436/"
+    },
+    {
+      "pmid": "41641061",
+      "title": "Perceptions and Acceptability of Doxycycline-Based STI Prophylaxis: Insights from Consumers and Healthcare Providers in Queensland.",
+      "abstract": "This study examines the perceptions and acceptability of daily doxycycline-based prophylaxis (Doxy-PrEP) for bacterial sexually transmitted infections (STIs) among populations at heightened risk of STIs and healthcare providers in Queensland, Australia. It explores factors influencing willingness to use or prescribe this intervention, including potential ethical and clinical concerns. Two cross-sectional online surveys were conducted in 2024 - one targeting consumers at higher risk for STIs, inc...",
+      "authors": [
+        "Demant D",
+        "Baker PR",
+        "Mullens AB"
+      ],
+      "publication_date": "2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41641061/"
+    },
+    {
+      "pmid": "41626391",
+      "title": "Doxycycline prophylaxis for sexually transmitted infections prevention among men who have sex with men in China.",
+      "abstract": "Men who have sex with men (MSM) have a high prevalence of sexually transmitted infections (STIs). The efficacy of doxycycline prophylaxis in STIs prevention has been demonstrated. This study aimed to examine the utilization of doxycycline prophylaxis among MSM in China, providing evidence to inform future policies and guidelines. Between June and July 2025, a cross-sectional survey was conducted in China, using a convenience sampling method to recruit eligible MSM. Sociodemographic characteristi...",
+      "authors": [
+        "Ding Y",
+        "Su R",
+        "Tian L"
+      ],
+      "publication_date": "2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41626391/"
+    },
+    {
+      "pmid": "41569270",
+      "title": "2025 US Public Health Service Guidelines for the Management of Occupational Exposures to Human Immunodeficiency Virus and Recommendations for Post-exposure Prophylaxis in Healthcare Settings.",
+      "abstract": "These guidelines update the 2013 \"Updated US Public Health Service (PHS) Guidelines for the Management of Occupational Exposures to Human Immunodeficiency Virus and Recommendations for Postexposure Prophylaxis,\" hereafter referred to as the 2013 PHS Guidelines.<sup>,</sup> The availability of new medication options, new information on the window of detection for different human immunodeficiency virus (HIV) tests, and the risk of transmission from people with undetectable viral loads prompted thi...",
+      "authors": [
+        "Kofman AD",
+        "Struble KA",
+        "Heneine W"
+      ],
+      "publication_date": "2025 Sep",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41569270/"
+    },
+    {
+      "pmid": "41546700",
+      "title": "Transient hepatitis B surface antigen positivity after hepatitis B vaccination in an HIV pre-exposure prophylaxis user.",
+      "abstract": "Transient detection of hepatitis B surface antigen (HBsAg) following hepatitis B vaccination is a rare but recognized phenomenon that may be misinterpreted as acute hepatitis B virus (HBV) infection. We report a case illustrating this diagnostic challenge in an HIV pre-exposure prophylaxis (PrEP) user. A 36-year-old man presented in October 2025 for PrEP initiation. He reported condomless sex with multiple male partners and occasional on-demand use of tenofovir disoproxil fumarate/emtricitabine ...",
+      "authors": [
+        "Vanbaelen T",
+        "Van Geel C",
+        "Maniewski-Kelner U"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41546700/"
+    },
+    {
+      "pmid": "41535121",
+      "title": "Awareness, attitudes and early use of doxycycline prophylaxis among gbMSM in Ireland: findings from a 2025 community-based cross-sectional survey.",
+      "abstract": "Bacterial sexually transmitted infections (STIs) remain a growing public health challenge globally, with gay, bisexual and other men who have sex with men (gbMSM) disproportionately affected. Doxycycline postexposure prophylaxis (DoxyPEP) has been shown in clinical trials to reduce syphilis and chlamydia, and has been incorporated into US and UK guidelines. However, community-level data in many European countries remain scarce. This study aimed to assess awareness, attitudes and early use of Dox...",
+      "authors": [
+        "Gilmore J",
+        "Field DJ",
+        "Kelly H"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41535121/"
+    },
+    {
+      "pmid": "41449454",
+      "title": "Pre-exposure prophylaxis (PrEP) and medications for opioid use disorder for persons who inject drugs: the CHORUS\u2009+\u2009randomized controlled trial study protocol.",
+      "abstract": "Human immunodeficiency virus (HIV) cases among people who inject drugs increased during the US overdose crisis. Although HIV pre-exposure prophylaxis (PrEP) decreases HIV acquisition, and medications for opioid use disorder (MOUD) reduce overdose deaths, uptake remains suboptimal. The CHORUS\u2009+\u2009study will test the efficacy of a comprehensive peer recovery coaching intervention to increase PrEP and MOUD initiation and adherence. This two-arm RCT will enroll 284 people who inject opioids (PWIO) and...",
+      "authors": [
+        "Miller SE",
+        "Dukes KA",
+        "Damato-MacPherson C"
+      ],
+      "publication_date": "2025 Dec",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41449454/"
+    },
+    {
+      "pmid": "41439335",
+      "title": "HIV Pre-Exposure Prophylaxis Among People with Criminal Justice Involvement in the United States: A Systematic Review.",
+      "abstract": "People with criminal justice involvement (PCJI) face a heightened risk of HIV yet remain underserved by prevention strategies such as pre-exposure prophylaxis (PrEP). This systematic review synthesizes current evidence on PrEP utilization among PCJI, identifying key barriers and facilitators that influence uptake and adherence. Following Preferred Reporting Items for Systematic Reviews and Meta-Analysis guidelines, we conducted a comprehensive literature search and thematic analysis. Twenty-five...",
+      "authors": [
+        "Hong C",
+        "Pushpanadh S",
+        "Wang Y"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41439335/"
+    },
+    {
+      "pmid": "41426870",
+      "title": "Improving Doctors' Knowledge and Practices on Needle-Stick Injury Prevention and Management: A Two-Cycle Clinical Audit at Al Managil Teaching Hospital.",
+      "abstract": "Needle-stick injuries (NSIs) pose a major occupational hazard for doctors, serving as a route for transmission of hepatitis B virus (HBV), hepatitis C virus (HCV), and human immunodeficiency virus (HIV). International guidelines emphasize immediate wound care, avoidance of recapping, use of safety-engineered devices, and timely initiation of post-exposure prophylaxis (PEP). However, knowledge and adherence remain suboptimal in many low-resource settings. This audit evaluated doctors' awareness, ...",
+      "authors": [
+        "Ahmed Abdalla AS",
+        "Idris MAF",
+        "Alhessen Saidahmed RO"
+      ],
+      "publication_date": "2025 Nov",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41426870/"
+    },
+    {
+      "pmid": "41416059",
+      "title": "Testing for human immunodeficiency virus.",
+      "abstract": "Testing for human immunodeficiency virus (HIV) is recommended for individuals with behavioural or epidemiological risk factors, and those who present with clinical indicator conditions. Routine testing is recommended in pregnancy and as part of symptomatic and asymptomatic sexually transmissible infection check-ups. In Australia, laboratories primarily use combined HIV antibody and antigen tests for diagnostic testing. A reactive test is followed by a laboratory confirmatory test. Clinicians sho...",
+      "authors": [
+        "Owen L",
+        "Woolley I"
+      ],
+      "publication_date": "2025 Dec",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41416059/"
+    },
+    {
+      "pmid": "41370971",
+      "title": "Preclinical evaluation of long-acting cabotegravir and rilpivirine for HIV post-exposure prophylaxis in a macaque model.",
+      "abstract": "Current guidelines for post-exposure prophylaxis (PEP) recommend 28 days of daily oral antiretroviral drugs. However, low adherence and inadequate regimen completion represent important challenges. We investigated in macaques whether a single injection of the combination of long-acting cabotegravir and rilpivirine (CAB LA/RPV LA) could serve as an effective PEP regimen. Six macaques received a clinically relevant dose of CAB LA/RPV LA 24 h after a single rectal exposure to a high dose of reverse...",
+      "authors": [
+        "Srinivasan P",
+        "Zhang J",
+        "Edwards T"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41370971/"
+    },
+    {
+      "pmid": "41364406",
+      "title": "New CDC guidelines for HIV post-exposure prophylaxis.",
+      "abstract": "",
+      "authors": [
+        "Soriano V"
+      ],
+      "publication_date": "2025 Dec",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41364406/"
+    },
+    {
+      "pmid": "41353643",
+      "title": "[Vaccination Recommendations for the Immunocompromised Adult Patient].",
+      "abstract": "The manuscript collates indications for vaccination in immunocompromised adults based on recommendations from leading international institutions. These individuals have increased vulnerability to vaccine-preventable infectious diseases, and their immune response to vaccination is often weaker than that of immunocompetent individuals. Therefore, whenever possible, it is important to assess vaccine response (serological or other). Emphasis is placed on adapting vaccination to the net state of immu...",
+      "authors": [
+        "Abreu C",
+        "Peres S",
+        "Cunha F"
+      ],
+      "publication_date": "2025 Dec",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41353643/"
+    },
+    {
+      "pmid": "41352227",
+      "title": "Assessment tools for evaluating nursing students' knowledge on HIV prophylaxis: A scoping review.",
+      "abstract": "To map instruments assessing nursing students' knowledge of HIV prophylaxis and critically appraise their measurement properties using the COSMIN framework. Scoping review. This scoping review was conducted in accordance with the PRISMA-ScR (Preferred Reporting Items for Systematic Reviews and Meta-Analyses extension for Scoping Reviews) guidelines. Systematic searches were performed in PubMed, Web of Science, CINAHL, Embase and Google Scholar (gray literature) through August 28, 2025. Eligible ...",
+      "authors": [
+        "de Sousa DS",
+        "de Almeida FHO",
+        "de Souza Terra LS"
+      ],
+      "publication_date": "2026 Jan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41352227/"
+    }
+  ],
+  "count": 14,
+  "scraped_at": "2026-02-26T09:57:05.059916"
+}
