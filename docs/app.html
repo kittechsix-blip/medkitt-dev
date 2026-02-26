@@ -163,9 +163,144 @@
     .legal-modal-btn:hover {
       background: #ee5a5a;
     }
+
+    /* Legal Disclaimer Splash Screen */
+    .legal-splash-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 15, 26, 0.98);
+      z-index: 10002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+    .legal-splash-overlay.legal-splash-hidden { display: none !important; }
+    .legal-splash-modal {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border: 2px solid #ff6b6b;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 107, 107, 0.3);
+    }
+    .legal-splash-header { text-align: center; margin-bottom: 24px; }
+    .legal-splash-icon {
+      width: 64px; height: 64px; margin: 0 auto 16px;
+      background: rgba(255, 107, 107, 0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .legal-splash-icon svg { width: 32px; height: 32px; color: #ff6b6b; }
+    .legal-splash-title { font-size: 24px; font-weight: 700; color: #ff6b6b; margin: 0 0 8px; }
+    .legal-splash-subtitle { font-size: 14px; color: #a0a0b0; margin: 0; }
+    .fda-warning-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255, 107, 107, 0.15); color: #ff6b6b;
+      padding: 6px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; margin-bottom: 16px;
+    }
+    .legal-splash-content {
+      background: rgba(0, 0, 0, 0.3); border-radius: 12px;
+      padding: 20px; margin-bottom: 24px;
+    }
+    .legal-splash-content h3 { color: #fff; font-size: 14px; font-weight: 600; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .legal-splash-content p { color: #c0c0d0; font-size: 13px; line-height: 1.6; margin: 0 0 12px; }
+    .legal-checkbox-list { list-style: none; padding: 0; margin: 0 0 24px; }
+    .legal-checkbox-item {
+      display: flex; align-items: flex-start; gap: 12px; padding: 16px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s ease;
+    }
+    .legal-checkbox-item:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); }
+    .legal-checkbox-item.checked { background: rgba(76, 175, 80, 0.1); border-color: rgba(76, 175, 80, 0.3); }
+    .legal-checkbox-item input[type="checkbox"] { width: 20px; height: 20px; margin: 0; flex-shrink: 0; cursor: pointer; accent-color: #4caf50; }
+    .legal-checkbox-text { font-size: 13px; color: #e0e0f0; line-height: 1.5; }
+    .legal-checkbox-text strong { color: #fff; display: block; margin-bottom: 4px; }
+    .legal-splash-actions { display: flex; flex-direction: column; gap: 12px; }
+    .legal-splash-btn {
+      width: 100%; padding: 16px 24px; border: none; border-radius: 8px;
+      font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-family: inherit;
+    }
+    .legal-splash-btn-primary { background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: #fff; }
+    .legal-splash-btn-primary:hover:not(:disabled) { background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3); }
+    .legal-splash-btn-primary:disabled { background: #3a3a4a; color: #6a6a7a; cursor: not-allowed; }
+    .legal-splash-btn-secondary { background: transparent; color: #a0a0b0; border: 1px solid rgba(255, 255, 255, 0.2); }
+    .legal-splash-btn-secondary:hover { background: rgba(255, 255, 255, 0.05); color: #fff; }
+    .legal-splash-btn-check-all {
+      background: transparent; color: #a0a0b0; border: 1px dashed rgba(255, 255, 255, 0.2);
+      padding: 10px 20px; border-radius: 6px; font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all 0.2s ease; width: 100%; font-family: inherit; margin-bottom: 4px;
+    }
+    .legal-splash-btn-check-all:hover { background: rgba(255, 255, 255, 0.05); color: #fff; border-color: rgba(255, 255, 255, 0.3); }
+    .legal-splash-footer { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .legal-splash-footer p { font-size: 11px; color: #707080; margin: 0; }
   </style>
 </head>
 <body>
+  <!-- Legal Disclaimer Splash Screen (must acknowledge before using app) -->
+  <div id="legal-splash" class="legal-splash-overlay">
+    <div class="legal-splash-modal">
+      <div class="legal-splash-header">
+        <div class="legal-splash-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+        </div>
+        <span class="fda-warning-badge">Not FDA Cleared</span>
+        <h1 class="legal-splash-title">Important Legal Notice</h1>
+        <p class="legal-splash-subtitle">Please read and acknowledge before using MedKitt</p>
+      </div>
+      <div class="legal-splash-content">
+        <h3>Required Acknowledgments</h3>
+        <p>MedKitt is a clinical decision support tool designed to assist licensed healthcare professionals. By proceeding, you acknowledge and agree to the following:</p>
+      </div>
+      <ul class="legal-checkbox-list">
+        <li class="legal-checkbox-item">
+          <input type="checkbox" id="ack-1">
+          <span class="legal-checkbox-text">
+            <strong>Not a Medical Device</strong>
+            I understand that MedKitt is NOT an FDA-cleared medical device and has not been reviewed or approved by the U.S. Food and Drug Administration.
+          </span>
+        </li>
+        <li class="legal-checkbox-item">
+          <input type="checkbox" id="ack-2">
+          <span class="legal-checkbox-text">
+            <strong>Not a Substitute for Professional Judgment</strong>
+            I understand that MedKitt is for informational purposes only and does NOT replace my clinical judgment, training, or the advice of qualified medical professionals.
+          </span>
+        </li>
+        <li class="legal-checkbox-item">
+          <input type="checkbox" id="ack-3">
+          <span class="legal-checkbox-text">
+            <strong>Licensed Healthcare Provider</strong>
+            I confirm that I am a licensed healthcare professional or medical student under supervision, and I will use this tool only within my scope of practice and licensure.
+          </span>
+        </li>
+        <li class="legal-checkbox-item">
+          <input type="checkbox" id="ack-4">
+          <span class="legal-checkbox-text">
+            <strong>Assumption of Risk & Liability</strong>
+            I understand that I assume full responsibility for any clinical decisions made using information from MedKitt. The creators, developers, and affiliates of MedKitt assume no liability for patient outcomes, errors, or omissions.
+          </span>
+        </li>
+      </ul>
+      <div class="legal-splash-actions">
+        <button id="splash-check-all" class="legal-splash-btn legal-splash-btn-check-all">Check All</button>
+        <button id="splash-acknowledge" class="legal-splash-btn legal-splash-btn-primary" disabled>I Acknowledge and Agree — Enter MedKitt</button>
+        <button id="splash-exit" class="legal-splash-btn legal-splash-btn-secondary">I Do Not Agree — Exit</button>
+      </div>
+      <div class="legal-splash-footer">
+        <p>© 2026 MedKitt. By clicking "I Acknowledge and Agree," you accept these terms.<br>
+        This acknowledgment will be saved for future visits.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Persistent FDA Disclaimer Banner -->
   <div id="legal-banner" class="legal-banner">
     <svg class="legal-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
