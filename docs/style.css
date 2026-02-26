@@ -2415,3 +2415,291 @@ body {
 .drug-section-warning .info-page-text {
   color: var(--color-warning);
 }
+
+/* ============================================
+   CONSULT NAVIGATOR COMPONENT
+   ============================================ */
+
+.consult-navigator {
+  background: rgba(22, 22, 44, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Progress Bar */
+.consult-progress {
+  margin-bottom: 20px;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-size: 0.875rem;
+}
+
+.progress-step {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-step strong {
+  color: white;
+  font-weight: 600;
+}
+
+.progress-percent {
+  margin-left: auto;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.progress-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8125rem;
+}
+
+.progress-time svg {
+  width: 14px;
+  height: 14px;
+}
+
+.progress-bar-container {
+  position: relative;
+}
+
+.progress-bar-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  position: relative;
+}
+
+.progress-step-dot {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: default;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-step-dot.completed {
+  background: rgba(60, 179, 113, 0.15);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.progress-step-dot.completed:hover {
+  background: rgba(60, 179, 113, 0.25);
+  transform: scale(1.1);
+}
+
+.progress-step-dot.current {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg);
+  box-shadow: 0 0 0 4px rgba(60, 179, 113, 0.2);
+}
+
+.progress-step-dot svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Breadcrumbs */
+.consult-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.consult-breadcrumbs.empty {
+  display: none;
+}
+
+.breadcrumb-home {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.breadcrumb-home:hover {
+  background: rgba(60, 179, 113, 0.1);
+  border-color: rgba(60, 179, 113, 0.3);
+  color: var(--color-primary);
+}
+
+.breadcrumb-home svg {
+  width: 18px;
+  height: 18px;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item.past {
+  cursor: pointer;
+}
+
+.breadcrumb-link {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breadcrumb-link:hover {
+  background: rgba(60, 179, 113, 0.1);
+  border-color: rgba(60, 179, 113, 0.3);
+  color: var(--color-primary);
+}
+
+.breadcrumb-item.current .breadcrumb-label {
+  background: rgba(60, 179, 113, 0.15);
+  border: 1px solid rgba(60, 179, 113, 0.3);
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-separator svg {
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumb-overflow {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.breadcrumb-overflow:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.breadcrumb-overflow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Truncated breadcrumbs */
+.breadcrumb-list.truncated .breadcrumb-item.hidden,
+.breadcrumb-list.truncated .breadcrumb-separator.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .consult-navigator {
+    padding: 16px;
+  }
+  
+  .progress-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .progress-step-dot {
+    width: 24px;
+    height: 24px;
+    font-size: 0.6875rem;
+  }
+  
+  .breadcrumb-link,
+  .breadcrumb-item.current .breadcrumb-label {
+    max-width: 100px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .breadcrumb-home,
+  .breadcrumb-overflow {
+    width: 32px;
+    height: 32px;
+  }
+}
