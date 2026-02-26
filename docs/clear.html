@@ -31,6 +31,8 @@
 
         // Clear sessionStorage (stale tree sessions)
         sessionStorage.clear();
+        // Clear localStorage (legal acknowledgment, banner dismissed, etc.)
+        localStorage.clear();
         status.textContent = 'All cleared. Redirecting...';
 
         // Redirect with cache-buster to bypass browser HTTP cache
