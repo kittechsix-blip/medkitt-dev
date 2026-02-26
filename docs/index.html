@@ -218,6 +218,27 @@
             margin: 0;
         }
         
+        .legal-splash-btn-check-all {
+            background: transparent;
+            color: #a0a0b0;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            font-family: inherit;
+            margin-bottom: 4px;
+        }
+
+        .legal-splash-btn-check-all:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
         .legal-splash-hidden {
             display: none !important;
         }
@@ -259,37 +280,40 @@
             </div>
             
             <ul class="legal-checkbox-list">
-                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
-                    <input type="checkbox" id="ack-1" onchange="updateAcknowledgeButton()">
-                    <label for="ack-1" class="legal-checkbox-text">
+                <li class="legal-checkbox-item">
+                    <input type="checkbox" id="ack-1">
+                    <span class="legal-checkbox-text">
                         <strong>Not a Medical Device</strong>
                         I understand that MedKitt is NOT an FDA-cleared medical device and has not been reviewed or approved by the U.S. Food and Drug Administration.
-                    </label>
+                    </span>
                 </li>
-                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
-                    <input type="checkbox" id="ack-2" onchange="updateAcknowledgeButton()">
-                    <label for="ack-2" class="legal-checkbox-text">
+                <li class="legal-checkbox-item">
+                    <input type="checkbox" id="ack-2">
+                    <span class="legal-checkbox-text">
                         <strong>Not a Substitute for Professional Judgment</strong>
                         I understand that MedKitt is for informational purposes only and does NOT replace my clinical judgment, training, or the advice of qualified medical professionals.
-                    </label>
+                    </span>
                 </li>
-                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
-                    <input type="checkbox" id="ack-3" onchange="updateAcknowledgeButton()">
-                    <label for="ack-3" class="legal-checkbox-text">
+                <li class="legal-checkbox-item">
+                    <input type="checkbox" id="ack-3">
+                    <span class="legal-checkbox-text">
                         <strong>Licensed Healthcare Provider</strong>
                         I confirm that I am a licensed healthcare professional or medical student under supervision, and I will use this tool only within my scope of practice and licensure.
-                    </label>
+                    </span>
                 </li>
-                <li class="legal-checkbox-item" onclick="toggleCheckbox(this)">
-                    <input type="checkbox" id="ack-4" onchange="updateAcknowledgeButton()">
-                    <label for="ack-4" class="legal-checkbox-text">
+                <li class="legal-checkbox-item">
+                    <input type="checkbox" id="ack-4">
+                    <span class="legal-checkbox-text">
                         <strong>Assumption of Risk & Liability</strong>
                         I understand that I assume full responsibility for any clinical decisions made using information from MedKitt. The creators, developers, and affiliates of MedKitt assume no liability for patient outcomes, errors, or omissions.
-                    </label>
+                    </span>
                 </li>
             </ul>
-            
+
             <div class="legal-splash-actions">
+                <button class="legal-splash-btn legal-splash-btn-check-all" onclick="checkAll()">
+                    Check All
+                </button>
                 <button id="acknowledge-btn" class="legal-splash-btn legal-splash-btn-primary" disabled onclick="acknowledgeAndProceed()">
                     I Acknowledge and Agree — Enter MedKitt
                 </button>
@@ -314,21 +338,40 @@
             }
         });
         
-        function toggleCheckbox(item) {
-            const checkbox = item.querySelector('input[type="checkbox"]');
-            checkbox.checked = !checkbox.checked;
-            item.classList.toggle('checked', checkbox.checked);
-            updateAcknowledgeButton();
-        }
-        
+        // Attach click listeners to each checkbox item
+        document.querySelectorAll('.legal-checkbox-item').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                // Prevent double-toggle when clicking the checkbox itself
+                if (e.target.tagName === 'INPUT') return;
+                var checkbox = item.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                updateAcknowledgeButton();
+            });
+            // Also handle direct checkbox clicks
+            item.querySelector('input[type="checkbox"]').addEventListener('change', function() {
+                updateAcknowledgeButton();
+            });
+        });
+
         function updateAcknowledgeButton() {
-            const checkboxes = document.querySelectorAll('.legal-checkbox-item input[type="checkbox"]');
-            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-            const btn = document.getElementById('acknowledge-btn');
-            btn.disabled = !allChecked;
-            checkboxes.forEach(cb => {
+            var checkboxes = document.querySelectorAll('.legal-checkbox-item input[type="checkbox"]');
+            var allChecked = Array.from(checkboxes).every(function(cb) { return cb.checked; });
+            document.getElementById('acknowledge-btn').disabled = !allChecked;
+            checkboxes.forEach(function(cb) {
                 cb.closest('.legal-checkbox-item').classList.toggle('checked', cb.checked);
             });
+            // Hide "Check All" when all are checked
+            var checkAllBtn = document.querySelector('.legal-splash-btn-check-all');
+            if (checkAllBtn) {
+                checkAllBtn.style.display = allChecked ? 'none' : '';
+            }
+        }
+
+        function checkAll() {
+            document.querySelectorAll('.legal-checkbox-item input[type="checkbox"]').forEach(function(cb) {
+                cb.checked = true;
+            });
+            updateAcknowledgeButton();
         }
         
         function acknowledgeAndProceed() {
