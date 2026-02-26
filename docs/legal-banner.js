@@ -2,51 +2,55 @@
 // Manages the FDA disclaimer splash, persistent banner, and legal details modal in app.html
 // All event handling via addEventListener (CSP-compliant, no inline onclick)
 
+// ── Immediate splash check (runs synchronously before browser renders rest of page) ──
+(function() {
+  var splash = document.getElementById('legal-splash');
+  if (splash && localStorage.getItem('medkitt-legal-acknowledged') === 'true') {
+    splash.classList.add('legal-splash-hidden');
+  }
+})();
+
+// ── DOMContentLoaded: set up all interactive handlers ──
 document.addEventListener('DOMContentLoaded', function() {
 
   // ── Splash Screen (4-question acknowledgment) ──
   var splash = document.getElementById('legal-splash');
-  if (splash) {
-    var hasAcknowledged = localStorage.getItem('medkitt-legal-acknowledged');
-    if (hasAcknowledged === 'true') {
-      splash.classList.add('legal-splash-hidden');
-    } else {
-      // Show splash — attach checkbox listeners
-      var checkboxItems = splash.querySelectorAll('.legal-checkbox-item');
-      checkboxItems.forEach(function(item) {
-        item.addEventListener('click', function(e) {
-          if (e.target.tagName === 'INPUT') return; // Prevent double-toggle
-          var cb = item.querySelector('input[type="checkbox"]');
-          cb.checked = !cb.checked;
-          updateSplashButton();
-        });
+  if (splash && !splash.classList.contains('legal-splash-hidden')) {
+    // Splash is visible — attach checkbox listeners
+    var checkboxItems = splash.querySelectorAll('.legal-checkbox-item');
+    checkboxItems.forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        if (e.target.tagName === 'INPUT') return; // Prevent double-toggle
         var cb = item.querySelector('input[type="checkbox"]');
-        if (cb) cb.addEventListener('change', updateSplashButton);
-      });
-
-      // Check All button
-      var checkAllBtn = document.getElementById('splash-check-all');
-      if (checkAllBtn) checkAllBtn.addEventListener('click', function() {
-        splash.querySelectorAll('.legal-checkbox-item input[type="checkbox"]').forEach(function(cb) {
-          cb.checked = true;
-        });
+        cb.checked = !cb.checked;
         updateSplashButton();
       });
+      var cb = item.querySelector('input[type="checkbox"]');
+      if (cb) cb.addEventListener('change', updateSplashButton);
+    });
 
-      // Acknowledge button
-      var ackBtn = document.getElementById('splash-acknowledge');
-      if (ackBtn) ackBtn.addEventListener('click', function() {
-        localStorage.setItem('medkitt-legal-acknowledged', 'true');
-        localStorage.setItem('medkitt-legal-acknowledged-date', new Date().toISOString());
-        splash.classList.add('legal-splash-hidden');
+    // Check All button
+    var checkAllBtn = document.getElementById('splash-check-all');
+    if (checkAllBtn) checkAllBtn.addEventListener('click', function() {
+      splash.querySelectorAll('.legal-checkbox-item input[type="checkbox"]').forEach(function(cb) {
+        cb.checked = true;
       });
+      updateSplashButton();
+    });
 
-      // Exit button
-      var exitBtn = document.getElementById('splash-exit');
-      if (exitBtn) exitBtn.addEventListener('click', function() {
-        window.location.href = 'https://www.google.com';
-      });
-    }
+    // Acknowledge button
+    var ackBtn = document.getElementById('splash-acknowledge');
+    if (ackBtn) ackBtn.addEventListener('click', function() {
+      localStorage.setItem('medkitt-legal-acknowledged', 'true');
+      localStorage.setItem('medkitt-legal-acknowledged-date', new Date().toISOString());
+      splash.classList.add('legal-splash-hidden');
+    });
+
+    // Exit button
+    var exitBtn = document.getElementById('splash-exit');
+    if (exitBtn) exitBtn.addEventListener('click', function() {
+      window.location.href = 'https://www.google.com';
+    });
   }
 
   function updateSplashButton() {
