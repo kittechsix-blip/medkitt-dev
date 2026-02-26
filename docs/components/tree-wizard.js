@@ -276,6 +276,7 @@ export function renderTreeWizard(container, treeId) {
     container.appendChild(wizardContent);
     
     // Initialize ConsultNavigator
+    const totalModules = engine.getTotalModules();
     consultNavigator = new ConsultNavigator('consult-navigator', {
         onNavigate: (stepIndex) => {
             if (!engine) return;
@@ -283,17 +284,17 @@ export function renderTreeWizard(container, treeId) {
                 // Go back to entry
                 engine.goToEntry(currentEntryNodeId);
             } else {
-                // Navigate to specific step
-                const path = consultNavigator.getState().path;
-                if (path[stepIndex]) {
-                    engine.jumpToNode(path[stepIndex].nodeId);
+                // Navigate to specific history step
+                const session = engine.getSession();
+                if (session && stepIndex < session.history.length) {
+                    engine.jumpToHistory(stepIndex);
                 }
             }
             renderCurrentNode(wizardContent);
         },
         showTimeEstimate: true,
         avgTimePerStep: 30,
-        totalSteps: config.nodes.length,
+        totalSteps: totalModules,
         labelFormatter: (step) => step.answer || 'Start'
     });
     
@@ -310,22 +311,27 @@ function renderCurrentNode(container) {
     
     // Update ConsultNavigator with current path
     if (consultNavigator) {
-        const history = engine.getHistory ? engine.getHistory() : [];
-        const path = history.map((h, idx) => ({
-            nodeId: h.nodeId,
-            question: h.question || `Step ${idx + 1}`,
-            answer: h.answer
-        }));
-        
-        // Add current node to path
-        if (node.id !== currentEntryNodeId) {
-            path.push({
-                nodeId: node.id,
-                question: node.title || node.question || 'Current',
-                answer: null
-            });
+        const session = engine.getSession();
+        const path = [];
+        if (session && session.history.length > 0) {
+            for (let hi = 0; hi < session.history.length; hi++) {
+                const histNodeId = session.history[hi];
+                const histNode = engine.getNode(histNodeId);
+                path.push({
+                    nodeId: histNodeId,
+                    question: histNode?.title || `Step ${hi + 1}`,
+                    answer: session.answers[histNodeId] || 'Continue'
+                });
+            }
         }
-        
+        // Add current node to path
+        path.push({
+            nodeId: node.id,
+            question: node.title || 'Current',
+            answer: null
+        });
+        // Set module progress before setPath (which triggers render)
+        consultNavigator.setModuleProgress(node.module || 1, engine.getTotalModules());
         consultNavigator.setPath(path, path.length - 1);
     }
     
@@ -373,9 +379,9 @@ function renderHeader(node) {
             if (!engine)
                 return;
             engine.goBack();
-            const container = document.querySelector('.main-content');
-            if (container)
-                renderCurrentNode(container);
+            const cont = document.getElementById('wizard-content-container');
+            if (cont)
+                renderCurrentNode(cont);
         });
     }
     else {
@@ -404,7 +410,7 @@ function renderHeader(node) {
         if (!engine || !currentEntryNodeId)
             return;
         engine.goToEntry(currentEntryNodeId);
-        const cont = document.querySelector('.main-content');
+        const cont = document.getElementById('wizard-content-container');
         if (cont)
             renderCurrentNode(cont);
     });
@@ -497,16 +503,6 @@ function renderQuestionNode(content, node, container) {
             btn.addEventListener('click', () => {
                 if (!engine)
                     return;
-                
-                // Record step in navigator before navigating
-                if (consultNavigator && node) {
-                    consultNavigator.addStep({
-                        nodeId: node.id,
-                        question: node.title || node.question || 'Question',
-                        answer: opt.label
-                    });
-                }
-                
                 engine.selectOption(i);
                 renderCurrentNode(container);
             });
@@ -542,16 +538,6 @@ function renderInfoNode(content, node, container) {
         continueBtn.addEventListener('click', () => {
             if (!engine)
                 return;
-            
-            // Record step in navigator before continuing
-            if (consultNavigator && node) {
-                consultNavigator.addStep({
-                    nodeId: node.id,
-                    question: node.title || 'Info',
-                    answer: 'Continue'
-                });
-            }
-            
             engine.continueToNext();
             renderCurrentNode(container);
         });

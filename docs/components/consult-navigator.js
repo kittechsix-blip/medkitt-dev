@@ -56,6 +56,7 @@ class ConsultNavigator {
       currentStepIndex: -1,
       isCompleted: false
     };
+    this.moduleInfo = null;
 
     this.init();
     this.log('ConsultNavigator initialized');
@@ -82,8 +83,9 @@ class ConsultNavigator {
 
   renderProgressBar() {
     const progressPercent = this.calculateProgress();
-    const currentStep = this.state.currentStepIndex + 1;
-    const totalSteps = this.options.totalSteps;
+    const mi = this.moduleInfo;
+    const currentStep = mi ? mi.current : (this.state.currentStepIndex + 1);
+    const totalSteps = mi ? mi.total : this.options.totalSteps;
     const timeEstimate = this.calculateTimeRemaining();
 
     return `
@@ -117,8 +119,9 @@ class ConsultNavigator {
   }
 
   renderProgressSteps() {
-    const totalSteps = this.options.totalSteps;
-    const currentStep = this.state.currentStepIndex;
+    const mi = this.moduleInfo;
+    const totalSteps = mi ? mi.total : this.options.totalSteps;
+    const currentStep = mi ? (mi.current - 1) : this.state.currentStepIndex;
 
     return Array.from({ length: totalSteps }, (_, i) => {
       const isCompleted = i <= currentStep;
@@ -321,6 +324,15 @@ class ConsultNavigator {
   }
 
   /**
+   * Set module-based progress (separate from breadcrumb path)
+   * @param {number} currentModule - Current module number (1-based)
+   * @param {number} totalModules - Total number of modules
+   */
+  setModuleProgress(currentModule, totalModules) {
+    this.moduleInfo = { current: currentModule, total: totalModules };
+  }
+
+  /**
    * Reset the navigator to initial state
    */
   reset() {
@@ -385,8 +397,10 @@ class ConsultNavigator {
 
   calculateProgress() {
     if (this.state.isCompleted) return 100;
+    if (this.moduleInfo) {
+      return Math.min((this.moduleInfo.current / this.moduleInfo.total) * 100, 100);
+    }
     if (this.state.currentStepIndex < 0) return 0;
-
     return Math.min(
       ((this.state.currentStepIndex + 1) / this.options.totalSteps) * 100,
       100
@@ -396,7 +410,10 @@ class ConsultNavigator {
   calculateTimeRemaining() {
     if (this.state.isCompleted) return null;
 
-    const remainingSteps = this.options.totalSteps - (this.state.currentStepIndex + 1);
+    const mi = this.moduleInfo;
+    const remainingSteps = mi
+      ? (mi.total - mi.current)
+      : (this.options.totalSteps - (this.state.currentStepIndex + 1));
     if (remainingSteps <= 0) return null;
 
     const totalSeconds = remainingSteps * this.options.avgTimePerStep;
