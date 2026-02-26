@@ -1,0 +1,187 @@
+{
+  "source": "pubmed",
+  "query": "(acute ischemic stroke thrombolysis OR stroke EVT) AND (guidelines OR alteplase OR tenecteplase) AND (2023:3000[PDAT])",
+  "articles": [
+    {
+      "pmid": "41728600",
+      "title": "Impacts of neurointerventional therapy combined with intravenous thrombolysis on neurological function, oxidative stress, and immune function in patients with acute ischemic stroke.",
+      "abstract": "This study aimed to assess the clinical efficacy of neurointerventional therapy plus intravenous thrombolysis in patients with acute ischemic stroke (AIS). We conducted a single-center retrospective analysis involving 120 AIS patients admitted to our hospital from January 2023 to December 2024. Based on their treatment plans, patients were categorized into an alteplase group (<i>n</i> = 55) and a combination group (<i>n</i> = 65). In both groups, all patients received standard intravenous thromb...",
+      "authors": [
+        "Wang Y",
+        "Yang Y",
+        "Zhou J"
+      ],
+      "publication_date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41728600/"
+    },
+    {
+      "pmid": "41719829",
+      "title": "Post\u2011stroke seizure and epilepsy after intravenous alteplase: A retrospective cohort with SeLECT score profiling.",
+      "abstract": "The purpose of this study was to evaluate the incidence of post-stroke seizures (PSS) and post-stroke epilepsy (PSE) in patients with ischemic stroke who received thrombolytic therapy. This was a retrospective, single\u2011center cohort of consecutive alteplase\u2011treated patients with age\u2011 and sex\u2011matched non\u2011thrombolysed controls between 2016 and 2023. PSS incidence was ascertained from patients' records and PSE occurrence was registered based on structured telephone interviews. Multivariable logistic...",
+      "authors": [
+        "Sharifi-Razavi A",
+        "Sotudeh D",
+        "Moosazadeh M"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41719829/"
+    },
+    {
+      "pmid": "41718153",
+      "title": "Safety and Efficacy of Stroke Thrombolysis for Patients with Cerebral Cavernous Malformations: Literature Review and Nationwide Cohort Study.",
+      "abstract": "Intravenous thrombolysis (IVT) is relatively contraindicated in acute ischemic stroke (AIS) patients with intracranial vascular malformations per current guidelines. Thus, the presence of cerebral cavernous malformations (CCMs) may complicate treatment decision-making. We performed a literature review of the PubMed, Embase, Scopus, and Web of Science databases through July 2025, identifying reported cases of IVT administration in AIS patients with CCMs. Additionally, we conducted a retrospective...",
+      "authors": [
+        "Chen H",
+        "Laursen RK",
+        "McIntyre MK"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41718153/"
+    },
+    {
+      "pmid": "41717940",
+      "title": "Safety and Efficacy of Early Aspirin Administration After Intravenous Thrombolysis for Acute Ischemic Stroke (TREND-IVT): Rationale and Design of a Multicenter, Randomized, Placebo-Controlled Clinical Trial.",
+      "abstract": "In acute ischemic stroke, early neurological deterioration following intravenous thrombolysis (IVT) is common and is associated with unfavorable outcomes, necessitating antiplatelet therapy. TREND-IVT (Trial of Early Aspirin After Intravenous Thrombolysis for Acute Ischemic Stroke) aims to evaluate the safety and efficacy of 300\u2009mg aspirin administered within 3\u2009hours after the initiation of IVT compared with standard antiplatelet therapy for improving functional outcomes in patients with acute i...",
+      "authors": [
+        "Wang J",
+        "Li S",
+        "Liu L"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41717940/"
+    },
+    {
+      "pmid": "41711163",
+      "title": "Safety Outcomes of Tenecteplase Compared With Alteplase in Acute Ischemic Stroke: A Multicenter Retrospective Real-World Study.",
+      "abstract": "Acute ischemic stroke (AIS) affects over 795,000 individuals annually in the U.S. and remains a leading cause of death. Alteplase has long been the standard thrombolytic therapy for AIS, though tenecteplase has recently gained attention due to its favorable pharmacokinetics and simplified administration. Despite its increasing clinical use and recent FDA approval for AIS, safety data, particularly regarding bleeding outcomes, remain limited. The objective was to compare the incidence of symptoma...",
+      "authors": [
+        "Walker H",
+        "Tong S",
+        "Horstman N"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41711163/"
+    },
+    {
+      "pmid": "41709300",
+      "title": "Prediction of hemorrhagic transformation after intravenous thrombolysis in acute anterior circulation ischemic stroke through radiomics-based machine learning models.",
+      "abstract": "Hemorrhagic transformation (HT) and its associated neurological deterioration remain major concerns that limit decision-making in thrombolytic treatment for acute ischemic stroke (AIS). Several existing scales based on stroke severity, laboratory indicators, and cranial imaging characteristics are used to estimate the risk of HT. In recent years, machine learning techniques applied in radiomics analysis have been widely used to develop clinical decision-support tools. The present study applied r...",
+      "authors": [
+        "Shao H",
+        "Li F",
+        "Cai X"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41709300/"
+    },
+    {
+      "pmid": "41706824",
+      "title": "ESO annual stroke evidence update 2025.",
+      "abstract": "Stroke medicine is evolving rapidly, with emerging evidence continuously informing clinical practice. The European Stroke Organisation (ESO) Annual Stroke Evidence Update is a new ESO Guideline Board initiative that bridges the interval between formal guideline revisions by providing a curated synthesis of recent advances that may inform stroke care. This edition synthesises new evidence published or presented during 2025 across various key domains, including acute treatment, prevention, rehabil...",
+      "authors": [
+        "de Sousa DA",
+        "Katsanos AH",
+        "Li L"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41706824/"
+    },
+    {
+      "pmid": "41704761",
+      "title": "Photoacoustic imaging-guided, synchronously targeted thrombolysis and neuroprotection of acute ischemic stroke.",
+      "abstract": "Acute ischemic stroke (AIS) is a major cause of disability and mortality worldwide, typically resulting from a thrombus that blocks cerebral blood flow. Current treatments focus on thrombolysis and neuroprotection, with recombinant tissue plasminogen activator (rt-PA) and edaravone (Eda) as key drugs. However, their therapeutic efficacy is constrained by poor targeting, leading to suboptimal drug delivery to the brain. Herein, we develop a biomimetic delivery system (PLEA, platelet membrane-lipo...",
+      "authors": [
+        "Han M",
+        "Zhong H",
+        "Zhang Y"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41704761/"
+    },
+    {
+      "pmid": "41701350",
+      "title": "Sex differences in baseline characteristics, stroke care, and outcomes across socioeconomic settings: a multicentre study from Switzerland, Poland, and Ukraine.",
+      "abstract": "While stroke risk and burden vary across Europe, the combined impact of sex and socioeconomic context on stroke care and recovery remains poorly understood. This observational multicentre cohort study analyzed prospectively collected registry data from patients with acute ischemic stroke from three tertiary care hospitals in different socioeconomic settings: Bern/Switzerland (high-income region; women\u2009=\u2009128/293(43.7%)), Gdansk/Poland (high-income region; women\u2009=\u200954/139(38.8%)), and Lutsk/Ukraine...",
+      "authors": [
+        "Berger C",
+        "Hammer H",
+        "Costa M"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41701350/"
+    },
+    {
+      "pmid": "41700954",
+      "title": "Updates in Central Retinal Artery Occlusion.",
+      "abstract": "Central retinal artery occlusion (CRAO) is a vision-threatening neuro-ophthalmic emergency, analogous to acute ischemic stroke. Delayed presentation, limited therapeutic options, and lack of randomized prospective trials continue to restrict effective treatment. This review summarizes current evidence on the emergent management and evolving treatment strategies for CRAO, based on recent observational studies, meta-analyses, and early randomized trials. Conservative interventions, such as ocular ...",
+      "authors": [
+        "Paddock JE",
+        "Bakaeva TV"
+      ],
+      "publication_date": "2026 Mar",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41700954/"
+    },
+    {
+      "pmid": "41682855",
+      "title": "Early (<6 Days) Extracranial Carotid Revascularization After Intravenous Thrombolysis for Stroke: A Scoping Review.",
+      "abstract": "<b>Background</b>: Current guidelines recommend delaying extracranial carotid revascularization for at least 6-7 days after intravenous thrombolysis (IVT). However, evidence remains inconclusive, and patients with minimal or no brain lesions may benefit from earlier intervention. <b>Objective</b>: This scoping review evaluates outcomes of carotid revascularization performed within six days of IVT in patients with small strokes or no imaging-detected lesions. <b>Design</b>: We searched Medline, E...",
+      "authors": [
+        "Coppi G",
+        "Milazzo LF",
+        "Pipitone MD"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41682855/"
+    },
+    {
+      "pmid": "41679963",
+      "title": "Anesthesia and thrombectomy: updated meta-analysis of randomized controlled trials.",
+      "abstract": "10 randomized controlled trials (RCTs) have compared general anesthesia (GA) with non-GA sedation for endovascular thrombectomy (EVT) in patients with emergent large vessel occlusion (ELVO). We performed an updated meta-analysis of the existing trials. Following the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines, all RCTs comparing GA versus non-GA during EVT for ELVO published between May 2022 and October 2025 were identified. Two meta-analyses were perfo...",
+      "authors": [
+        "Mosallami Aghili SM",
+        "Levitt MR",
+        "Hirsch JA"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41679963/"
+    },
+    {
+      "pmid": "41678809",
+      "title": "IV Tenecteplase Before Thrombectomy Compared With Thrombectomy Alone in Patients With Stroke Due to a Large Vessel Occlusion.",
+      "abstract": "The benefit of IV thrombolysis (IVT) with alteplase before endovascular thrombectomy (EVT) compared with EVT alone has been shown to be limited and time dependent. Data on tenecteplase, its recommended alternative, are limited. We aimed to assess the efficacy and safety of IVT with tenecteplase plus mechanical thrombectomy (TNK + EVT) compared with EVT in patients with large vessel occlusion stroke and determine whether its potential benefit decreases with treatment time. We conducted a retrospe...",
+      "authors": [
+        "Gerschenfeld G",
+        "Lapergue B",
+        "Seners P"
+      ],
+      "publication_date": "2026 Mar",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41678809/"
+    },
+    {
+      "pmid": "41678142",
+      "title": "Circadian Rhythm and Efficacy of Argatroban in Ischemic Stroke with Alteplase: A Post Hoc Analysis of the ARAIS Trial.",
+      "abstract": "The Argatroban Plus Recombinant Tissue-Type Plasminogen Activator for Acute Ischemic Stroke (ARAIS) trial did not show the benefit of argatroban as an adjunct in patients with acute ischemic stroke who received intravenous alteplase. This post hoc exploratory analysis aimed to determine whether the circadian rhythm can affect the efficacy of argatroban as an adjunct in this population. From the per-protocol population of the ARAIS trial, patients were divided into 2 groups based on the beginning...",
+      "authors": [
+        "Chen MR",
+        "Liu F",
+        "Nguyen TN"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41678142/"
+    },
+    {
+      "pmid": "41671570",
+      "title": "Endovascular treatment in acute ischemic stroke patients with pre-stroke disability: A systematic review and meta-analysis.",
+      "abstract": "This meta-analysis investigated endovascular thrombectomy (EVT) efficacy and safety versus best medical treatment (BMT), including intravenous thrombolysis or other treatments when applicable, in acute ischemic stroke (AIS) patients with pre-stroke disability (mRS >2), a group frequently excluded from large vessel occlusion trials. Following PRISMA 2020 guidelines, systematic searches of PubMed, Cochrane Central, Web of Science, Scopus, and Embase databases (inception-July 2025) identified Engli...",
+      "authors": [
+        "Tamara Alves Carretta L",
+        "de Bastos Maximiano ML",
+        "Arend RB"
+      ],
+      "publication_date": "2026 Feb",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41671570/"
+    }
+  ],
+  "count": 15,
+  "scraped_at": "2026-02-26T09:57:11.293645"
+}

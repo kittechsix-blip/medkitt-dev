@@ -1,0 +1,84 @@
+{
+  "id": "pep",
+  "name": "Post Exposure Prophylaxis",
+  "version": "1.0",
+  "last_updated": "2026-02-26T09:57:39.465857",
+  "node_count": 15,
+  "nodes": [
+    {
+      "id": "pep-start",
+      "type": "question",
+      "title": "Exposure Type"
+    },
+    {
+      "id": "pep-fluid",
+      "type": "question",
+      "title": "Substantial Risk Fluid?"
+    },
+    {
+      "id": "pep-low-risk",
+      "type": "result",
+      "title": "PEP Not Indicated"
+    },
+    {
+      "id": "pep-timing",
+      "type": "question",
+      "title": "Time Since Exposure"
+    },
+    {
+      "id": "pep-late",
+      "type": "result",
+      "title": "PEP Not Indicated"
+    },
+    {
+      "id": "pep-patient-hiv",
+      "type": "question",
+      "title": "Patient HIV Status"
+    },
+    {
+      "id": "pep-positive",
+      "type": "result",
+      "title": "Not a PEP Candidate"
+    },
+    {
+      "id": "pep-source",
+      "type": "question",
+      "title": "Source HIV Status"
+    },
+    {
+      "id": "pep-source-neg",
+      "type": "result",
+      "title": "PEP Not Indicated"
+    },
+    {
+      "id": "pep-workup",
+      "type": "info",
+      "title": "Start PEP Immediately"
+    },
+    {
+      "id": "pep-special",
+      "type": "question",
+      "title": "Special Population?"
+    },
+    {
+      "id": "pep-pregnancy",
+      "type": "info",
+      "title": "Pregnancy Considerations"
+    },
+    {
+      "id": "pep-renal",
+      "type": "info",
+      "title": "Renal Impairment"
+    },
+    {
+      "id": "pep-regimen",
+      "type": "info",
+      "title": "28-Day Regimen"
+    },
+    {
+      "id": "pep-followup",
+      "type": "result",
+      "title": "Follow-Up & Disposition"
+    }
+  ]
+}

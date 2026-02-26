@@ -1,0 +1,160 @@
+{
+  "id": "pe-treatment",
+  "name": "PE Treatment",
+  "version": "1.0",
+  "last_updated": "2026-02-26T09:57:39.470951",
+  "node_count": 31,
+  "nodes": [
+    {
+      "id": "pe-start",
+      "type": "info",
+      "title": "PE Treatment: Risk Stratification"
+    },
+    {
+      "id": "pe-hemodynamics",
+      "type": "question",
+      "title": "Hemodynamic Status"
+    },
+    {
+      "id": "pe-rv",
+      "type": "question",
+      "title": "RV Assessment"
+    },
+    {
+      "id": "pe-troponin-rv-pos",
+      "type": "question",
+      "title": "Troponin (RV Positive)"
+    },
+    {
+      "id": "pe-severity",
+      "type": "question",
+      "title": "Clinical Severity (PESI / sPESI)"
+    },
+    {
+      "id": "pesi"
+    },
+    {
+      "id": "spesi"
+    },
+    {
+      "id": "pe-troponin-rv-neg",
+      "type": "question",
+      "title": "Troponin (RV Normal)"
+    },
+    {
+      "id": "pe-high-anticoag",
+      "type": "question",
+      "title": "Systemic Anticoagulation \\u2014 High Risk"
+    },
+    {
+      "id": "pe-high-anticoag-contra",
+      "type": "result",
+      "title": "High Risk PE \\u2014 Anticoagulation Contraindicated"
+    },
+    {
+      "id": "pe-high-heparin",
+      "type": "info",
+      "title": "IV Heparin Started \\u2014 Evaluate for Thrombolytics"
+    },
+    {
+      "id": "pe-high-lytic-check",
+      "type": "question",
+      "title": "Thrombolytics \\u2014 Contraindication Screen"
+    },
+    {
+      "id": "pe-high-lytic-contra",
+      "type": "result",
+      "title": "High Risk PE \\u2014 Thrombolytics Contraindicated"
+    },
+    {
+      "id": "pe-high-lytic-protocol",
+      "type": "info",
+      "title": "Alteplase Protocol"
+    },
+    {
+      "id": "pe-high-lytic-response",
+      "type": "question",
+      "title": "Thrombolytic Response Assessment"
+    },
+    {
+      "id": "pe-high-respond-yes",
+      "type": "result",
+      "title": "Thrombolysis Successful \\u2014 Continue Anticoagulation"
+    },
+    {
+      "id": "pe-high-respond-no",
+      "type": "result",
+      "title": "Thrombolysis Failed \\u2014 Rescue Interventions"
+    },
+    {
+      "id": "pe-int-high-anticoag",
+      "type": "question",
+      "title": "Systemic Anticoagulation \\u2014 Intermediate-High Risk"
+    },
+    {
+      "id": "pe-int-high-contra",
+      "type": "result",
+      "title": "Intermediate-High Risk \\u2014 Anticoag Contraindicated"
+    },
+    {
+      "id": "pe-int-high-strategy",
+      "type": "question",
+      "title": "Reperfusion Strategy"
+    },
+    {
+      "id": "pe-int-high-cdt",
+      "type": "result",
+      "title": "Catheter-Directed Thrombolysis (CDT)"
+    },
+    {
+      "id": "pe-int-high-severe",
+      "type": "result",
+      "title": "Severe Clot Burden \\u2014 Aggressive Intervention"
+    },
+    {
+      "id": "pe-int-high-heparin",
+      "type": "result",
+      "title": "Systemic Heparin Trial \\u2014 Monitor"
+    },
+    {
+      "id": "pe-int-low-anticoag",
+      "type": "question",
+      "title": "Systemic Anticoagulation \\u2014 Intermediate-Low Risk"
+    },
+    {
+      "id": "pe-int-low-contra",
+      "type": "result",
+      "title": "Intermediate-Low Risk \\u2014 Anticoag Contraindicated"
+    },
+    {
+      "id": "pe-int-low-treat",
+      "type": "result",
+      "title": "Intermediate-Low Risk \\u2014 Anticoagulation"
+    },
+    {
+      "id": "pe-low-anticoag",
+      "type": "question",
+      "title": "Systemic Anticoagulation \\u2014 Low Risk"
+    },
+    {
+      "id": "pe-low-contra",
+      "type": "result",
+      "title": "Low Risk PE \\u2014 Anticoag Contraindicated"
+    },
+    {
+      "id": "pe-low-treat",
+      "type": "question",
+      "title": "Low Risk PE \\u2014 Treatment & Disposition"
+    },
+    {
+      "id": "pe-low-admit",
+      "type": "result",
+      "title": "Low Risk PE \\u2014 Inpatient Anticoagulation"
+    },
+    {
+      "id": "pe-low-discharge",
+      "type": "result",
+      "title": "Low Risk PE \\u2014 Outpatient Management"
+    }
+  ]
+}

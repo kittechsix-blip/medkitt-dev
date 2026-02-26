@@ -1,0 +1,301 @@
+# MedKitt Scrapling Pipeline Configuration
+# Defines sources to monitor, consult mappings, and change thresholds
+
+# =============================================================================
+# SCRAPER SETTINGS
+# =============================================================================
+scraper:
+  name: "MedKitt Auto-Updater"
+  version: "1.0.0"
+  user_agent: "MedKitt-Bot/1.0 (Medical Education Tool; contact@medkitt.io)"
+  request_delay: 2.0  # seconds between requests to same domain
+  max_retries: 3
+  timeout: 30
+  
+  # Change detection thresholds
+  thresholds:
+    minor: 0.05      # 5% change = auto-update
+    major: 0.20      # 20% change = requires review
+    critical: 0.50   # 50% change = alert + manual review
+    
+  # Storage paths
+  storage:
+    raw_data: "scraper/data/raw"
+    processed: "scraper/data/processed"
+    hashes: "scraper/data/hashes"
+    logs: "scraper/logs"
+
+# =============================================================================
+# DATA SOURCES
+# =============================================================================
+sources:
+  
+  # ---------------------------------------------------------------------------
+  # CDC SOURCES
+  # ---------------------------------------------------------------------------
+  cdc_sti_guidelines:
+    name: "CDC STI Treatment Guidelines"
+    url: "https://www.cdc.gov/sti/treatment-guidelines/default.htm"
+    type: "cdc_guideline"
+    priority: "high"
+    check_frequency: "daily"
+    selectors:
+      content: ".cdc-textblock, .card-body, . guideline-content"
+      tables: "table"
+      updates: ".cdc-page-info"
+    consults:
+      - neurosyphilis
+      - pep
+    
+  cdc_syphilis_detail:
+    name: "CDC Syphilis Information"
+    url: "https://www.cdc.gov/syphilis/about/index.html"
+    type: "cdc_guideline"
+    priority: "high"
+    check_frequency: "daily"
+    selectors:
+      content: ".cdc-textblock, .content-area, main, .body-content"
+      tables: "table.treatment-table, table"
+    consults:
+      - neurosyphilis
+      
+  cdc_hiv_pep:
+    name: "CDC HIV PEP Guidelines"
+    url: "https://www.cdc.gov/hiv/prep/index.html"
+    type: "cdc_guideline"
+    priority: "high"
+    check_frequency: "daily"
+    consults:
+      - pep
+      
+  # ---------------------------------------------------------------------------
+  # FDA SOURCES
+  # ---------------------------------------------------------------------------
+  fda_safety_alerts:
+    name: "FDA Drug Safety Alerts"
+    url: "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications"
+    type: "fda_alert"
+    priority: "critical"
+    check_frequency: "daily"
+    selectors:
+      alerts: ".field--name-title, .views-row"
+      date: ".field--name-field-date"
+      content: ".field--name-body"
+    drug_keywords:
+      - ceftriaxone
+      - penicillin
+      - benzathine
+      - doxycycline
+      - azithromycin
+      - tenofovir
+      - emtricitabine
+      - dolutegravir
+      - raltegravir
+      - aspirin
+      - clopidogrel
+      - ticagrelor
+      - heparin
+      - enoxaparin
+      - warfarin
+      - apixaban
+      - rivaroxaban
+      - alteplase
+      - tenecteplase
+      
+  fda_drug_shortages:
+    name: "FDA Drug Shortages"
+    url: "https://www.accessdata.fda.gov/scripts/drugshortages/default.cfm"
+    type: "fda_shortage"
+    priority: "critical"
+    check_frequency: "daily"
+    
+  # ---------------------------------------------------------------------------
+  # PUBMED SOURCES
+  # ---------------------------------------------------------------------------
+  pubmed_syphilis:
+    name: "PubMed - Syphilis/Neurosyphilis Research"
+    url: "https://pubmed.ncbi.nlm.nih.gov/"
+    search_query: "(neurosyphilis OR syphilis treatment) AND (guidelines OR management OR ceftriaxone OR penicillin) AND (2023:3000[PDAT])"
+    type: "pubmed_search"
+    priority: "medium"
+    check_frequency: "weekly"
+    max_results: 20
+    consults:
+      - neurosyphilis
+      
+  pubmed_hiv_pep:
+    name: "PubMed - HIV PEP Research"
+    url: "https://pubmed.ncbi.nlm.nih.gov/"
+    search_query: "(HIV post-exposure prophylaxis OR HIV PEP) AND (guidelines OR tenofovir OR emtricitabine OR dolutegravir) AND (2023:3000[PDAT])"
+    type: "pubmed_search"
+    priority: "medium"
+    check_frequency: "weekly"
+    max_results: 15
+    consults:
+      - pep
+      
+  pubmed_pe:
+    name: "PubMed - Pulmonary Embolism"
+    url: "https://pubmed.ncbi.nlm.nih.gov/"
+    search_query: "(pulmonary embolism treatment OR PE anticoagulation) AND (guidelines OR DOAC OR heparin) AND (2023:3000[PDAT])"
+    type: "pubmed_search"
+    priority: "medium"
+    check_frequency: "weekly"
+    max_results: 15
+    consults:
+      - pe-treatment
+      
+  pubmed_stroke:
+    name: "PubMed - Acute Ischemic Stroke"
+    url: "https://pubmed.ncbi.nlm.nih.gov/"
+    search_query: "(acute ischemic stroke thrombolysis OR stroke EVT) AND (guidelines OR alteplase OR tenecteplase) AND (2023:3000[PDAT])"
+    type: "pubmed_search"
+    priority: "medium"
+    check_frequency: "weekly"
+    max_results: 15
+    consults:
+      - stroke
+
+# =============================================================================
+# CONSULT MAPPINGS
+# =============================================================================
+consults:
+  
+  neurosyphilis:
+    name: "Neurosyphilis Workup"
+    file: "src/data/trees/neurosyphilis.ts"
+    json_output: "src/data/consults/neurosyphilis.json"
+    keywords:
+      - neurosyphilis
+      - syphilis
+      - treponema
+      - RPR
+      - VDRL
+      - FTA-ABS
+      - TP-PA
+      - CSF
+      - lumbar puncture
+      - penicillin
+      - ceftriaxone
+      - procaine
+      - doxycycline
+    update_rules:
+      - type: "treatment_table"
+        threshold: "minor"
+        auto_update: true
+      - type: "citation"
+        threshold: "minor"
+        auto_update: true
+      - type: "guideline_revision"
+        threshold: "major"
+        auto_update: false
+        
+  pep:
+    name: "Post Exposure Prophylaxis"
+    file: "src/data/trees/pep.ts"
+    json_output: "src/data/consults/pep.json"
+    keywords:
+      - PEP
+      - post-exposure prophylaxis
+      - HIV
+      - tenofovir
+      - emtricitabine
+      - TDF
+      - FTC
+      - dolutegravir
+      - raltegravir
+      - truvada
+      - descovy
+    update_rules:
+      - type: "treatment_table"
+        threshold: "minor"
+        auto_update: true
+      - type: "citation"
+        threshold: "minor"
+        auto_update: true
+      - type: "guideline_revision"
+        threshold: "major"
+        auto_update: false
+        
+  pe-treatment:
+    name: "PE Treatment"
+    file: "src/data/trees/pe-treatment.ts"
+    json_output: "src/data/consults/pe-treatment.json"
+    keywords:
+      - pulmonary embolism
+      - PE
+      - DVT
+      - heparin
+      - enoxaparin
+      - warfarin
+      - apixaban
+      - rivaroxaban
+      - doac
+      - thrombolysis
+    update_rules:
+      - type: "treatment_table"
+        threshold: "minor"
+        auto_update: true
+      - type: "citation"
+        threshold: "minor"
+        auto_update: true
+        
+  stroke:
+    name: "Acute Ischemic Stroke"
+    file: "src/data/trees/stroke.ts"
+    json_output: "src/data/consults/stroke.json"
+    keywords:
+      - stroke
+      - ischemic stroke
+      - alteplase
+      - tPA
+      - tenecteplase
+      - TNK
+      - thrombolysis
+      - EVT
+      - endovascular
+      - NIHSS
+    update_rules:
+      - type: "treatment_table"
+        threshold: "minor"
+        auto_update: true
+      - type: "citation"
+        threshold: "minor"
+        auto_update: true
+
+# =============================================================================
+# NOTIFICATION SETTINGS
+# =============================================================================
+notifications:
+  on_change_detected: true
+  on_major_change: true
+  on_error: true
+  
+  channels:
+    email:
+      enabled: false
+      smtp_host: "smtp.gmail.com"
+      smtp_port: 587
+      from: "medkitt-alerts@example.com"
+      to: 
+        - "admin@medkitt.io"
+      
+    slack:
+      enabled: false
+      webhook_url: ""
+      channel: "#medkitt-alerts"
+      
+    github:
+      enabled: true
+      auto_commit: true
+      commit_prefix: "[AUTO-SCRAPER]"
+      create_pr_on_major: true
+
+# =============================================================================
+# SCHEDULER SETTINGS
+# =============================================================================
+scheduler:
+  daily_run_time: "02:00"  # 2 AM
+  timezone: "America/Chicago"
+  log_retention_days: 30
+  max_concurrent_jobs: 2

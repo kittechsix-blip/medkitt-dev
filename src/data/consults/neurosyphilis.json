@@ -1,0 +1,219 @@
+{
+  "id": "neurosyphilis",
+  "name": "Neurosyphilis Workup",
+  "version": "1.0",
+  "last_updated": "2026-02-26T09:57:39.463074",
+  "node_count": 42,
+  "nodes": [
+    {
+      "id": "serology-start",
+      "type": "info",
+      "title": "Syphilis Serology \u2014 Test Types"
+    },
+    {
+      "id": "serology-algorithm",
+      "type": "question",
+      "title": "Testing Algorithm"
+    },
+    {
+      "id": "trad-results",
+      "type": "question",
+      "title": "Traditional Algorithm Results"
+    },
+    {
+      "id": "rev-results",
+      "type": "question",
+      "title": "Reverse-Sequence Algorithm Results"
+    },
+    {
+      "id": "rev-second-trep",
+      "type": "question",
+      "title": "Second Treponemal Test Required"
+    },
+    {
+      "id": "confirmed-syphilis",
+      "type": "info",
+      "title": "Confirmed Syphilis"
+    },
+    {
+      "id": "trad-false-positive",
+      "type": "result",
+      "title": "Likely False Positive"
+    },
+    {
+      "id": "trad-unlikely",
+      "type": "result",
+      "title": "Syphilis Unlikely"
+    },
+    {
+      "id": "rev-unlikely",
+      "type": "result",
+      "title": "Syphilis Unlikely"
+    },
+    {
+      "id": "rev-possible-syphilis",
+      "type": "info",
+      "title": "Possible Syphilis"
+    },
+    {
+      "id": "rev-false-positive",
+      "type": "result",
+      "title": "False Positive Treponemal Screen"
+    },
+    {
+      "id": "stage-start",
+      "type": "question",
+      "title": "Stage Classification"
+    },
+    {
+      "id": "symptom-start",
+      "type": "question",
+      "title": "Neurologic Symptom Screen"
+    },
+    {
+      "id": "symptom-ocular",
+      "type": "question",
+      "title": "Ocular Symptom Screen"
+    },
+    {
+      "id": "ocular-cn-check",
+      "type": "question",
+      "title": "Cranial Nerve Assessment"
+    },
+    {
+      "id": "symptom-otic",
+      "type": "question",
+      "title": "Otic Symptom Screen"
+    },
+    {
+      "id": "lp-indicated-neuro",
+      "type": "info",
+      "title": "LP Indicated \\u2014 Neurologic Symptoms"
+    },
+    {
+      "id": "lp-indicated-ocular",
+      "type": "info",
+      "title": "LP Indicated \\u2014 Ocular + Cranial Nerve"
+    },
+    {
+      "id": "lp-tertiary-check",
+      "type": "question",
+      "title": "LP Decision \\u2014 Asymptomatic Patient"
+    },
+    {
+      "id": "lp-indicated-tertiary",
+      "type": "info",
+      "title": "LP Indicated \\u2014 Tertiary Syphilis"
+    },
+    {
+      "id": "lp-hiv-status",
+      "type": "question",
+      "title": "HIV Status"
+    },
+    {
+      "id": "lp-hiv-neg-failure",
+      "type": "question",
+      "title": "Treatment Failure Assessment"
+    },
+    {
+      "id": "lp-hiv-neg-titer",
+      "type": "question",
+      "title": "Current NTT Titer"
+    },
+    {
+      "id": "lp-consider",
+      "type": "question",
+      "title": "Consider Lumbar Puncture"
+    },
+    {
+      "id": "lp-reinfection",
+      "type": "result",
+      "title": "Assess for Reinfection"
+    },
+    {
+      "id": "lp-hiv-pos-simple",
+      "type": "question",
+      "title": "HIV+ Patient Assessment"
+    },
+    {
+      "id": "lp-indicated-hiv",
+      "type": "info",
+      "title": "LP Indicated \\u2014 HIV+ with Concerns"
+    },
+    {
+      "id": "lp-not-indicated",
+      "type": "info",
+      "title": "LP Not Indicated"
+    },
+    {
+      "id": "csf-vdrl-result",
+      "type": "question",
+      "title": "CSF-VDRL Result"
+    },
+    {
+      "id": "csf-vdrl-reactive",
+      "type": "info",
+      "title": "Neurosyphilis Confirmed"
+    },
+    {
+      "id": "csf-parameters",
+      "type": "question",
+      "title": "CSF Parameters"
+    },
+    {
+      "id": "csf-normal",
+      "type": "info",
+      "title": "Neurosyphilis Unlikely"
+    },
+    {
+      "id": "csf-additional",
+      "type": "question",
+      "title": "Additional CSF Testing"
+    },
+    {
+      "id": "csf-trep-nonreactive",
+      "type": "info",
+      "title": "Neurosyphilis Highly Unlikely"
+    },
+    {
+      "id": "csf-trep-reactive",
+      "type": "question",
+      "title": "CSF Treponemal Test Reactive"
+    },
+    {
+      "id": "csf-clinical-decision",
+      "type": "question",
+      "title": "Clinical Decision"
+    },
+    {
+      "id": "tx-stage-select",
+      "type": "question",
+      "title": "Stage-Appropriate Treatment"
+    },
+    {
+      "id": "tx-neurosyphilis",
+      "type": "result",
+      "title": "Neurosyphilis Treatment"
+    },
+    {
+      "id": "tx-primary-secondary",
+      "type": "result",
+      "title": "Primary & Secondary Syphilis Treatment"
+    },
+    {
+      "id": "tx-early-latent",
+      "type": "result",
+      "title": "Early Latent Syphilis Treatment"
+    },
+    {
+      "id": "tx-late-latent",
+      "type": "result",
+      "title": "Late Latent / Unknown Duration Treatment"
+    },
+    {
+      "id": "tx-tertiary",
+      "type": "result",
+      "title": "Tertiary Syphilis Treatment"
+    }
+  ]
+}
