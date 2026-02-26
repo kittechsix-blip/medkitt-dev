@@ -515,6 +515,47 @@ const NSTEMI_MINOCA_PAGE = {
     ],
 };
 // -------------------------------------------------------------------
+// Troponin Sensitivity (NSTEMI)
+// -------------------------------------------------------------------
+const NSTEMI_TROPONIN_SENSITIVITY_PAGE = {
+    id: 'nstemi-troponin-sensitivity',
+    title: 'Interpreting Troponin Sensitivity',
+    subtitle: 'Time-Dependent Diagnostic Accuracy of Troponin Assays',
+    sections: [
+        {
+            body: 'Troponin sensitivity for detecting acute coronary syndrome is **highly time-dependent**. Early presenters (within 2\u20134 hours of symptom onset) have significantly lower sensitivity compared to later presenters. High-sensitivity troponin (hs-cTn) assays substantially improve early detection compared to conventional assays.',
+        },
+        {
+            heading: 'Timing of Troponin Release',
+            body: 'Troponin is released from the myocardium **as early as 2\u20134 hours after symptom onset** in acute MI. [1] However, depending on the assay, values may not become abnormal for up to 12 hours. [1] Diagnostic accuracy increases progressively with time from symptom onset. [2]\n\n**Sensitive troponin assays** maintain excellent diagnostic accuracy (AUC 0.90\u20130.94) even within 2 hours of symptom onset, while standard assays show markedly inferior performance (AUC ~0.71) at these early time points. [3]',
+        },
+        {
+            heading: 'High-Sensitivity Troponin Advantages',
+            body: 'hs-cTn assays have **superior sensitivity** compared to conventional assays, particularly in early presenters. [4][5] The time from chest pain onset to detectable troponin concentration is shorter with hs-cTn, enabling more rapid rule-in or rule-out. [4][6]\n\nApproximately **one-third of NSTEMI patients take longer than 3 hours** from symptom onset to exceed common rule-out thresholds (5 ng/L). [7]',
+        },
+        {
+            heading: 'Serial Testing Recommendations',
+            body: '**Fourth Universal Definition of MI [8]:**\n\u2022 Conventional assays: sample at 0h, repeat at 3\u20136 hours\n\u2022 hs-cTn assays: sample at 0h, repeat at 1\u20132 hours\n\n**Single-measurement rule-out (select patients):**\n\u2022 In early presenters (\u22642h from onset), a single hs-cTn below the limit of detection (2 ng/L) achieves 99.4% sensitivity and 99.7% NPV [9]\n\u2022 This strategy should NOT be used in very early presenters (<2h) or high-risk patients\n\u2022 hs-cTn sensitivity remains consistently high across subgroups including early presenters [10]',
+        },
+        {
+            heading: 'Clinical Pearl',
+            body: '**A single negative troponin does not rule out ACS in early presenters.** Serial troponin measurements are essential, especially when symptom onset is <3 hours before presentation. hs-cTn assays narrow the diagnostic window but do not eliminate it.',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Amsterdam EA, et al. 2014 AHA/ACC Guideline for Management of NSTE-ACS. J Am Coll Cardiol. 2014;64(24):e139-e228.' },
+        { num: 2, text: 'Guangquan L, et al. Time From Symptom Onset Influences hs-TnT Diagnostic Accuracy for AMI. Clin Chem Lab Med. 2016;54(1):133-42.' },
+        { num: 3, text: 'Reichlin T, et al. Early Diagnosis of MI with Sensitive Cardiac Troponin Assays. N Engl J Med. 2009;361(9):858-67.' },
+        { num: 4, text: 'Rao SV, et al. 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for Management of ACS. J Am Coll Cardiol. 2025;S0735-1097(24)10424-X.' },
+        { num: 5, text: 'Bergmark BA, et al. Acute Coronary Syndromes. Lancet. 2022;399(10332):1347-1358.' },
+        { num: 6, text: 'Gulati M, et al. 2021 AHA/ACC Guideline for Evaluation and Diagnosis of Chest Pain. J Am Coll Cardiol. 2021;78(22):e187-e285.' },
+        { num: 7, text: 'Pickering JW, et al. Early Kinetic Profiles of Troponin I and T by hs Assays in MI. Clin Chim Acta. 2020;505:15-25.' },
+        { num: 8, text: 'Thygesen K, et al. Fourth Universal Definition of Myocardial Infarction (2018). J Am Coll Cardiol. 2018;72(18):2231-2264.' },
+        { num: 9, text: 'Lowry MTH, et al. Troponin in Early Presenters to Rule Out MI. Eur Heart J. 2023;44(30):2846-2858.' },
+        { num: 10, text: 'Carlton E, et al. Evaluation of hs-cTnI Levels in Suspected ACS. JAMA Cardiol. 2016;1(4):405-12.' },
+    ],
+};
+// -------------------------------------------------------------------
 // Hyperkalemia ECG Findings
 // -------------------------------------------------------------------
 const K_HYPER_ECG_PAGE = {
@@ -1596,6 +1637,7 @@ const INFO_PAGES = {
     'dr-hema-evidence': DR_HEMA_EVIDENCE,
     'splint-principles': SPLINT_PRINCIPLES,
     'splint-summary': SPLINT_SUMMARY,
+    'nstemi-troponin-sensitivity': NSTEMI_TROPONIN_SENSITIVITY_PAGE,
 };
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes
