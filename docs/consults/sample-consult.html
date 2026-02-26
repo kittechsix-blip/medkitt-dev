@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f0f1a">
+    <title>Sample Clinical Consult | MedKitt</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Legal Disclaimer Header for Consult Pages */
+        .consult-legal-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: #fff;
+            padding: 16px 20px;
+            font-size: 13px;
+            line-height: 1.5;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .consult-legal-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .consult-legal-header-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .consult-legal-header-text {
+            flex: 1;
+        }
+        
+        .consult-legal-header-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .consult-legal-header-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .consult-legal-header p {
+            margin: 0;
+            opacity: 0.95;
+        }
+        
+        .consult-legal-header a {
+            color: #fff;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .consult-legal-header a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Consult Container */
+        .consult-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+        
+        .consult-breadcrumb {
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .consult-breadcrumb a {
+            color: #6a6a8a;
+            text-decoration: none;
+        }
+        
+        .consult-breadcrumb a:hover {
+            color: #fff;
+        }
+        
+        .consult-breadcrumb-separator {
+            margin: 0 8px;
+            color: #4a4a5a;
+        }
+        
+        .consult-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 8px;
+        }
+        
+        .consult-subtitle {
+            font-size: 15px;
+            color: #a0a0b0;
+            margin: 0 0 24px;
+        }
+        
+        /* Decision Tree */
+        .decision-tree {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .decision-node {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .decision-node-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin: 0 0 16px;
+        }
+        
+        .decision-node-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .decision-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: #e0e0f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .decision-option:hover {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Evidence Badge */
+        .evidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Consult Footer */
+        .consult-footer {
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        .consult-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .consult-footer-disclaimer {
+            font-size: 12px;
+            color: #707080;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .consult-footer-disclaimer strong {
+            color: #ff6b6b;
+        }
+        
+        /* Node connector */
+        .node-connector {
+            text-align: center;
+            color: #4a4a5a;
+            font-size: 20px;
+            margin: -8px 0 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Legal Disclaimer Header -->
+    <div class="consult-legal-header">
+        <div class="consult-legal-header-content">
+            <svg class="consult-legal-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+            <div class="consult-legal-header-text">
+                <div class="consult-legal-header-title">
+                    ⚠️ Not FDA Cleared
+                    <span class="consult-legal-header-badge">Educational Use Only</span>
+                </div>
+                <p>
+                    This clinical pathway is for educational and decision support purposes only. 
+                    It has not been reviewed or approved by the FDA. Always verify recommendations 
+                    against current clinical guidelines and use your professional judgment. 
+                    <a href="../app.html" onclick="window.history.back(); return false;">← Back to App</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="consult-container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="consult-breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="consult-breadcrumb-separator">/</span>
+            <a href="../app.html">App</a>
+            <span class="consult-breadcrumb-separator">/</span>
+            <span style="color: #fff;">Sample Clinical Consult</span>
+        </nav>
+
+        <!-- Consult Header -->
+        <h1 class="consult-title">Sample Clinical Pathway</h1>
+        <p class="consult-subtitle">Evidence-based decision tree for sample clinical scenario (42 decision nodes)</p>
+        
+        <span class="evidence-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M16 13H8"/>
+                <path d="M16 17H8"/>
+                <path d="M10 9H8"/>
+            </svg>
+            Evidence: CDC 2021 Guidelines
+        </span>
+
+        <!-- Decision Tree -->
+        <div class="decision-tree">
+            <div class="decision-node">
+                <div class="decision-node-question">1. Initial Assessment Question?</div>
+                <div class="decision-node-options">
+                    <div class="decision-option">Option A: Description of option A and when to select it</div>
+                    <div class="decision-option">Option B: Description of option B and when to select it</div>
+                    <div class="decision-option">Option C: Description of option C and when to select it</div>
+                </div>
+            </div>
+            
+            <div class="node-connector">↓</div>
+            
+            <div class="decision-node">
+                <div class="decision-node-question">2. Follow-up Question Based on Selection?</div>
+                <div class="decision-node-options">
+                    <div class="decision-option">Next Step A</div>
+                    <div class="decision-option">Next Step B</div>
+                </div>
+            </div>
+            
+            <div class="node-connector">↓</div>
+            
+            <div class="decision-node">
+                <div class="decision-node-question">3. Final Decision Point</div>
+                <div class="decision-node-options">
+                    <div class="decision-option">Treatment Pathway 1</div>
+                    <div class="decision-option">Treatment Pathway 2</div>
+                    <div class="decision-option">Referral to Specialist</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+            <h3 style="color: #fff; font-size: 16px; margin: 0 0 12px;">Clinical Pearls</h3>
+            <ul style="color: #c0c0d0; font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
+                <li>Key consideration point #1 for this clinical scenario</li>
+                <li>Important warning sign to watch for during assessment</li>
+                <li>When to escalate care or seek specialist consultation</li>
+                <li>Common pitfalls and how to avoid them</li>
+            </ul>
+        </div>
+
+        <!-- References -->
+        <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 20px;">
+            <h3 style="color: #fff; font-size: 16px; margin: 0 0 12px;">References</h3>
+            <ol style="color: #c0c0d0; font-size: 13px; line-height: 1.6; margin: 0; padding-left: 20px;">
+                <li>Centers for Disease Control and Prevention (CDC). Clinical Guidelines 2021.</li>
+                <li>American College of Physicians. Clinical Practice Guidelines.</li>
+                <li>Specialty Society Guidelines. Current Evidence-Based Recommendations.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Consult Footer -->
+    <footer class="consult-footer">
+        <div class="consult-footer-content">
+            <p class="consult-footer-disclaimer">
+                <strong>IMPORTANT LEGAL DISCLAIMER:</strong> This clinical pathway is provided for educational 
+                and decision support purposes only. It is NOT an FDA-cleared medical device and has not been 
+                reviewed or approved by the U.S. Food and Drug Administration. The information presented here 
+                does not constitute medical advice, diagnosis, or treatment recommendations. Always use your 
+                clinical judgment, consult current clinical guidelines, and seek appropriate specialist input 
+                when necessary. The creators and affiliates of MedKitt assume no liability for patient outcomes, 
+                errors, or omissions. By using this tool, you acknowledge full responsibility for clinical 
+                decisions and agree to use this information only within your scope of practice and licensure.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
