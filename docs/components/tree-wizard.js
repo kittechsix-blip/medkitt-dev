@@ -27,6 +27,7 @@ import { renderInlineCitations } from './reference-table.js';
 import { showInfoModal } from './info-page.js';
 import { showDrugModal } from './drug-store.js';
 import { findDrugIdByName } from '../data/drug-store.js';
+import { ConsultNavigator } from './consult-navigator.js';
 const TREE_CONFIGS = {
     'neurosyphilis': {
         nodes: NEUROSYPHILIS_NODES,
@@ -182,6 +183,7 @@ let currentConfig = null;
 let currentEntryNodeId = null;
 let delegatedContainer = null;
 let jumpNodeListenerRegistered = false;
+let consultNavigator = null;
 /** Handle clicks on inline links via event delegation (most reliable on iOS Safari) */
 function handleInlineLinkClick(e) {
     const target = e.target.closest('[data-link-type]');
@@ -260,7 +262,42 @@ export function renderTreeWizard(container, treeId) {
             engine.startTree(treeId, entryNodeId);
         }
     }
-    renderCurrentNode(container);
+    // Create container structure with navigator
+    container.innerHTML = '';
+    
+    // Add consult navigator container
+    const navigatorContainer = document.createElement('div');
+    navigatorContainer.id = 'consult-navigator';
+    container.appendChild(navigatorContainer);
+    
+    // Create content container for wizard
+    const wizardContent = document.createElement('div');
+    wizardContent.id = 'wizard-content-container';
+    container.appendChild(wizardContent);
+    
+    // Initialize ConsultNavigator
+    consultNavigator = new ConsultNavigator('consult-navigator', {
+        onNavigate: (stepIndex) => {
+            if (!engine) return;
+            if (stepIndex === -1) {
+                // Go back to entry
+                engine.goToEntry(currentEntryNodeId);
+            } else {
+                // Navigate to specific step
+                const path = consultNavigator.getState().path;
+                if (path[stepIndex]) {
+                    engine.jumpToNode(path[stepIndex].nodeId);
+                }
+            }
+            renderCurrentNode(wizardContent);
+        },
+        showTimeEstimate: true,
+        avgTimePerStep: 30,
+        totalSteps: config.nodes.length,
+        labelFormatter: (step) => step.answer || 'Start'
+    });
+    
+    renderCurrentNode(wizardContent);
 }
 /** Render the current node into the container */
 function renderCurrentNode(container) {
@@ -270,6 +307,28 @@ function renderCurrentNode(container) {
     if (!node)
         return;
     container.innerHTML = '';
+    
+    // Update ConsultNavigator with current path
+    if (consultNavigator) {
+        const history = engine.getHistory ? engine.getHistory() : [];
+        const path = history.map((h, idx) => ({
+            nodeId: h.nodeId,
+            question: h.question || `Step ${idx + 1}`,
+            answer: h.answer
+        }));
+        
+        // Add current node to path
+        if (node.id !== currentEntryNodeId) {
+            path.push({
+                nodeId: node.id,
+                question: node.title || node.question || 'Current',
+                answer: null
+            });
+        }
+        
+        consultNavigator.setPath(path, path.length - 1);
+    }
+    
     // Disclaimer banner on the first node of each consult
     if (currentEntryNodeId && node.id === currentEntryNodeId) {
         const banner = document.createElement('div');
@@ -438,6 +497,16 @@ function renderQuestionNode(content, node, container) {
             btn.addEventListener('click', () => {
                 if (!engine)
                     return;
+                
+                // Record step in navigator before navigating
+                if (consultNavigator && node) {
+                    consultNavigator.addStep({
+                        nodeId: node.id,
+                        question: node.title || node.question || 'Question',
+                        answer: opt.label
+                    });
+                }
+                
                 engine.selectOption(i);
                 renderCurrentNode(container);
             });
@@ -473,6 +542,16 @@ function renderInfoNode(content, node, container) {
         continueBtn.addEventListener('click', () => {
             if (!engine)
                 return;
+            
+            // Record step in navigator before continuing
+            if (consultNavigator && node) {
+                consultNavigator.addStep({
+                    nodeId: node.id,
+                    question: node.title || 'Info',
+                    answer: 'Continue'
+                });
+            }
+            
             engine.continueToNext();
             renderCurrentNode(container);
         });
@@ -483,6 +562,11 @@ function renderInfoNode(content, node, container) {
 // Result Node
 // -------------------------------------------------------------------
 function renderResultNode(content, node, _container) {
+    // Mark consult as complete in navigator
+    if (consultNavigator) {
+        consultNavigator.complete();
+    }
+    
     // Urgency badge
     const badge = document.createElement('div');
     badge.className = 'result-badge';
