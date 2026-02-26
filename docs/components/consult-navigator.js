@@ -518,13 +518,8 @@ class ConsultNavigator {
   }
 }
 
-// Export for module usage
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ConsultNavigator };
-}
-
-// Make available globally
-window.ConsultNavigator = ConsultNavigator;
+// ES module export
+export { ConsultNavigator };
 
 // Auto-initialize if DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
