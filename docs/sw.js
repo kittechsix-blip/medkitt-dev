@@ -2,7 +2,7 @@
 // Network-first for code, cache-first for images
 // Ensures updates load immediately without manual cache clearing
 
-const CACHE_NAME = 'medkitt-v88';
+const CACHE_NAME = 'medkitt-v89';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -86,7 +86,8 @@ const ASSETS_TO_CACHE = [
   './assets/icons/toxicology.png',
   './assets/icons/trauma-surg.png',
   './assets/icons/us-rads.png',
-  './assets/icons/urology.png'
+  './assets/icons/urology.png',
+  './legal-banner.js'
 ];
 
 // Install: pre-cache all static assets
