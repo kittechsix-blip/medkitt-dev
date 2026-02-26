@@ -4,6 +4,13 @@
 
 // ── Immediate splash check (runs synchronously before browser renders rest of page) ──
 (function() {
+  // ?reset in URL forces full localStorage clear (works even in PWA)
+  if (window.location.search.indexOf('reset') !== -1) {
+    localStorage.clear();
+    // Remove ?reset from URL without reload
+    var cleanUrl = window.location.pathname + window.location.hash;
+    window.history.replaceState(null, '', cleanUrl);
+  }
   var splash = document.getElementById('legal-splash');
   if (splash && localStorage.getItem('medkitt-legal-acknowledged') === 'true') {
     splash.classList.add('legal-splash-hidden');
