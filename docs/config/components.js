@@ -257,7 +257,7 @@
         const badges = CONFIG?.trustBadges || [
             { icon: '✓', title: 'Clinical Decision Support', description: 'Evidence-based algorithms' },
             { icon: '✎', title: 'Peer-Reviewed Content', description: 'Reviewed by board-certified physicians' },
-            { icon: '🔒', title: 'HIPAA Compliant', description: 'Enterprise-grade security' },
+            { icon: '🔒', title: 'Privacy-First', description: 'No patient data stored' },
             { icon: '⚕', title: 'Built by Physicians', description: 'Designed by clinicians' }
         ];
 

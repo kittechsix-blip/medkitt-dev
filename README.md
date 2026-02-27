@@ -285,7 +285,7 @@ By using MedKitt, you acknowledge and agree to the following:
 - **Local Storage Only**: All data remains on your device
 - **No Analytics**: We do not track usage or collect analytics
 - **No Internet Required**: The application functions entirely offline
-- **HIPAA Compliance**: While MedKitt does not handle PHI, users are responsible for ensuring their use complies with HIPAA and other applicable privacy regulations
+- **Privacy-First Design**: No patient data is collected, stored, or transmitted. All data remains on your device.
 
 ### Intellectual Property
 
