@@ -1594,6 +1594,273 @@ const SPLINT_SUMMARY = {
         { num: 6, text: 'Eiff MP, Hatch RL. Fracture Management for Primary Care. 3rd ed. Elsevier; 2018.' },
     ],
 };
+// ===================================================================
+// Sodium Disorders
+// ===================================================================
+// -------------------------------------------------------------------
+// Sodium Disorders — Steps Summary
+// -------------------------------------------------------------------
+const NA_SUMMARY = {
+    id: 'na-summary',
+    title: 'Sodium Disorders Steps Summary',
+    subtitle: 'Stepwise management of hyponatremia and hypernatremia',
+    sections: [
+        {
+            heading: '1. Initial Assessment',
+            body: '• [Classify as hyponatremia or hypernatremia](#/node/na-start)\n• [Assess symptom severity for hyponatremia](#/node/na-hypo-symptoms)\n• [Order initial labs: serum osm, urine osm, urine Na](#/node/na-hypo-initial)',
+        },
+        {
+            heading: '2. Emergency HypoNa (Severe Symptoms)',
+            body: '• [3% Hypertonic Saline 100-150 mL bolus x3 — target 4-6 mEq/L rise](#/node/na-hypo-emergency)\n• [Correction limits: max 10 mEq/L in 24h (8 for high-risk)](#/node/na-hypo-correction-limits)\n• [DDAVP clamp-bolus protocol for controlled correction](#/node/na-hypo-ddavp-protocol)',
+        },
+        {
+            heading: '3. HypoNa Etiology',
+            body: '• [Serum Osm >275 → non-hypotonic (check glucose, lipids)](#/node/na-non-hypotonic)\n• [Urine Osm <100 → water excess (potomania, polydipsia)](#/node/na-hypo-water-excess)\n• [Urine Na <30 → volume assessment (hypo- vs hypervolemic)](#/node/na-hypo-low-una)\n• [Urine Na >30 → SIAD, diuretics, or adrenal insufficiency](#/node/na-hypo-high-una)',
+        },
+        {
+            heading: '4. SIAD & Specific Causes',
+            body: '• [SIAD → fluid restriction → oral urea → salt tabs + loop](#/node/na-siad-treatment)\n• [Diuretic-induced → hold thiazide, DDAVP clamp if Na <120](#/node/na-hypo-diuretic)\n• [Hypovolemic → NS resuscitation, watch for autocorrection](#/node/na-hypo-hypovolemic)',
+        },
+        {
+            heading: '5. Hypernatremia',
+            body: '• [Volume depleted → Free Water Deficit calculator → enteral or D5W replacement](#/node/na-hyper-fwd)\n• [Polyuria → DI workup (central vs nephrogenic)](#/node/na-hyper-di)\n• [Central DI → DDAVP + free water](#/node/na-hyper-central-di)\n• [Volume overloaded → natriuretic diuresis + free water](#/node/na-hyper-overload)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Adrogué HJ et al. Diagnosis and Management of Hyponatremia. JAMA. 2022;328(3):280-291.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Sodium Disorders — DDAVP Clamp Protocol
+// -------------------------------------------------------------------
+const NA_DDAVP_CLAMP = {
+    id: 'na-ddavp-clamp',
+    title: 'DDAVP Clamp-Bolus Protocol',
+    subtitle: 'Controlled sodium correction in hyponatremia',
+    sections: [
+        {
+            heading: 'Concept',
+            body: 'The DDAVP clamp separates the **water problem** from the **sodium problem**. DDAVP blocks renal free water excretion via V2 receptors, preventing dangerous autocorrection. Then 3% NaCl boluses raise Na at a predictable, controlled rate.\n\nThis is especially critical in patients at HIGH risk of overcorrection: alcoholics, malnourished, hypokalemia, thiazide-induced, beer potomania.',
+        },
+        {
+            heading: 'Initiation',
+            body: '**Step 1:** Give **Desmopressin (DDAVP) 2 mcg IV** as first dose.\n**Step 2:** Start DDAVP 2 mcg IV **q6-8h** (scheduled, not PRN).\n**Step 3:** Give **Thiamine 100 mg IV** empirically (ODS prophylaxis).\n**Step 4:** Check serum Na **q2h** from initiation.\n\n**Do NOT wait for labs before starting DDAVP** in high-risk patients — start the clamp immediately.',
+        },
+        {
+            heading: 'Bolus Correction',
+            body: '**While DDAVP clamp is active:**\n• Give **3% NaCl 100 mL IV bolus** to raise Na.\n• Each 100 mL bolus raises Na **~2 mEq/L** in a 70 kg adult.\n• Check Na **2 hours after each bolus**.\n• Target correction: **4-6 mEq/L** in the first 6 hours for severe symptoms.\n• Max: **8 mEq/L in 24h** for high-risk, **10 mEq/L** for standard risk.\n\n**If Na rises too fast:** Hold 3% boluses. DDAVP will prevent further rise. If already overcorrected → Overcorrection Rescue Protocol.',
+        },
+        {
+            heading: 'Monitoring',
+            body: '**During active DDAVP clamp:**\n• Serum Na q2h\n• Urine output and volume\n• Urine osmolality (should be concentrated if DDAVP working)\n• Neurological status\n• Serum K+ (correct hypokalemia — ODS risk factor)',
+        },
+        {
+            heading: 'Discontinuation',
+            body: '**Stop DDAVP clamp when:**\n• Na >125 mEq/L AND stable\n• Underlying cause has been addressed\n• Patient tolerating oral intake\n\n**After stopping DDAVP:**\n• Continue Na monitoring q4-6h for 24-48h\n• Watch for rebound — free water excretion may resume rapidly\n• If Na rises >2 mEq/L in first 4h after stopping → consider restarting DDAVP',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Adrogué HJ et al. Diagnosis and Management of Hyponatremia. JAMA. 2022;328(3):280-291.' },
+        { num: 2, text: 'Sterns RH. Disorders of Plasma Sodium. NEJM. 2015;372(1):55-65.' },
+        { num: 3, text: 'Verbalis JG et al. Hyponatremia: Expert Panel Recommendations. Am J Med. 2013;126(10S1):S1-42.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Sodium Disorders — SIAD Causes & Diagnosis
+// -------------------------------------------------------------------
+const NA_SIAD_CAUSES = {
+    id: 'na-siad-causes',
+    title: 'SIAD Causes & Diagnosis',
+    subtitle: 'Syndrome of Inappropriate Antidiuresis',
+    sections: [
+        {
+            heading: 'Diagnostic Criteria (ALL must be present)',
+            body: '• Serum osmolality **<275 mOsm/kg**\n• Urine osmolality **>100 mOsm/kg** (usually >300)\n• Urine sodium **>30 mEq/L** (on normal salt intake)\n• **Euvolemic** on clinical exam\n• Normal thyroid and adrenal function\n• No recent diuretic use',
+        },
+        {
+            heading: 'Medication Causes (Most Common)',
+            body: '• **SSRIs/SNRIs** — most common drug cause, especially in elderly\n• **Carbamazepine / Oxcarbazepine** — potent ADH stimulators\n• **NSAIDs** — reduce renal free water clearance\n• **Opioids** — stimulate ADH release\n• **Cyclophosphamide** — direct ADH-like effect\n• **Desmopressin** — iatrogenic when given for other indications\n• **Ecstasy (MDMA)** — stimulates ADH + excessive water intake',
+        },
+        {
+            heading: 'Malignancy',
+            body: '• **Small cell lung cancer** — most classic association (ectopic ADH production)\n• Head and neck cancers\n• Lymphoma\n• GI malignancies\n• GU malignancies',
+        },
+        {
+            heading: 'Neurologic',
+            body: '• Stroke, subarachnoid hemorrhage, TBI\n• Meningitis, encephalitis\n• Brain tumors\n• Multiple sclerosis\n• Guillain-Barré syndrome',
+        },
+        {
+            heading: 'Pulmonary',
+            body: '• Pneumonia (any cause)\n• Tuberculosis\n• Positive pressure ventilation\n• Asthma exacerbation\n• COPD exacerbation',
+        },
+        {
+            heading: 'Key Pitfalls',
+            body: '• SIAD is a **diagnosis of exclusion** — rule out hypothyroidism and adrenal insufficiency first\n• Many "euvolemic" patients are actually mildly volume depleted — trial of NS can help distinguish\n• Urine Na may be low in SIAD if patient is on severe salt restriction\n• The term "SIAD" is preferred over "SIADH" because not all cases involve elevated ADH [6]',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Adrogué HJ, Madias NE. Syndrome of Inappropriate Antidiuresis. NEJM. 2023;389(16):1499-1509.' },
+        { num: 6, text: 'Ellison DH, Berl T. The syndrome of inappropriate antidiuresis. NEJM. 2007;356(20):2064-72.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Sodium Disorders — Hypernatremia Causes
+// -------------------------------------------------------------------
+const NA_HYPER_CAUSES = {
+    id: 'na-hyper-causes',
+    title: 'Hypernatremia Causes',
+    subtitle: 'Differential diagnosis by mechanism',
+    sections: [
+        {
+            heading: 'Inadequate Water Intake (Most Common)',
+            body: '• **Elderly with impaired thirst** — by far the most common ER presentation\n• Altered mental status / intubated patients\n• Restricted access to water (nursing homes, ICU)\n• Infants dependent on caregivers',
+        },
+        {
+            heading: 'Sodium / Potassium Administration',
+            body: '• Hypertonic saline infusions\n• Sodium bicarbonate boluses\n• Excessive TPN sodium content\n• Oral sodium ingestion (soy sauce, salt tablets)',
+        },
+        {
+            heading: 'Renal Water Loss — Diabetes Insipidus',
+            body: '• **Central DI** — deficient ADH production (post-neurosurgery, TBI, tumors, idiopathic)\n• **Nephrogenic DI** — renal resistance to ADH (lithium, hypercalcemia, hypokalemia, post-obstructive)',
+        },
+        {
+            heading: 'Renal Water Loss — Diuresis',
+            body: '• Osmotic diuresis (hyperglycemia, mannitol, urea)\n• Loop diuretics (produce hypotonic urine)\n• Post-obstructive diuresis',
+        },
+        {
+            heading: 'GI Water Loss',
+            body: '• Diarrhea (especially osmotic — lactulose, sorbitol)\n• Vomiting with inadequate replacement\n• Nasogastric suction\n• Enterocutaneous fistulas',
+        },
+        {
+            heading: 'Insensible Losses',
+            body: '• Burns\n• Fever (each degree above 37°C increases free water loss ~100 mL/day)\n• Mechanical ventilation with dry gas\n• Exercise / environmental heat exposure',
+        },
+        {
+            heading: 'Key Clinical Points',
+            body: '• Hypernatremia is **always hyperosmolar** — no pseudohypernatremia exists\n• In hospitalized patients, hypernatremia is usually **iatrogenic** (inadequate free water provision)\n• Community-acquired hypernatremia is usually chronic and associated with **higher mortality** than hospital-acquired\n• Mortality ranges from 40-60% in severe cases — often a marker of severe underlying illness',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Adrogué HJ, Madias NE. Hypernatremia. NEJM. 2000;342(20):1493-1499.' },
+        { num: 2, text: 'Lindner G et al. Hypernatremia in Critically Ill. J Crit Care. 2013;28(2):216.e11-20.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Sodium Disorders — Overcorrection Rescue Protocol
+// -------------------------------------------------------------------
+const NA_OVERCORRECTION = {
+    id: 'na-overcorrection',
+    title: 'Overcorrection Rescue Protocol',
+    subtitle: 'Emergency re-lowering of serum sodium',
+    sections: [
+        {
+            heading: 'When to Activate',
+            body: '**Activate rescue if:**\n• Na rises **>10 mEq/L in 24 hours** (standard risk)\n• Na rises **>8 mEq/L in 24 hours** (high-risk patients)\n• Na correction rate exceeds **1 mEq/L per hour** sustained\n\n**High-risk patients:** Alcoholics, malnourished, hypokalemia, thiazide-induced, beer potomania, Na <105 mEq/L.',
+        },
+        {
+            heading: 'Rescue Protocol',
+            body: '**Step 1:** **Desmopressin (DDAVP) 2 mcg IV stat** — blocks free water excretion immediately.\n\n**Step 2:** **D5W 3 mL/kg/hr IV** — provides free water to re-lower Na back to safe trajectory.\n\n**Step 3:** Check Na **q1-2h** until correction rate is back within limits.\n\n**Step 4:** Once Na back on safe trajectory, transition to DDAVP clamp protocol for controlled correction.',
+        },
+        {
+            heading: 'Target',
+            body: 'Re-lower Na to bring the **24-hour correction** back to within 8-10 mEq/L from baseline.\n\nExample: If baseline Na was 112 mEq/L and rose to 126 mEq/L in 12 hours (+14 mEq/L), give DDAVP + D5W to re-lower Na toward ~120-122 mEq/L.',
+        },
+        {
+            heading: 'Prevention (Better Than Rescue)',
+            body: '• **Proactive DDAVP clamp** in all high-risk patients — do not wait for overcorrection to occur\n• **Thiamine 100 mg IV** empirically — reduces ODS susceptibility\n• **Correct hypokalemia** — K+ correction raises Na (1 mEq K+ repleted = ~1 mEq Na rise)\n• **Avoid NS boluses** in patients with reversible ADH excess — can trigger rapid autocorrection\n• **Monitor Na q2h** during active treatment',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Sterns RH. Disorders of Plasma Sodium. NEJM. 2015;372(1):55-65.' },
+        { num: 2, text: 'Ayus JC et al. Correction Rates in Severe Hyponatremia Meta-Analysis. JAMA Intern Med. 2025;185(1):38-51.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Sodium Disorders — ODS Risk Factors
+// -------------------------------------------------------------------
+const NA_ODS_RISK = {
+    id: 'na-ods-risk',
+    title: 'ODS Risk Factors',
+    subtitle: 'Osmotic Demyelination Syndrome',
+    sections: [
+        {
+            heading: 'What is ODS?',
+            body: 'Osmotic demyelination syndrome (formerly "central pontine myelinolysis") is a devastating neurologic injury caused by **overly rapid correction of chronic hyponatremia**. Brain cells that adapted to hypo-osmolality cannot readapt fast enough, leading to myelin destruction.\n\n**Onset is delayed 2-6 days** after overcorrection — clinicians may falsely believe the patient is improving when the damage is already done.',
+        },
+        {
+            heading: 'High-Risk Populations',
+            body: '• **Alcoholism** — most common risk factor\n• **Malnutrition** — depleted organic osmolytes\n• **Hypokalemia** — K+ correction raises Na (double hit)\n• **Thiamine deficiency** — overlaps with alcohol/malnutrition\n• **Liver disease / cirrhosis**\n• **Na <105 mEq/L** — severely adapted brain\n• **Chronic hyponatremia (>48h)** — brain has fully adapted\n• **Thiazide-induced** — high autocorrection risk when drug stopped',
+        },
+        {
+            heading: 'Clinical Presentation',
+            body: '**Biphasic course:**\n1. Initial improvement with Na correction (hours to days)\n2. **Delayed deterioration (2-6 days):**\n• Dysarthria, dysphagia\n• Paraparesis or quadriparesis\n• "Locked-in" syndrome (worst case)\n• Behavioral changes, confusion\n• Seizures\n\n**MRI findings:** T2 hyperintensity in central pons ("trident sign") — may not appear for 1-2 weeks.',
+        },
+        {
+            heading: 'Prevention',
+            body: '• **Proactive DDAVP clamp** for all high-risk patients\n• **Thiamine 100 mg IV** empirically\n• **Correct hypokalemia** alongside Na (but account for K+ effect on Na)\n• **Max correction:** 8 mEq/L in 24h for high-risk, 10 mEq/L for standard\n• **Avoid NS boluses** in reversible causes — triggers autocorrection\n• If overcorrection occurs → **immediate DDAVP + D5W rescue**\n• **Do NOT give vaptans** — unpredictable, uncontrolled aquaresis',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Sterns RH. Disorders of Plasma Sodium. NEJM. 2015;372(1):55-65.' },
+        { num: 2, text: 'Spasovski G et al. Clinical Practice Guideline on Hyponatraemia. Eur J Endocrinol. 2014;170(3):G1-G47.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Sodium Disorders — Hyponatremia Lab Interpretation
+// -------------------------------------------------------------------
+const NA_LAB_INTERPRETATION = {
+    id: 'na-lab-interpretation',
+    title: 'Hyponatremia Lab Interpretation',
+    subtitle: 'Stepwise diagnostic algorithm',
+    sections: [
+        {
+            heading: 'Step 1: Serum Osmolality',
+            body: '**Osm >275 mOsm/kg → Non-hypotonic hyponatremia**\n• Check glucose — add 1.6 mEq/L to Na for every 100 mg/dL glucose above 100 (corrected Na)\n• Check lipids, total protein — pseudohyponatremia (artifact of indirect ISE method)\n• Check for mannitol, glycine, sorbitol infusions\n\n**Osm <275 mOsm/kg → True hypotonic hyponatremia** → proceed to Step 2',
+        },
+        {
+            heading: 'Step 2: Urine Osmolality',
+            body: '**Urine Osm <100 mOsm/kg → Dilute urine (ADH appropriately suppressed)**\n• Primary polydipsia (>15-20 L/day intake)\n• Beer potomania (low solute intake, high free water)\n• "Tea-and-toast" diet in elderly\n• Marathon runners / dilutional\n\n**HIGH overcorrection risk** — once water intake normalizes, kidneys excrete massive free water volumes. **Proactive DDAVP clamp** recommended.\n\n**Urine Osm >100 mOsm/kg → Concentrated urine (ADH active)** → proceed to Step 3',
+        },
+        {
+            heading: 'Step 3: Urine Sodium',
+            body: '**Urine Na <30 mEq/L → Avid Na retention**\n• **Hypovolemic:** GI losses (vomiting, diarrhea), third-spacing, poor intake\n• **Hypervolemic:** Heart failure, cirrhosis, nephrotic syndrome (effective arterial volume depletion)\n• Distinguish by clinical volume assessment\n\n**Urine Na >30 mEq/L → Na wasting or euvolemia**\n• **SIAD** (most common euvolemic cause)\n• **Diuretic-induced** (thiazides >> loops)\n• **Adrenal insufficiency** (cortisol/ACTH deficiency)\n• **Cerebral salt wasting** (rare, post-neurosurgery)\n• **Hypothyroidism** (rare cause, usually requires severe TSH elevation)',
+        },
+        {
+            heading: 'Grey Zones',
+            body: '• **Urine Osm 100-300:** Overlap zone — could be partial ADH suppression or partial concentration\n• **Urine Na 20-40:** Borderline — may reflect mixed etiology or recent volume status changes\n• **Diuretics confound all urine values** — urine Na and Osm are uninterpretable while on diuretics\n• **Fractional excretion of urate (FEua)** can help distinguish SIAD (>12%) from volume depletion (<12%) when urine values are ambiguous',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Adrogué HJ et al. Diagnosis and Management of Hyponatremia. JAMA. 2022;328(3):280-291.' },
+        { num: 2, text: 'Hoorn EJ, Zietse R. Diagnosis and Treatment of Hyponatremia: Guidelines. JASN. 2017;28(5):1340-1349.' },
+    ],
+};
+// -------------------------------------------------------------------
+// Sodium Disorders — Non-Hypotonic Hyponatremia
+// -------------------------------------------------------------------
+const NA_NON_HYPOTONIC_INFO = {
+    id: 'na-non-hypotonic-info',
+    title: 'Non-Hypotonic Hyponatremia',
+    subtitle: 'Translocational and pseudohyponatremia',
+    sections: [
+        {
+            heading: 'Translocational Hyponatremia',
+            body: '**Effective osmoles draw water out of cells, diluting plasma Na.**\n\n• **Hyperglycemia (most common):** For every 100 mg/dL glucose above 100, Na is artifactually lowered by ~1.6 mEq/L. Corrected Na = measured Na + 1.6 × [(glucose - 100) / 100]. Some experts use factor of 2.4 for glucose >400.\n• **Mannitol infusion:** Osmotic drag effect similar to hyperglycemia.\n• **Glycine / Sorbitol:** TURP syndrome, hysteroscopy irrigation — can cause severe dilutional hyponatremia.\n\n**Treatment:** Correct the underlying osmole. Na normalizes as glucose falls / mannitol is cleared.',
+        },
+        {
+            heading: 'Pseudohyponatremia',
+            body: '**Lab artifact from indirect ion-selective electrode (ISE) analyzers.**\n\nHigh concentrations of lipids or paraproteins expand the non-aqueous plasma fraction, causing the analyzer to underestimate Na concentration in the aqueous phase.\n\n• **Severe hypertriglyceridemia** (TG >1500 mg/dL)\n• **Paraproteinemia** (multiple myeloma, Waldenström)\n• **Extreme hypercholesterolemia**\n\n**Diagnosis:** Serum osmolality is **normal** (measured directly). Or use direct ISE method (blood gas analyzer, POC chemistry) — gives true Na.\n\n**Treatment:** None needed for the Na itself. Treat the underlying condition.',
+        },
+        {
+            heading: 'How to Distinguish',
+            body: '• **Serum osmolality >275 mOsm/kg** rules out true hypotonic hyponatremia\n• **POC (point-of-care) Na** uses direct ISE and gives the true value — compare with lab Na\n• If POC Na is normal but lab Na is low → **pseudohyponatremia**\n• If calculated Osm is normal but measured Osm is high → **osmol gap** (unmeasured osmoles like mannitol, ethylene glycol)',
+        },
+    ],
+    citations: [
+        { num: 1, text: 'Seay NW et al. Body Tonicity Disorders Core Curriculum. AJKD. 2020;75(2):272-286.' },
+        { num: 2, text: 'Miller NE et al. Sodium Disorders: Hyponatremia and Hypernatremia. AFP. 2023;108(5):476-486.' },
+    ],
+};
 const INFO_PAGES = {
     'doac-pe': DOAC_PE_PAGE,
     'priapism-return-precautions': PRIAPISM_RETURN_PRECAUTIONS,
@@ -1638,6 +1905,14 @@ const INFO_PAGES = {
     'splint-principles': SPLINT_PRINCIPLES,
     'splint-summary': SPLINT_SUMMARY,
     'nstemi-troponin-sensitivity': NSTEMI_TROPONIN_SENSITIVITY_PAGE,
+    'na-summary': NA_SUMMARY,
+    'na-ddavp-clamp': NA_DDAVP_CLAMP,
+    'na-siad-causes': NA_SIAD_CAUSES,
+    'na-hyper-causes': NA_HYPER_CAUSES,
+    'na-overcorrection': NA_OVERCORRECTION,
+    'na-ods-risk': NA_ODS_RISK,
+    'na-lab-interpretation': NA_LAB_INTERPRETATION,
+    'na-non-hypotonic-info': NA_NON_HYPOTONIC_INFO,
 };
 // -------------------------------------------------------------------
 // Body Text with Clickable Footnotes

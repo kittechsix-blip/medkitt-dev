@@ -163,10 +163,7 @@ function buildSearchResults(query) {
         for (const tree of cat.decisionTrees) {
             if (seenTreeIds.has(tree.id))
                 continue;
-            const normQuery = query.replace(/[-\s]/g, '');
-            const normTitle = tree.title.toLowerCase().replace(/[-\s]/g, '');
-            const normSubtitle = tree.subtitle.toLowerCase().replace(/[-\s]/g, '');
-            if (tree.title.toLowerCase().includes(query) || tree.subtitle.toLowerCase().includes(query) || tree.id.toLowerCase().includes(query) || normTitle.includes(normQuery) || normSubtitle.includes(normQuery)) {
+            if (tree.title.toLowerCase().includes(query) || tree.subtitle.toLowerCase().includes(query)) {
                 seenTreeIds.add(tree.id);
                 results.push({
                     type: 'consult',

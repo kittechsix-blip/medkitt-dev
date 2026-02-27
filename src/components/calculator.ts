@@ -55,6 +55,13 @@ interface CalculatorDefinition {
   thresholdNote: string;
   /** Source citations */
   citations: string[];
+  /** Optional formula-based computation. If present, overrides sum-and-threshold scoring. */
+  computeResult?: (values: Record<string, number>) => {
+    value: string;
+    label: string;
+    description: string;
+    colorVar: string;
+  };
 }
 
 // -------------------------------------------------------------------
@@ -495,6 +502,100 @@ const BAS_CALCULATOR: CalculatorDefinition = {
 };
 
 // -------------------------------------------------------------------
+// Free Water Deficit Calculator (Formula-Based)
+// -------------------------------------------------------------------
+
+const FWD_CALCULATOR: CalculatorDefinition = {
+  id: 'fwd',
+  title: 'Free Water Deficit',
+  subtitle: 'Hypernatremia Correction',
+  description: 'Calculates the free water deficit for hypernatremia correction. Formula: TBW \u00D7 [(Na/140) - 1], where TBW = weight \u00D7 correction factor (0.6 for males, 0.5 for females/elderly).',
+  fields: [
+    {
+      name: 'serum-na',
+      label: 'Serum Sodium',
+      type: 'number',
+      points: 0,
+      valueIsPoints: true,
+      unit: 'mEq/L',
+      description: 'Current serum sodium level',
+    },
+    {
+      name: 'weight',
+      label: 'Weight',
+      type: 'number',
+      points: 0,
+      valueIsPoints: true,
+      unit: 'kg',
+      description: 'Patient weight in kilograms',
+    },
+    {
+      name: 'sex',
+      label: 'Sex / Body Composition',
+      type: 'select',
+      points: 0,
+      selectOptions: [
+        { label: 'Male (TBW factor = 0.6)', points: 60 },
+        { label: 'Female / Elderly (TBW factor = 0.5)', points: 50 },
+      ],
+    },
+  ],
+  results: [],
+  thresholdNote: 'Replace deficit over 48-72h for chronic hypernatremia. Max correction: 10-12 mEq/L per 24h. Enteral free water preferred; D5W if NPO.',
+  citations: [
+    'Adrogu\u00E9 HJ, Madias NE. Hypernatremia. NEJM. 2000;342(20):1493-1499.',
+    'Lindner G et al. Hypernatremia in Critically Ill. J Crit Care. 2013;28(2):216.e11-20.',
+  ],
+  computeResult: (values: Record<string, number>) => {
+    const na = values['serum-na'] || 0;
+    const weight = values['weight'] || 0;
+    const tbwFactor = (values['sex'] || 60) / 100; // 60\u21920.6, 50\u21920.5
+
+    if (na <= 0 || weight <= 0) {
+      return {
+        value: '--',
+        label: 'Enter values',
+        description: 'Enter serum sodium and weight to calculate deficit.',
+        colorVar: '--color-text-muted',
+      };
+    }
+
+    if (na <= 140) {
+      return {
+        value: '0 L',
+        label: 'No Deficit',
+        description: 'Serum Na \u2264140 mEq/L \u2014 no free water deficit.',
+        colorVar: '--color-primary',
+      };
+    }
+
+    const tbw = weight * tbwFactor;
+    const deficit = tbw * ((na / 140) - 1);
+    const deficitRounded = Math.round(deficit * 10) / 10;
+
+    let label: string;
+    let colorVar: string;
+    if (deficitRounded < 3) {
+      label = 'Mild Deficit';
+      colorVar = '--color-primary';
+    } else if (deficitRounded < 6) {
+      label = 'Moderate Deficit';
+      colorVar = '--color-warning';
+    } else {
+      label = 'Severe Deficit';
+      colorVar = '--color-danger';
+    }
+
+    return {
+      value: `${deficitRounded} L`,
+      label,
+      description: `TBW: ${Math.round(tbw * 10) / 10} L (${weight} kg \u00D7 ${tbwFactor}). Replace over 48-72h for chronic hypernatremia. Account for ongoing losses.`,
+      colorVar,
+    };
+  },
+};
+
+// -------------------------------------------------------------------
 // Calculator Registry
 // -------------------------------------------------------------------
 
@@ -505,6 +606,7 @@ const CALCULATORS: Record<string, CalculatorDefinition> = {
   'nihss': NIHSS_CALCULATOR,
   'timi': TIMI_CALCULATOR,
   'bas': BAS_CALCULATOR,
+  'fwd': FWD_CALCULATOR,
 };
 
 // -------------------------------------------------------------------
@@ -900,6 +1002,30 @@ function updateScore(
   values: Record<string, number>,
   display: HTMLElement,
 ): void {
+  // Formula-based calculator override
+  if (calc.computeResult) {
+    const result = calc.computeResult(values);
+    display.innerHTML = '';
+
+    const scoreNum = document.createElement('div');
+    scoreNum.className = 'calculator-score-number';
+    scoreNum.textContent = result.value;
+    display.appendChild(scoreNum);
+
+    const labelEl = document.createElement('div');
+    labelEl.className = 'calculator-result-label';
+    labelEl.textContent = result.label;
+    labelEl.style.color = `var(${result.colorVar})`;
+    display.appendChild(labelEl);
+
+    const descEl = document.createElement('div');
+    descEl.className = 'calculator-result-risk';
+    descEl.textContent = result.description;
+    display.appendChild(descEl);
+
+    return;
+  }
+
   // Sum all field values
   let score = 0;
   for (const field of calc.fields) {

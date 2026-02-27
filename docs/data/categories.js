@@ -131,6 +131,15 @@ export const DEFAULT_CATEGORIES = [
                 version: '1.0',
                 nodeCount: 25,
                 entryNodeId: 'nrp-start',
+            },
+            {
+                id: 'sodium',
+                title: 'Sodium Disorders',
+                subtitle: 'HypoNa vs HyperNa \u2192 Etiology \u2192 Treatment \u2192 Monitoring',
+                categoryId: 'emergency-medicine',
+                version: '1.0',
+                nodeCount: 28,
+                entryNodeId: 'na-start',
             }
         ],
         isCustom: false,
@@ -177,6 +186,15 @@ export const DEFAULT_CATEGORIES = [
                 version: '1.0',
                 nodeCount: 24,
                 entryNodeId: 'k-start',
+            },
+            {
+                id: 'sodium',
+                title: 'Sodium Disorders',
+                subtitle: 'HypoNa vs HyperNa \u2192 Etiology \u2192 Treatment \u2192 Monitoring',
+                categoryId: 'nephro-rheum-endo',
+                version: '1.0',
+                nodeCount: 28,
+                entryNodeId: 'na-start',
             }
         ],
         isCustom: false,

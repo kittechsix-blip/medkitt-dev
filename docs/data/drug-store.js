@@ -778,6 +778,49 @@ const DEXAMETHASONE = {
         'Gates A, Johnson DW, Klassen TP. Glucocorticoids for Croup in Children. JAMA Pediatrics. 2019;173(6):595-596.',
     ],
 };
+const DESMOPRESSIN = {
+    id: 'desmopressin',
+    name: 'Desmopressin (DDAVP)',
+    genericName: 'Desmopressin acetate',
+    drugClass: 'Synthetic vasopressin analog (V2 agonist)',
+    route: 'IV / Intranasal',
+    indications: ['Hyponatremia (DDAVP clamp)', 'Overcorrection rescue', 'Central diabetes insipidus', 'DI diagnostic trial'],
+    dosing: [
+        {
+            indication: 'DDAVP clamp (hyponatremia)',
+            regimen: '2 mcg IV q6-8h. Prevents overcorrection by blocking free water excretion. Pair with 100 mL 3% NaCl boluses to raise Na at controlled rate. Check Na q2h.',
+        },
+        {
+            indication: 'Overcorrection rescue',
+            regimen: '2 mcg IV stat. Give immediately if Na rises >10 mEq/L in 24h (or >8 in high-risk). Combine with D5W 3 mL/kg/hr to re-lower Na to safe trajectory.',
+        },
+        {
+            indication: 'Central diabetes insipidus',
+            regimen: '2 mcg IV q8-12h OR 10 mcg intranasal BID. Titrate to urine output and serum Na. Chronic: intranasal or oral formulations.',
+        },
+        {
+            indication: 'DI diagnostic trial',
+            regimen: '2 mcg IV x1. Central DI: urine osmolality rises >50% within 2 hours. Nephrogenic DI: minimal response (<50% rise).',
+        },
+    ],
+    contraindications: [
+        'Type IIb von Willebrand disease',
+        'Habitual or psychogenic polydipsia (risk of severe hyponatremia)',
+        'Hyponatremia with volume overload (HF, cirrhosis)',
+    ],
+    cautions: [
+        'Monitor Na q2h during DDAVP clamp — overcorrection still possible if clamp interrupted',
+        'Track urine output and fluid balance closely',
+        'Hyponatremia is the primary adverse effect — the therapeutic goal in clamp, but a risk in DI treatment',
+        'IV preferred over intranasal in acute settings (more predictable absorption)',
+    ],
+    monitoring: 'Serum sodium q2h during clamp, urine output, fluid balance, urine osmolality for DI.',
+    notes: 'The DDAVP clamp strategy is a paradigm shift in hyponatremia management — it separates the water problem from the sodium problem. DDAVP blocks free water excretion via V2 receptors on collecting duct, then 3% NaCl boluses raise Na at a controlled, predictable rate. This prevents the dangerous autocorrection that occurs when the underlying cause is treated (e.g., volume repletion in hypovolemic hyponatremia). High-risk patients for overcorrection: alcoholics, malnourished, hypokalemia, thiazide-induced.',
+    citations: [
+        'Adrogué HJ et al. Diagnosis and Management of Hyponatremia. JAMA. 2022;328(3):280-291.',
+        'Sterns RH. Disorders of Plasma Sodium. NEJM. 2015;372(1):55-65.',
+    ],
+};
 const CLEVIDIPINE = {
     id: 'clevidipine',
     name: 'Clevidipine (Cleviprex)',
@@ -1311,8 +1354,8 @@ const FUROSEMIDE = {
     name: 'Furosemide',
     genericName: 'Furosemide',
     drugClass: 'Loop diuretic',
-    route: 'IV',
-    indications: ['Hyperkalemia (kaliuresis)', 'Volume overload / pulmonary edema', 'Acute kidney injury (oliguric)'],
+    route: 'IV / PO',
+    indications: ['Hyperkalemia (kaliuresis)', 'Volume overload / pulmonary edema', 'Acute kidney injury (oliguric)', 'Sodium disorders (SIAD)', 'Hypernatremia (volume overload)'],
     dosing: [
         {
             indication: 'Hyperkalemia (normal renal function)',
@@ -1325,6 +1368,14 @@ const FUROSEMIDE = {
         {
             indication: 'Volume overload',
             regimen: '40-160 mg IV, dose based on renal function and prior diuretic exposure.',
+        },
+        {
+            indication: 'SIAD (with salt tabs)',
+            regimen: '20-40 mg PO daily with NaCl tablets 3-9 g/day. Loop diuretic generates electrolyte-free water clearance when combined with increased solute load.',
+        },
+        {
+            indication: 'Hypernatremia (volume overload)',
+            regimen: '20-40 mg IV. Produces hypotonic urine, allowing concurrent free water replacement to correct hypernatremia while removing excess volume.',
         },
     ],
     contraindications: [
@@ -1375,6 +1426,40 @@ const GENTAMICIN = {
     citations: [
         'Puopolo KM, et al. Management of Neonates Born at ≥35 0/7 Weeks\' Gestation With Suspected or Proven Early-Onset Bacterial Sepsis. Pediatrics. 2018;142(6):e20182894.',
         'Red Book: 2021-2024 Report of the Committee on Infectious Diseases. American Academy of Pediatrics.',
+    ],
+};
+const HYPERTONIC_SALINE = {
+    id: 'hypertonic-saline',
+    name: 'Hypertonic Saline (3% NaCl)',
+    genericName: 'Sodium chloride 3%',
+    drugClass: 'Hypertonic crystalloid',
+    route: 'IV',
+    indications: ['Severe symptomatic hyponatremia', 'DDAVP clamp bolus correction'],
+    dosing: [
+        {
+            indication: 'Severe symptomatic hyponatremia',
+            regimen: '100-150 mL IV bolus over 10-20 minutes. May repeat x2 (up to 3 boluses total). Target: 4-6 mEq/L rise in Na to resolve acute symptoms. Do NOT exceed 10 mEq/L correction in first 24 hours.',
+        },
+        {
+            indication: 'DDAVP clamp bolus correction',
+            regimen: '100 mL IV bolus. Each bolus raises Na ~2 mEq/L in a 70 kg adult. Administer during DDAVP clamp to achieve controlled, predictable Na rise. Check Na q2h.',
+        },
+    ],
+    contraindications: [
+        'Hypernatremia',
+        'Volume overload without severe symptomatic hyponatremia',
+    ],
+    cautions: [
+        'Check Na q2h during administration — overcorrection causes osmotic demyelination syndrome (ODS)',
+        'Central line preferred for continuous infusions; peripheral access OK for boluses',
+        'Max correction: 10 mEq/L in 24h (8 mEq/L for high-risk patients: alcoholics, malnourished, hypokalemia)',
+        'SALSA trial showed bolus therapy achieves faster symptom relief than continuous infusion',
+    ],
+    monitoring: 'Serum sodium q2h during treatment, neurological status, fluid balance.',
+    notes: '3% NaCl contains 513 mEq/L of sodium. The bolus approach (100-150 mL over 10-20 min, repeat PRN) is now preferred over continuous infusion based on the SALSA trial. Each 100 mL bolus raises Na ~2 mEq/L in a 70 kg adult. The goal is to raise Na enough to reverse acute cerebral edema symptoms (usually 4-6 mEq/L), NOT to normalize Na. Subsequent correction should be slow and controlled.',
+    citations: [
+        'Baek SH et al. SALSA Trial: Bolus vs Continuous 3% Saline. JAMA Intern Med. 2021;181(1):81-92.',
+        'Spasovski G et al. Clinical Practice Guideline on Hyponatraemia. Eur J Endocrinol. 2014;170(3):G1-G47.',
     ],
 };
 const LABETALOL = {
@@ -1529,6 +1614,36 @@ const METOLAZONE = {
         'Weisberg LS. Management of severe hyperkalemia. Crit Care Med. 2008;36(12):3246-51.',
     ],
 };
+const NACL_TABLETS = {
+    id: 'nacl-tablets',
+    name: 'Sodium Chloride Tablets',
+    genericName: 'Sodium chloride',
+    drugClass: 'Electrolyte supplement',
+    route: 'PO',
+    indications: ['SIAD (with loop diuretic)'],
+    dosing: [
+        {
+            indication: 'SIAD (with loop diuretic)',
+            regimen: '1-3 g PO TID with furosemide 20-40 mg PO daily. Increases solute load to enhance free water excretion. Adjust dose based on Na response.',
+        },
+    ],
+    contraindications: [
+        'Uncontrolled hypertension',
+        'Hypernatremia',
+        'Volume overload (HF, cirrhosis, nephrotic syndrome)',
+    ],
+    cautions: [
+        'May worsen edema in heart failure or cirrhosis',
+        'GI irritation — take with food',
+        'Monitor blood pressure, especially in hypertensive patients',
+        'Less effective than oral urea for SIAD — consider as adjunct',
+    ],
+    monitoring: 'Serum sodium, blood pressure, volume status, renal function.',
+    notes: 'Salt tablets work by increasing solute load delivered to the kidney, which when combined with a loop diuretic, promotes excretion of free water. This is a second-line strategy for SIAD after fluid restriction. Less palatable than oral urea but more widely available. The combination with furosemide generates an electrolyte-free water clearance.',
+    citations: [
+        'Verbalis JG et al. Hyponatremia: Expert Panel Recommendations. Am J Med. 2013;126(10S1):S1-42.',
+    ],
+};
 const NICARDIPINE = {
     id: 'nicardipine',
     name: 'Nicardipine (Cardene)',
@@ -1626,6 +1741,40 @@ const OXYTOCIN = {
     notes: 'First-line uterotonic for PPH prevention and treatment. Uterine atony is the most common cause of postpartum hemorrhage. Empiric use after placental delivery is recommended — do not wait for signs of bleeding. Combine with bimanual uterine massage until uterus is firm.',
     citations: [
         'ACOG Practice Bulletin No. 183: Postpartum Hemorrhage. Obstet Gynecol. 2017;130(4):e168-e186.',
+    ],
+};
+const ORAL_UREA = {
+    id: 'oral-urea',
+    name: 'Oral Urea (Ure-Na)',
+    genericName: 'Urea',
+    drugClass: 'Osmotic agent',
+    route: 'PO',
+    indications: ['SIAD', 'Beer potomania / low solute intake'],
+    dosing: [
+        {
+            indication: 'SIAD',
+            regimen: '15-60 g PO daily. Start 15-30 g daily, titrate to Na response. Mix with sweet or flavored liquid to mask extremely bitter taste (orange juice, cola, chocolate syrup).',
+        },
+        {
+            indication: 'Beer potomania / low solute intake',
+            regimen: '15-30 g PO daily. Increases solute load to promote free water excretion. Continue until dietary solute intake improves.',
+        },
+    ],
+    contraindications: [
+        'Severe hepatic insufficiency (risk of hyperammonemia)',
+        'GI obstruction',
+    ],
+    cautions: [
+        'Extremely bitter taste — major compliance barrier. Mix with flavored liquid.',
+        'GI upset (nausea, diarrhea) common at higher doses',
+        'Not widely available in all hospital formularies — may need pharmacy compounding',
+        'Monitor BUN — will rise as expected with urea therapy',
+    ],
+    monitoring: 'Serum sodium, BUN, renal function, GI tolerance.',
+    notes: 'Oral urea is increasingly recognized as an effective and safe treatment for SIAD. It works by increasing renal solute excretion, which obligates free water excretion regardless of ADH levels. Unlike vaptans, urea produces predictable, gradual Na correction without overcorrection risk. The IBCC recommends it as a first-line pharmacologic option for SIAD. Available as Ure-Na (commercial preparation) or pharmacy-compounded powder.',
+    citations: [
+        'Decaux G et al. Treatment of Euvolemic Hyponatremia by Urea. Crit Care. 2010;14(5):R184.',
+        'Adrogué HJ, Madias NE. Syndrome of Inappropriate Antidiuresis. NEJM. 2023;389(16):1499-1509.',
     ],
 };
 const PENICILLIN_G_IV = {
@@ -2162,6 +2311,35 @@ const TENECTEPLASE = {
         'Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. Stroke. 2019;50(12):e344-e418.',
     ],
 };
+const THIAMINE = {
+    id: 'thiamine',
+    name: 'Thiamine (Vitamin B1)',
+    genericName: 'Thiamine hydrochloride',
+    drugClass: 'Vitamin',
+    route: 'IV / PO',
+    indications: ['Hyponatremia (ODS prevention)', 'Wernicke encephalopathy'],
+    dosing: [
+        {
+            indication: 'Hyponatremia (ODS prevention)',
+            regimen: '100 mg IV daily. Give empirically to ALL patients undergoing sodium correction, especially alcoholics and malnourished patients. Thiamine deficiency increases ODS risk.',
+        },
+        {
+            indication: 'Wernicke encephalopathy',
+            regimen: '500 mg IV TID x 3 days, then 250 mg IV daily x 3-5 days. Give BEFORE glucose in alcoholic patients — glucose metabolism consumes remaining thiamine stores.',
+        },
+    ],
+    contraindications: [],
+    cautions: [
+        'Anaphylaxis extremely rare with IV administration',
+        'Give BEFORE glucose/dextrose in alcoholic patients',
+        'Low cost, minimal risk — threshold to give empirically should be very low',
+    ],
+    monitoring: 'Clinical response (mental status, ataxia, ophthalmoplegia for Wernicke).',
+    notes: 'Thiamine deficiency is a major but underappreciated risk factor for osmotic demyelination syndrome (ODS) during sodium correction. Malnourished patients (alcoholics, eating disorders, chronic illness) are at highest risk. Empiric thiamine 100 mg IV is cheap, safe, and should be given to all patients undergoing Na correction as ODS prophylaxis.',
+    citations: [
+        'Sterns RH. Disorders of Plasma Sodium. NEJM. 2015;372(1):55-65.',
+    ],
+};
 const TICAGRELOR = {
     id: 'ticagrelor',
     name: 'Ticagrelor (Brilinta)',
@@ -2334,6 +2512,7 @@ export const ALL_DRUGS = [
     CLOPIDOGREL,
     DABIGATRAN,
     DARUNAVIR,
+    DESMOPRESSIN,
     DEXAMETHASONE,
     DIGOXIN,
     DILTIAZEM,
@@ -2347,14 +2526,17 @@ export const ALL_DRUGS = [
     FONDAPARINUX,
     FUROSEMIDE,
     GENTAMICIN,
+    HYPERTONIC_SALINE,
     LABETALOL,
     LIDOCAINE,
     SODIUM_ZIRCONIUM_CYCLOSILICATE,
     MAGNESIUM_SULFATE,
     METOLAZONE,
     METOPROLOL,
+    NACL_TABLETS,
     NICARDIPINE,
     NITROGLYCERIN,
+    ORAL_UREA,
     OXYTOCIN,
     PENICILLIN_G_IV,
     PHENYLEPHRINE,
@@ -2371,6 +2553,7 @@ export const ALL_DRUGS = [
     TENECTEPLASE,
     TDF_FTC,
     TERBUTALINE,
+    THIAMINE,
     TICAGRELOR,
     UFH,
     VANCOMYCIN,
@@ -2418,6 +2601,7 @@ const NAME_TO_ID = [
     [/dabigatran/i, 'dabigatran'],
     [/darunavir|prezista/i, 'darunavir'],
     [/dexamethasone|decadron/i, 'dexamethasone'],
+    [/desmopressin|ddavp/i, 'desmopressin'],
     [/digoxin|digitalis|lanoxin/i, 'digoxin'],
     [/diltiazem|cardizem/i, 'diltiazem'],
     [/dolutegravir|tivicay/i, 'dolutegravir'],
@@ -2430,15 +2614,18 @@ const NAME_TO_ID = [
     [/fondaparinux|arixtra/i, 'fondaparinux'],
     [/furosemide|lasix/i, 'furosemide'],
     [/gentamicin|garamycin/i, 'gentamicin'],
+    [/hypertonic.*saline|3%.*saline|3%.*nacl/i, 'hypertonic-saline'],
     [/labetalol/i, 'labetalol'],
     [/lidocaine/i, 'lidocaine'],
     [/lokelma|sodium\s*zirconium|szc/i, 'sodium-zirconium-cyclosilicate'],
     [/magnesium sulfate|mag sulfate|MgSO4/i, 'magnesium-sulfate'],
     [/metolazone|zaroxolyn/i, 'metolazone'],
     [/metoprolol|lopressor|toprol/i, 'metoprolol'],
+    [/nacl.*tab|salt.*tab|sodium\s*chloride.*tab/i, 'nacl-tablets'],
     [/nicardipine|cardene/i, 'nicardipine'],
     [/nitroglycerin|nitro|glyceryl trinitrate|NTG/i, 'nitroglycerin'],
     [/oxytocin|pitocin/i, 'oxytocin'],
+    [/oral.*urea|ure-na/i, 'oral-urea'],
     [/aqueous.*penicillin|penicillin G.*IV|crystalline.*penicillin/i, 'penicillin-g-iv'],
     [/phenylephrine/i, 'phenylephrine'],
     [/kcl\s*iv|potassium\s*chloride.*iv|iv\s*potassium/i, 'potassium-chloride-iv'],
@@ -2454,6 +2641,7 @@ const NAME_TO_ID = [
     [/tenecteplase|TNKase/i, 'tenecteplase'],
     [/tenofovir.*emtricitabine|truvada|TDF\/FTC/i, 'tdf-ftc'],
     [/terbutaline|brethine/i, 'terbutaline'],
+    [/thiamine|vitamin\s*b1/i, 'thiamine'],
     [/ticagrelor|brilinta/i, 'ticagrelor'],
     [/unfractionated heparin|^UFH$|heparin sodium/i, 'ufh'],
     [/vancomycin|vancocin/i, 'vancomycin'],
