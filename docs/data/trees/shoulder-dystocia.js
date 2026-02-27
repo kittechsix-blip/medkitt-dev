@@ -49,9 +49,8 @@ export const SHOULDER_DYSTOCIA_NODES = [
         citation: [5, 6, 7, 8],
         images: [
             {
-                src: 'images/shoulder-dystocia/mcroberts-maneuver.png',
-                alt: 'Illustration showing McRoberts maneuver with maternal legs sharply flexed onto abdomen (step 1) while an assistant applies suprapubic pressure to the fetal anterior shoulder (step 2), with inset diagram showing pelvic rotation and opening of the birth canal',
-                caption: 'McRoberts maneuver: (1) Legs flexed onto abdomen rotates pelvis, aligns sacrum, and opens birth canal. (2) Suprapubic pressure applied to fetal anterior shoulder.',
+                src: 'images/shoulder-dystocia/mcroberts-maneuver.jpg',
+                alt: 'Illustration showing McRoberts maneuver with maternal legs sharply flexed onto abdomen while an assistant applies suprapubic pressure to the fetal anterior shoulder, with inset diagram showing pelvic rotation and opening of the birth canal',
             },
         ],
         next: 'sd-first-check',
@@ -89,9 +88,8 @@ export const SHOULDER_DYSTOCIA_NODES = [
         citation: [10, 12],
         images: [
             {
-                src: 'images/shoulder-dystocia/rotational-maneuver.png',
+                src: 'images/shoulder-dystocia/rotational-maneuver.jpg',
                 alt: 'Two-panel illustration showing Wood\'s screw maneuver with progressive rotation of the posterior shoulder in corkscrew fashion to release the impacted anterior shoulder',
-                caption: 'Wood\'s screw maneuver: Apply pressure on the posterior shoulder and rotate in corkscrew fashion to free the anterior shoulder.',
             },
         ],
         next: 'sd-posterior-arm',
@@ -105,9 +103,8 @@ export const SHOULDER_DYSTOCIA_NODES = [
         citation: [2, 9, 11, 13],
         images: [
             {
-                src: 'images/shoulder-dystocia/posterior-arm-delivery.png',
+                src: 'images/shoulder-dystocia/posterior-arm-delivery.jpg',
                 alt: 'Two-panel illustration showing delivery of the posterior arm by sweeping it across the fetal chest to reduce the shoulder girdle width and facilitate delivery',
-                caption: 'Posterior arm delivery: Locate the arm behind the posterior shoulder, sweep across the chest, and deliver.',
             },
         ],
         next: 'sd-second-check',
@@ -162,7 +159,7 @@ export const SHOULDER_DYSTOCIA_NODES = [
         body: 'POST-DELIVERY MANAGEMENT\n• **Immediate neonatal assessment** — Pediatrics/NICU should already be present\n• **Apgar scores** at 1 and 5 minutes\n• **Evaluate for injury:**\n  - Brachial plexus palsy (Erb\'s) — asymmetric arm movement, "waiter\'s tip" posture\n  - Clavicle fracture — crepitus, asymmetric Moro reflex\n  - Humeral fracture — if posterior arm delivery was performed\n• **Maternal assessment** — check for vaginal/cervical lacerations, postpartum hemorrhage\n• **Document thoroughly:**\n  - Time of head delivery and time of body delivery (head-to-body interval)\n  - All maneuvers attempted and in what order\n  - Personnel present and their roles\n  - Neonatal condition at delivery\n  - Estimated blood loss\n\nKEY TAKEAWAY\nSometimes, even in the most expert hands and with relatively mild shoulder dystocias, fetal or maternal injury will occur. Injury does not necessarily indicate substandard care. [1]',
         recommendation: 'Shoulder dystocia resolved. Complete neonatal assessment, evaluate for brachial plexus injury and fractures, assess maternal status, and document all maneuvers and timing thoroughly.',
         confidence: 'recommended',
-        citation: [1],
+        citation: [1, 19],
     },
 ];
 export const SHOULDER_DYSTOCIA_NODE_COUNT = SHOULDER_DYSTOCIA_NODES.length;
@@ -198,4 +195,5 @@ export const SHOULDER_DYSTOCIA_CITATIONS = [
     { num: 16, text: 'Bruner JP, Drummond SB, Meenan AL, Gaskin IM. All-fours maneuver for reducing shoulder dystocia during labor. J Reprod Med. 1998;43(5):439-443.' },
     { num: 17, text: 'Hartfield VJ. Symphysiotomy for shoulder dystocia. Am J Obstet Gynecol. 1986;155(2):228.' },
     { num: 18, text: 'Sentilhes L, Sénat MV, Boulard H, et al. Shoulder dystocia: guidelines for clinical practice from the French College of Gynecologists and Obstetricians (CNGOF). Eur J Obstet Gynecol Reprod Biol. 2016;203:156-161.' },
+    { num: 19, text: 'Images: McRoberts Maneuver, Wood\'s Screw & Rubin\'s Maneuver, and Posterior Arm Delivery illustrations generated with AI assistance for educational purposes.' },
 ];
