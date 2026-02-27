@@ -308,9 +308,8 @@ export const PRIAPISM_NODES = [
         citation: [1, 9],
         images: [
             {
-                src: 'images/priapism/do-not-inject.png',
-                alt: 'Clock-face diagram showing safe injection zones — do not inject near the 6 o\'clock (ventral) or 12 o\'clock (dorsal midline) positions',
-                caption: 'Safe injection zones: avoid 12 o\'clock (dorsal neurovascular bundle) and 6 o\'clock (ventral urethra).',
+                src: 'images/priapism/do-not-inject.jpg',
+                alt: 'Anatomical illustration showing penile injection technique at lateral shaft with clock-face cross-section highlighting do-not-inject zones at 12 and 6 o\'clock positions',
             },
         ],
         next: 'priapism-penile-block-complete',
@@ -341,9 +340,8 @@ export const PRIAPISM_NODES = [
                 caption: 'Penile cross-section: Corpora cavernosa (paired), corpus spongiosum (ventral), urethra, and dorsal neurovascular bundle. (Courtesy: Frank M. Corl, MS, Johns Hopkins Medical Institutions)',
             },
             {
-                src: 'images/priapism/aspiration-setup.png',
-                alt: 'Three-way stopcock connected to butterfly needle and syringes for priapism aspiration setup',
-                caption: 'Aspiration setup: Three-way stopcock, butterfly needle, aspiration syringe, and saline irrigation syringe. (Source: EmDocs.net)',
+                src: 'images/priapism/aspiration-setup.jpg',
+                alt: 'Aspiration setup showing three-way stopcock, butterfly needle with tubing, two syringes, and angiocath on sterile surface',
             },
         ],
         next: 'priapism-aspiration-technique',
