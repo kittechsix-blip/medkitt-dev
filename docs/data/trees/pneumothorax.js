@@ -1,7 +1,7 @@
 // MedKitt — Pneumothorax POCUS Consult
 // Ultrasound-guided diagnosis of pneumothorax using sequential sonographic signs.
 // 4 modules: Technique/VPPI → Lung Sliding → Pneumothorax Assessment → Lung Point + M-Mode
-// 7 evidence citations.
+// 8 evidence citations.
 export const PNEUMOTHORAX_NODES = [
     // =====================================================================
     // MODULE 1: EXAMINATION TECHNIQUE + VPPI FOUNDATION
@@ -15,9 +15,12 @@ export const PNEUMOTHORAX_NODES = [
         citation: [1, 2, 3, 7],
         images: [
             {
-                src: 'images/pneumothorax/us-anatomy.png',
-                alt: 'Ultrasound anatomy of the anterior chest wall showing ribs, intercostal muscle, and the visceral-parietal pleural interface (VPPI)',
-                caption: 'Normal pleural anatomy: Ribs cast acoustic shadows. The VPPI (pleural line) is visible between rib shadows.',
+                src: 'images/pneumothorax/us-anatomy.jpg',
+                alt: 'Anatomical illustration of the anterior chest wall showing skin, subcutaneous tissue, muscle layers, intercostal muscle, ribs with acoustic shadows, and the visceral-parietal pleural interface (VPPI)',
+            },
+            {
+                src: 'images/pneumothorax/us-anatomy-2.jpg',
+                alt: 'Ultrasound image of the anterior chest wall showing ribs, intercostal muscle, rib shadows, and the VPPI (pleural line)',
             },
         ],
         next: 'ptx-lung-sliding',
@@ -56,8 +59,7 @@ export const PNEUMOTHORAX_NODES = [
         images: [
             {
                 src: 'images/pneumothorax/b-lines.png',
-                alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line',
-                caption: 'B-lines: Vertical hyperechoic comet-tail artifacts arising from the pleural line.',
+                alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line to the bottom of the screen',
             },
         ],
         options: [
@@ -85,8 +87,7 @@ export const PNEUMOTHORAX_NODES = [
         images: [
             {
                 src: 'images/pneumothorax/b-lines.png',
-                alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line',
-                caption: 'B-lines: Vertical hyperechoic artifacts arising from the pleural line, confirming visceral-parietal contact.',
+                alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line, confirming visceral-parietal contact',
             },
         ],
     },
@@ -114,7 +115,6 @@ export const PNEUMOTHORAX_NODES = [
             {
                 src: 'images/pneumothorax/b-lines.png',
                 alt: 'Ultrasound image showing B-lines: vertical comet-tail artifacts extending from the pleural line',
-                caption: 'B-lines: Vertical hyperechoic comet-tail artifacts arising from the pleural line.',
             },
         ],
         options: [
@@ -163,8 +163,7 @@ export const PNEUMOTHORAX_NODES = [
         images: [
             {
                 src: 'images/pneumothorax/lung-point.png',
-                alt: 'CT scan showing pneumothorax alongside ultrasound image of the lung point where collapsed lung meets chest wall',
-                caption: 'Lung point: The transition zone where absent lung sliding meets normal sliding, marking the pneumothorax edge.',
+                alt: 'Ultrasound image showing the lung point where collapsed lung intermittently contacts the chest wall, with the leading edge marking the pneumothorax boundary',
             },
         ],
         options: [
@@ -202,8 +201,7 @@ export const PNEUMOTHORAX_NODES = [
         images: [
             {
                 src: 'images/pneumothorax/m-mode-barcode.png',
-                alt: 'M-mode comparison: Normal seashore sign (left) showing granular pattern below pleura vs pneumothorax barcode/stratosphere sign (right) showing horizontal parallel lines',
-                caption: 'M-mode: Seashore sign (normal lung, left) vs Barcode/Stratosphere sign (pneumothorax, right).',
+                alt: 'M-mode comparison: Normal lung seashore sign (left) with motion chest wall waves and positive motion lung beach pattern vs pneumothorax barcode/stratosphere sign (right) showing no motion in chest wall or lung',
             },
         ],
         options: [
@@ -248,7 +246,7 @@ export const PNEUMOTHORAX_NODE_COUNT = PNEUMOTHORAX_NODES.length;
 // -------------------------------------------------------------------
 export const PNEUMOTHORAX_MODULE_LABELS = ['Technique', 'Sliding', 'Assessment', 'Lung Point'];
 // -------------------------------------------------------------------
-// Evidence Citations (7 references)
+// Evidence Citations (8 references)
 // -------------------------------------------------------------------
 export const PNEUMOTHORAX_CITATIONS = [
     { num: 1, text: 'Frankel HL, et al. Guidelines for the Appropriate Use of Bedside General and Cardiac Ultrasonography in the Evaluation of Critically Ill Patients\u2014Part I: General Ultrasonography. Crit Care Med. 2015;43(11):2479-502.' },
@@ -258,6 +256,7 @@ export const PNEUMOTHORAX_CITATIONS = [
     { num: 5, text: 'Stewart DL, et al. Use of Point-of-Care Ultrasonography in the NICU for Diagnostic and Procedural Purposes. Pediatrics. 2022.' },
     { num: 6, text: 'Alrajhi K, et al. Test Characteristics of Ultrasonography for the Detection of Pneumothorax: A Systematic Review and Meta-Analysis. Chest. 2012.' },
     { num: 7, text: 'Volpicelli G. Sonographic Diagnosis of Pneumothorax. Intensive Care Med. 2011;37(2):224-32.' },
+    { num: 8, text: 'Images: AI-generated illustrations created with Google Gemini. Clinical ultrasound images adapted for educational use.' },
 ];
 // -------------------------------------------------------------------
 // Diagnostic Test Performance (US vs CXR for pneumothorax)
